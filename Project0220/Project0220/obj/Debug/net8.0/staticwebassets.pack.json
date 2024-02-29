@@ -1,0 +1,1625 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Project0220.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Project0220.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\css.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\css.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\helper.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\helper.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\iconfont.min.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\iconfont.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\plugins.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\plugins.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\All_product\\css\\style.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\Flaticon.eot",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\Flaticon.eot"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\Flaticon.ttf",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\Flaticon.ttf"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\Flaticon.woff",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\Flaticon.woff"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\Flaticon.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\Flaticon.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459Wlhyw.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\JTUSjIg1_i6t8kCHKm459Wlhyw.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\All_product\\font\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\css\\All_product\\font\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\publiclayout\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\publiclayout\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\css\\publiclayout\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\css\\publiclayout\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\0.png",
+      "PackagePath": "staticwebassets\\images\\0.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\00.png",
+      "PackagePath": "staticwebassets\\images\\00.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00011.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00011.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00012.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00012.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00021.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00021.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00022.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00022.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00030.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00030.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00040.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00040.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00051.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00051.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00052.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00052.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00060.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00060.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00070.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00070.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00080.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00080.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00090.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00090.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00100.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00100.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00110.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00110.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00120.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00120.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00130.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00130.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00140.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00140.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00150.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00150.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00160.jpeg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00160.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00170.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00170.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00180.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00180.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00190 .jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00190 .jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00200.jpeg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00200.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00210.jpeg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00210.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00220.jpeg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00220.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00230.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00230.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00240.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00240.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00250.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00250.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00261.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00261.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00262.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00262.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00271.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00271.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00272.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00272.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00280.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00280.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00290.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00290.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00300.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00300.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00310.jpeg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00310.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00320.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00320.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00330.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00330.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00341.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00341.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00342.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00342.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00350.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00350.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00360.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00360.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00371.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00371.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00372.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00372.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00380.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00380.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00390.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00390.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00400.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00400.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00410.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00410.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00420.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00420.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00431.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00431.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00432.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00432.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00440.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00440.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00450.png",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00450.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00460.png",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00460.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\A00470.png",
+      "PackagePath": "staticwebassets\\images\\All_product\\A00470.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00010.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00010.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00020.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00020.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00030.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00030.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00040.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00040.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00050.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00050.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00060.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00060.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00070.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00070.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00080.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00080.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00090.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00090.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00100.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00100.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00110.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00110.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00120.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00120.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00130.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00130.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00140.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00140.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00150.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00150.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00160.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00160.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00170.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00170.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00180.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00180.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00190.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00190.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00200.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00200.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00210.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00210.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00220.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00220.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00230.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00230.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00240.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00240.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00250.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00250.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00260.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00260.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00270.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00270.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00280.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00280.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00290.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00290.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00300.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00300.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00310.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00310.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00320.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00320.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00330.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00330.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00340.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00340.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00350.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00350.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00360.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00360.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00370.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00370.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\B00380.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\B00380.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00010.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00010.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00020.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00020.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00030.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00030.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00041.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00041.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00042.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00042.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00051.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00051.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00052.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00052.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00060.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00060.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00070.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00070.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00080.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00080.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00090.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00090.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00100.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00100.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00111.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00111.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00112.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00112.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00120.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00120.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00130.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00130.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00140.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00140.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00150.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00150.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00160.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00160.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00170.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00170.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00180.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00180.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00190.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00190.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00200.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00200.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00211.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00211.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00212.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00212.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00213.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00213.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00220.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00220.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00230.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00230.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00240.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00240.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00250.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00250.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00260.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00260.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00271.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00271.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00272.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00272.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00280.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00280.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00290.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00290.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00301.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00301.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00302.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00302.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00310.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00310.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00320.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00320.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00330.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00330.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00340.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00340.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00350.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00350.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00360.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00360.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00370.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00370.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00380.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00380.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00390.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00390.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00400.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00400.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00410.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00410.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00420.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00420.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00430.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00430.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00440.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00440.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00450.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00450.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\C00460.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\C00460.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00010.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00010.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00021.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00021.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00022.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00022.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00030.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00030.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00041.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00041.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00042.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00042.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00050.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00050.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00060.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00060.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00070.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00070.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00080.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00080.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00090.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00090.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00100.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00100.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00110.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00110.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00120.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00120.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00130.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00130.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00140.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00140.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00150.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00150.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00160.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00160.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00170.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00170.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00180.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00180.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00190.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00190.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00200.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00200.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00210.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00210.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00220.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00220.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00230.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00230.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00240.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00240.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00250.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00250.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00260.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00260.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00270.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00270.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00280.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00280.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00290.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00290.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00300.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00300.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00311.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00311.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00312.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00312.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00313.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00313.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00320.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00320.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00331.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00331.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00332.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00332.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00333.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00333.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00340.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00340.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00350.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00350.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00361.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00361.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00362.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00362.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00363.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00363.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00370.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00370.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00380.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00380.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00390.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00390.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00400.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00400.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00410.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00410.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00421.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00421.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00422.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00422.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00423.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00423.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00430.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00430.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00441.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00441.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00442.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00442.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00450.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00450.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00460.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00460.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00470.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00470.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00480.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00480.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00490.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00490.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00500.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00500.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00511.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00511.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00512.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00512.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00520.webp",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00520.webp"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00530.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00530.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00540.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00540.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00551.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00551.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00552.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00552.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00561.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00561.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00562.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00562.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00571.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00571.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00572.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00572.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00580.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00580.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00591.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00591.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00592.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00592.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00593.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00593.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00594.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00594.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00601.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00601.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00602.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00602.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00611.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00611.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00612.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00612.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00613.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00613.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00614.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00614.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00615.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00615.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00621.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00621.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00622.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00622.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00630.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00630.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00640.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00640.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00651.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00651.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00652.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00652.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00661.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00661.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00662.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00662.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00671.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00671.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00672.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00672.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00680.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00680.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00690.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00690.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00700.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00700.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00710.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00710.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00720.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00720.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00730.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00730.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00740.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00740.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00750.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00750.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00760.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00760.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00770.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00770.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00780.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00780.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00790.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00790.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00800.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00800.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00810.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00810.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00820.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00820.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00830.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00830.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00840.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00840.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00850.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00850.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00860.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00860.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00870.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00870.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00880.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00880.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\D00890.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\D00890.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00010.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00010.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00020.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00020.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00030.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00030.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00040.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00040.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00050.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00050.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00060.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00060.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00070.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00070.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00080.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00080.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00090.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00090.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00100.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00100.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00110.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00110.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00120.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00120.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00130.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00130.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00140.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00140.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00150.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00150.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00160.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00160.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00170.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00170.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00180.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00180.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00190.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00190.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00200.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00200.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00210.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00210.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00220.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00220.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00230.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00230.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00240.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00240.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00250.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00250.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00260.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00260.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00270.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00270.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00280.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00280.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00290.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00290.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00300.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00300.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00310.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00310.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\All_product\\E00320.jpg",
+      "PackagePath": "staticwebassets\\images\\All_product\\E00320.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\GG.png",
+      "PackagePath": "staticwebassets\\images\\GG.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\GGLogo.png",
+      "PackagePath": "staticwebassets\\images\\GGLogo.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image1.jpeg",
+      "PackagePath": "staticwebassets\\images\\image1.jpeg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image10.png",
+      "PackagePath": "staticwebassets\\images\\image10.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image11.png",
+      "PackagePath": "staticwebassets\\images\\image11.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image12.png",
+      "PackagePath": "staticwebassets\\images\\image12.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image13.png",
+      "PackagePath": "staticwebassets\\images\\image13.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image14.png",
+      "PackagePath": "staticwebassets\\images\\image14.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image15.png",
+      "PackagePath": "staticwebassets\\images\\image15.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image16.png",
+      "PackagePath": "staticwebassets\\images\\image16.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image17.png",
+      "PackagePath": "staticwebassets\\images\\image17.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image2.png",
+      "PackagePath": "staticwebassets\\images\\image2.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image3.png",
+      "PackagePath": "staticwebassets\\images\\image3.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image4.png",
+      "PackagePath": "staticwebassets\\images\\image4.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image5.jpg",
+      "PackagePath": "staticwebassets\\images\\image5.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image6.jpg",
+      "PackagePath": "staticwebassets\\images\\image6.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image7.jpg",
+      "PackagePath": "staticwebassets\\images\\image7.jpg"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image8.png",
+      "PackagePath": "staticwebassets\\images\\image8.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\images\\image9.png",
+      "PackagePath": "staticwebassets\\images\\image9.png"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\jquery-1.12.4.min.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\jquery-1.12.4.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\main.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\modernizr-2.8.3.min.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\modernizr-2.8.3.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\plugins.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\All_product\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\All_product\\js\\popper.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\publiclayout\\bootstrap.js",
+      "PackagePath": "staticwebassets\\js\\publiclayout\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\js\\publiclayout\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\js\\publiclayout\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\大專GIT\\Project0220\\Project0220\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Project0220.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Project0220.props",
+      "PackagePath": "build\\Project0220.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Project0220.props",
+      "PackagePath": "buildMultiTargeting\\Project0220.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Project0220.props",
+      "PackagePath": "buildTransitive\\Project0220.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
