@@ -1,0 +1,112 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+ <section class="login-block">
+    <div class="container loginsecone">
+    <div class="row">
+        <div class="col-md-12 login-sec ">
+            <h2 class="text-center">註冊G++g會員</h2>
+        </div></div></div>
+     <div class="container">
+        <div class="row justify-center">     
+            <div class="col-md-6 login-sec"> 
+            <form class="login-form" action="/Member/Member" method="post" id="form">
+                <div class="form-group">
+                <label for="UserName" class="list-group-item">姓名</label>
+                <input type="text" id="nametextbox" name="NameTextBox" class="form-control" placeholder="">
+                </div>
+                <div class="form-group">
+                <label for="birthday" class="list-group-item">生日：</label>
+                <select id="birthdaybox" name="birthday" required>
+                    <!-- 這裡放生日的選項，例如： -->
+                    <option value="1990-01-01">1990-01-01</option>
+                    <option value="1990-01-02">1990-01-02</option>
+                    <!-- 其他選項... -->
+                </select>
+                </div>
+
+                <!-- 性別 -->
+                <div class="form-group">
+                <label class="list-group-item">性別：</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">男性</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">女性</label>
+
+    </div>
+        <!-- 手機號碼 -->
+        <div class="form-group">
+        <label for="phone" class="list-group-item">手機號碼：</label>
+        <input type="tel" id="phone" name="phone" required>
+        <br>
+    </div>
+
+        <!-- 電子郵件 -->
+        <div class="form-group">
+        <label for="email" class="list-group-item">電子郵件：</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        </div>
+        <!-- 地址 -->
+        <div class="form-group">
+        <label class="list-group-item">地址：</label>
+        <!-- 市 -->
+        <select id="city" name="city" required>
+            <!-- 這裡放市的選項，例如： -->
+            <option value="taipei">台北市</option>
+            <option value="newtaipei">新北市</option>
+            <!-- 其他選項... -->
+        </select>
+        <!-- 區 -->
+        <select id="district" name="district" required>
+            <!-- 這裡放區的選項，例如： -->
+            <option value="datong">大同區</option>
+            <option value="wanhua">萬華區</option>
+            <!-- 其他選項... -->
+        </select>
+        <!-- 地址 -->
+        <label for="address" class="list-group-item"></label>
+        <input type="text" id="address" name="address" required>
+        <br>
+        </div>
+        <!-- 使用者姓名 -->
+        <div class="form-group">
+        <label for="username" class="list-group-item">使用者姓名：</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        </div>
+        <!-- 密碼 -->
+        <div class="form-group">
+        <label for="password" class="list-group-item">密碼：</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+
+
+        <!-- 提交按鈕 -->
+        <button type="submit" id="submitbtn">提交</button>
+
+
+    </form>
+
+
+        <div class="form-check">
+            <label class="form-check-label">
+             <input type="checkbox" class="form-check-input">
+            <small>記住我</small>
+            </label>
+
+        </div>
+        <!-- <div class="forgetpsd">
+              <p>忘記密碼?</p> 
+             <p type="button" class="applybtn">還不是會員? 點我註冊會員</p>
+            </div>
+          -->
+
+            </div>
+
+    </div>  
+
+    </div>
+</section> 

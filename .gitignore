@@ -1,3 +1,5 @@
 *.vsidx
 *.cache
 */.vs/
+Project0220/Project0220/bin/*
+Project0220/Project0220/obj/*
