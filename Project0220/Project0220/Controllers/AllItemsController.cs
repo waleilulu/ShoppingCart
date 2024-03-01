@@ -10,5 +10,9 @@ namespace Project0220.Controllers
         {
             return View();
         }
+        public IActionResult ItemDetails()
+        {
+            return View();
+        }
     }
 }
