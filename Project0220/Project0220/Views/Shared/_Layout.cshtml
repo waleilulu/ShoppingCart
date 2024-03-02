@@ -46,9 +46,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">首頁<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">首頁<span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item dropdown">
+@*                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                                     aria-expanded="false">產品</a>
                                 <div class="dropdown-menu">
@@ -57,10 +57,13 @@
                                     <a class="dropdown-item" href="#">寢具、床架</a>
                                     <a class="dropdown-item" href="#">家飾、燈、地墊、香氛</a>
                                     <a class="dropdown-item" href="#">衛浴、浴盆</a>
-                                @* <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">新品專區</a>
-                                    <a class="dropdown-item" href="#">出清品專區</a> *@
+                                    <a class="dropdown-item" href="#">出清品專區</a>
                                 </div>
+                            </li> *@
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="AllItems" asp-action="Index">產品</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">新品專區</a>
