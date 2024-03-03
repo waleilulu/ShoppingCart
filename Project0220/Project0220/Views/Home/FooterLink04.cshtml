@@ -1,0 +1,356 @@
+﻿@*
+    FooterLink04.cshtml 隱私權及網站使用條款
+*@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>bootstrap手风琴菜单|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<style type="text/css">
+		.demo {
+			padding: 2em 0;
+		}
+
+		a:hover,
+		a:focus {
+			text-decoration: none;
+			outline: none;
+		}
+
+		#accordion .panel {
+			border: none;
+			box-shadow: none;
+			border-radius: 10px;
+			margin-bottom: 10px;
+		}
+
+		#accordion .panel-heading {
+			padding: 0;
+			border: none;
+			border-radius: 10px;
+		}
+
+		#accordion .panel-title a {
+			display: block;
+			padding: 20px 35px;
+			font-size: 20px;
+			font-weight: 600;
+			color: #fff;
+			background: #888bc2;
+			border: none;
+			position: relative;
+			transition: all 0.3s ease 0s;
+		}
+
+			#accordion .panel-title a:after,
+			#accordion .panel-title a.collapsed:after {
+				content: "\f068";
+				font-family: fontawesome;
+				width: 40px;
+				height: 40px;
+				line-height: 32px;
+				border-radius: 50%;
+				background: #888bc2;
+				text-align: center;
+				font-size: 15px;
+				color: #fff;
+				border: 5px solid #fff;
+				position: absolute;
+				top: 10px;
+				left: -20px;
+				transition: all 0.3s ease 0s;
+			}
+
+			#accordion .panel-title a.collapsed:after {
+				content: "\f067";
+			}
+
+			#accordion .panel-title a:hover:after,
+			#accordion .panel-title a.collapsed:hover:after {
+				transform: rotate(360deg);
+			}
+
+		#accordion .panel-body {
+			padding: 15px 25px;
+			background: #fff;
+			font-size: 18px;
+			color: #8c8c8c;
+			line-height: 25px;
+			border-top: none;
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2> 隱私權及網站使用條款 </h2>
+		<hr></hr>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion"
+								   href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									隱私權聲明
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+							 aria-labelledby="headingOne">
+							<div class="panel-body">
+								<p>
+									G++G網站為了維護個人隱私權與支持個人資料保護，謹以下列聲明，向您說明G++G
+									蒐集個人資料之目的、類別、利用範圍及方式、以及您所得行使之權利等事項； 如果您對於G++G
+									的隱私權聲明、以下相關告知事項、或與個人資料保護有關之相關事項有任何疑問，可以和客服中心聯絡，本公司將儘快回覆說明。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+								   aria-controls="collapseTwo">
+									適用範圍
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingTwo">
+							<div class="panel-body">
+								<p>
+									隱私權聲明及其所包含之告知事項，適用於G++G所擁有及經營的網站(包含行動裝置APP)。本網站內可能包含許多連結、或其他合作夥伴及個別開店店家所提供的商品或服務，關於該等連結網站、合作夥伴網站或個別開店店家之網路店家的隱私權聲明及與個人資料保護有關之告知事項，請參閱各該連結網站、合作夥伴網站或個別開店店家之網路店家。
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+								   aria-controls="collapseThree">
+									個人資料蒐集之目的與類別
+								</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingThree">
+							<div class="panel-body">
+								<p>
+									為了提供電子商務服務、售後服務、履行法定或合約義務、保護當事人及相關利害關係人之權益、行銷、客戶管理與服務、以及經營合於營業登記項目或組織章程所定之業務等目的，依照各服務之性質，會蒐集您的姓名、連絡方式(包括但不限於電話、E-MAIL及地址等)、為了行銷目的所需之資料：教育程度、職業狀態、家庭婚姻狀況、經濟程度、為完成收款或付款所需之資料、ＩＰ位址、及其他得以直接或間接識別使用者身分之個人資料。
+									此外，為提升服務品質， G++G會依照所提供服務之性質，記錄使用者的IP位址、以及在 G++G
+									相關網站或APP內的瀏覽活動(包括但不限於使用者所使用的軟硬體、所點選的網頁、下載的APP)等資料，而且這些資料僅將供作流量分析和網路行為調查，以便於改善
+									G++G相關網站或APP的服務品質，不會和特定個人相連繫。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+								   aria-controls="collapseFour">
+									個人資料的利用
+								</a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingFour">
+							<div class="panel-body">
+								<p>
+									所蒐集的足以識別使用者身分的個人資料、消費與交易資料，或日後經您同意而提供之其他個人資料，都將供G++G
+									於其內部及海內外相關關係企業、所合作第三方、依照蒐集之目的進行處理和利用、或為完成提供服務或履行合約義務之必要、或依照相關法令規定或有權主管機關（包括但不限於法院或台灣票據交換所）之命令或要求，否則
+									G++G不會將足以識別使用者身分的個人資料提供給本隱私權條款未臚列的第三人（包括境內及境外）、或移作蒐集目的以外之使用。 G++G
+									會持續保管、處理及利用相關資料。在上開蒐集目的範圍內，本商店會將所蒐集的個人資料，提供予合作廠商（包括但不限提供本服務之91APP、宅配貨運業者、通訊服務業者、金流服務業者與其他有輔助
+									G++G履行合約義務或客戶服務必要之第三方廠商）以協助交易完成或終止。針對訊息通知， G++G
+									可能會使用手機簡訊、EMAIL、各款APP通知型訊息、LINE通知型訊息，通知出退貨與會員權益等必要資訊，即使未加入本公司/本服務好友，您仍可接收到通知型訊息，本公司/本服務傳送之通知型訊息以對您有效且重要的訊息為限，以廣告或其他目的的訊息皆不會被傳送，滿足以下三個條件者，將可收到通知型訊息(1)LINE
+									帳號設定的電話號碼與本公司/本服務所傳來的電話號碼比對相符(2)該 LINE 帳號已在 LINE APP 設定中，同意接收通知型訊息(3)LINE
+									帳號未封鎖傳送訊息之 LINE 官方帳號。欲變更通知型訊息的設定，操作如下：(1)點選「好友」＞「設定」
+									(2)點選「隱私設定」(3)點選「提供使用資料」(4)點選「通知型訊息」(5)開關「接收通知型訊息」。關閉「接收通知型訊息」後，將不會接收到來自任何企業官方帳號或認證官方帳號的通知型訊息。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseFive" aria-expanded="false"
+								   aria-controls="collapseFive">
+									第三方利用與廣告(分析)服務
+								</a>
+							</h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingFive">
+							<div class="panel-body">
+								<p>
+									為優化您的消費體驗，我們提供相關第三方認證服務的功能，第三方認證業者如Google、Facebook、Apple、Line等，讓您可以利用此功能，更快速地完成本網站的註冊與登入流程。同時，為了讓您能更輕易地接觸所偏好的商品資訊，我們會在不同平台對您作優化廣告投放及使用流程的目的範圍內，將您的個人資料分享給提供廣告分析、投放的服務業者如Google、Facebook、Line、Yahoo、Criteo、Adobe、Tagtoo或新型態廣告分析業者，另該些服務業者得以為您進行精準的商品廣告安排，此外，我們也已安裝
+									Google Analytics (分析) 廣告功能。如您欲停用此類功能及服務，建議您可參考Google所提供 不透露資訊的方式
+									以停用該功能，或與我們聯繫，我們會提供必要的協助。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseSix" aria-expanded="false"
+								   aria-controls="collapseSix">
+									資料安全
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingSix">
+							<div class="panel-body">
+								<p>
+									G++G將以合於產業標準之合理技術及程序，維護G++G
+									個人資料之安全。請留意，手機號碼是關聯您會員身分的核心認證資訊，若您手機遺失、更換手機號碼、或有變更手機號碼所有權名義時，請務必與G++G
+									聯繫，進一步完成必要的個人資訊變更，以確保您的個人資料、交易資料的安全性與機密性；若您未提出前述資訊變更需求，須自行負擔可能發生的一切損害。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseSeven" aria-expanded="false"
+								   aria-controls="collapseSeven">
+									資料當事人之權利
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingSeven">
+							<div class="panel-body">
+								<p>
+									資料當事人可以請求查詢、閱覽本人的個人資料或要求給予複本。若您的個人資料有變更、或發現您的個人資料不正確，可以向G++G要求修改或更正；如您所提供之資料錯誤或缺漏，則不受本隱私權聲明之保護。您可要求刪除、停止處理或利用個人資料。但因G++G執行職務或業務所必須者，不在此限。因應歐盟個人資料保護法規（European
+									Union General Data Protection Regulation,
+									GDPR），歐盟國家使用者將暫停使用G++G之各服務。若您有任何詢問，請與客服中心聯絡。若您欲行使刪除請求權，請直接聯繫專員或商店客服協助您行使權利，惟本公司得酌收必要成本費用，並將處理結果以書面通知請求人。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEight">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseEight" aria-expanded="false"
+								   aria-controls="collapseEight">
+									Cookie
+								</a>
+							</h4>
+						</div>
+						<div id="collapseEight" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingEight">
+							<div class="panel-body">
+								<p>
+									為了便利使用者， G++G網站可能會讀取儲存在使用者電腦中的cookie資料，該cookie資料主要分為下列三項：(1) 功能cookie
+									(Functional Cookies)，主要用於記憶您在網站上的設定，以改善並提供您個人化的功能服務。(2) 效能cookie
+									(Performance
+									Cookies)，透過紀錄使用者操作經驗，幫助我們改善網站的設計效能。透過此類Cookie，我們可以了解到網站的哪些頁面或服務功能是最多人使用，以及使用者可能遇到的系統錯誤，並進行修正。(3)
+									廣告行銷 Cookie (Advertising
+									Cookies)，為適當提供您最適當的本公司最新消息與產品資訊，透過此類cookie，可以讓我們與我們所合作廣告商，提供您感興趣的廣告內容。使您可以在本公司所經營或其他網站看到我們所提供的廣告內容。使用者可以經由瀏覽器的設定，取消、或限制此項功能，但可能因此無法使用部份網站功能。若您想知道如何取消、或限制此項功能，請與G++G客服中心聯絡。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingNine">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseNine" aria-expanded="false"
+								   aria-controls="collapseNine">
+									Google Analyics(分析)廣告功能
+								</a>
+							</h4>
+						</div>
+						<div id="collapseNine" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingNine">
+							<div class="panel-body">
+								<p>
+									本服務已安裝 Google Analytics (分析) 廣告功能。本功能僅用於提供G++G分析廣告投放效益及優化使用流程，如您欲停用 Google
+									Analytics (分析) 廣告功能，建議您可參考Google所提供不透露資訊的方式 以停用該功能。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTen">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseTen" aria-expanded="false"
+								   aria-controls="collapseTen">
+									影響
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTen" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingTen">
+							<div class="panel-body">
+								<p>
+									若您不願意提供各服務或交易所要求的相關個人資料予G++G，且不同意G++G就該等個人資料依法令規定、以及本隱私權聲明及其相關告知內容為相關之個人資料蒐集、處理、利用及國際傳輸，
+									G++G將尊重您的決定，但依照各該服務之性質或條件，您可能因此無法使用該等服務或完成相關交易，並保留是否同意提供該等相關服務或完成相關交易之權利。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEleven">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseEleven" aria-expanded="false"
+								   aria-controls="collapseEleven">
+									修訂權利與效力
+								</a>
+							</h4>
+						</div>
+						<div id="collapseEleven" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingEleven">
+							<div class="panel-body">
+								<p>
+									G++G有權隨時修訂本隱私權聲明及相關告知事項，並得於修訂後公佈在G++G
+									網站，不另行個別通知，您同意更新的隱私權條款仍對您發生效力，因此，您有義務亦隨時可以在G++G網站上詳閱最新版本的隱私權聲明及相關告知事項。
+								</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>
