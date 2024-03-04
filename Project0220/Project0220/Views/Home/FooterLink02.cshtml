@@ -1,0 +1,364 @@
+﻿@*
+    FooterLink02.cshtml 常見問題
+*@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>bootstrap手风琴菜单|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<style type="text/css">
+		.demo {
+			padding: 2em 0;
+		}
+
+		a:hover,
+		a:focus {
+			text-decoration: none;
+			outline: none;
+		}
+
+		#accordion .panel {
+			border: none;
+			box-shadow: none;
+			border-radius: 10px;
+			margin-bottom: 10px;
+		}
+
+		#accordion .panel-heading {
+			padding: 0;
+			border: none;
+			border-radius: 10px;
+		}
+
+		#accordion .panel-title a {
+			display: block;
+			padding: 20px 35px;
+			font-size: 20px;
+			font-weight: 600;
+			color: #fff;
+			background: #888bc2;
+			border: none;
+			position: relative;
+			transition: all 0.3s ease 0s;
+		}
+
+			#accordion .panel-title a:after,
+			#accordion .panel-title a.collapsed:after {
+				content: "\f068";
+				font-family: fontawesome;
+				width: 40px;
+				height: 40px;
+				line-height: 32px;
+				border-radius: 50%;
+				background: #888bc2;
+				text-align: center;
+				font-size: 15px;
+				color: #fff;
+				border: 5px solid #fff;
+				position: absolute;
+				top: 10px;
+				left: -20px;
+				transition: all 0.3s ease 0s;
+			}
+
+			#accordion .panel-title a.collapsed:after {
+				content: "\f067";
+			}
+
+			#accordion .panel-title a:hover:after,
+			#accordion .panel-title a.collapsed:hover:after {
+				transform: rotate(360deg);
+			}
+
+		#accordion .panel-body {
+			padding: 15px 25px;
+			background: #fff;
+			font-size: 18px;
+			color: #8c8c8c;
+			line-height: 25px;
+			border-top: none;
+			position: relative;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>常見問題</h2>
+		<hr></hr>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion"
+								   href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									付款方式
+								</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+							 aria-labelledby="headingOne">
+							<div class="panel-body">
+								<p>
+									●轉帳
+									<br>
+									戶名: 居家家居股份有限公司
+									<br>
+									帳號: 中國信託 (822) 500012345
+									<br>
+									<br>
+									●信用卡即時線上一次刷卡付款
+									<br>
+									方便又好用的付款方式，當您選擇線上刷卡方式進行交易時，作業流程透過SSL加密機制，保障您的個人隱私資料。
+									<br>
+									<br>
+									● Apple Pay
+									<br>
+									請先備妥您行動裝置中的Apple Pay Wallet，可使用綁定的信用卡結帳，交易過程全程加密，交易安全有保障。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+								   aria-controls="collapseTwo">
+									運送方式
+								</a>
+							</h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingTwo">
+							<div class="panel-body">
+								<p>
+									● 宅配
+									<br>
+									由於家居家飾屬於大型物件，本公司一律以宅配寄送到府。
+									<br>
+									<br>
+									● 配合物流
+									<br>
+									本公司配送 (訂單選擇: 協助到府組裝)
+									<br>
+									大榮貨運
+									<br>
+									新竹貨運
+								</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+								   aria-controls="collapseThree">
+									退貨方式
+								</a>
+							</h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingThree">
+							<div class="panel-body">
+								<p>
+									● 凡於本公司購買產品的顧客，自收到商品隔日起，均享有10天猶豫期之權利。(注意!猶豫期非試用期)
+									<br>
+									<br>
+									● 猶豫期期間，請保持商品送達時的原始包裝及配件，以維護您猶豫期內的退貨權益，如退回之商品無原始包裝及配件，恕無法辦理退貨手續。
+									<br>
+									<br>
+									● 辦理退貨手續時，請一併提交相應的發票以及購買訂單。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+								   aria-controls="collapseFour">
+									訂單進度
+								</a>
+							</h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingFour">
+							<div class="panel-body">
+								<p>
+									● 是否訂購成功
+									<br>
+									訂單成立後，系統會發送『訂單通知』電子郵件給您，記載您提交的訂單詳細資料，包括訂購明細和收件資訊。
+									<br>
+									<br>
+									● 如何追蹤訂單進度
+									<br>
+									有關商品的出貨進度，可在『我的帳戶>訂單查詢』中查詢。
+									<br>
+									<br>
+									● 如何取消訂單
+									<br>
+									商品尚未出貨前，可於『我的帳戶>訂單查詢』中，點選“取消訂單”按鈕
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseFive" aria-expanded="false"
+								   aria-controls="collapseFive">
+									折價券注意事項
+								</a>
+							</h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingFive">
+							<div class="panel-body">
+								<p>
+									● 我的折價劵
+									<br>
+									進入『我的帳戶>我的優惠劵』，可以查詢折價劵或輸入折價劵號。
+									<br>
+									<br>
+									● 如何使用折價劵
+									<br>
+									在結帳時，點選使用折價券或填入折價券折扣碼，就可以享有優惠喔！
+									<br>
+									<br>
+									● 如何使用折價劵
+									<br>
+									1. 每次線上結帳，只能使用一張折價券，門市及櫃點使用則以另行公告為主。
+									<br>
+									2. 使用折價券折抵後，每項商品金額不可為零。
+									<br>
+									3. 若結帳商品標註為「不適用折價券」，則該商品不能使用折價券進行折抵。
+									<br>
+									4. 折價券僅能使用一次且不找零，一經使用無法恢復。
+									<br>
+									5. 使用折價券的訂單如退貨或取消部分商品，折價券將失效不會歸還。
+									<br>
+									6. 折價券有使用效期，逾期後則無法使用，且無法恢復。
+									<br>
+									7. 折價券不可折抵運費。
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseSix" aria-expanded="false"
+								   aria-controls="collapseSix">
+									發票說明
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingSix">
+							<div class="panel-body">
+								<p>
+									● 為何沒有收到發票?
+									<br>
+									根據財政部令 台財資字第 1070001765 號 「電子發票實施作業要點」，自 103 年 1 月 1
+									日起，於本網站消費開立之電子發票，無實體紙本發票故不會寄送。本網站會於期限內將開立之電子發票，上傳至財政
+									部電子發票整合服務平台留存。您可利用會員專區>客服中心/常見問題>電子發票歸戶功能，進行會員載具歸戶作
+									業。經歸戶後的中獎發票將由「財政部電子發票整合平台」進行領獎相關通知及作業；未歸戶的中獎發票，將由本網站以電子郵件、推播及簡訊通知您領獎相關通知及作業。(電子發票及會員載具歸戶說明，
+									詳見財政部電子發票整合平台 https://www.einvoice.nat.gov.tw/)
+									<br>
+									<br>
+									● 如何索取紙本發票?
+									<br>
+									若您要索取電子發票證明聯，麻煩您至「訂單查詢>點選要查詢的訂單明細>電子發票說明>索取紙本發票」，客服人員將會盡速為您處理。
+									小提醒： 商品取貨後可至「訂單查詢>點選要查詢的訂單明細>發票」即可查詢您的電子發票。
+									<br>
+									<br>
+									● 有填寫統編／抬頭的發票會寄嗎?何時會寄出?
+									<br>
+									打統編／抬頭的發票將在發票開立後以E-mail方式寄出電子發票證明聯。
+									<br>
+									<br>
+									● 捐贈的發票，你們會怎麼處理?
+									<br>
+									根據財政部令 台財資字第 1070001765 號:
+									「電子發票實施作業要點」第二十二條說明，財政部電子發票整合平台應每二月為一期，於開獎日前，將買受人所捐贈之該期電子發票明細資料通知各該受捐贈機構，並由財政部電子發票整合平台於對獎後，通知受捐贈機構領獎。
+									另，依據法令規定，已捐贈的發票無法索取紙本發票及更改捐贈對象，如有退換貨需求，本公司將會將該發票作廢。
+									<br>
+									<br>
+									● 發票要加打統編或統編／抬頭填錯怎麼辦?
+									<br>
+									若您尚未收到紙本發票，麻煩您至「訂單查詢>點選要查詢的訂單明細>發票」，找出該筆訂單，點選該
+									筆訂單後的聯絡客服，並詳填您的需求，客服人員將會盡速為您處理。
+									<br>
+									<br>
+									* 有統編／抬頭的發票將在發票開立後以E-mail方式寄出電子發票證明聯，寄出後訂單查詢頁的發票寄送日欄位將會顯示寄 出日期。
+									若您已收到紙本發票或紙本發票已寄出，煩請於收到發票三日內，填寫發票背面折讓單，並附上您要修改 的抬頭、統編，將發票寄回台北市南港區八德路四段 768 巷
+									5 號 6 樓 九易宇軒股份有限公司會計部收， 我們將為您重開發票。提醒您！屆時發票將會重新配號，新的發票月份將為申請當月，發票號碼也將更新，
+									恕無法以原發票號碼列印。
+									<br>
+									<br>
+									● 我怎麼知道發票號碼?
+									<br>
+									在您付款完成、商品出貨後本網站就會開立發票，您可隨時到「訂單查詢>點選要查詢的訂單明細>發票」， 點入訂單明細查詢您的發票號碼。
+									若您於訂購時選擇將發票捐贈，為了保障受贈單位的權益，捐贈發票號碼末三碼將會以*號表示。
+									<br>
+									<br>
+									● 電子發票歸戶 :
+									<br>
+									財政部電子發票整合平台: https://www.einvoice.nat.gov.tw/
+									<br>
+									財稅中心24小時免費服務電話: 0800-52-1988
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+								   data-parent="#accordion" href="#collapseSeven" aria-expanded="false"
+								   aria-controls="collapseSeven">
+									售後服務
+								</a>
+							</h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel"
+							 aria-labelledby="headingSeven">
+							<div class="panel-body">
+								<p>● 本公司擁有個別專門的團隊處理各式售後服務，如有問題請洽售後部門專線:0800-888-000，我們會妥善替您處理。</p>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+
+</html>
