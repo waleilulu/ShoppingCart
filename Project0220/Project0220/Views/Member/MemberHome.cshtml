@@ -1,0 +1,46 @@
+﻿ <!--引入的檔案-->
+  <link rel="stylesheet" href="~/css/Member/css/MemberHome.css"/>
+  <link rel="stylesheet" href="~/css/Member/css/bootstrap.min.css">
+  <script src="~/js/Member_/js/MemberHome.js"></script>
+  <script src="~/js/Member_/js/jquery.slim.min.js"> </script>
+  <script src="~/js/Member_/js/popper.min.js"> </script>
+  <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
+
+<!--MemberHome Section-->
+<div class="container" style="margin-top: 10px;">
+<div class="row">
+<div class="col-md-12" >
+<button class="tablink" onclick="openPage('MData', this, 'white')">會員資料</button>
+<button class="tablink" onclick="openPage('MDiscount', this, 'white')" id="defaultOpen">購物金</button>
+<button class="tablink" onclick="openPage('MOrders', this, 'white')">訂單</button>
+<button class="tablink" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
+<div class="row">
+<div class="col-md-12">
+<div id="MData" class="tabcontent">
+
+  <p>MData is where the heart is..</p>
+</div>
+
+<div id="MDiscount" class="tabcontent">
+
+  <p>Some news this fine day!</p> 
+</div>
+
+<div id="MOrders" class="tabcontent">
+
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="MFollow" class="tabcontent">
+
+  <p>Who we are and what we do.</p>
+</div>
+</div></div>
+</div>
+
+<!--MemberHome Section End-->
+
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>

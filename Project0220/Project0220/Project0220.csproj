@@ -6,4 +6,23 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\js\NewFolder1\**" />
+    <Compile Remove="wwwroot\js\NewFolder2\**" />
+    <Compile Remove="wwwroot\js\NewFolder\**" />
+    <Content Remove="wwwroot\js\NewFolder1\**" />
+    <Content Remove="wwwroot\js\NewFolder2\**" />
+    <Content Remove="wwwroot\js\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\js\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\js\NewFolder2\**" />
+    <EmbeddedResource Remove="wwwroot\js\NewFolder\**" />
+    <None Remove="wwwroot\js\NewFolder1\**" />
+    <None Remove="wwwroot\js\NewFolder2\**" />
+    <None Remove="wwwroot\js\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Member\MemberAccount.cshtml" />
+  </ItemGroup>
+
 </Project>

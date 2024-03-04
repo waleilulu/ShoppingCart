@@ -1,0 +1,178 @@
+﻿<!--引入-->
+  <link rel="stylesheet" href="~/css/Member/css/MemberRegister.css">
+  <script src="~/js/Member_/js/MemberRegister.js"></script>
+
+
+<!--Member Register Section-->
+ <div class="container">
+  <div class="row">
+  <div class="col-md-10">
+<form action="/action_page.php"  method=""/>
+
+    <h4 class="title">註冊</h4>
+    <hr>
+      <!--姓名-->
+     <label for="Name" class="list-group-item">姓名</label>
+    <input type="text" placeholder="Enter Name" name="NameTextbox" required>
+      <!--生日-->
+     <label for="Birthday" class="list-group-item">生日 </label>
+    <div class=selectBirthday style="background-color:#f1f1f1;">
+        <select id="year" name="year"></select>    <label for="year">年</label>
+        <select id="month" name="month"></select> <label for="month">月</label>
+        <select id="day" name="day"></select>    <label for="day">日</label>  
+     </div>
+
+       <!--性別-->
+      <label for="Gender" class="list-group-item">性別</label>
+     <label for="Gender" class="list-group-item" id="selectGender">請選擇您的性別:
+    <select id="gender" name="gender">
+        <option value="male">男性</option>
+        <option value="female">女性</option>
+        <option value="other">其他</option>
+    </select>
+    </label>
+      <!--手機號碼-->
+
+    <label for="Phone" class="list-group-item">手機號碼</label>
+<input type="text"placeholder="Enter Phone" name="Phonebox" required>
+     <!--電子郵件-->
+        <label for="Email" class="list-group-item">電子郵件</label>
+        <input type="text" placeholder="Enter Email" name="Emailbox" required>
+         <!--地址  -->
+         <label for="Address" class="list-group-item">地址</label>
+          <!--地址 城市-->
+          <div class="selectAddress">
+         <label for="city">您的城市：</label>
+         <select id="city" name="city"></select>
+       
+           <!--地址 區域-->
+           <label for="district">您的區域：</label>
+           <select id="district" name="district"> </select>
+   
+         <!--地址 地址-->
+        <label for="street"></label>
+        <input type="text" id="street" name="street" placeholder="請輸入地址" style="border-bottom:1px solid gray">
+        </div>
+
+
+
+ 
+        
+<label for="Username" class="list-group-item">使用者姓名</label>
+<input type="text" placeholder="Enter UserName" name="Usernamebox" required>
+<br>
+
+ <label for="Password" class="list-group-item">密碼</label>
+ <input type="password" placeholder="Enter Password" name="Passwordbox" required>
+       
+    <button type="submit" class="registerbtn">註冊會員</button>
+     <p>已經有帳號了嗎? <a href="~/Member/MemberLogin">登入點這</a></p>
+  </div>
+  </div>
+  </div>
+
+  <!--Member Register Section End-->
+
+  <script>
+
+
+        // 創建年份選項
+        var yearSelect = document.getElementById('year');
+        for (var i = new Date().getFullYear(); i >= 1900; i--) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            yearSelect.add(option);
+        }
+
+        // 創建月份選項
+        var monthSelect = document.getElementById('month');
+        for (var i = 1; i <= 12; i++) {
+            var option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            monthSelect.add(option);
+        }
+
+        // 根據選擇的年份和月份，動態生成日期選項
+        var daySelect = document.getElementById('day');
+        yearSelect.addEventListener('change', updateDays);
+        monthSelect.addEventListener('change', updateDays);
+
+        function updateDays() {
+            var selectedYear = yearSelect.value;
+            var selectedMonth = monthSelect.value;
+            var daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+
+            // 清空原有的日期選項
+            daySelect.innerHTML = '';
+
+            // 生成新的日期選項
+            for (var i = 1; i <= daysInMonth; i++) {
+                var option = document.createElement('option');
+                option.value = i;
+                option.text = i;
+                daySelect.add(option);
+            }
+        }
+
+        // 初始化日期選項
+        updateDays();
+
+
+//地址
+
+var citySelect = document.getElementById('city');
+var districtSelect = document.getElementById('district');
+
+var taiwanCities = {
+    "台北市": ["中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
+    "新北市": ["板橋區", "新莊區", "中和區", "永和區", "土城區", "樹林區", "三峽區", "鶯歌區", "三重區", "蘆洲區", "五股區", "泰山區", "林口區", "八里區", "淡水區", "三芝區", "石門區"],
+    "桃園市": ["中壢區", "平鎮區", "龍潭區", "楊梅區", "新屋區", "觀音區", "桃園區", "龜山區", "八德區", "大溪區", "復興區"],
+    "台中市": ["中區", "東區", "南區", "西區", "北區", "北屯區", "西屯區", "南屯區", "太平區", "大里區", "霧峰區", "烏日區", "豐原區", "后里區", "石岡區", "東勢區", "和平區", "新社區", "潭子區", "大雅區", "神岡區", "大肚區", "沙鹿區", "龍井區", "梧棲區", "清水區", "大甲區", "外埔區", "大安區"],
+    "台南市": ["中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "歸仁區", "新化區", "左鎮區", "玉井區", "楠西區", "南化區", "仁德區", "關廟區", "龍崎區", "官田區", "麻豆區", "佳里區", "西港區", "七股區", "將軍區", "學甲區", "北門區", "新營區", "後壁區", "白河區", "東山區", "六甲區", "下營區", "柳營區", "鹽水區", "善化區", "大內區", "山上區", "新市區", "安定區"],
+    "高雄市": ["新興區", "前金區", "苓雅區", "鹽埕區", "鼓山區", "旗津區", "前鎮區", "三民區", "楠梓區", "小港區", "左營區", "仁武區", "大社區", "岡山區", "路竹區", "阿蓮區", "田寮區", "燕巢區", "橋頭區", "梓官區", "彌陀區", "永安區", "湖內區", "鳳山區", "大寮區", "林園區", "鳥松區", "大樹區", "旗山區", "美濃區", "六龜區", "內門區", "杉林區", "甲仙區", "桃源區", "那瑪夏區", "茂林區", "茄萣區"],
+    "基隆市": ["仁愛區", "信義區", "中正區", "中山區", "安樂區", "暖暖區"],
+    "新竹市": ["東區", "北區", "香山區"],
+    "嘉義市": ["東區", "西區"],
+    "新竹縣": ["竹北市", "竹東鎮", "新埔鎮", "關西鎮"],
+    "苗栗縣": ["苗栗市", "頭份市", "竹南鎮", "三義鄉"],
+    "彰化縣": ["彰化市", "員林市", "鹿港鎮", "和美鎮"],
+    "南投縣": ["南投市", "埔里鎮", "草屯鎮", "竹山鎮"],
+    "雲林縣": ["斗六市", "斗南鎮", "虎尾鎮", "西螺鎮"],
+    "嘉義縣": ["太保市", "朴子市", "布袋鎮", "新港鄉"],
+    "屏東縣": ["屏東市", "潮州鎮", "恆春鎮", "東港鎮"],
+    "宜蘭縣": ["宜蘭市", "羅東鎮", "礁溪鄉", "頭城鎮"],
+    "花蓮縣": ["花蓮市", "鳳林鎮", "玉里鎮", "吉安鄉"],
+    "台東縣": ["台東市", "成功鎮", "太麻里鄉", "鹿野鄉"],
+    "澎湖縣": ["馬公市", "湖西鄉", "白沙鄉", "西嶼鄉"],
+    "金門縣": ["金城鎮", "金湖鎮", "金沙鎮", "金寧鄉"],
+    "連江縣": ["南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"],
+};
+
+// 初始化城市選項
+for (var city in taiwanCities) {
+    var option = document.createElement('option');
+    option.value = city;
+    option.text = city;
+    citySelect.add(option);
+}
+
+// 根據選擇的城市更新區域選項
+citySelect.addEventListener('change', function () {
+    var selectedCity = citySelect.value;
+    districtSelect.innerHTML = ''; // 清空區域選項
+
+    // 根據選擇的城市添加相應區域選項
+    for (var i = 0; i < taiwanCities[selectedCity].length; i++) {
+        var districtOption = document.createElement('option');
+        districtOption.value = taiwanCities[selectedCity][i];
+        districtOption.text = taiwanCities[selectedCity][i];
+        districtSelect.add(districtOption);
+    }
+});
+
+// 初始化一次，以顯示預設城市的區域選項
+citySelect.dispatchEvent(new Event('change'));
+
+  </script>
