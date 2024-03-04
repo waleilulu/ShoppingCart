@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
+
     <Compile Remove="wwwroot\js\NewFolder1\**" />
     <Compile Remove="wwwroot\js\NewFolder2\**" />
     <Compile Remove="wwwroot\js\NewFolder\**" />
@@ -24,10 +24,10 @@
 
   <ItemGroup>
     <Content Remove="Views\Member\MemberAccount.cshtml" />
-=======
+
     <Folder Include="wwwroot\css\Cart\" />
     <Folder Include="wwwroot\js\Cart\" />
->>>>>>> 5b39ad4450310949ebff43fc4f06c7f6f9bc9a90
+
   </ItemGroup>
 
 </Project>
