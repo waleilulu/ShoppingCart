@@ -18,6 +18,10 @@ namespace Project0220.Controllers
         {
             return View();
         }
+        public IActionResult ItemDetails_3()
+        {
+            return View();
+        }
         public IActionResult Sales()
         {
             return View();
