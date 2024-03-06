@@ -24,10 +24,22 @@
 
   <ItemGroup>
     <Content Remove="Views\Member\MemberAccount.cshtml" />
+    <Content Remove="wwwroot\images\All_product\B00010-3.jpg" />
+    <Content Remove="wwwroot\images\B00290-1.jpg" />
+    <Content Remove="wwwroot\images\B00290-2.jpg" />
+    <Content Remove="wwwroot\images\B00290-3.jpg" />
 
     <Folder Include="wwwroot\css\Cart\" />
     <Folder Include="wwwroot\js\Cart\" />
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

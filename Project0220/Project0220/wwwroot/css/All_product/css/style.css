@@ -302,9 +302,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     background-color: #f8f8f8 !important;
 }
 
-/*.bg-gray-two {
+.bg-gray-two {
     background-color: #f3f1ec !important;
-}*/
+}
 
 .bg-black {
     background-color: #111111;
@@ -7290,6 +7290,7 @@ a.popup-img {
 
 .newsletter-content p {
     max-width: 300px;
+    text-align:center;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
@@ -7375,6 +7376,7 @@ a.popup-img {
 
 .newsletter-form button:hover {
     color: #151515;
+    
 }
 
 /*---------------------------------------
