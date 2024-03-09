@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Member\MemberAccount.cshtml" />
-    <Content Remove="wwwroot\images\All_product\B00010-3.jpg" />
     <Content Remove="wwwroot\images\B00290-1.jpg" />
     <Content Remove="wwwroot\images\B00290-2.jpg" />
     <Content Remove="wwwroot\images\B00290-3.jpg" />

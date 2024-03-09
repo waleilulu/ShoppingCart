@@ -10,8 +10,8 @@ using Project0220.Models;
 
 namespace Project0220.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ECommerceDBContext))]
+    partial class ECommerceDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

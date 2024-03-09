@@ -1,0 +1,196 @@
+﻿@model ProductDto
+@{
+}
+<div class="row">
+    <div clas="col-md-8 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">編輯商品</h2>
+
+
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">ProductID</label>
+                <div class="col-sm-8">
+                    <input class="form-control-plaintext" readonly value="@ViewData["ProductID"]">
+                    
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">ProductName</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="ProductName">
+                    <span asp-validation-for="ProductName" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">SupplierID</label>
+                <div class="col-sm-8">
+                    <input type="number" min="0" class="form-control" asp-for="SupplierID">
+                    <span asp-validation-for="SupplierID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">CategoryID</label>
+                <div class="col-sm-8">
+                    <input type="number" min="0" class="form-control" asp-for="CategoryID">
+                    <span asp-validation-for="CategoryID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">UnitPrice</label>
+                <div class="col-sm-8">
+                    <input type="number" min="0" class="form-control" asp-for="UnitPrice">
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">UnitInStock</label>
+                <div class="col-sm-8">
+                    <input type="number" min="0" class="form-control" asp-for="UnitInStock">
+                    <span asp-validation-for="UnitInStock" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-8">
+                    <img src="/images/All_product/@ViewData["Image1"]" alt="" width="60">
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Image1</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Image1">
+                    <span asp-validation-for="Image1" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-8">
+                    <img src="/images/All_product/@ViewData["Image2"]" alt="" width="60">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Image2</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Image2">
+                    <span asp-validation-for="Image2" class="text-dnager"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-8">
+                    <img src="/images/All_product/@ViewData["Image3"]" alt="" width="60">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Image3</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Image3">
+                    <span asp-validation-for="Image3" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Color1</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Color1">
+                    <span asp-validation-for="Color1" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Color2</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Color2">
+                    <span asp-validation-for="Color2" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Color3</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Color3">
+                    <span asp-validation-for="Color3" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Color4</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Color4">
+                    <span asp-validation-for="Color4" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Length</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Length">
+                    <span asp-validation-for="Length" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Width</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Width">
+                    <span asp-validation-for="Width" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Height</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Height">
+                    <span asp-validation-for="Height" class="text-dnager"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">SpecialZoneType</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="SpecialZoneType">
+                    <span asp-validation-for="SpecialZoneType" class="text-dnager"></span>
+                </div>
+            </div>
+
+            <div>
+                <label class="col-md-4 col-form-label">CreatedAt</label>
+                <div class="col-sm-8">
+                    <input class="form-control-plaintext" readonly value="@ViewData["CreatedAt"]" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">送出</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="Products" asp-action="Index" role="button">
+                        取消
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
