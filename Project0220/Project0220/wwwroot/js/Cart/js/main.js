@@ -19,7 +19,8 @@ windows.on('scroll', function() {
         sticky.addClass('is-sticky');
     }
 });
-    
+
+
 /*--
     Header Search 
 -----------------------------------*/
@@ -567,7 +568,9 @@ if($('.contact-map').length){
     google.maps.event.addDomListener(window, 'load', initialize);
 }
   
-})(jQuery);	
+})
+
+
 
 
 

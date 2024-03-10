@@ -8,26 +8,28 @@
     <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
 
-<div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
+@* <div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
             <div class="container">
-                <div class="row">
+ *@                <div class="row">
                     <div class="col">
 
                         <div class="page-banner text-left">
-                            <h2>Checkout</h2>
+                            <h2  style="margin-top:30px;">結帳</h2>
                             <ul class="page-breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li>Checkout</li>
+                                <li><a href="index.html">首頁</a></li>
+                                <li>購物車</li>
+                                <li>結帳</li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
-            </div>
+@*             </div>
         </div>
-        <!-- Page Banner Section End -->
+ *@        <!-- Page Banner Section End -->
         <!--Checkout section start-->
         <!-- <div class="checkout-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-40  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"> -->
+            
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -40,7 +42,7 @@
 
                                     <!-- Billing Address -->
                                     <div id="billing-form" class="mb-10">
-                                        <h4 class="checkout-title">收件資訊</h4>
+                                        <h4 class="checkout-title" style="margin-top:30px;">收件資訊</h4>
 
                                         <div class="col-md-6 col-12 mb-20">
                                             <label>姓名: 林小美</label>
@@ -52,40 +54,27 @@
                                             <label>電子郵件: 12345@gmail.com</label>
                                         </div>
                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>收件地址: 台中市</label>
+                                            <label>收件地址: 台中市中區公益路123號</label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12 mb-20">
-                                                <label>配送資訊*</label>
-                                                <select class="nice-select">
-                                                    <option>請選擇配送貨運公司</option>
-                                                    <option>黑貓宅急便</option>
-                                                    <option>新竹貨運</option>
-                                                </select>
-                                            </div>
-                                             <div class="col-12 mb-20">
-                                                <label>付款資訊*</label>
-                                                <select class="nice-select">
-                                                    <option>請選擇使用付款方式</option>
-                                                    <option>匯款</option>
-                                                    <option>信用卡</option>
-                                                </select>
-                                            </div>
+                                         <div class="col-md-6 col-12 mb-20">
+                                            <label>配送貨運: 新竹物流</label>
                                         </div>
-
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>付款方式:信用卡 </label>
+                                        </div>
+                                        
                                     </div>
-
                                 </div>
-
+                  
                                
                                         <!-- Cart Total -->
                                         <div class="col-lg-7">
 
-                                            <h4 class="checkout-title">訂單確認</h4>
+                                            <h4 class="checkout-title" style="margin-top:30px;">訂單確認</h4>
 
                                             <div class="checkout-cart-total">
 
-                                                <h4>Product <span>Total</span></h4>
+                                                <h4>購買產品</h4>
 
                                                 <ul>
                                                     <li><img src="~/images/All_product/A00130.jpg" class="img-checkout">&nbspAVEN三人座沙發 X 01
@@ -98,19 +87,20 @@
                                                 <p>折扣<span>$00.00</span></p>
                                                 <h4>總額<span>$75.00</span></h4>
                                             </div>
-                                        </div>
-                                        
+                                        </div>                                       
                         </form>
-                        
                     </div>
                 </div>
             </div>
         </div>
-        <div class="cart-summary-button  cart-summary-button-2">
-                                        <button class="btn" style="width: 500px;">確認訂購</button>
-                                        </div>
+                                      <div>
+                                     <button class="cart-button02">確認訂購</button>
+                                    @* 更改類別名稱cart-button02 *@
+                                      </div>
+
         <!--Checkout section end-->
 
+        
       <!-- All jquery file included here -->
     <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
     <script src="~/js/Cart/js/popper.min.js"></script>

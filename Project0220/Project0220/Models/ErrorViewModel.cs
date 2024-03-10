@@ -6,4 +6,5 @@ namespace Project0220.Models
 
 		public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 	}
+
 }
