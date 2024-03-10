@@ -1,10 +1,9 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<Project0220.Models.Product>
 
 
-    
+
     <!-- All css files are included here. -->
      <link rel="stylesheet" href="~/css/All_product/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
@@ -13,8 +12,8 @@
     <link rel="stylesheet" href="~/css/All_product/css/style.css">
     <script src="~/js/All_product/js/modernizr-2.8.3.min.js"></script>
 
-  
- 
+
+
 
         <!-- main-search start -->
         <div class="main-search-active">
@@ -47,7 +46,7 @@
                             <ul class="page-breadcrumb">
                                 <li><a href="index.html">首頁</a></li>
                                 <li>商品</li>
-                                <li>ÄPPLARYD三人座沙發</li>
+                                <li>胡桃木單抽屜實木床頭櫃</li>
                             </ul>
                         </div>
 
@@ -57,45 +56,43 @@
         </div>
         <!-- Page Banner Section End -->
         <!-- Single Product Section Start -->
-       
+
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="shop-area">
                             <div class="row">
-                                @foreach (var item in Model)
-                                {
                                 <div class="col-md-6 pr-35 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
                                     <!-- Product Details Left -->
                                     <div class="product-details-left">
                                         <div class="product-details-images-2 tf-element-carousel">
                                             <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                <img src="~/images/All_product/B00290.jpg" alt="">
+                                                <a href="~/images/All_product/B00290.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                <img src="~/images/All_product/B00290-1.jpg" alt="">
+                                                <a href="~/images/All_product/B00290-1.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                <img src="~/images/All_product/B00290-2.jpg" alt="">
+                                                <a href="~/images/All_product/B00290-2.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
-                                            @* <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                            <div class="lg-image">
+                                 <div class="lg-image">
+                                                <img src="~/images/All_product/B00290-3.jpg" alt="">
+                                                <a href="~/images/All_product/B00290-3.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                            </div> 
+                                @* <div class="lg-image">
                                                 <img src="~/images/All_product/A00011-2.jpg" alt="">
                                                 <a href="~/images/All_product/A00011-2.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div> *@
                                         </div>
                                         <div class="product-details-thumbs-2 mt-0">
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="product image thumb"></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="product image thumb"></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="product image thumb"></div>
-                                            @* <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
+                                            <div class="sm-image"><img src="~/images/All_product/B00290.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="~/images/All_product/B00290-1.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="~/images/All_product/B00290-2.jpg" alt="product image thumb"></div>
+                                 <div class="sm-image"><img src="~/images/All_product/B00290-3.jpg" alt="product image thumb"></div> 
+                                @* <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
                                         </div>
                                     </div>
                                     <!--Product Details Left -->
@@ -109,7 +106,7 @@
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                         <!--Product Nav End-->
-                                            <h2>@Html.DisplayFor(modelItem => item.ProductName)</h2>
+                                        <h2>胡桃木單抽屜實木床頭櫃</h2>
                                         <div class="single-product-reviews">
                                             <i class="fa fa-star active"></i>
                                             <i class="fa fa-star active"></i>
@@ -119,15 +116,12 @@
                                             <a class="review-link" href="#">(1則顧客評價)</a>
                                         </div>
                                         <div class="single-product-price">
-                                                <span class="price new-price">@Html.DisplayFor(modelItem => item.UnitPrice)</span>
-                                            @* <span class="regular-price">$40,000</span> *@
+                                            <span class="price new-price">$4,500</span>
+                                            <span class="regular-price">$4,900</span>
                                         </div>
                                         <div class="product-description">
-                                            <p>
-                                                為你的ÄPPLARYD挑選自己喜歡的沙發。無論是深藍色還是鏽棕紅色的DJUPARP單色調絲絨材質；提供10年品質保證；欲知更多細則，請參閱品質保證書
-                                            </p>
-                                            <p>
-                                        @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
+                                            <p>源氏木語莫內黑胡桃木單抽實木床頭櫃，北美黑桃木，值美珍貴，收藏價值高。
+                                               尺寸: 42 x 35 x 52 (公分)
                                             </p>
                                         </div>
                                         <div class="single-product-quantity mb-2">
@@ -135,26 +129,26 @@
                                                 <div class="product-quantity">
                                                     <input value="1" type="number">
                                                 </div>
-                                                <select id="product-color-choose">
-                                                <option value="option1">@Html.DisplayFor(modelItem => item.Color1)</option>
-                                                <option value="option2">@Html.DisplayFor(modelItem => item.Color2)</option>
+                                    @* <select id="product-color-choose">
+                                            <option value="option1">深藍色</option>
+                                            <option value="option2">紅棕色</option> *@
                                         </select>
                                             </form>
                                         </div>
-                                        
+
                                         <div class="wishlist-compare-btn mb-2">
                                             <a href="#" class="wishlist-btn">加入我的最愛</a>
-                                            
+
                                         </div>
                                         <div class="add-to-link mb-2">
                                             <button class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
-                                        
+
                                         </div>
                                         <div class="product-meta">
                                             <span class="posted-in">
                                                 種類: 
-                                                    <a href="#">@Html.DisplayFor(modelItem => item.CategoryID)</a>,
-                                                
+                                                <a href="#">沙發、桌、椅</a>,
+
                                             </span>
                                         </div>
                                         <div class="single-product-sharing">
@@ -171,17 +165,16 @@
                                     </div>
                                     <!--Product Details Content End-->
                                 </div>
-                    }
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-       
+
         <!-- Single Product Section End -->
 
         <!--Product Description Review Section Start-->
-       @*  <div class="product-description-review-section section"> *@
+@*  <div class="product-description-review-section section"> *@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -200,8 +193,8 @@
                             <div class="tab-content product-review-content-tab" id="myTabContent-4">
                                 <div class="tab-pane fade active show" id="description">
                                     <div class="single-product-description">
-                                        <p>這款沙發具有輕鬆時尚和簡潔的外觀，配有剪裁精美的軟布套和舒適的筒型彈簧。纖細的椅腳強化了穩固透氣外觀，簡潔和諧的線條與富有表現力的外型相互結合，在沙發上放上靠墊和萬用毯，讓它變得更個性化，ÄPPLARYD沙發超級舒適，配有柔軟的沙發套和蓬鬆的靠枕，以及可貼合身體和承托各種姿勢的筒型彈簧，無論是坐著或是放鬆身軀躺下來也很舒適，備有不同尺寸和外形，大、小空間都合適</p>
-                                        @* <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p> *@
+                                        <p>北美FAS級黑胡桃木，大圓角設計、半開放收納、質地堅硬，閉合與開放式儲物相結合、分區收納，隱私與便利兼具。</p>
+                            @* <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p> *@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="reviews">
@@ -220,15 +213,15 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <p class="meta">
-                                                            <strong>Tracy</strong> - <span>April 1, 2024</span>
+                                                            <strong>Even</strong> - <span>March 22, 2024</span>
                                                             <div class="description">
-                                                                <p>這組沙發非常好坐，很適合一般家庭。</p>
+                                                                <p>這組櫃子材質很好，希望可以很耐用!。</p>
                                                             </div>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
-                                        @* <div class="review-form-wrapper">
+                            @* <div class="review-form-wrapper">
                                             <div class="review-form">
                                                 <span class="comment-reply-title">Add a review </span>
                                                 <form action="#">
@@ -275,11 +268,11 @@
                     </div>
                 </div>
             </div>
-         @* </div> *@
+            @* </div> *@
         <!--Product Description Review Section Start-->
 
         <!--Product section start-->
-        @* <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5"> *@
+            @* <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5"> *@
             <div class="container">
 
                 <div class="row">
@@ -641,7 +634,7 @@
                 </div>
 
             </div>
-        @* </div> *@
+            @* </div> *@
         <!--Product section end-->
         <!-- Newsletter Section Start -->
         <div class="newsletter-section section bg-gray-two pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-60 pb-xs-50">

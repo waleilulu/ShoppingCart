@@ -324,7 +324,7 @@ template {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .5rem;
+    margin-bottom: .4rem;
     font-weight: 500;
     line-height: 1.2
 }
@@ -8449,6 +8449,10 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 
 .mb-5, .my-5 {
     margin-bottom: 3rem !important
+}
+
+.mb-5, .my-5 {
+    margin-top:3rem !important
 }
 
 .ml-5, .mx-5 {
@@ -18915,6 +18919,9 @@ a.text-dark:focus, a.text-dark:hover {
 
     .mb-5, .my-5 {
         margin-bottom: 3rem !important
+    }
+    .mt-3{
+        margin-top:3rem !important
     }
 
     .ml-5, .mx-5 {

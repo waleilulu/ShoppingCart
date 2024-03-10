@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project0220.Models;
 using System.Diagnostics;
 
@@ -17,8 +18,9 @@ namespace Project0220.Controllers
 		{
 			return View();
 		}
+        
 
-		public IActionResult Privacy()
+        public IActionResult Privacy()
 		{
 			return View();
 		}

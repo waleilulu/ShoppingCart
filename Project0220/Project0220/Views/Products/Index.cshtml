@@ -1,0 +1,74 @@
+﻿@model List<Product>
+@{
+}
+<h2 class="text-center mb-5">產品清單</h2>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <a class="btn btn-primary" asp-controller="Products" asp-action="Create">新增商品</a>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ProductID</th>
+                    <th>ProductName</th>
+                    <th>SupplierID</th>
+                    <th>CategoryID</th>
+                    <th>UnitPrice</th>
+                    <th>UnitInStock</th>
+                    <th>Image1</th>
+                    <th>Image2</th>
+                    <th>Image3</th>
+                    <th>Color1</th>
+                    <th>Color2</th>
+                    <th>Color3</th>
+                    <th>Color4</th>
+                    <th>Length</th>
+                    <th>Width</th>
+                    <th>Height</th>
+                    <th>SpecialZoneType</th>
+                    <th>CreatedAt</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                        <tr>
+                            <td>@product.ProductID</td>
+                            <td>@product.ProductName</td>
+                            <td>@product.SupplierID</td>
+                            <td>@product.CategoryID</td>
+                            <td>$@product.UnitPrice</td>
+                            <td>@product.UnitInStock</td>
+                            <td><img src="/images/All_product/@product.Image1" width="60"></td>
+                            <td><img src="/images/All_product/@product.Image2" width="60" alt=""></td>
+                            <td><img src="/images/All_product/@product.Image3" width="60" alt=""></td>
+                            <td>@product.Color1</td>
+                            <td>@product.Color2</td>
+                            <td>@product.Color3</td>
+                            <td>@product.Color4</td>
+                            <td>@product.Length</td>
+                            <td>@product.Width</td>
+                            <td>@product.Height</td>
+                            <td>@product.SpecialZoneType</td>
+                            <td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
+                            <td style="white-space: nowrap;">
+                                <a class="btn btn-primary btn-sm" asp-controller="Products" asp-action="Edit"
+                                    asp-route-id="@product.ProductID">編輯</a>
+                                <a class="btn btn-danger btn-sm" asp-controller="Products" asp-action="Delete"
+                                    asp-route-id="@product.ProductID">刪除</a>
+                            </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
