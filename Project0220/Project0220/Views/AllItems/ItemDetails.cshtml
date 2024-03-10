@@ -1,6 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model IEnumerable<Project0220.Models.Product>
 
 
     
@@ -62,37 +63,39 @@
                     <div class="col-12">
                         <div class="shop-area">
                             <div class="row">
+                                @foreach (var item in Model)
+                                {
                                 <div class="col-md-6 pr-35 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
                                     <!-- Product Details Left -->
                                     <div class="product-details-left">
                                         <div class="product-details-images-2 tf-element-carousel">
                                             <div class="lg-image">
-                                                <img src="~/images/All_product/A00011.jpg" alt="">
-                                                <a href="~/images/All_product/A00011.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
+                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
-                                                <img src="~/images/All_product/A00012.jpg" alt="">
-                                                <a href="~/images/All_product/A00012.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
+                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
-                                                <img src="~/images/All_product/A00011-1.jpg" alt="">
-                                                <a href="~/images/All_product/A00011-1.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
+                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
-                                            <div class="lg-image">
-                                                <img src="~/images/All_product/A00012-1.jpg" alt="">
-                                                <a href="~/images/All_product/A00012-1.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                            @* <div class="lg-image">
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
+                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
                                             </div>
                                             <div class="lg-image">
                                                 <img src="~/images/All_product/A00011-2.jpg" alt="">
                                                 <a href="~/images/All_product/A00011-2.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
+                                            </div> *@
                                         </div>
                                         <div class="product-details-thumbs-2 mt-0">
-                                            <div class="sm-image"><img src="~/images/All_product/A00011.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00012.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00011-1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="product image thumb"></div>
+                                            @* <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
+                                            <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
                                         </div>
                                     </div>
                                     <!--Product Details Left -->
@@ -106,7 +109,7 @@
                                             <a href="#"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                         <!--Product Nav End-->
-                                        <h2>ÄPPLARYD三人座沙發</h2>
+                                            <h2>@Html.DisplayFor(modelItem => item.ProductName)</h2>
                                         <div class="single-product-reviews">
                                             <i class="fa fa-star active"></i>
                                             <i class="fa fa-star active"></i>
@@ -116,12 +119,15 @@
                                             <a class="review-link" href="#">(1則顧客評價)</a>
                                         </div>
                                         <div class="single-product-price">
-                                            <span class="price new-price">$34,900</span>
-                                            <span class="regular-price">$40,000</span>
+                                                <span class="price new-price">@Html.DisplayFor(modelItem => item.UnitPrice)</span>
+                                            @* <span class="regular-price">$40,000</span> *@
                                         </div>
                                         <div class="product-description">
-                                            <p>為你的ÄPPLARYD挑選自己喜歡的沙發。無論是深藍色還是鏽棕紅色的DJUPARP單色調絲絨材質；提供10年品質保證；欲知更多細則，請參閱品質保證書
-                                               尺寸: 231 x 93 x 47 (公分)
+                                            <p>
+                                                為你的ÄPPLARYD挑選自己喜歡的沙發。無論是深藍色還是鏽棕紅色的DJUPARP單色調絲絨材質；提供10年品質保證；欲知更多細則，請參閱品質保證書
+                                            </p>
+                                            <p>
+                                        @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
                                             </p>
                                         </div>
                                         <div class="single-product-quantity mb-2">
@@ -130,8 +136,8 @@
                                                     <input value="1" type="number">
                                                 </div>
                                                 <select id="product-color-choose">
-                                            <option value="option1">深藍色</option>
-                                            <option value="option2">紅棕色</option>
+                                                <option value="option1">@Html.DisplayFor(modelItem => item.Color1)</option>
+                                                <option value="option2">@Html.DisplayFor(modelItem => item.Color2)</option>
                                         </select>
                                             </form>
                                         </div>
@@ -147,7 +153,7 @@
                                         <div class="product-meta">
                                             <span class="posted-in">
                                                 種類: 
-                                                <a href="#">沙發、桌、椅</a>,
+                                                    <a href="#">@Html.DisplayFor(modelItem => item.CategoryID)</a>,
                                                 
                                             </span>
                                         </div>
@@ -165,6 +171,7 @@
                                     </div>
                                     <!--Product Details Content End-->
                                 </div>
+                    }
                             </div>
                         </div>
                     </div>
