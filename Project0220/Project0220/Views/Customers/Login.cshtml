@@ -1,0 +1,48 @@
+﻿
+@model Project0220.myModels.Customer
+<!--引入-->
+
+   <link rel="stylesheet"  href="~/css/Member/css/MemberLogin.css"/>
+
+<!--MemberLogin Section-->
+
+<div class="container ">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h4 class="logintitle">登入</h4><br />
+
+              <form asp-action="Login"/>
+
+
+
+            <div class="form-group">
+                <label asp-for="Username" class="control-label">使用者帳號</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">密碼</label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+              <input type="submit" value="登入" style="background-color:#d4d4c5;font-weight:bold;">
+
+            @if (ViewData.ModelState.ContainsKey(""))
+            {
+            <div class="alert alert-danger">
+                    @ViewData.ModelState[""].Errors.FirstOrDefault()?.ErrorMessage
+            </div>
+            }
+
+
+              <br /> <br /><h4>還不是會員?</h4><br />
+
+
+             <a href="~/Member/MemberRegister" style="color:black" class="login_btn applybtn"><b>點我註冊</b></a>
+
+
+</div>
+</div>
+</div>
