@@ -41,16 +41,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-
+                        @foreach (var item in Model)
+                            {
                         <div class="page-banner text-left">
                             <h2>Single Product</h2>
                             <ul class="page-breadcrumb">
                                 <li><a href="index.html">首頁</a></li>
                                 <li>商品</li>
-                                <li>ÄPPLARYD三人座沙發</li>
+                                    <li>@Html.DisplayFor(modelItem => item.ProductName)</li>
                             </ul>
                         </div>
-
+                            }
                     </div>
                 </div>
             </div>
@@ -92,9 +93,9 @@
                                             </div> *@
                                         </div>
                                         <div class="product-details-thumbs-2 mt-0">
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="product image thumb"></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="product image thumb"></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="product image thumb"></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
                                             @* <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
                                             <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
                                         </div>
@@ -125,9 +126,9 @@
                                         </div>
                                         <div class="product-description">
                                             <p>
-                                                為你的ÄPPLARYD挑選自己喜歡的沙發。無論是深藍色還是鏽棕紅色的DJUPARP單色調絲絨材質；提供10年品質保證；欲知更多細則，請參閱品質保證書
+                                        @Html.DisplayFor(modelItem => item.Describtion)
                                             </p>
-                                            <p>
+                                            <p>尺寸:
                                         @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
                                             </p>
                                         </div>
