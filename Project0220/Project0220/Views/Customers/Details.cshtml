@@ -1,78 +1,133 @@
 ﻿@model Project0220.myModels.Customer
 
-@{
-    ViewData["Title"] = "Details";
+ <!--引入的檔案-->
+
+  <link rel="stylesheet" href="~/css/Member/css/MemberHome.css">
+  <link rel="stylesheet" href="~/css/Member/css/bootstrap.min.css">
+ <!--<script src="~/js/Member_/js/MemberHome.js"></script>--> 
+  <script src="~/js/Member_/js/jquery.slim.min.js"> </script>
+  <script src="~/js/Member_/js/popper.min.js"> </script>
+  <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
+
+
+
+
+
+
+<!-- MemberHome Section -->
+<div class="container" style="margin-top: 30px;padding:5px 0px 5px 0px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="hometitle">會員中心</h4><br>
+            <button class="tablink" onclick="openPage('MData', this, 'white')" id="defaultOpen">會員資料</button>
+            <button class="tablink" onclick="openPage('MDiscount', this, 'white')" >購物金</button>
+            <button class="tablink" onclick="openPage('MOrders', this, 'white')">訂單</button>
+            <button class="tablink" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="MData" class="tabcontent">
+                        <p >    @Html.DisplayFor(model => model.CustomerName),你好</p>
+                        <span class="m_title">會員資料</span>
+
+                        <!-- 會員資料 -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6 ">
+                                                <div class="form2">
+                                                    <p><span class="f_title"><b> 姓名 </b> </span><span>   @Html.DisplayFor(model => model.CustomerName)</span></p>
+                                                    <p><span class="f_title"><b> 生日 </b> </span><span>  @Html.DisplayFor(model => model.DateOfBirth)</span></p>
+                                                    <p><span class="f_title"><b> 性別 </b> </span><span>   @Html.DisplayFor(model => model.Gender)</span></p>
+                                                    <p><span class="f_title"><b> 手機 </b> </span><span>   @Html.DisplayFor(model => model.MobilePhoneNumber)</span></p>
+                                                </div>
+                                            </div>
+                                            <div class=" col-md-6 ">
+                                                <div class="form2">
+                                                    <p><span class="f_title"><b> 地址 </b> </span><span>@Html.DisplayFor(model => model.AddressCity), @Html.DisplayFor(model => model.AddressDist),      @Html.DisplayFor(model => model.Address)</span></p>
+                                                    <p><span class="f_title"><b> 電子郵件 </b> </span><span> @Html.DisplayFor(model => model.Email)</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="MDiscount" class="tabcontent">
+                        <p>Some news this fine day!</p>
+                    </div>
+
+                    <div id="MOrders" class="tabcontent">
+                        <p>Get in touch, or swing by for a cup of coffee.</p>
+                    </div>
+
+                    <div id="MFollow" class="tabcontent">
+                        <p>Who we are and what we do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MemberHome Section End -->
+
+ <!-- 在页面加载时直接设置默认选项卡的样式 -->
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showDefaultTab("MDiscount", "white"); // 设置默认选项卡和颜色
+    });
+
+    function showDefaultTab(tabId, color) {
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        var tablinks = document.getElementsByClassName("tablink");
+
+        // 隐藏所有选项卡内容
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // 取消所有选项卡链接的背景颜色
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+
+        // 显示默认选项卡内容并设置背景颜色
+        var defaultTab = document.getElementById(tabId);
+        if (defaultTab) {
+            defaultTab.style.display = "block";
+            defaultTab.style.backgroundColor = color;
+        }
+    }
+
+    // Define the openPage function
+ function openPage(pageName, elmnt, color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+  }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+  }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
 }
 
-<h1>Details</h1>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
 
+</script>
 <div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MobilePhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MobilePhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddressCity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddressCity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddressDist)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddressDist)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.CustomerId">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.CustomerId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+

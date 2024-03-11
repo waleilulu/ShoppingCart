@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Project0220.myModels;
 
@@ -8,8 +9,8 @@ public partial class Customer
     public int CustomerId { get; set; }
 
     public string? CustomerName { get; set; }
-
-    public DateOnly? DateOfBirth { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime? DateOfBirth { get; set; }
 
     public string? Gender { get; set; }
 
