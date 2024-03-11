@@ -52,6 +52,9 @@ namespace Project0220.Models
         [Display(Name = "高度")]
         public string? Height { get; set; }
 
+        [Display(Description ="描述")]
+        public string? Description { get; set; }
+
         [Display(Name = "特殊區域類型")]
         public string? SpecialZoneType { get; set; }
 

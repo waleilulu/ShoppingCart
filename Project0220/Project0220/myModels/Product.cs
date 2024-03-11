@@ -37,6 +37,8 @@ public partial class Product
 
     public string? Height { get; set; }
 
+    public string? Description { get; set; }
+
     public string? SpecialZoneType { get; set; }
 
     public DateTime? CreatedAt { get; set; }
