@@ -6,9 +6,9 @@ namespace Project0220.Controllers
 {
     public class AllItemsController : Controller
     {
-        private readonly ECommerceDBContext _context;
+        private readonly ManualECommerceDBContext _context;
 
-        public AllItemsController(ECommerceDBContext context)
+        public AllItemsController(ManualECommerceDBContext context)
         {
             _context = context;
         }

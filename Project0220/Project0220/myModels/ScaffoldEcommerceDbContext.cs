@@ -73,7 +73,9 @@ public partial class ScaffoldEcommerceDbContext : DbContext
             entity.Property(e => e.OrderDate).HasColumnType("datetime");
             entity.Property(e => e.PaymentMethod).HasMaxLength(50);
             entity.Property(e => e.ShippingAddress).HasMaxLength(100);
-            entity.Property(e => e.ShippingDate).HasColumnType("datetime");
+            entity.Property(e => e.ShippingDate).HasColumnType("date");
+            entity.Property(e => e.Consignee).HasMaxLength(100);
+            entity.Property(e => e.ContactPhone).HasMaxLength(20);
 
             entity.HasOne(d => d.Customer).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CustomerId)
