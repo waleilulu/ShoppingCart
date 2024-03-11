@@ -11,7 +11,7 @@ using Project0220.Models;
 
 namespace Project0220.Migrations
 {
-    [DbContext(typeof(ECommerceDBContext))]
+    [DbContext(typeof(ManualECommerceDBContext))]
     [Migration("20240305135426_FirstMigration")]
     partial class FirstMigration
     {

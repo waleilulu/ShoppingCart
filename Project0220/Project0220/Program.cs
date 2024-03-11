@@ -1,16 +1,23 @@
 using Microsoft.EntityFrameworkCore;
+using Project0220.myModels;
 using Project0220.Models;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ECommerceDBContext>(options => 
+builder.Services.AddDbContext<ManualECommerceDBContext>(options => 
 {
 	var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 	options.UseSqlServer(connectionString);
 });
+
+builder.Services.AddDbContext<ScaffoldEcommerceDbContext>
+	(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceDbContext")));
+
 
 var app = builder.Build();
 

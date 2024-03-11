@@ -2,9 +2,9 @@
 
 namespace Project0220.Models
 {
-    public class ECommerceDBContext : DbContext
+    public class ManualECommerceDBContext : DbContext
     {
-        public ECommerceDBContext(DbContextOptions options) : base(options)
+        public ManualECommerceDBContext(DbContextOptions <ManualECommerceDBContext>options) : base(options)
         {
             
         }

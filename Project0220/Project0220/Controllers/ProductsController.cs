@@ -7,10 +7,10 @@ namespace Project0220.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ECommerceDBContext context;
+        private readonly ManualECommerceDBContext context;
         private readonly IWebHostEnvironment environment;
 
-        public ProductsController(ECommerceDBContext context, IWebHostEnvironment environment)
+        public ProductsController(ManualECommerceDBContext context, IWebHostEnvironment environment)
         {
             this.context = context;
             this.environment = environment;
