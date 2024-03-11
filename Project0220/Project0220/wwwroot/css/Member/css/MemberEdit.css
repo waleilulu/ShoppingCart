@@ -49,33 +49,3 @@ hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
-
-/* Set a style for the submit button */
-/*註冊會員按鈕*/
-
-.registerbtn {
-    color: white;
-    background-color: #d4d4c5;
-    font-weight: bold;
-    padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 30%;
-    opacity: 0.9;
-}
-
-    .registerbtn:hover {
-        opacity: 1;
-    }
-
-/* Add a blue text color to links */
-a {
-    color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-    background-color: #f1f1f1;
-    text-align: center;
-}
