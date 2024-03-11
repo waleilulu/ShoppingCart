@@ -185,7 +185,7 @@ CREATE TABLE [dbo].[Products](
 	[Length] [nvarchar](10) NULL,
 	[Width] [nvarchar](10) NULL,
 	[Height] [nvarchar](10) NULL,
-	[Describtion] [nvarchar](200) NULL,
+	[Description] [nvarchar](200) NULL,
 	[SpecialZoneType] [nvarchar](20) NULL,
 	[CreatedAt] [datetime] NULL,
 PRIMARY KEY CLUSTERED 
@@ -251,21 +251,21 @@ SET IDENTITY_INSERT [dbo].[Customers] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Products] ON 
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色', NULL, NULL, N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色', NULL, NULL, N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (2, N'單人沙發床', 1, 1, 7490, 10, N'A00100.jpg', NULL, NULL, NULL, N'深藍色', NULL, NULL, NULL, N'80', N'100', N'87', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (2, N'單人沙發床', 1, 1, 7490, 10, N'A00100.jpg', NULL, NULL, NULL, N'深藍色', NULL, NULL, NULL, N'80', N'100', N'87', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (3, N'旋轉椅', 1, 1, 12900, 10, N'A00300.jpg', NULL, NULL, NULL, N'金棕色', NULL, NULL, NULL, N'66', N'99', N'892', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (3, N'旋轉椅', 1, 1, 12900, 10, N'A00300.jpg', NULL, NULL, NULL, N'金棕色', NULL, NULL, NULL, N'66', N'99', N'892', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL, NULL, NULL, N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL, NULL, NULL, N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (5, N'胡桃木單抽屜實木床頭櫃', 2, 2, 4500, 10, N'B00290.jpg', N'B00290-2.jpg', N'B00290-3.jpg', NULL, N'棕色', NULL, NULL, NULL, N'35', N'42', N'52', NULL, N'新品', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (5, N'胡桃木單抽屜實木床頭櫃', 2, 2, 4500, 10, N'B00290.jpg', N'B00290-2.jpg', N'B00290-3.jpg', NULL, N'棕色', NULL, NULL, NULL, N'35', N'42', N'52', NULL, N'新品', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (6, N'四門衣櫃組合', 2, 2, 33000, 10, N'B00330.jpg', NULL, NULL, NULL, N'白色', NULL, NULL, NULL, N'198', N'65', N'240', NULL, N'新品', CAST(N'2024-03-06T13:45:20.393' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (6, N'四門衣櫃組合', 2, 2, 33000, 10, N'B00330.jpg', NULL, NULL, NULL, N'白色', NULL, NULL, NULL, N'198', N'65', N'240', NULL, N'新品', CAST(N'2024-03-06T13:45:20.393' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (7, N'透明玻璃吊燈', 4, 4, 990, 10, N'D00080.jpg', NULL, NULL, NULL, N'灰色', NULL, NULL, NULL, N'22', NULL, N'32', NULL, N'新品', CAST(N'2024-03-06T13:59:11.007' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (7, N'透明玻璃吊燈', 4, 4, 990, 10, N'D00080.jpg', NULL, NULL, NULL, N'灰色', NULL, NULL, NULL, N'22', NULL, N'32', NULL, N'新品', CAST(N'2024-03-06T13:59:11.007' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Describtion], [SpecialZoneType], [CreatedAt]) VALUES (8, N'靠枕套', 4, 4, 399, 10, N'D00442.jpg', NULL, NULL, NULL, N'米灰色', NULL, NULL, NULL, N'50', N'50', NULL, NULL, N'新品', CAST(N'2024-03-06T14:03:29.560' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (8, N'靠枕套', 4, 4, 399, 10, N'D00442.jpg', NULL, NULL, NULL, N'米灰色', NULL, NULL, NULL, N'50', N'50', NULL, NULL, N'新品', CAST(N'2024-03-06T14:03:29.560' AS DateTime))
 GO
 
 SET IDENTITY_INSERT [dbo].[Products] OFF
