@@ -108,7 +108,7 @@
                                         <!--Product Nav Start-->
                                         <div class="product-nav">
                                             <a href="#"><i class="fa fa-angle-left"></i></a>
-                                            <a href="#"><i class="fa fa-angle-right"></i></a>
+                                            <a href="~/AllItems/ItemDetails_2"><i class="fa fa-angle-right"></i></a>
                                         </div>
                                         <!--Product Nav End-->
                                             <h2>@Html.DisplayFor(modelItem => item.ProductName)</h2>
@@ -125,9 +125,9 @@
                                             @* <span class="regular-price">$40,000</span> *@
                                         </div>
                                         <div class="product-description">
-                                            <p>
-                                        @Html.DisplayFor(modelItem => item.Describtion)
-                                            </p>
+                                            @* <p> 商品小描述區塊
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                            </p> *@
                                             <p>尺寸:
                                         @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
                                             </p>
@@ -200,12 +200,15 @@
                             <!--Review And Description Tab Menu End-->
                             <!--Review And Description Tab Content Start-->
                             <div class="tab-content product-review-content-tab" id="myTabContent-4">
+                                 @foreach (var item in Model)
+                                {
                                 <div class="tab-pane fade active show" id="description">
                                     <div class="single-product-description">
-                                        <p>這款沙發具有輕鬆時尚和簡潔的外觀，配有剪裁精美的軟布套和舒適的筒型彈簧。纖細的椅腳強化了穩固透氣外觀，簡潔和諧的線條與富有表現力的外型相互結合，在沙發上放上靠墊和萬用毯，讓它變得更個性化，ÄPPLARYD沙發超級舒適，配有柔軟的沙發套和蓬鬆的靠枕，以及可貼合身體和承托各種姿勢的筒型彈簧，無論是坐著或是放鬆身軀躺下來也很舒適，備有不同尺寸和外形，大、小空間都合適</p>
+                                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
                                         @* <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p> *@
                                     </div>
                                 </div>
+                                }
                                 <div class="tab-pane fade" id="reviews">
                                     <div class="review-page-comment">
                                         <h2>1 review for Sit voluptatem</h2>

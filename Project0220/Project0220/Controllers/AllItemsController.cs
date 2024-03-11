@@ -57,21 +57,40 @@ namespace Project0220.Controllers
             return View(await data.ToListAsync());
 
         }
-        public IActionResult ItemDetails_2()
+   
+        
+        
+            public async Task<IActionResult> Clearance(string bee)
+            {
+
+                var data = from o2 in _context.Products
+                           where o2.SpecialZoneType == "出清"
+                           select o2;
+
+                if (!string.IsNullOrEmpty(bee))
+                {
+                    data = data.Where(o => o.ProductName.Contains(bee));
+                }
+
+                return View(await data.ToListAsync());
+            }
+
+
+
+
+        public async Task<IActionResult> New(string bee)
         {
-            return View();
-        }
-        public IActionResult ItemDetails_3()
-        {
-            return View();
-        }
-        public IActionResult Sales()
-        {
-            return View();
-        }
-        public IActionResult New()
-        {
-            return View();
+
+            var data = from o2 in _context.Products
+                       where o2.SpecialZoneType == "新品"
+                       select o2;
+
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            return View(await data.ToListAsync());
         }
     }
 }

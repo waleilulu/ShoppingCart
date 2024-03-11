@@ -84,9 +84,9 @@
                                                                                             <!--  Single Grid product Start -->
                                                                                             <div class="single-grid-product mb-40">
                                                                                                 <div class="product-image">
-                                                                                                    <div class="product-label">
-                                                                                                        @* <span>-20%</span> *@ 
-                                                                                                    </div>
+                                                                                                    @* <div class="product-label">
+                                                                                                         <span>-20%</span> 
+                                                                                                    </div> *@
                                                                                                             <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
 
                                                                                                             <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
@@ -125,7 +125,7 @@
                                                                             <div class="single-grid-product">
                                                                                 <div class="product-image">
                                                                                     <div class="product-label">
-                                                                                        <span class="sale">New</span>
+                                                                                        <span class="sale">Sales</span>
                                                                                     </div>
                                                                                             <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
                                                                                               <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)"  class="img-fluid" alt="">
