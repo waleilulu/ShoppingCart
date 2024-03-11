@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="~/css/Cart/css/helper.css">
     <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
     <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <!-- Modernizr JS -->
     <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
@@ -14,38 +15,38 @@
 
      
         <!-- Page Banner Section Start -->
-        <div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
+@*         <div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
             <div class="container">
-                <div class="row">
+ *@                <div class="row">
                     <div class="col">
 
                         <div class="page-banner text-left">
-                            <h2>Shopping Cart</h2>
+                            <h2 style="margin-top:30px;">購物車</h2>
                             <ul class="page-breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li>Shopping Cart</li>
+                                <li><a href="index.html">首頁</a></li>
+                                <li>購物車</li>
                             </ul>
                         </div>
 
                     </div>
                 </div>
-            </div>
+@*             </div>
         </div>
-        <!-- Page Banner Section End -->
+ *@        <!-- Page Banner Section End -->
         <!--Cart section start-->
         @* <div class="cart-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-45  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"> *@
-            <div class="container">
+            <div class="container-01">
                 <div class="row">
 
                     <div class="col-12">
                         <!-- Cart Table -->
                         <div class="cart-table table-responsive mb-30">
-                            <table class="table">
+                            <table class="table" style="margin-top:30px;">
                                 <thead>
                                     <tr>
                                         <th class="pro-thumbnail">圖片</th>
                                         <th class="pro-title">產品</th>
-                                        <th class="pro-price">價格</th>
+                                        <th class="pro-color">顏色</th>
                                         <th class="pro-quantity">數量</th>
                                         <th class="pro-subtotal">小計</th>
                                         <th class="pro-remove">刪除</th>
@@ -55,7 +56,7 @@
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/A00130.jpg" alt="Product"></a></td>
                                         <td class="pro-title"><a href="#">AVEN三人座沙發</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
+                                        <td class="pro-color"><span>藍色</span></td>
                                         <td class="pro-quantity">
                                             <div class="pro-qty"><input type="number" value="1"></div>
                                         </td>
@@ -65,7 +66,7 @@
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/B00070.jpg" alt="Product"></a></td>
                                         <td class="pro-title"><a href="#">照明書櫃</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
+                                        <td class="pro-color"><span>木質色</span></td>
                                         <td class="pro-quantity">
                                             <div class="pro-qty"><input type="number" value="1"></div>
                                         </td>
@@ -75,7 +76,7 @@
                                     <tr>
                                         <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/C00060.jpg" alt="Product"></a></td>
                                         <td class="pro-title"><a href="#">雙人軟墊床框附床頭板</a></td>
-                                        <td class="pro-price"><span>$25.00</span></td>
+                                        <td class="pro-color"><span>粉色</span></td>
                                         <td class="pro-quantity">
                                             <div class="pro-qty"><input type="number" value="1"></div>
                                         </td>
@@ -86,12 +87,12 @@
                             </table>
                         </div>
 
-                        <div class="container">
+                        <div class="container-01">
                     <div class="row">
                     <div class="col-12">
 
                         <!-- Checkout Form Start-->
-                        <div class="container">
+                        <div class="container-01">
                 <div class="row">
                     <div class="col-12">
 
@@ -122,163 +123,40 @@
                                                 <input type="text" placeholder="請輸入電話">
                                             </div>
 
-                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>縣市*</label>
-                                                <select class="nice-select">
-                                                    <option>請選擇縣市</option>
-                                                    <option>基隆市</option>
-                                                    <option>新北市</option>
-                                                    <option>台北市</option>
-                                                    <option>桃園市</option>
-                                                    <option>新竹市</option>
-                                                    <option>新竹縣</option>
-                                                    <option>宜蘭縣</option>
-                                                    <option>台中市</option>
-                                                    <option>苗栗縣</option>
-                                                    <option>彰化縣</option>
-                                                    <option>雲林縣</option>
-                                                    <option>嘉義縣</option>
-                                                    <option>嘉義市</option>
-                                                    <option>台南市</option>
-                                                    <option>高雄市</option>
-                                                    <option>屏東縣</option>
-                                                    <option>台東縣</option>
-                                                    <option>花蓮縣</option>
-                                                    <option>澎湖縣</option>
-                                                    <option>金門縣</option>
-                                                    <option>連江縣</option>
-
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>區*</label>
-                                                <select class="nice-select">
-                                                    <option>請選擇區域</option>
-                                                    <option>中區</option>
-                                                    <option>東區</option>
-                                                    <option>西區</option>
-                                                    <option>南區</option>
-                                                    <option>北區</option>
-                                                    <option>西屯區</option>
-                                                    <option>南屯區</option>
-                                                    <option>北屯區</option>
-                                                    <option>豐原區</option>
-                                                    <option>大里區</option>
-                                                    <option>太平區</option>
-                                                    <option>清水區</option>
-                                                    <option>沙鹿區</option>
-                                                    <option>大甲區</option>
-                                                    <option>東勢區</option>
-                                                    <option>梧棲區</option>
-                                                    <option>烏日區</option>
-                                                    <option>神岡區</option>
-                                                    <option>大肚區</option>
-                                                    <option>大雅區</option>
-                                                    <option>后里區</option>
-                                                    <option>霧峰區</option>
-                                                    <option>潭子區</option>
-                                                    <option>龍井區</option>
-                                                    <option>外埔區</option>
-                                                    <option>和平區</option>
-                                                    <option>石岡區</option>
-                                                    <option>大安區</option>
-                                                    <option>新社區</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>路*</label>
-                                                <select class="nice-select">
-                                                    <option>請選擇路名</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>郵遞區號*</label>
-                                                <input type="text" placeholder="Zip Code">
-                                            </div>
-
                                             <div class="col-12 mb-20">
                                                 <label>收件地址*</label>
                                                 <input type="text" placeholder="請輸入收件地址">
                                             </div>
 
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>優惠券</label>
-                                                <input type="text" placeholder="請輸入優惠碼">
-                                                <button class="btn">確認</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Shipping Address -->
-                                    <div id="shipping-form">
-                                        <h4 class="checkout-title">Shipping Address</h4>
-
-                                        <div class="row">
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>First Name*</label>
-                                                <input type="text" placeholder="First Name">
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>Last Name*</label>
-                                                <input type="text" placeholder="Last Name">
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>Email Address*</label>
-                                                <input type="email" placeholder="Email Address">
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>Phone no*</label>
-                                                <input type="text" placeholder="Phone number">
-                                            </div>
-
-                                            <div class="col-12 mb-20">
-                                                <label>Company Name</label>
-                                                <input type="text" placeholder="Company Name">
-                                            </div>
-
-                                            <div class="col-12 mb-20">
-                                                <label>Address*</label>
-                                                <input type="text" placeholder="Address line 1">
-                                                <input type="text" placeholder="Address line 2">
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label>Country*</label>
+                                                <label>配送資訊*</label>
                                                 <select class="nice-select">
-                                                    <option>Bangladesh</option>
-                                                    <option>China</option>
-                                                    <option>country</option>
-                                                    <option>India</option>
-                                                    <option>Japan</option>
+                                                    <option>請選擇配送貨運公司</option>
+                                                    <option>自行配送</option>
+                                                    <option>新竹貨運</option>
                                                 </select>
                                             </div>
 
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>Town/City*</label>
-                                                <input type="text" placeholder="Town/City">
-                                            </div>
+                                                  <label>付款資訊*</label>
+                                                  <select class="nice-select" id="paymentMethod">
+                                                      <option value="none">請選擇使用付款方式</option>
+                                                      <option value="匯款">匯款</option>
+                                                      <option value="信用卡">信用卡</option>
+                                                  </select>
+                                              </div>
 
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>State*</label>
-                                                <input type="text" placeholder="State">
+                                                <label>優惠券 </label>
+                                                <input type="text" placeholder="請輸入優惠碼">
                                             </div>
-
+                                           
                                             <div class="col-md-6 col-12 mb-20">
-                                                <label>Zip Code*</label>
-                                                <input type="text" placeholder="Zip Code">
+                                                <button class="cart-button01" style="margin-top:38px;">確認</button>
                                             </div>
-
+                                       
                                         </div>
-
                                     </div>
-
                                 </div>
                                 <!-- Cart Total -->
                                 <div class="col-lg-5">
@@ -287,13 +165,18 @@
                                 <div class="cart-summary">
                                     <div class="cart-summary-wrap">
                                         <h4>購物車總覽</h4>
-                                        <p>小計 <span>$75.00</span></p>
-                                        <p>折扣 <span>$00.00</span></p>
+                                        <p>AVEN三人座沙發 - 藍色 X 01<span>$25.00</span></p>
+                                        <p>照明書櫃 - 木質色 X 01<span>$25.00</span></p>
+                                        <p>雙人軟墊床框附床頭板 - 粉色 X 01<span>$25.00</span></p>
+                                        
+                                        <p  class="product-subtotal">小計 <span>$75.00</span></p>
+                                        <p class="product-discound">折扣 <span>$75.00</span></p>
                                         <h2>總額 <span>$75.00</span></h2>
                                     </div>
                                     <div class="cart-summary-button">
-                                        <button class="btn">繼續結帳</button>
-                                        <button class="btn">繼續購物</button>
+                                                                @* 改類別名稱cart-button01 *@
+                                        <button class="cart-button01">繼續購物</button>
+                                        <button id="payment" class="cart-button01">繼續結帳</button>
                                     </div>
                                 </div>
                             </div>
@@ -305,7 +188,11 @@
             </div>
         
         <!--Cart section end-->
-
+ 
+<script>
+   
+</script>
+  
 
 
     <!-- All jquery file included here -->
@@ -314,4 +201,5 @@
     <script src="~/js/Cart/js/bootstrap.min.js"></script>
     <script src="~/js/Cart/js/plugins.js"></script>
     <script src="~/js/Cart/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     

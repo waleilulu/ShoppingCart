@@ -47,12 +47,12 @@
 
 body {
   background-color: #ffffff;
-  font-size: 15px;
-  line-height: 28px;
+  /*font-size: 15px;更動過*/
+  /*line-height: 28px;更動過*/
   font-style: normal;
   font-weight: normal;
   visibility: visible;
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;更動過*/
   color: #151515;
   font-weight: 400;
   position: relative;
@@ -123,8 +123,8 @@ h4 {
   font-size: 18px;
 }
 
-h5 {
-  font-size: 14px;
+h5-1 {
+  /*font-size: 14px; 更動過*/
 }
 
 h6 {
@@ -229,8 +229,9 @@ img {
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .container-01 {
     max-width: 1200px;
+    /*更動過類別名稱*/
   }
   .row-five-column > [class*="col-xl-"] {
     max-width: 20%;
@@ -475,21 +476,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*-- 
     - Button
 ------------------------------------------*/
-.btn {
-  background-color: #020202;
-  font-family: "Montserrat", sans-serif;
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 1.2;
-  font-weight: 500;
-  padding: 12px 24px;
-  text-transform: uppercase;
-  border-radius: 0px;
-  position: relative;
-  border-radius: 50px;
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+.btn-checkout {
+    background-color: #020202;
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    border-radius: 0px;
+    position: relative;
+    border-radius: 50px;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 .btn:focus {
@@ -498,9 +499,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   outline: none;
 }
 
-.btn:hover {
-  background-color: #151515;
-  color: #ffffff;
+
+.btn-checkout:hover {
+    background-color: #151515;
+    color: #ffffff;
 }
 
 @media only screen and (max-width: 767px) {
@@ -5188,40 +5190,90 @@ a.popup-img {
     text-decoration: underline;
     text-transform: capitalize;
     font-weight: 600;
-    margin-bottom: 200px; /*更動過*/
+    margin-bottom: 50px; /*更動過*/
     color: #151515;
 }
 
+
 .cart-summary .cart-summary-wrap p {
-  font-weight: 600;
-  line-height: 23px;
-  color: #151515;
+    font-weight: 600;
+    line-height: 23px;
+    color: #151515;
 }
 
 .cart-summary .cart-summary-wrap p span {
   float: right;
 }
 
+/*新增類別*/
+.checkoutdone {
+    text-align: center;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 600;
+    color: #151515;
+    margin-top: 30px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*新增類別*/
+.checkoutdone-01 {
+    font-size: 50px;
+    margin-top: 30px;
+    font-weight: 600;
+    border-bottom: 2px solid #151515;
+}
+
+/*新增類別*/
+.checkoutdone-02 {
+    font-size: 30px;
+    margin-top: 70px;
+}
+
+/*新增類別*/
+.checkoutdone-03 {
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+/*新增類別*/
+.product-subtotal {
+    border-top: 1px solid #151515;
+    padding-top: 9px;
+    font-weight: 600;
+    color: #151515;
+}
+
+/*新增類別*/
+product-discound {
+    border-top: 1px solid #151515;
+    padding-top: 9px;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 600;
+    color: #151515;
+    margin: 0;
+}
+
 .cart-summary .cart-summary-wrap h2 {
-  border-top: 1px solid #151515;
-  padding-top: 9px;
-  font-size: 18px;
-  line-height: 23px;
-  font-weight: 600;
-  color: #151515;
-  margin: 0;
+    border-top: 1px solid #151515;
+    padding-top: 9px;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 600;
+    color: #151515;
+    margin: 0;
 }
 
 .cart-summary .cart-summary-wrap h2 span {
   float: right;
 }
 
-.cart-summary-button-2 {
-    /*新增*/
-    margin-top: 10px;
-    padding: 90px 250px;
-    
-}
+
 .cart-summary .cart-summary-button {
   overflow: hidden;
   width: 100%;
@@ -5253,31 +5305,66 @@ a.popup-img {
   }
 }
 
+/*更動過*/
 .cart-summary .cart-summary-button button {
-  margin-top: 10px;
-  width: 180px;
-  border-radius: 0;
-  height: 44px;
-  line-height: 24px;
-  padding: 9px 20px;
-  margin-left: 20px;
-  float: right;
+    margin-top: 10px;
+    width: 180px;
+    border-radius: 0;
+    height: 44px;
+    line-height: 24px;
+    padding: 9px 20px;
+    margin-left: 20px;
+    /*float: right;*/
+   
+}
+/*更動新增*/
+.cart-button01 {
+    margin-top: 30px;
+    width: 180px;
+    border-radius: 0;
+    height: 44px;
+    line-height: 24px;
+    padding: 9px 20px;
+    margin-left: 20px;
+    /*float: right;*/
+    border: 2px solid #151515;
+    background-color: #151515;
+    color: white;
+}
+
+/*更動新增*/
+.cart-button02 {
+    /*margin-top: 30px;*/
+    border-radius: 0;
+    height: 44px;
+    line-height: 24px;
+    padding: 9px 20px;
+    margin: 30px auto;
+    border: 2px solid #151515;
+    background-color: #151515;
+    color: white;
+    text-align:center;
+}
+
+.container {
+    
+    justify-content: center; /* 在主軸上置中 */
+    align-items: center; /* 在交叉軸上置中 */
 }
 
 .cart-summary .cart-summary-button button:last-child {
-  margin-left: 0;
+    margin-left: 0;
 }
+
 
 .cart-summary .cart-summary-button button.checkout-btn {
-  color: #151515;
-  background-color: #151515;
-  border-color: #151515;
+    
+    background-color: #151515;
+    border-color: #151515;
 }
-
 .cart-summary .cart-summary-button button:hover {
-  background-color: #151515;
-  border-color: #151515;
-  color: #ffffff;
+    background-color: #151515;
+    color: white
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5324,7 +5411,7 @@ a.popup-img {
 /*-- Checkout Form --*/
 .checkout-form label {
   display: block;
-  font-size: 14px;
+  /*font-size: 14px;*/
   margin-bottom: 12px;
   font-weight: 600;
   text-transform: capitalize;
