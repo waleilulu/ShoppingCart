@@ -1,16 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project0220.Models;
+using Project0220.myModels;
+using Project0220.ViewModel;
 
 namespace Project0220.Controllers
 {
     public class AllItemsController : Controller
     {
         private readonly ManualECommerceDBContext _context;
+        private readonly ScaffoldEcommerceDbContext _contextNew;
 
-        public AllItemsController(ManualECommerceDBContext context)
+
+        public AllItemsController(ManualECommerceDBContext context, ScaffoldEcommerceDbContext contextNew)
         {
             _context = context;
+            _contextNew = contextNew;
         }
 
         public async Task<IActionResult> Index(string bee)
@@ -51,10 +56,20 @@ namespace Project0220.Controllers
         public async Task<IActionResult> ItemDetails(int bee)
         {
             var z = bee;
-            var data = from o2 in _context.Products
-                       where o2.ProductID == bee
-                       select o2;
-            return View(await data.ToListAsync());
+            var data = await _context.Products
+                            .Where(o2 => o2.ProductID == bee)
+                            .ToListAsync();
+
+
+            var category = await _contextNew.Categories
+                                            .Where(c => c.CategoryId == bee)
+                                            .ToListAsync();
+            var viewModel = new ItemDetailsViewModel
+            {
+                Products = data,
+                Category = category
+            };
+            return View(viewModel);
 
         }
    
