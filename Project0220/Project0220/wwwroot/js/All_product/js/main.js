@@ -56,7 +56,7 @@ var $offCanvasNav = $('.offcanvas-navigation'),
     $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"><i></i></span>');
     
     /*Close Off Canvas Sub Menu*/
-    $offCanvasNavSubMenu.slideUp();
+    //$offCanvasNavSubMenu.slideUp();
     
     /*Category Sub Menu Toggle*/
     $offCanvasNav.on('click', 'li a, li .menu-expand', function(e) {

@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model IEnumerable<Project0220.Models.Product>
+@model IEnumerable<Project0220.myModels.Product>
 
     @* <link rel="stylesheet" href="~/css/All_product/css/bootstrap.min.css"> *@
     <link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
@@ -87,7 +87,7 @@
                                                                                                 <div class="product-label">
                                                                                                 @* <span>-20%</span> *@
                                                                                                 </div>
-                                                                                                        <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
+                                                                                                        <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 
                                                                                                         <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
                                                                                                         <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
@@ -127,7 +127,7 @@
                                                                                 <div class="product-label">
                                                                                     <span class="sale">New</span>
                                                                                 </div>
-                                                                                        <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
+                                                                                        <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
                                                                                           <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)"  class="img-fluid" alt="">
                                                                                     <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
                                                                                 </a>
@@ -190,6 +190,113 @@
                         </div>
                     </div>
                 </div>
+                @* 測試 *@
+            </div>
+            <div class="modal fade quick-view-modal-container" id="quick-view-modal-container" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    @foreach (var item in Model)
+                    {
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6">
+                                        <!-- Product Details Left -->
+                                        <div class="product-details-left">
+                                            <div class="product-details-images">
+                                                <div class="lg-image">
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
+                                                </div>
+                                                <div class="lg-image">
+                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
+                                                </div>
+                                                <div class="lg-image">
+                                                        <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
+                                                </div>
+                                                <div class="lg-image">
+                                                        <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
+                                                </div>
+
+                                            </div>
+                                            <div class="product-details-thumbs">
+                                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
+                                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+                                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
+                                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt=""></div>
+
+                                            </div>
+                                        </div>
+                                        <!--Product Details Left -->
+                                    </div>
+                                    <div class="col-lg-8 col-md-6">
+                                        <!--Product Details Content Start-->
+                                        <div class="product-details-content">
+                                            <!--Product Nav Start-->
+                                            <div class="product-nav">
+                                                <a href="#"><i class="fa fa-angle-left"></i></a>
+                                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                                            </div>
+                                            <!--Product Nav End-->
+                                            <h2>Aliquam lobortis est turpis mauris egestas eget</h2>
+                                            <div class="single-product-reviews">
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star active"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <a class="review-link" href="#">(1 customer review)</a>
+                                            </div>
+                                            <div class="single-product-price">
+                                                <span class="price new-price">$66.00</span>
+                                                <span class="regular-price">$77.00</span>
+                                            </div>
+                                            <div class="product-description">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco,Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus</p>
+                                            </div>
+                                            <div class="single-product-quantity">
+                                                <form class="add-quantity" action="#">
+                                                    <div class="product-quantity">
+                                                        <input value="1" type="number">
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="wishlist-compare-btn">
+                                                <a href="#" class="wishlist-btn">Add to Wishlist</a>
+                                                <button class="btn"><i class="ion-bag"></i>add to cart</button>
+                                            </div>
+                                            <div class="product-meta">
+                                                <span class="posted-in">
+                                                Categories: 
+                                                <a href="#">Accessories</a>,
+                                                <a href="#">Electronics</a>
+                                            </span>
+                                            </div>
+                                            <div class="single-product-sharing">
+                                                <h3>分享</h3>
+                                                <ul>
+                                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!--Product Details Content End-->
+                                    </div>
+                                </div>
+                            </div>
+                    }
+                    </div>
+                </div>
+        </div>
             </div>
         
         <!-- Shop Section End -->

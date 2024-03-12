@@ -1,6 +1,8 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "首頁";
 }
+@model IEnumerable<Project0220.myModels.Product>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,47 +127,21 @@
 
         <div class="row">
             <!-- 第四個區域由左到右4個版面 -->
+            @foreach (var item in Model){
             <div class="col-md-3">
+                
                 <div class="card" style="width:100%;">
-                    <img src="~/images/image8.png" class="card-img-top" alt="...">
+                        
+                    <img  src="~/images/All_product/@item.Image1" class="card-img-top" alt="" >
                     <div class="card-body">
-                        <h6 class="card-title"><span class="badge badge-secondary">New</span> 胡桃木床頭櫃</h6>
-                        <p>$4,500</p>
-                        <a asp-controller="AllItems" asp-action="ItemDetails_3" class="btn btn-primary stretched-link">商品頁面</a>
+                            <h6 class="card-title"><span class="badge badge-secondary">New</span> @item.ProductName</h6>
+                                <p>$ @item.UnitPrice</p>
+                        <a href="#" class="btn btn-primary stretched-link">加入購物車</a>
                     </div>
                 </div>
+                
             </div>
-            <div class="col-md-3">
-                <div class="card" style="width:100%; width:100%;">
-                    <img src="~/images/image9.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title"><span class="badge badge-secondary">New</span> 透明玻璃吊燈</h6>
-                        <p>$990</p>
-                        <a href="#" class="btn btn-primary stretched-link">商品頁面</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card" style="width:100%;">
-                    <img src="~/images/image10.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title"><span class="badge badge-secondary">New</span> 靠枕套</h6>
-                        <p>$399</p>
-                        <a href="#" class="btn btn-primary stretched-link">商品頁面</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card" style="width:100%;">
-                    <img src="~/images/image11.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title"><span class="badge badge-secondary">New</span> 四門衣櫃組合</h6>
-                        <p>$33,000</p>
-                        <a href="#" class="btn btn-primary stretched-link">商品頁面</a>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 
