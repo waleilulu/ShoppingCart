@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model IEnumerable<Project0220.Models.Product>
+@model IEnumerable<Project0220.myModels.Product>
 
 @* <link rel="stylesheet" href="~/css/All_product/css/bootstrap.min.css"> *@
     <link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
@@ -87,7 +87,7 @@
                                                                                                     @* <div class="product-label">
                                                                                                          <span>-20%</span> 
                                                                                                     </div> *@
-                                                                                                            <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
+                                                                                                            <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 
                                                                                                             <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
                                                                                                             <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
@@ -127,7 +127,7 @@
                                                                                     <div class="product-label">
                                                                                         <span class="sale">Sales</span>
                                                                                     </div>
-                                                                                            <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductID">
+                                                                                            <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
                                                                                               <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)"  class="img-fluid" alt="">
                                                                                         <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
                                                                                     </a>

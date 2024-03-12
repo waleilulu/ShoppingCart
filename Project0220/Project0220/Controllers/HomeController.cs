@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project0220.Models;
+using Project0220.myModels;
 using System.Diagnostics;
 
 namespace Project0220.Controllers
@@ -8,16 +9,23 @@ namespace Project0220.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
+        private readonly ScaffoldEcommerceDbContext _contextNew;
 
-		public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger,ScaffoldEcommerceDbContext contextNew)
 		{
-			_logger = logger;
+            _contextNew = contextNew;
+            _logger = logger;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
-		}
+            var data = await _contextNew.Products
+                             .Where(o2 => o2.ProductId >= 5 && o2.ProductId <= 8)
+                             .ToListAsync();
+
+            return View(data);
+        }
         
 
         public IActionResult Privacy()

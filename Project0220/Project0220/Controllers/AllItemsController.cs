@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Project0220.Models;
 using Project0220.myModels;
 using Project0220.ViewModel;
 
@@ -8,20 +7,18 @@ namespace Project0220.Controllers
 {
     public class AllItemsController : Controller
     {
-        private readonly ManualECommerceDBContext _context;
         private readonly ScaffoldEcommerceDbContext _contextNew;
 
 
-        public AllItemsController(ManualECommerceDBContext context, ScaffoldEcommerceDbContext contextNew)
+        public AllItemsController( ScaffoldEcommerceDbContext contextNew)
         {
-            _context = context;
             _contextNew = contextNew;
         }
 
         public async Task<IActionResult> Index(string bee)
         {
 
-            var data = from o2 in _context.Products
+            var data = from o2 in _contextNew.Products
                        select o2;
 
             if (!string.IsNullOrEmpty(bee))
@@ -56,8 +53,8 @@ namespace Project0220.Controllers
         public async Task<IActionResult> ItemDetails(int bee)
         {
             var z = bee;
-            var data = await _context.Products
-                            .Where(o2 => o2.ProductID == bee)
+            var data = await _contextNew.Products
+                            .Where(o2 => o2.ProductId == bee)
                             .ToListAsync();
 
 
@@ -78,7 +75,7 @@ namespace Project0220.Controllers
             public async Task<IActionResult> Clearance(string bee)
             {
 
-                var data = from o2 in _context.Products
+                var data = from o2 in _contextNew.Products
                            where o2.SpecialZoneType == "出清"
                            select o2;
 
@@ -96,7 +93,7 @@ namespace Project0220.Controllers
         public async Task<IActionResult> New(string bee)
         {
 
-            var data = from o2 in _context.Products
+            var data = from o2 in _contextNew.Products
                        where o2.SpecialZoneType == "新品"
                        select o2;
 
