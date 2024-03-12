@@ -23,13 +23,11 @@ public partial class Product
 
     public string? Image3 { get; set; }
 
+    public string? Image4 { get; set; }
+
     public string Color1 { get; set; } = null!;
 
     public string? Color2 { get; set; }
-
-    public string? Color3 { get; set; }
-
-    public string? Color4 { get; set; }
 
     public string? Length { get; set; }
 

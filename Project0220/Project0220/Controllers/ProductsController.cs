@@ -17,9 +17,9 @@ namespace Project0220.Controllers
         }
         public IActionResult Index()
         {
-            var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
-            return View(products);
-        }
+			var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
+			return View(products);
+		}
         public IActionResult Create()
         {
             return View();
@@ -54,9 +54,10 @@ namespace Project0220.Controllers
                 productDto.Image1.CopyTo(stream);
             }
 
-            // 初始化 Image2 和 Image3 的檔案名稱可為空值
+            // 初始化 Image2 和 Image3  和 Image4 的檔案名稱可為空值
             string? newImage2FileName = null;
             string? newImage3FileName = null;
+            string? newImage4FileName = null;
 
 
             // 如果 Image2 有上傳，處理 Image2
@@ -83,6 +84,18 @@ namespace Project0220.Controllers
                 }
             }
 
+            // 如果 Image4 有上傳，處理 Image4
+            if (productDto.Image4 != null)
+            {
+                // 儲存圖片4
+                newImage4FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(productDto.Image4.FileName);
+                string image4FullPath = environment.WebRootPath + "/images/All_product/" + newImage4FileName;
+                using (var stream = System.IO.File.Create(image4FullPath))
+                {
+                    productDto.Image4.CopyTo(stream);
+                }
+            }
+
             // 儲存新商品在資料庫裡
             Product product = new Product()
             {
@@ -94,13 +107,13 @@ namespace Project0220.Controllers
                 Image1 = newFileName,
                 Image2 = newImage2FileName,
                 Image3 = newImage3FileName,
+                Image4 = newImage4FileName,
                 Color1 = productDto.Color1,
                 Color2 = productDto.Color2,
-                Color3 = productDto.Color3,
-                Color4 = productDto.Color4,
                 Length = productDto.Length,
                 Width = productDto.Width,
                 Height = productDto.Height,
+                Description = productDto.Description,
                 SpecialZoneType = productDto.SpecialZoneType,
                 CreatedAt = DateTime.Now,
             };
@@ -129,17 +142,17 @@ namespace Project0220.Controllers
                 UnitInStock = product.UnitInStock,
                 Color1 = product.Color1,
                 Color2 = product.Color2,
-                Color3 = product.Color3,
-                Color4 = product.Color4,
                 Length = product.Length,
                 Width = product.Width,
                 Height = product.Height,
+                Description = product.Description,
                 SpecialZoneType = product.SpecialZoneType,
             };
             ViewData["ProductID"] = product.ProductID;
             ViewData["Image1"] = product.Image1;
             ViewData["Image2"] = product.Image2;
             ViewData["Image3"] = product.Image3;
+            ViewData["Image4"] = product.Image4;
             ViewData["CreatedAt"] = product.CreatedAt.ToString("yyyy/MM/dd");
 
             return View(productDto);
@@ -159,6 +172,7 @@ namespace Project0220.Controllers
                 ViewData["Image1"] = product.Image1;
                 ViewData["Image2"] = product.Image2;
                 ViewData["Image3"] = product.Image3;
+                ViewData["Image4"] = product.Image4;
                 ViewData["CreatedAt"] = product.CreatedAt.ToString("yyyy/MM/dd");
 
                 return View(productDto);
@@ -220,6 +234,25 @@ namespace Project0220.Controllers
                 System.IO.File.Delete(oldImage3FullPath);
             }
 
+            // 更新第四張圖
+            string newImage4FileName = null;
+            if (productDto.Image4 != null)
+            {
+                newImage4FileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(productDto.Image4.FileName);
+                string image4FullPath = environment.WebRootPath + "/images/All_product/" + newImage4FileName;
+                using (var stream = System.IO.File.Create(image4FullPath))
+                {
+                    productDto.Image4.CopyTo(stream);
+                }
+            }
+
+            // 刪除舊圖（如果有）
+            if (!string.IsNullOrEmpty(product.Image3))
+            {
+                string oldImage4FullPath = environment.WebRootPath + "/images/All_product/" + product.Image4;
+                System.IO.File.Delete(oldImage4FullPath);
+            }
+
             //更新商品資訊至資料庫
             product.ProductName = productDto.ProductName;
             product.SupplierID = productDto.SupplierID;
@@ -230,13 +263,13 @@ namespace Project0220.Controllers
             product.Image1 = newFileName;
             product.Image2 = newImage2FileName;
             product.Image3 = newImage3FileName;
+            product.Image4 = newImage4FileName;
             product.Color1 = productDto.Color1;
             product.Color2 = productDto.Color2;
-            product.Color3 = productDto.Color3;
-            product.Color4 = productDto.Color4;
             product.Length = productDto.Length;
             product.Width = productDto.Width;
             product.Height = productDto.Height;
+            product.Description = productDto.Description;
             product.SpecialZoneType = productDto.SpecialZoneType;
 
             context.SaveChanges();
@@ -264,6 +297,13 @@ namespace Project0220.Controllers
             {
                 string image3FullPath = environment.WebRootPath + "/images/All_product/" + product.Image3;
                 System.IO.File.Delete(image3FullPath);
+            }
+
+            // 如果第四張圖片存在則刪除第三張圖片
+            if (!string.IsNullOrEmpty(product.Image4))
+            {
+                string image4FullPath = environment.WebRootPath + "/images/All_product/" + product.Image4;
+                System.IO.File.Delete(image4FullPath);
             }
 
             context.Products.Remove(product);

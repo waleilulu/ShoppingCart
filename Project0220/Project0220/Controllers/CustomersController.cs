@@ -80,10 +80,19 @@ namespace Project0220.Controllers
 
             if (user != null)
             {
-                // 登入成功，這裡不使用 Session 或 Cookie
-                HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 跳轉到其他頁面，例如會員中心
-                return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                if (user.Admin==true)
+                {
+                    // 如果是管理員，進行管理員相關的操作
+                    HttpContext.Session.SetString("adminUsername", user.Username);
+                    return RedirectToAction("Index", "Products");
+                }
+                else
+                {
+                    // 登入成功，這裡不使用 Session 或 Cookie
+                    HttpContext.Session.SetInt32("userId", user.CustomerId);
+                    // 跳轉到其他頁面，例如會員中心
+                    return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                }
             }
 
             else

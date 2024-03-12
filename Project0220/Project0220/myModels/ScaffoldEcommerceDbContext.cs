@@ -61,6 +61,8 @@ public partial class ScaffoldEcommerceDbContext : DbContext
             entity.Property(e => e.MobilePhoneNumber).HasMaxLength(20);
             entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Username).HasMaxLength(50);
+            entity.Property(e => e.Admin).HasMaxLength(50);
+
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -111,13 +113,12 @@ public partial class ScaffoldEcommerceDbContext : DbContext
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.Color1).HasMaxLength(20);
             entity.Property(e => e.Color2).HasMaxLength(20);
-            entity.Property(e => e.Color3).HasMaxLength(20);
-            entity.Property(e => e.Color4).HasMaxLength(20);
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.Height).HasMaxLength(10);
             entity.Property(e => e.Image1).HasMaxLength(100);
             entity.Property(e => e.Image2).HasMaxLength(100);
             entity.Property(e => e.Image3).HasMaxLength(100);
+            entity.Property(e => e.Image4).HasMaxLength(100);
             entity.Property(e => e.Length).HasMaxLength(10);
             entity.Property(e => e.ProductName).HasMaxLength(100);
             entity.Property(e => e.SpecialZoneType).HasMaxLength(20);

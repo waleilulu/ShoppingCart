@@ -31,17 +31,14 @@ namespace Project0220.Models
         [Display(Name = "圖片3")]
         public string? Image3 { get; set; }
 
+        [Display(Name = "圖片4")]
+        public string? Image4 { get; set; }
+
         [Display(Name = "顏色1")]
         public string Color1 { get; set; }
 
         [Display(Name = "顏色2")]
         public string? Color2 { get; set; }
-
-        [Display(Name = "顏色3")]
-        public string? Color3 { get; set; }
-
-        [Display(Name = "顏色4")]
-        public string? Color4 { get; set; }
 
         [Display(Name = "長度")]
         public string? Length { get; set; }
