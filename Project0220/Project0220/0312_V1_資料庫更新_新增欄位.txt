@@ -115,6 +115,7 @@ CREATE TABLE [dbo].[Customers](
 	[Address] [nvarchar](255) NULL,
 	[Username] [nvarchar](50) NULL,
 	[Password] [nvarchar](50) NULL,
+	[Admin] [bit] NULL
 PRIMARY KEY CLUSTERED 
 (
 	[CustomerID] ASC
@@ -155,7 +156,8 @@ CREATE TABLE [dbo].[Orders](
 	[ShippingDate] [DATE] NULL,
 	[ShippingAddress] [nvarchar](100) NOT NULL,
 	[Consignee] [nvarchar](100) NOT NULL,
-	[ContactPhone] [nvarchar](20) NOT NULL
+	[ContactPhone] [nvarchar](20) NOT NULL,
+	[Status] [nvarchar](100) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[OrderID] ASC
@@ -180,8 +182,6 @@ CREATE TABLE [dbo].[Products](
 	[Image4] [nvarchar](100) NULL,
 	[Color1] [nvarchar](20) NOT NULL,
 	[Color2] [nvarchar](20) NULL,
-	[Color3] [nvarchar](20) NULL,
-	[Color4] [nvarchar](20) NULL,
 	[Length] [nvarchar](10) NULL,
 	[Width] [nvarchar](10) NULL,
 	[Height] [nvarchar](10) NULL,
@@ -227,45 +227,45 @@ SET IDENTITY_INSERT [dbo].[Categories] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Customers] ON 
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (1, N'湯子同', CAST(N'1990-01-01' AS Date), N'男', N'0912345678', N'zhangsan@gmail.com', N'台北市', N'大安區', N'信義路150號', N'zhangsan', N'abc123')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (1, N'湯子同', CAST(N'1990-01-01' AS Date), N'男', N'0912345678', N'zhangsan@gmail.com', N'台北市', N'大安區', N'信義路150號', N'zhangsan', N'abc123', 1)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (2, N'李珊妮', CAST(N'1985-02-15' AS Date), N'女', N'0923456789', N'lisi@gmail.com', N'新北市', N'中和區', N'中正路200號', N'lisi', N'def456')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (2, N'李珊妮', CAST(N'1985-02-15' AS Date), N'女', N'0923456789', N'lisi@gmail.com', N'新北市', N'中和區', N'中正路200號', N'lisi', N'def456', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (3, N'王小虎', CAST(N'1995-03-20' AS Date), N'男', N'0934567891', N'wangwu@gmail.com', N'桃園市', N'龜山區', N'文化路300號', N'wangwu', N'ghi789')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (3, N'王小虎', CAST(N'1995-03-20' AS Date), N'男', N'0934567891', N'wangwu@gmail.com', N'桃園市', N'龜山區', N'文化路300號', N'wangwu', N'ghi789', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (4, N'張三', CAST(N'1988-04-25' AS Date), N'男', N'0945678912', N'zhangsan2@gmail.com', N'新竹市', N'東區', N'光復路400號', N'zhangsan2', N'jkl012')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (4, N'張三', CAST(N'1988-04-25' AS Date), N'男', N'0945678912', N'zhangsan2@gmail.com', N'新竹市', N'東區', N'光復路400號', N'zhangsan2', N'jkl012', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (5, N'劉芳', CAST(N'1992-05-30' AS Date), N'女', N'0956789123', N'liufang@gmail.com', N'台中市', N'西屯區', N'忠明路53號', N'liufang', N'mno345')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (5, N'劉芳', CAST(N'1992-05-30' AS Date), N'女', N'0956789123', N'liufang@gmail.com', N'台中市', N'西屯區', N'忠明路53號', N'liufang', N'mno345', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (6, N'陳大雄', CAST(N'1983-06-05' AS Date), N'男', N'0967891234', N'chendaxiong@gmail.com', N'高雄市', N'鹽埕區', N'愛國路45號', N'chendaxiong', N'pqr678')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (6, N'陳大雄', CAST(N'1983-06-05' AS Date), N'男', N'0967891234', N'chendaxiong@gmail.com', N'高雄市', N'鹽埕區', N'愛國路45號', N'chendaxiong', N'pqr678', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (7, N'吳美美', CAST(N'1998-07-10' AS Date), N'女', N'0978912345', N'wumeimei@gmail.com', N'基隆市', N'七堵區', N'德五路100號', N'wumeimei', N'stu901')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (7, N'吳美美', CAST(N'1998-07-10' AS Date), N'女', N'0978912345', N'wumeimei@gmail.com', N'基隆市', N'七堵區', N'德五路100號', N'wumeimei', N'stu901', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (8, N'黃小龍', CAST(N'1980-08-15' AS Date), N'男', N'0989123456', N'huangxiaolong@gmail.com', N'新竹市', N'北區', N'中山路80號', N'huangxiaolong', N'vwx234')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (8, N'黃小龍', CAST(N'1980-08-15' AS Date), N'男', N'0989123456', N'huangxiaolong@gmail.com', N'新竹市', N'北區', N'中山路80號', N'huangxiaolong', N'vwx234', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (9, N'鄭美玲', CAST(N'1989-09-20' AS Date), N'女', N'0991234567', N'zhengmeiling@gmail.com', N'彰化市', N'南區', N'公園路99號', N'zhengmeiling', N'yz901')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (9, N'鄭美玲', CAST(N'1989-09-20' AS Date), N'女', N'0991234567', N'zhengmeiling@gmail.com', N'彰化市', N'南區', N'公園路99號', N'zhengmeiling', N'yz901', 0)
 GO
-INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password]) VALUES (10, N'林小明', CAST(N'1993-10-25' AS Date), N'男', N'0912345678', N'linxiaoming@gmail.com', N'嘉義市', N'西區', N'中正路102號', N'linxiaoming', N'234abc')
+INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender], [MobilePhoneNumber], [Email], [Address_City], [Address_Dist], [Address], [Username], [Password], [Admin]) VALUES (10, N'林小明', CAST(N'1993-10-25' AS Date), N'男', N'0912345678', N'linxiaoming@gmail.com', N'嘉義市', N'西區', N'中正路102號', N'linxiaoming', N'234abc', 0)
 GO
 SET IDENTITY_INSERT [dbo].[Customers] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Products] ON 
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色', NULL, NULL, N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色',  N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (2, N'單人沙發床', 1, 1, 7490, 10, N'A00100.jpg', NULL, NULL, NULL, N'深藍色', NULL, NULL, NULL, N'80', N'100', N'87', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (2, N'單人沙發床', 1, 1, 7490, 10, N'A00100.jpg', NULL, NULL, NULL, N'深藍色', NULL, N'80', N'100', N'87', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (3, N'旋轉椅', 1, 1, 12900, 10, N'A00300.jpg', NULL, NULL, NULL, N'金棕色', NULL, NULL, NULL, N'66', N'99', N'892', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (3, N'旋轉椅', 1, 1, 12900, 10, N'A00300.jpg', NULL, NULL, NULL, N'金棕色', NULL, N'66', N'99', N'892', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL, NULL, NULL, N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL,  N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (5, N'胡桃木單抽屜實木床頭櫃', 2, 2, 4500, 10, N'B00290.jpg', N'B00290-2.jpg', N'B00290-3.jpg', NULL, N'棕色', NULL, NULL, NULL, N'35', N'42', N'52', NULL, N'新品', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (5, N'胡桃木單抽屜實木床頭櫃', 2, 2, 4500, 10, N'B00290.jpg', N'B00290-2.jpg', N'B00290-3.jpg', NULL, N'棕色', NULL, N'35', N'42', N'52', NULL, N'新品', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (6, N'四門衣櫃組合', 2, 2, 33000, 10, N'B00330.jpg', NULL, NULL, NULL, N'白色', NULL, NULL, NULL, N'198', N'65', N'240', NULL, N'新品', CAST(N'2024-03-06T13:45:20.393' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (6, N'四門衣櫃組合', 2, 2, 33000, 10, N'B00330.jpg', NULL, NULL, NULL, N'白色', NULL, N'198', N'65', N'240', NULL, N'新品', CAST(N'2024-03-06T13:45:20.393' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (7, N'透明玻璃吊燈', 4, 4, 990, 10, N'D00080.jpg', NULL, NULL, NULL, N'灰色', NULL, NULL, NULL, N'22', NULL, N'32', NULL, N'新品', CAST(N'2024-03-06T13:59:11.007' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (7, N'透明玻璃吊燈', 4, 4, 990, 10, N'D00080.jpg', NULL, NULL, NULL, N'灰色', NULL, N'22', NULL, N'32', NULL, N'新品', CAST(N'2024-03-06T13:59:11.007' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Color3], [Color4], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (8, N'靠枕套', 4, 4, 399, 10, N'D00442.jpg', NULL, NULL, NULL, N'米灰色', NULL, NULL, NULL, N'50', N'50', NULL, NULL, N'新品', CAST(N'2024-03-06T14:03:29.560' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (8, N'靠枕套', 4, 4, 399, 10, N'D00442.jpg', NULL, NULL, NULL, N'米灰色', NULL, N'50', N'50', NULL, NULL, N'新品', CAST(N'2024-03-06T14:03:29.560' AS DateTime))
 GO
 
 SET IDENTITY_INSERT [dbo].[Products] OFF
