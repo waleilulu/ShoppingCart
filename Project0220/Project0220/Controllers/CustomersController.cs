@@ -94,14 +94,12 @@ namespace Project0220.Controllers
                     return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
                 }
             }
-
             else
             {
                 // 登入失敗，返回登入頁面，可能需要顯示錯誤訊息
                 ModelState.AddModelError("", "登入失敗，請檢查用戶名和密碼。");
                 return View();
             }
-
         }
 
 
