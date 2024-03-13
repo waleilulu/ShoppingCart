@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [ECommerceDB]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Database [ECommerceDB]    Script Date: 2024/3/14 上午 12:54:15 ******/
 CREATE DATABASE [ECommerceDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [ECommerceDB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEAN
 GO
 USE [ECommerceDB]
 GO
-/****** Object:  Table [dbo].[Categories]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[Categories]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +98,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Customers]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[Customers]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,14 +115,14 @@ CREATE TABLE [dbo].[Customers](
 	[Address] [nvarchar](255) NULL,
 	[Username] [nvarchar](50) NULL,
 	[Password] [nvarchar](50) NULL,
-	[Admin] [bit] NULL
+	[Admin] [bit] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[OrderDetails]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[OrderDetails]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +141,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -153,7 +153,8 @@ CREATE TABLE [dbo].[Orders](
 	[TotalAmount] [int] NULL,
 	[PaymentMethod] [nvarchar](50) NOT NULL,
 	[Carrier] [nvarchar](50) NOT NULL,
-	[ShippingDate] [DATE] NULL,
+	[ShippingDate] [date] NULL,
+	[PostalCode] [nvarchar](10) NOT NULL,
 	[ShippingAddress] [nvarchar](100) NOT NULL,
 	[Consignee] [nvarchar](100) NOT NULL,
 	[ContactPhone] [nvarchar](20) NOT NULL,
@@ -164,7 +165,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Products]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[Products]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -194,7 +195,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Suppliers]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Table [dbo].[Suppliers]    Script Date: 2024/3/14 上午 12:54:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -249,15 +250,55 @@ INSERT [dbo].[Customers] ([CustomerID], [CustomerName], [DateOfBirth], [Gender],
 GO
 SET IDENTITY_INSERT [dbo].[Customers] OFF
 GO
+SET IDENTITY_INSERT [dbo].[OrderDetails] ON 
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (1, 1, 2, 2, 7490, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (2, 1, 3, 1, 12900, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (3, 1, 4, 3, 38000, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (4, 2, 1, 1, 29900, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (5, 2, 3, 1, 12900, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (6, 2, 6, 2, 33000, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (7, 2, 8, 3, 399, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (8, 2, 7, 2, 990, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (9, 3, 7, 1, 990, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (10, 3, 8, 4, 399, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (11, 4, 1, 6, 29900, CAST(1.00 AS Decimal(3, 2)))
+GO
+INSERT [dbo].[OrderDetails] ([OrderDetailID], [OrderID], [ProductID], [Quantity], [UnitPrice], [Discount]) VALUES (12, 4, 5, 8, 4500, CAST(1.00 AS Decimal(3, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[OrderDetails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Orders] ON 
+GO
+INSERT [dbo].[Orders] ([OrderID], [CustomerID], [OrderDate], [TotalAmount], [PaymentMethod], [Carrier], [ShippingDate], [PostalCode], [ShippingAddress], [Consignee], [ContactPhone], [Status]) VALUES (1, 7, CAST(N'2024-03-07T00:09:00.000' AS DateTime), 141880, N'信用卡', N'大榮貨運', CAST(N'2024-03-09' AS Date), N'206', N'基隆市七堵區德五路100號', N'吳美美', N'0978912345', N'已簽收')
+GO
+INSERT [dbo].[Orders] ([OrderID], [CustomerID], [OrderDate], [TotalAmount], [PaymentMethod], [Carrier], [ShippingDate], [PostalCode], [ShippingAddress], [Consignee], [ContactPhone], [Status]) VALUES (2, 4, CAST(N'2024-03-09T14:11:00.000' AS DateTime), 111977, N'轉帳', N'新竹貨運', CAST(N'2024-03-11' AS Date), N'360', N'苗栗縣苗栗市中正路九段900號', N'許婷婷', N'0990123455', N'已簽收')
+GO
+INSERT [dbo].[Orders] ([OrderID], [CustomerID], [OrderDate], [TotalAmount], [PaymentMethod], [Carrier], [ShippingDate], [PostalCode], [ShippingAddress], [Consignee], [ContactPhone], [Status]) VALUES (3, 2, CAST(N'2024-03-11T06:14:00.000' AS DateTime), 2586, N'信用卡', N'公司配送', CAST(N'2024-03-12' AS Date), N'407', N'台中市西屯區惠來路三段300號', N'林志偉', N'0934567890', N'已簽收')
+GO
+INSERT [dbo].[Orders] ([OrderID], [CustomerID], [OrderDate], [TotalAmount], [PaymentMethod], [Carrier], [ShippingDate], [PostalCode], [ShippingAddress], [Consignee], [ContactPhone], [Status]) VALUES (4, 4, CAST(N'2024-03-12T21:16:00.000' AS DateTime), 215400, N'轉帳', N'新竹貨運', CAST(N'2024-03-15' AS Date), N'300', N'新竹市東區光復路400號', N'張三', N'0945678912', N'配送中')
+GO
+SET IDENTITY_INSERT [dbo].[Orders] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Products] ON 
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色',  N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (1, N'ÄPPLARYD三人座沙發', 1, 1, 29900, 10, N'A00011.jpg', N'A00011-1.jpg', N'A00012.jpg', NULL, N'深藍色', N'紅棕色', N'231', N'93', N'47', NULL, N'新品', CAST(N'2024-03-06T09:16:55.627' AS DateTime))
 GO
 INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (2, N'單人沙發床', 1, 1, 7490, 10, N'A00100.jpg', NULL, NULL, NULL, N'深藍色', NULL, N'80', N'100', N'87', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
 INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (3, N'旋轉椅', 1, 1, 12900, 10, N'A00300.jpg', NULL, NULL, NULL, N'金棕色', NULL, N'66', N'99', N'892', NULL, N'新品', CAST(N'2024-03-06T11:37:15.997' AS DateTime))
 GO
-INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL,  N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
+INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (4, N'中世紀風格五斗櫃', 2, 2, 38000, 10, N'B00010.jpg', N'B00010-1.jpg', N'B00010-2.jpg', NULL, N'棕色', NULL, N'153', N'51', N'91', NULL, N'四月專屬', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
 INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (5, N'胡桃木單抽屜實木床頭櫃', 2, 2, 4500, 10, N'B00290.jpg', N'B00290-2.jpg', N'B00290-3.jpg', NULL, N'棕色', NULL, N'35', N'42', N'52', NULL, N'新品', CAST(N'2024-03-06T13:36:28.663' AS DateTime))
 GO
@@ -267,7 +308,6 @@ INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID],
 GO
 INSERT [dbo].[Products] ([ProductID], [ProductName], [SupplierID], [CategoryID], [UnitPrice], [UnitInStock], [Image1], [Image2], [Image3], [Image4], [Color1], [Color2], [Length], [Width], [Height], [Description], [SpecialZoneType], [CreatedAt]) VALUES (8, N'靠枕套', 4, 4, 399, 10, N'D00442.jpg', NULL, NULL, NULL, N'米灰色', NULL, N'50', N'50', NULL, NULL, N'新品', CAST(N'2024-03-06T14:03:29.560' AS DateTime))
 GO
-
 SET IDENTITY_INSERT [dbo].[Products] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Suppliers] ON 
@@ -286,7 +326,7 @@ SET IDENTITY_INSERT [dbo].[Suppliers] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ__Customer__536C85E423109D29]    Script Date: 2024/3/7 下午 03:41:41 ******/
+/****** Object:  Index [UQ__Customer__536C85E4D016A815]    Script Date: 2024/3/14 上午 12:54:15 ******/
 ALTER TABLE [dbo].[Customers] ADD UNIQUE NONCLUSTERED 
 (
 	[Username] ASC

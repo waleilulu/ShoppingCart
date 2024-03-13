@@ -20,23 +20,40 @@ namespace Project0220.Controllers
 
 		//1. 如果從CustomersController登入畫面轉過來管理者頁面後，需再這裡進行檢查，檢查是否是管理者
 		//2. 如果是知道連結進來的人，直接導去CustomersController登入畫面
-		public IActionResult Index()
-		{
-			// 檢查 Session 中是否存在管理員用戶名
-			var adminUsername = HttpContext.Session.GetString("adminUsername");
+        public IActionResult Index()
+        {
+            // 檢查 Session 中是否存在管理員用戶名
+            var adminUsername = HttpContext.Session.GetString("adminUsername");
 
-			if (!string.IsNullOrEmpty(adminUsername))
-			{
-				// 存在管理員用戶名，表示是管理員登入後轉過來的，顯示畫面
-				var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
-				return View(products);
-			}
-			else
-			{
-				// 若不存在管理員用戶名，可能是非法訪問導向到登入頁面
-				return RedirectToAction("Login", "Customers"); // 導去CustomersController登入畫面
-			}
-		}
+            if (!string.IsNullOrEmpty(adminUsername))
+            {
+                // 存在管理員用戶名，表示是管理員登入後轉過來的，顯示畫面
+                var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
+                return View(products);
+            }
+            else
+            {
+                // 若不存在管理員用戶名，可能是非法訪問導向到登入頁面
+                return RedirectToAction("Login", "Customers"); // 導去CustomersController登入畫面
+            }
+        }
+
+
+  //      public IActionResult Index()
+		//{
+			
+		//		var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
+		//		return View(products);
+			
+		//}
+
+
+
+
+
+
+
+
 
 		public IActionResult Create()
         {
