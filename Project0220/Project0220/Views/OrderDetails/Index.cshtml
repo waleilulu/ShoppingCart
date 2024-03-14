@@ -3,79 +3,16 @@
 @* OrderDetails 訂單詳情 的 Index*@
 
 @{
-<<<<<<< HEAD
-	ViewData["Title"] = "Index";
-=======
+
     ViewData["Title"] = "Index";
     Layout = null;
->>>>>>> 0313
 }
 
 <!--引用-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
-<<<<<<< HEAD
-<p>
-	<a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-	<thead>
-		<tr>
-			<th>
-				@Html.DisplayNameFor(model => model.Order.OrderId)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Product.ProductId)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Quantity)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.UnitPrice)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Discount)
-			</th>
-			<th>
-				@Html.DisplayNameFor(model => model.Amount)
-			</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var item in Model)
-		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.Order.OrderId)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Product.ProductId)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Quantity)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.UnitPrice)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Discount)
-				</td>
-				<td>
-					@Html.DisplayFor(modelItem => item.Amount)
-				</td>
 
-				<td>
-					<a asp-action="Edit" asp-route-id="@item.OrderDetailId">Edit</a> |
-					<a asp-action="Details" asp-route-id="@item.OrderDetailId">Details</a> |
-					<a asp-action="Delete" asp-route-id="@item.OrderDetailId">Delete</a>
-				</td>
-			</tr>
-		}
-	</tbody>
-</table>
-=======
     <div class="container-fluid">
         <a class="navbar-brand" asp-controller="Home" asp-action="Index">
             <img src="~/images/GGLogo.png" width="268.5" height="81.75"
@@ -149,4 +86,3 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
->>>>>>> 0313
