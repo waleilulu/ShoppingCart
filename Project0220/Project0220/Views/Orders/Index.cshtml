@@ -1,83 +1,96 @@
 ﻿@model IEnumerable<Project0220.myModels.Order>
 
+@* Orders 訂單詳情 的 Index*@
+
 @{
     ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h1>Index</h1>
+<!--引用-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentMethod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Carrier)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShippingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ShippingAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Consignee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactPhone)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Carrier)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShippingAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Consignee)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactPhone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            <img src="~/images/GGLogo.png" width="268.5" height="81.75"
+                 class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" asp-controller="Orders" asp-action="Index"><strong>管理者頁面</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+                <a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+                <a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
+                <a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+                <a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
+                <a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+            </div>
+        </div>
+    </div>
+</nav>
+</br>
+
+
+<h2 class="text-center mb-5">Orders 訂單</h2>
+
+
+<div class="container-fluid">
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <a class="btn btn-primary" asp-controller="Orders" asp-action="Orders">新增</a>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>OrderID</th>
+                    <th>CustomerID</th>
+                    <th>OrderDate</th>
+                    <th>TotalAmount</th>
+                    <th>PaymentMethod</th>
+                    <th>Carrier</th>
+                    <th>ShippingDate</th>
+                    <th>ShippingAddress</th>
+                    <th>Consignee</th>
+                    <th>ContactPhone</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.CustomerId</td>
+                        <td>@order.OrderDate</td>
+                        <td>@order.TotalAmount</td>
+                        <td>@order.PaymentMethod</td>
+                        <td>@order.Carrier</td>
+                        <td>@order.ShippingDate</td>
+                        <td>@order.ShippingAddress</td>
+                        <td>@order.Consignee</td>
+                        <td>@order.ContactPhone</td>
+                        <td>@order.Status</td>
+                        @*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@
+                        <td style="white-space: nowrap;">
+                            <a class="btn btn-primary btn-sm" asp-controller="Orders" asp-action="Edit"
+                               asp-route-id="@order.OrderId">編輯</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Orders" asp-action="Delete"
+                               asp-route-id="@order.OrderId">刪除</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
