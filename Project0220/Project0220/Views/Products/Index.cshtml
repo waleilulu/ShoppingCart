@@ -19,10 +19,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link active" aria-current="page" href="#">Home</a>
-				<a class="nav-link" href="#">Features</a>
-				<a class="nav-link" href="#">Pricing</a>
-				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				<a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+				<a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
+				<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+				<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
+				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
 			</div>
 		</div>
 	</div>
@@ -30,13 +32,13 @@
 <br>
 
 
-<h2 class="text-center mb-5">產品清單</h2>
+<h2 class="text-center mb-5">Products 產品清單</h2>
 
 
 <div class="container-fluid">
 	<div class="row mb-5">
 		<div class="col-md-6">
-			<a class="btn btn-primary" asp-controller="Products" asp-action="Create">新增商品</a>
+			<a class="btn btn-primary" asp-controller="Products" asp-action="Create">新增</a>
 		</div>
 		<div class="col-md-6">
 		</div>

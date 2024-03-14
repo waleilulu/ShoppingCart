@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Project0220.myModels;
 
-public partial class OrderDetail
+public class OrderDetail
 {
     public int OrderDetailId { get; set; }
 
@@ -22,4 +23,6 @@ public partial class OrderDetail
     public virtual Order? Order { get; set; }
 
     public virtual Product? Product { get; set; }
+
+	//public DateTime CreatedAt { get; set; }
 }

@@ -9,6 +9,8 @@ public partial class Customer
     public int CustomerId { get; set; }
 
     public string? CustomerName { get; set; }
+
+    //下方設定日期: 年/月/日 沒有幾點幾分
     [DataType(DataType.Date)]
     public DateTime? DateOfBirth { get; set; }
 
