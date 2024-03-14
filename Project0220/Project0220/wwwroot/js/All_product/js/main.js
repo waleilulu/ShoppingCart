@@ -452,7 +452,7 @@ $('[data-countdown2]').each(function() {
 $.scrollUp({
     scrollText: '<i class="fa fa-angle-up"></i>',
     easingType: 'linear',
-    scrollSpeed: 900,
+    scrollSpeed: 500,
     animation: 'fade'
 });
 

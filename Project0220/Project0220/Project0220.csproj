@@ -26,6 +26,8 @@
     <Content Remove="Views\AllItems\ItemDetails_2.cshtml" />
     <Content Remove="Views\AllItems\ItemDetails_3.cshtml" />
     <Content Remove="Views\Member\MemberAccount.cshtml" />
+    <Content Remove="wwwroot\images\All_product\A00011-1.jpg" />
+    <Content Remove="wwwroot\images\All_product\A00011.jpg" />
     <Content Remove="wwwroot\images\B00290-1.jpg" />
     <Content Remove="wwwroot\images\B00290-2.jpg" />
     <Content Remove="wwwroot\images\B00290-3.jpg" />
