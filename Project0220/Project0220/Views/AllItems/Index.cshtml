@@ -5,12 +5,7 @@
 }
 @model IEnumerable<Project0220.myModels.Product>
 
-    @* <link rel="stylesheet" href="~/css/All_product/css/bootstrap.min.css"> *@
-    <link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
-    <link rel="stylesheet" href="~/css/All_product/css/helper.css">
-    <link rel="stylesheet" href="~/css/All_product/css/plugins.css">
-    <link rel="stylesheet" href="~/css/All_product/css/style.css">
-    <script src="~/js/All_product/js/modernizr-2.8.3.min.js"></script>
+  
 <!-- Shop Section Start -->
             <div class="container">
                 <div class="row">
@@ -96,7 +91,7 @@
                                                                                                 <div class="product-action">
                                                                                                     <ul>
                                                                                                         <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-                                                                                                        <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                                                                        <li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                                                         <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
                                                                                                     </ul>
                                                                                                 </div>
@@ -135,7 +130,7 @@
                                                                                 <div class="product-action">
                                                                                     <ul>
                                                                                         <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-                                                                                        <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                                                            <li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                                         <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
                                                                                     </ul>
                                                                                 </div>
@@ -192,7 +187,9 @@
                 </div>
                 @* 測試 *@
             </div>
-            <div class="modal fade quick-view-modal-container" id="quick-view-modal-container" tabindex="-1" role="dialog" aria-hidden="true">
+    @foreach (var item in Model)
+    {
+            <div class="modal fade quick-view-modal-container" id="quick-view-modal-container-@item.ProductId" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -201,8 +198,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    @foreach (var item in Model)
-                    {
+                   
                             <div class="col-xl-12 col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
@@ -292,15 +288,11 @@
                                     </div>
                                 </div>
                             </div>
-                    }
+                    
                     </div>
                 </div>
-        </div>
+                </div>
             </div>
+    }
         
         <!-- Shop Section End -->
-        @* <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script> *@
-    <script src="~/js/All_product/js/popper.min.js"></script>
-    <script src="~/js/All_product/js/bootstrap.min.js"></script>
-    <script src="~/js/All_product/js/plugins.js"></script>
-    <script src="~/js/All_product/js/main.js"></script>

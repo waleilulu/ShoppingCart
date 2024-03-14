@@ -4610,8 +4610,8 @@ a.popup-img {
 
 .product-review-content-tab {
     padding-top: 40px;
-    font-size: 15px;
-    line-height: 26px;
+    font-size: 20px;
+    line-height: 40px;
     width: 100%;
 }
 
@@ -4622,7 +4622,7 @@ a.popup-img {
 }
 
 .single-product-description p {
-    line-height: 22px;
+    line-height: 40px;
     color: #151515;
 }
 
