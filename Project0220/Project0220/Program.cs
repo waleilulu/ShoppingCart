@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Project0220.myModels;
 using Project0220.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 
@@ -12,10 +13,22 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.IdleTimeout = TimeSpan.FromHours(1);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+//Cookie
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "membercookie";
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromHours(1); // 設定 Cookie 的過期時間
+        options.LoginPath = "/Customers/Login"; // 登入頁面的路徑
+        options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
+    });
+
 builder.Services.AddDbContext<ManualECommerceDBContext>(options => 
 {
 	var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -40,6 +53,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

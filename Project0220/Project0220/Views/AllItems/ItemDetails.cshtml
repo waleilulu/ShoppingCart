@@ -143,8 +143,9 @@
                                         </div>
                                         
                                         <div class="wishlist-compare-btn mb-2">
-                                            <a href="" class="wishlist-btn">加入我的最愛</a>
-                                            
+                                              <button onclick="addfavoritebtn(@item.ProductId)">
+                                                            <a href="#" class="wishlist-btn" >加入我的最愛</a> 
+                                                            </button> 
                                         </div>
                                         <div class="add-to-link mb-2">
                                             <button class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
@@ -688,3 +689,27 @@
 
     <!-- All jquery file included here -->
    
+
+<!--會員追蹤-->
+
+            <script>
+        function addfavoritebtn(productId){
+        
+        $.ajax({
+            url:"/AllItems/Follow",
+            method:"post",
+            data:{ProductId:productId},
+            success:function (result){
+                alert("商品追蹤成功");
+
+            },
+            error:function (error){
+                console.error("發生錯誤:",error);
+            }
+
+
+        });
+
+        }
+
+    </script>

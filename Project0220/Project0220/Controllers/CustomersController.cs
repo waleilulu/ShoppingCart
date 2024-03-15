@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -28,19 +31,39 @@ namespace Project0220.Controllers
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+           // if (id == null)
+           // {
+           //     return NotFound();
+           // }
+            // 根據 Session 中的用戶ID查找用戶
+            var user = await _context.Customers.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
+            //    var customer = await _context.Customers
+            //      .FirstOrDefaultAsync(m => m.CustomerId == id);
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (customer == null)
+            // 從 TrackList 中找出該用戶追蹤的所有產品ID
+            var trackedProductIds = await _context.TrackLists
+                .Where(tl => tl.CustomerID == id)
+                .Select(tl => tl.ProductID)
+                .ToListAsync();
+            // 根據這些產品ID查找相應的產品資訊
+            var trackedProducts = await _context.Products
+                .Where(p => trackedProductIds.Contains(p.ProductId))
+                .ToListAsync();
+
+            var viewModel = new ViewModel.CPTModel
             {
-                return NotFound();
-            }
+                Customers = new List<Customer> { user },
+                Products = trackedProducts
 
-            return View(customer);
+            };
+
+
+
+            return View(viewModel);
         }
 
         // GET: Customers/Create
@@ -70,37 +93,103 @@ namespace Project0220.Controllers
             return View();
         }
 
-
-        //登入動作
+        // 登入動作
         [HttpPost]
-        public ActionResult Login([Bind("Username,Password")] Customer Customers)
+        public async Task<IActionResult> Login([Bind("Username,Password")] Customer Customers)
         {
-            // 判斷 //獲取使用者
+            // 查询数据库以查找用户并进行身份验证
             var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username && u.Password == Customers.Password);
 
             if (user != null)
             {
-                if (user.Admin==true)
+                // 创建用户主张
+                var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, user.Username)
+            // 可以添加其他用户相关的主张，例如用户角色等
+        };
+
+                if (user.Admin)
                 {
-                    // 如果是管理員，進行管理員相關的操作
-                    HttpContext.Session.SetString("adminUsername", user.Username);
-                    return RedirectToAction("Index", "Products");
+                    claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+                }
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                // 创建身份验证票证
+                var principal = new ClaimsPrincipal(identity);
+
+                // 登录用户
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                // 设置 Cookie 保存用户 ID
+                HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
+                HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
+                // 根据用户角色重定向到适当的页面
+                if (user.Admin)
+                {
+                    return RedirectToAction("AdminDashboard", "Admin");
                 }
                 else
                 {
-                    // 登入成功，這裡不使用 Session 或 Cookie
-                    HttpContext.Session.SetInt32("userId", user.CustomerId);
-                    // 跳轉到其他頁面，例如會員中心
                     return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
                 }
             }
-            else
-            {
-                // 登入失敗，返回登入頁面，可能需要顯示錯誤訊息
-                ModelState.AddModelError("", "登入失敗，請檢查用戶名和密碼。");
-                return View();
-            }
+
+            // 登录失败，返回登录视图并显示错误消息
+            ModelState.AddModelError("", "登录失败，请检查用户名和密码。");
+            return View("Login");
         }
+
+
+
+        //登出
+        //登出動作方法
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            // 執行登出操作
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // 清除用戶相關的 Session 和 Cookie
+            HttpContext.Session.Clear();
+            Response.Cookies.Delete("membercookie");
+
+            // 重定向到登入頁面
+            return RedirectToAction("Login", "Customers");
+        }
+
+        //決定導向哪裡的方法( 會員頁面 還是 登入頁面 )
+
+
+        public IActionResult UserProfile()
+        {
+            
+                // 檢查是否存在名為 "membercookie" 的 cookie
+                if (HttpContext.Request.Cookies["membercookie"] != null)
+                {
+                    // 如果存在相應的 cookie，繼續執行其他操作
+                    // 這裡可以放置會員中心頁面的相關代碼
+                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+
+
+                }
+
+                    // 如果用戶未通過身份驗證，導向登入頁面
+                  return RedirectToAction("Login", "Customers");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

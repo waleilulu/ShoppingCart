@@ -1,4 +1,6 @@
-﻿@model Project0220.myModels.Customer
+﻿@using Microsoft.EntityFrameworkCore
+@model Project0220.ViewModel.CPTModel
+@using Project0220.myModels
 
  <!--引入的檔案-->
 
@@ -11,6 +13,10 @@
 
 
 
+<!-- 登出按鈕 -->
+<form action="/Customers/Logout" method="post">
+    <button type="submit">登出</button>
+</form>
 
 
 
@@ -26,39 +32,42 @@
             <div class="row">
                 <div class="col-md-12">
                     <div id="MData" class="tabcontent">
-                        <p >    @Html.DisplayFor(model => model.CustomerName),你好</p>
-                        <span class="m_title">會員資料</span>
+                        @foreach (var item in Model.Customers)
+                        {
 
-                        <!-- 會員資料 -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
 
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6 ">
-                                                <div class="form2">
-                                                    <p><span class="f_title"><b> 姓名 </b> </span><span>   @Html.DisplayFor(model => model.CustomerName)</span></p>
-                                                    <p><span class="f_title"><b> 生日 </b> </span><span>  @Html.DisplayFor(model => model.DateOfBirth)</span></p>
-                                                    <p><span class="f_title"><b> 性別 </b> </span><span>   @Html.DisplayFor(model => model.Gender)</span></p>
-                                                    <p><span class="f_title"><b> 手機 </b> </span><span>   @Html.DisplayFor(model => model.MobilePhoneNumber)</span></p>
-                                                </div>
-                                            </div>
-                                            <div class=" col-md-6 ">
-                                                <div class="form2">
-                                                    <p><span class="f_title"><b> 地址 </b> </span><span>@Html.DisplayFor(model => model.AddressCity), @Html.DisplayFor(model => model.AddressDist),      @Html.DisplayFor(model => model.Address)</span></p>
-                                                    <p><span class="f_title"><b> 電子郵件 </b> </span><span> @Html.DisplayFor(model => model.Email)</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <p >    @Html.DisplayFor(modelItem => item.CustomerName),你好</p>
+                            <span class="m_title">會員資料</span>
 
-                                </div>
-                            </div>
-                        </div>
+                                <!-- 會員資料 -->
+        <div class="container">
+             <div class="row">
+                 <div class="col-md-12">
 
-                    </div>
+                     <div class="container">
+                         <div class="row">
+                             <div class="col-md-6 ">
+                                 <div class="form2">
+                                     <p><span class="f_title"><b> 姓名 </b> </span><span>   @Html.DisplayFor(modelItem => item.CustomerName)</span></p>
+                                     <p><span class="f_title"><b> 生日 </b> </span><span>  @Html.DisplayFor(modelItem => item.DateOfBirth)</span></p>
+                                     <p><span class="f_title"><b> 性別 </b> </span><span>   @Html.DisplayFor(modelItem => item.Gender)</span></p>
+                                     <p><span class="f_title"><b> 手機 </b> </span><span>   @Html.DisplayFor(modelItem => item.MobilePhoneNumber)</span></p>
+                                 </div>
+                             </div>
+                             <div class=" col-md-6 ">
+                                 <div class="form2">
+                                     <p><span class="f_title"><b> 地址 </b> </span><span>@Html.DisplayFor(modelItem => item.AddressCity), @Html.DisplayFor(modelItem => item.AddressDist), @Html.DisplayFor(modelItem => item.Address)</span></p>
+                                     <p><span class="f_title"><b> 電子郵件 </b> </span><span> @Html.DisplayFor(modelItem => item.Email)</span></p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
 
+                 </div>
+             </div>
+             </div>
+                        }
+ </div>
                     <div id="MDiscount" class="tabcontent">
                         <p>Some news this fine day!</p>
                     </div>
@@ -68,7 +77,14 @@
                     </div>
 
                     <div id="MFollow" class="tabcontent">
-                        <p>Who we are and what we do.</p>
+                        @foreach (var product in Model.Products)
+                        {
+                               <li>@product.Image1</li>
+                                          <li>@product.ProductName</li>
+                                                         <li>@product.UnitPrice</li>
+                                                                    <li>@product.UnitInStock</li>
+                                                                           <li>@product.Color1</li>
+                        }
                     </div>
                 </div>
             </div>
@@ -127,7 +143,10 @@
 
 </script>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.CustomerId">Edit</a> |
+ <!--
+    <a asp-action="Edit" asp-route-id=">Edit</a> |
     <a asp-action="Index">Back to List</a>
+
+    -->
 </div>
 

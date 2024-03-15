@@ -27,6 +27,8 @@ public partial class ScaffoldEcommerceDbContext : DbContext
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
+    public DbSet<TrackList> TrackLists { get; set; }
+
 #pragma warning disable CS1030
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -146,6 +148,13 @@ public partial class ScaffoldEcommerceDbContext : DbContext
             entity.Property(e => e.ContactName).HasMaxLength(100);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Phone).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<TrackList>(entity =>
+        {
+            entity.HasKey(e => new { e.CustomerID, e.ProductID }); // 定义组合主键
+
+        //綁客戶id跟產品id
         });
 
         OnModelCreatingPartial(modelBuilder);

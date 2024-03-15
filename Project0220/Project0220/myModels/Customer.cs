@@ -30,7 +30,7 @@ public partial class Customer
 
     public string? Password { get; set; }
 
-    public bool? Admin { get; set; }
+    public bool Admin { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }
