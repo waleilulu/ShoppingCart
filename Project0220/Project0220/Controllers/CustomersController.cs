@@ -31,10 +31,7 @@ namespace Project0220.Controllers
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-           // if (id == null)
-           // {
-           //     return NotFound();
-           // }
+         
             // 根據 Session 中的用戶ID查找用戶
             var user = await _context.Customers.FindAsync(id);
             if (user == null)
@@ -179,18 +176,6 @@ namespace Project0220.Controllers
                   return RedirectToAction("Login", "Customers");
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
