@@ -4170,9 +4170,9 @@ a.popup-img {
     }
 }
 
-.wishlist-compare-btn a.wishlist-btn {
+/*.wishlist-compare-btn a.wishlist-btn {
     margin-right: 20px;
-}
+}*/
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .wishlist-compare-btn a.wishlist-btn {
