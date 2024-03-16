@@ -486,11 +486,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     font-size: 15px;
     line-height: 1.2;
     font-weight: 500;
-    padding: 12px 24px;
+    padding: 13px 46px;
     text-transform: uppercase;
     border-radius: 0px;
     position: relative;
-    border-radius: 50px;
+    /*border-radius: 50px;*/
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -503,8 +503,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     }
 
     .bs-4-6-1-btn:hover {
-        background-color: #151515;
-        color: #ffffff;
+        background-color: white;
+        color: black;
     }
 
 @media only screen and (max-width: 767px) {
@@ -2433,10 +2433,16 @@ ul.cart-items > li {
 .hero-slider:hover .slick-arrow {
     opacity: 1;
 }
+.onlyBtn{
+    padding:0.65rem 2.2rem;
+}
 
-    .hero-slider:hover .slick-arrow.slick-prev {
-        margin-left: 0;
-    }
+.onlyBtn:hover{
+    background-color:white!important;
+}
+.hero-slider:hover .slick-arrow.slick-prev {
+    margin-left: 0;
+}
 
     .hero-slider:hover .slick-arrow.slick-next {
         margin-right: 0;
