@@ -32,6 +32,18 @@ namespace Project0220.Controllers
 		{
 			return View();
 		}
+        public IActionResult NewHome()
+        {
+            return View();
+        }
+        public IActionResult Family()
+        {
+            return View();
+        }
+        public IActionResult Bedroom()
+        {
+            return View();
+        }
 
         // Ápµ¸§Ú­Ì
         public IActionResult FooterLink01()
