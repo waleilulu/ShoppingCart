@@ -652,7 +652,7 @@
         @* </div> *@
         <!--Product section end-->
         <!-- Newsletter Section Start -->
-        <div class="newsletter-section section bg-gray-two pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-60 pb-xs-50">
+        @* <div class="newsletter-section section bg-gray-two pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-60 pb-xs-50">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -661,14 +661,12 @@
                             <p>今天訂閱享有10%折扣碼!</p>
                         </div>
                     </div>
+                   
                     <div class="col-lg-6">
                         <div class="newsletter-wrap">
                             <div class="newsletter-form">
-                                <form id="mc-form" class="mc-form">
-                                    <input type="email" placeholder="Enter Your Email Address Here..." required="">
-                                    <button type="submit" value="submit">訂閱!</button>
-                                </form>
-
+                                    <input id="subscribe" type="email" placeholder="Enter Your Email Address Here..." required="">
+                                    <button type="button" onclick="subscribe()">訂閱!</button>
                             </div>
                             <!-- mailchimp-alerts Start -->
                             <div class="mailchimp-alerts">
@@ -679,9 +677,10 @@
                             <!-- mailchimp-alerts end -->
                         </div>
                     </div>
+                    
                 </div>
             </div>
-        </div> 
+        </div>  *@
         <!-- Newsletter Section End -->
     </div>
 
@@ -701,6 +700,27 @@
             data:{ProductId:productId},
             success:function (result){
                 alert("商品追蹤成功");
+
+            },
+            error:function (error){
+                console.error("發生錯誤:",error);
+            }
+
+
+        });
+
+        }
+
+
+        function subscribe(){
+            var email = $("#subscribe").val();
+        $.ajax({
+            url:"/AllItems/Subscribe",
+            method:"post",
+            data:{email:email},
+            success:function (result){
+                console.log(result);
+                alert(result.message);
 
             },
             error:function (error){

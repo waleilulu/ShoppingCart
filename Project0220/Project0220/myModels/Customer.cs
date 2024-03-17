@@ -33,4 +33,5 @@ public partial class Customer
     public bool Admin { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public bool Subscribe { get; internal set; }
 }
