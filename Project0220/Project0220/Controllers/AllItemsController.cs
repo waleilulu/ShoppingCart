@@ -96,8 +96,6 @@ namespace Project0220.Controllers
             return View(viewModel);
 
         }
-   
-        
         
             public async Task<IActionResult> Clearance(string bee)
             {
