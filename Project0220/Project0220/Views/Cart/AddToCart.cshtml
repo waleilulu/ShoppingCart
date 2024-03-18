@@ -1,0 +1,97 @@
+﻿@model List<Project0220.myModels.CartItemModel>;
+@using Project0220.myModels;
+
+   <!-- All css files are included here. -->
+    <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
+    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
+    <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <!-- Modernizr JS -->
+    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
+
+
+     <div class="row">
+                    <div class="col">
+
+                        <div class="page-banner text-left">
+                            <h2 style="margin-top:30px;">購物車</h2>
+                            <ul class="page-breadcrumb">
+                                <li><a href="index.html">首頁</a></li>
+                                <li>購物車</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container-01">
+                <div class="row">
+
+                    <div class="col-12">
+                        <!-- Cart Table -->
+                        <div class="cart-table table-responsive mb-30">
+                            <table class="table" style="margin-top:30px;">
+                                <thead>
+                                    <tr>
+                                        <th class="pro-thumbnail">圖片</th>
+                                        <th class="pro-title">產品</th>
+                                        <th class="pro-color">顏色</th>
+                                        <th class="pro-quantity">數量</th>
+                                        <th class="pro-subtotal">小計</th>
+                                        <th class="pro-remove">刪除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                        <form method="post" action="@Url.Action("AddToCart", "Cart")">
+                                        <tr>
+                                            <td class="pro-thumbnail" id="MyCart"><a href="#"><img src="/images/All_product/@item.Product.Image1" width="60"></a></td>
+                                            <td class="pro-title"><a href="#">@item.Product.ProductName</a></td>
+                                            <td class="pro-color"><span>@item.Product.Color1</span></td>
+                                            <td class="pro-quantity"><input type="number" name="count" value="1"></td>
+                                            <td class="pro-subtotal"><span>$@item.Product.UnitPrice</span></td>
+                                            <form id="form-@item.Product.ProductId" method="post" action="@Url.Action("RemoveFromCart", "Cart")">
+                                                     <input type="hidden" name="productId" value="@item.Product.ProductId" />
+                                                     <button type="submit" class="btn btn-link"><i class="fa fa-trash-o"></i></button>
+                                            </form>
+                                        </tr>
+                                        </form>
+
+                            }
+                        }
+                        else
+                        {
+                                <p>購物車是空的。</p>
+                        }
+
+
+                        </tbody>
+                            </table>
+                        </div>
+
+                        <div class="container-01">
+                    <div class="row">
+                    <div class="col-12">
+                       <p class="cart-table" style="font-size: 30px; margin-left: 800px;">總金額:$@Model.Sum(p => p.Product.UnitPrice)</p>
+                       </div>
+                       </div>
+                       </div>
+                    <div>
+                   <a class="cart-button01" href="@Url.Action("Index", "Allitems")" style="margin-left:350px;" >繼續購物</a> 
+                    <a class="cart-button01" asp-controller="Cart" asp-action="NextConsignee">下一步</a>
+                    </div>
+
+
+
+
+                       <!-- All jquery file included here -->
+    <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
+    <script src="~/js/Cart/js/popper.min.js"></script>
+    <script src="~/js/Cart/js/bootstrap.min.js"></script>
+    <script src="~/js/Cart/js/plugins.js"></script>
+    <script src="~/js/Cart/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

@@ -1,9 +1,12 @@
-﻿    
+﻿@model List<Project0220.myModels.Order>
+@using Project0220.myModels;
+
     <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
     <link rel="stylesheet" href="~/css/Cart/css/helper.css">
     <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
     <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <!-- Modernizr JS -->
     <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
@@ -29,45 +32,98 @@
  *@        <!-- Page Banner Section End -->
         <!--Checkout section start-->
         <!-- <div class="checkout-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-40  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"> -->
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-12">
 
                         <!-- Checkout Form Start-->
-                        <form action="#" class="checkout-form">
-                            <div class="row row-40">
 
-                                <div class="col-lg-5">
+            @foreach (var item in Model)
+            {
+                        <form method="post" action="@Url.Action("Consignee", "Cart")" class="checkout-form">
 
+
+                                <div class="col">
                                     <!-- Billing Address -->
-                                    <div id="billing-form" class="mb-10">
+                                    <div id="billing-form" >
                                         <h4 class="checkout-title" style="margin-top:30px;">收件資訊</h4>
+                                          <input type="hidden" name="orderId" value="@item.OrderId" />
+                                           <div >
+                                           <label name="customerId" value="@item.CustomerId" />
+                                           </div>
+                                        <div >
+                                            <label >姓名: @item.Consignee</label>
+                                        </div>
+                                        <div >
+                                        <label>電話: @item.ContactPhone</label>
+                                        </div>
+                                          <div >
+                                        <label>郵遞區號: @item.PostalCode</label>
+                                        </div>
+                                        <div >
+                                            <label>收件地址: @item.ShippingAddress</label>
+                                        </div>
+                                        <div >
+                                            <label>配送貨運: @item.Carrier</label>
+                                        </div>
+                                        <div >
+                                            <label>付款方式:@item.PaymentMethod 
+                                    </label>
+                                </div>
+                                          <div >
+                                           <label>寄送日期:@item.OrderDate</label>
+                                         </div>
 
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>姓名: 林小美</label>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>電話: 0900000000</label>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>電子郵件: 12345@gmail.com</label>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>收件地址: 台中市中區公益路123號</label>
-                                        </div>
-                                         <div class="col-md-6 col-12 mb-20">
-                                            <label>配送貨運: 新竹物流</label>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb-20">
-                                            <label>付款方式:信用卡 </label>
-                                        </div>
-                                        
+
                                     </div>
                                 </div>
-                  
-                               
+
+                        </form>
+            }
+            @foreach (var item in Model)
+            {
+                                        <button onclick="showPaymentInfo('@item.PaymentMethod')">結帳</button>
+                                        <!-- 汇款信息弹窗 -->
+                                         <div id="bankTransferInfo" style="display: none;">
+                                             <p>匯款帳號 : </p>
+                                                 <p>●轉帳
+                                                            戶名: 居家家居股份有限公司
+                                                            帳號: 中國信託 (822) 500012345</p>
+                                             <button onclick="closePopup('bankTransferInfo')">關閉</button>
+                                         </div>
+
+                                         <!-- 信用卡信息填写弹窗 -->
+                                         <div id="creditCardForm" style="display: none;">
+                                             <p>請填寫信用卡資訊 : </p>
+                                             <form>
+                                                 <tr>
+                                                     <td>
+                                                         <label>請填寫姓名</label>
+                                                             <br>
+                                                         <input></input>
+                                                         <br>
+                                                             <label>請填寫信用卡卡號</label>
+                                                                 <br>
+                                                         <input></input>
+                                                             <br>
+                                                             <label>請填寫信用卡背面末三碼</label>
+                                                                 <br>
+                                                             <input></input>
+                                                                 <br>
+                                                                 <label>請填寫有效日期</label>
+                                                                     <br>
+                                                                 <input></input>
+                                                     </td>
+                                                 </tr>
+                                             </form>
+                                                 <button type="button" onclick="confirmPayment()">確認付款</button>
+                                         </div>
+            }
+
+
                                         <!-- Cart Total -->
+                                        <form>
                                         <div class="col-lg-7">
 
                                             <h4 class="checkout-title" style="margin-top:30px;">訂單確認</h4>
@@ -78,7 +134,7 @@
 
                                                 <ul>
                                                     <li><img src="~/images/All_product/A00130.jpg" class="img-checkout">&nbspAVEN三人座沙發 X 01
-                                                        
+
                                                         <span>$25.00</span></li>
                                                     <li><img src="~/images/All_product/B00070.jpg" class="img-checkout">&nbsp照明書櫃 X 01 <span>$25.00</span></li>
                                                     <li><img src="~/images/All_product/C00060.jpg" class="img-checkout">&nbsp雙人軟墊床框附床頭板 X 01 <span>$25.00</span></li>
@@ -95,16 +151,74 @@
         </div>
                                       <div>
                                      <button class="cart-button02">確認訂購</button>
-                                    @* 更改類別名稱cart-button02 *@
+    @* 更改類別名稱cart-button02 *@
                                       </div>
 
         <!--Checkout section end-->
 
-        
+
+@* @foreach (var item in Model.Products)
+{
+                                    <div class="col-lg-5">
+                                    <div class="row">
+                                <div class="col-12 mb-60 d-flex">
+                                    <div class="cart-summary">
+                                        <div class="cart-summary-wrap">
+                                            <h4>購物車總覽</h4>
+                                            <tr>
+                                              <td href="@Url.Action("AddToCart", "Cart")" class="btn btn-primary">填写收件信息</td>
+                                              <td class="pro-title"><a href="#">@item.ProductName</a></td>
+                                            <td class="pro-color"><span>@item.Color1</span></td>
+                                            <td class="pro-quantity">
+                                              <td class="pro-qty"><input type="number" name="count" value="1"></td>
+                                            <td class="pro-subtotal"><span>$@item.UnitPrice</span></td>>
+                                                </tr>
+                                                        <p  class="product-subtotal">小計 <span>@Model.Products.Sum(p => p.UnitPrice)</span></p>
+                                            <p class="product-discound">折扣 <span>$75.00</span></p>
+                                            <h2>總額 <span>$75.00</span></h2>
+                                        </div>
+                                        <div class="cart-summary-button">
+                                            @* 改類別名稱cart-button01 *@
+@*  <button class="cart-button01">繼續購物</button>
+                                            <button type="submit" value="Create" class="cart-button01">繼續結帳</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                               </div>
+                               </div>
+}  *@
+<script>
+
+function showPaymentInfo(paymentMethod) {
+    if (paymentMethod == "匯款") {
+        document.getElementById('bankTransferInfo').style.display = 'block';
+    } else if (paymentMethod == "信用卡") {
+        document.getElementById('creditCardForm').style.display = 'block';
+    }
+}
+
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+
+function confirmPayment() {
+    closePopup('creditCardForm');
+
+Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "已付款成功",
+  showConfirmButton: false,
+  timer: 1500
+});
+}
+
+</script>
       <!-- All jquery file included here -->
     <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
     <script src="~/js/Cart/js/popper.min.js"></script>
     <script src="~/js/Cart/js/bootstrap.min.js"></script>
     <script src="~/js/Cart/js/plugins.js"></script>
     <script src="~/js/Cart/js/main.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
