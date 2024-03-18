@@ -13,7 +13,8 @@ using Project0220.myModels;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore.DataProtection;
+
 
 
 namespace Project0220.Controllers
@@ -21,12 +22,13 @@ namespace Project0220.Controllers
     public class EmailController : Controller
     {
         private readonly ScaffoldEcommerceDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public EmailController(ScaffoldEcommerceDbContext context)
+        public EmailController(ScaffoldEcommerceDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
-
 
         // 發送郵件的方法
         public async Task SendAdEmail(string emailAddress)
@@ -37,14 +39,14 @@ namespace Project0220.Controllers
             .ToListAsync();
 
             // 使用 Google Mail Server 發信
-            string GoogleID = "a0983984816@gmail.com"; //Google 發信帳號
-            string TempPwd = "ptfs mdtv ohtu sgsk"; //應用程式密碼
+            string account = _configuration["EmailSettings:Account"];
+            string password = _configuration["EmailSettings:Password"];
             string ReceiveMail = string.Join(",", subscribedEmails);
 
             string SmtpServer = "smtp.gmail.com";
             int SmtpPort = 587;
             MailMessage mms = new MailMessage();
-            mms.From = new MailAddress(GoogleID);
+            mms.From = new MailAddress(account);
             mms.Subject = "信件主題";
             string[] mailList = ReceiveMail.Split(",");
             foreach (string mail in mailList)
@@ -69,7 +71,7 @@ namespace Project0220.Controllers
             using (SmtpClient client = new SmtpClient(SmtpServer, SmtpPort))
             {
                 client.EnableSsl = true;
-                client.Credentials = new NetworkCredential(GoogleID, TempPwd);//寄信帳密 
+                client.Credentials = new NetworkCredential(account, password);//寄信帳密 
                 client.Send(mms); //寄出信件
             }
 
