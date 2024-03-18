@@ -147,15 +147,10 @@
                                                             <a href="#" class="wishlist-btn" >加入我的最愛</a> 
                                                             </button> 
                                         </div>
-
-                                             <div>
-                                             <form method="post" action="@Url.Action("AddToCart", "Cart")">
-                                             <input type="hidden" name="productId" value="@item.ProductId" />
-                                                   <input type="number" name="count" value="1" /> 
-                                               <button type="submit" class="bs-4-6-1-btn"  id="AddItem" >加入購物車</button>
-                                             </form>    
-                                                </div>
-
+                                        <div class="add-to-link mb-2">
+                                            <button class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
+                                        
+                                        </div>
                                         <div class="product-meta">
                                             <span class="posted-in">
                                         @foreach (var item2 in Model.Category)
