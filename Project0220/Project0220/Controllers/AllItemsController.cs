@@ -23,7 +23,7 @@ namespace Project0220.Controllers
 
             if (!string.IsNullOrEmpty(bee))
             {
-                data = data.Where(o => o.ProductName.Contains(bee));
+                data = data.Where(o => o.ProductName!.Contains(bee));
             }
 
             return View(await data.ToListAsync());
