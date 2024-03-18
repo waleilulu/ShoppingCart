@@ -74,16 +74,20 @@ namespace Project0220.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password,Subscribe")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+                customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
+                // 添加 Customer 到数据库中
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Login));
             }
             return View(customer);
         }
+
         //會員登入
         public IActionResult Login()
         {
@@ -270,5 +274,7 @@ namespace Project0220.Controllers
         {
             return _context.Customers.Any(e => e.CustomerId == id);
         }
+        
+        
     }
 }

@@ -32,7 +32,47 @@ namespace Project0220.Controllers
 		{
 			return View();
 		}
+        public async Task<IActionResult> NewHome(string bee)
+        {
 
+            var data = from o2 in _contextNew.Products
+                       select o2;
+
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            return View(await data.ToListAsync());
+        }
+        
+        public async Task<IActionResult> Family(string bee)
+        {
+
+            var data = from o2 in _contextNew.Products
+                       select o2;
+
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            return View(await data.ToListAsync());
+        }
+        
+        public async Task<IActionResult> Bedroom(string bee)
+        {
+
+            var data = from o2 in _contextNew.Products
+                       select o2;
+
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            return View(await data.ToListAsync());
+        }
         // Ápµ¸§Ú­Ì
         public IActionResult FooterLink01()
         {

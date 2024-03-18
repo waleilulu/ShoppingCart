@@ -42,7 +42,7 @@
     <header>
         @* 公版導航欄在這 *@
         @* 若要調整網頁最上行的nav部分<nav class=可以加入container，跟下面所有頁面對齊> *@
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navnav">
                 <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <img src="~/images/GGLogo.png" width="268.5" height="81.75"
@@ -93,9 +93,12 @@
                                 <a class="nav-link" href="~/Cart/index"><i class="fa-solid fa-cart-shopping"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-keyboard"></i></a>
+                                <a class="nav-link" asp-controller="" asp-action=""><i class="fa-solid fa-keyboard"></i></a>
                             </li>
-
+                             <li class="nav-item">
+                                <a class="nav-link" asp-controller="Email" asp-action="SendAdEmail"><i class="fa-light fa-hippo"></i></i></a>
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>

@@ -3,7 +3,25 @@
     font-optical-sizing: auto;
     font-weight: <weight>;
     font-style: normal;
-    font-size:larger;
+    font-size:medium;
 }
+.area{
+    font-size:x-large;
+}
+.oneBtn{
+    display:flex;
+    justify-content:center;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-color:black;
+}
+.oneBtn:hover{
+    background-color:white !important;
+}
+.carousels{
+    margin-top:5% !important;
+}
+.navnav{
+   position:sticky;
 
-
+}

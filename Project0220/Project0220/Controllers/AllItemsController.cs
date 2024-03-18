@@ -23,7 +23,7 @@ namespace Project0220.Controllers
 
             if (!string.IsNullOrEmpty(bee))
             {
-                data = data.Where(o => o.ProductName.Contains(bee));
+                data = data.Where(o => o.ProductName!.Contains(bee));
             }
 
             return View(await data.ToListAsync());
@@ -40,6 +40,33 @@ namespace Project0220.Controllers
             return RedirectToAction("Index", new { bee });
         }
 
+        [HttpPost]
+        public IActionResult Subscribe(string email)
+        {
+            var userId = HttpContext.Session.GetInt32("userId");
+            if (userId.HasValue)
+            {
+                //找到這個人是誰  從客戶資料表裡面找
+                var user = _contextNew.Customers.Find(userId.Value);
+                if (user != null)
+                {   //確定有此使用者
+                    //var product = _contextNew.Products.Find(ProductId);
+
+                    return Json(new { success = false, message = "成功" });
+                }
+                else
+                {
+                    // 使用者未驗證
+                    return Json(new { success = false, message = "User not authenticated" });
+                }
+            }
+            else
+            {
+                // 使用者未登錄
+                return Json(new { success = false, message = "尚未登錄 請登入" });
+            }
+        }
+
         //[HttpPost]
         //public async Task<IActionResult> Index(string bee)
         //{
@@ -49,7 +76,7 @@ namespace Project0220.Controllers
         //               select o2;
         //    return View(await data.ToListAsync());
         //}
-       
+
         public async Task<IActionResult> ItemDetails(int bee)
         {
             var z = bee;
@@ -69,8 +96,6 @@ namespace Project0220.Controllers
             return View(viewModel);
 
         }
-   
-        
         
             public async Task<IActionResult> Clearance(string bee)
             {
