@@ -59,7 +59,7 @@ namespace Project0220.Controllers
             };
 
 
-
+            
             return View(viewModel);
         }
 
@@ -183,6 +183,7 @@ namespace Project0220.Controllers
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -226,7 +227,8 @@ namespace Project0220.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Details));
+                return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+           
             }
             return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
         }

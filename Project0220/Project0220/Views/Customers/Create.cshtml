@@ -5,6 +5,7 @@
 }
 
 <!--引入-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="~/css/Member/css/MemberRegister.css">
 <!--Member Register Section-->
 
@@ -24,12 +25,14 @@
                 <input asp-for="CustomerName" class="form-control" />
                 <span asp-validation-for="CustomerName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label">生日</label>
-               <div class=selectBirthday>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div></div>
+         <div class="form-group">
+    <label asp-for="DateOfBirth" class="control-label">生日</label>
+    <div class="selectBirthday">
+        <input asp-for="DateOfBirth" class="form-control" type="date" max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+</div>
+
            <div class="form-group">
           <label asp-for="Gender" class="control-label">性別</label>
                   <div class="selectAddress">
@@ -50,7 +53,7 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-          <!-- 城市下拉選單 -->
+   <!-- 城市下拉選單 -->
         <div class="form-group">
     <label asp-for="AddressCity" class="control-label">城市</label>
     <div class="selectAddress">
@@ -66,7 +69,8 @@
     <span asp-validation-for="AddressDist" class="text-danger"></span>
 </div></div>
 
-            <div class="form-group">
+
+ <div class="form-group">
                 <label asp-for="Address" class="control-label">地址</label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
@@ -95,8 +99,14 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
- <script>
+<script>
+
     var citySelect = document.getElementById('city');
     var districtSelect = document.getElementById('district');
 
@@ -152,3 +162,5 @@
     // 初始化一次，以顯示預設城市的區域選項
     citySelect.dispatchEvent(new Event('change'));
 </script>
+
+  

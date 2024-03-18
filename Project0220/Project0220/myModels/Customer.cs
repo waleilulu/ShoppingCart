@@ -12,6 +12,9 @@ public partial class Customer
 
     //下方設定日期: 年/月/日 沒有幾點幾分
     [DataType(DataType.Date)]
+    //只能挑選填寫日期以前的日期 
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+
     public DateTime? DateOfBirth { get; set; }
 
     public string? Gender { get; set; }
