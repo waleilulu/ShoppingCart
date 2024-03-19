@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Project0220.myModels.Order>
+@using Project0220.ViewModel;
+
+<!-- All css files are included here. -->
+    <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
+    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
+    <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
+    <div class="container">
+                <div class="row">
+                    <div class="col-12">
+    <div class="checkoutdone">
+                @foreach (var order in Model)
+                {
+                        <h1 class="checkoutdone-01">謝謝您的訂購</h1>
+                         <p class="checkoutdone-02">您的訂單編號:</p>
+                         <p class="checkoutdone-03">@order.OrderId</p>
+                }
+    <button class="cart-button01"  style=" margin-bottom:30px; margin-top:300px; margin-left:130px;">查詢您的訂單</button>
+    </div>
+   </div>
+    </div>
+     </div>
+
+        <!-- All jquery file included here -->
+    <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
+    <script src="~/js/Cart/js/popper.min.js"></script>
+    <script src="~/js/Cart/js/bootstrap.min.js"></script>
+    <script src="~/js/Cart/js/plugins.js"></script>
+    <script src="~/js/Cart/js/main.js"></script>
