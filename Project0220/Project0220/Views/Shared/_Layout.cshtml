@@ -80,7 +80,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="AllItems" asp-action="Clearance" >出清品專區</a>
-                            </li>
+                            </li> 
                             <form class="form-inline my-2 my-lg-0 mr-2" method="post" action="~/AllItems/Search">
                                 <input class="form-control mr-sm-2" type="search" placeholder="搜尋您想找的物品"
                                     aria-label="Search" name="bee">
@@ -92,12 +92,26 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="~/Cart/index"><i class="fa-solid fa-cart-shopping"></i></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="" asp-action=""><i class="fa-solid fa-keyboard"></i></a>
-                            </li>
+
+                        @{
+                            var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
+                        }
+                       
+                        @if (isAuthenticated )
+                           {
+                                                              <!-- 登出按鈕 -->  
+                      <form asp-controller="Customers" asp-action="Logout" method="post" >
+                                      <button type="submit" class="nav-link" style="border:none;background:none;">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                 </button>
+                       </form>
+                             
+                        }
+                            
                              <li class="nav-item">
                                 <a class="nav-link" asp-controller="Email" asp-action="SendAdEmail"><i class="fa-light fa-hippo"></i></i></a>
                             </li>
+
                             
                         </ul>
                     </div>

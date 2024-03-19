@@ -36,6 +36,7 @@ namespace Project0220.Controllers
         {
 
             var data = from o2 in _contextNew.Products
+                       where o2.SpecialZoneType == "新家"
                        select o2;
 
             if (!string.IsNullOrEmpty(bee))
@@ -45,11 +46,13 @@ namespace Project0220.Controllers
 
             return View(await data.ToListAsync());
         }
-        
+
+
         public async Task<IActionResult> Family(string bee)
         {
 
             var data = from o2 in _contextNew.Products
+                       where o2.SpecialZoneType == "小家庭"
                        select o2;
 
             if (!string.IsNullOrEmpty(bee))
@@ -59,11 +62,12 @@ namespace Project0220.Controllers
 
             return View(await data.ToListAsync());
         }
-        
+
         public async Task<IActionResult> Bedroom(string bee)
         {
 
             var data = from o2 in _contextNew.Products
+                       where o2.SpecialZoneType == "寢室"
                        select o2;
 
             if (!string.IsNullOrEmpty(bee))

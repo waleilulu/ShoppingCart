@@ -29,9 +29,9 @@ namespace Project0220.Controllers
         }
 
         // GET: Customers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details()
         {
-         
+            var id = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             // 根據 Session 中的用戶ID查找用戶
             var user = await _context.Customers.FindAsync(id);
             if (user == null)
@@ -59,7 +59,7 @@ namespace Project0220.Controllers
             };
 
 
-
+            
             return View(viewModel);
         }
 
@@ -129,7 +129,7 @@ namespace Project0220.Controllers
                 // 根据用户角色重定向到适当的页面
                 if (user.Admin)
                 {
-                    return RedirectToAction("AdminDashboard", "Admin");
+                    return RedirectToAction("Admin", "Customers");
                 }
                 else
                 {
@@ -138,10 +138,14 @@ namespace Project0220.Controllers
             }
 
             // 登录失败，返回登录视图并显示错误消息
-            ModelState.AddModelError("", "登录失败，请检查用户名和密码。");
+            ModelState.AddModelError("", "登入失敗，請檢查用户名和密碼。");
             return View("Login");
         }
-
+        //管理者選擇頁面
+        public IActionResult Admin() {
+            return View();         
+        
+        }
 
 
         //登出
@@ -187,6 +191,7 @@ namespace Project0220.Controllers
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -230,7 +235,8 @@ namespace Project0220.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Details));
+                return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+           
             }
             return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
         }

@@ -11,12 +11,21 @@
   <script src="~/js/Member_/js/popper.min.js"> </script>
   <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
 
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+    </style>
 
 
-<!-- 登出按鈕 -->
-<form action="/Customers/Logout" method="post">
-    <button type="submit">登出</button>
-</form>
+
 
 
 
@@ -24,7 +33,11 @@
 <div class="container" style="margin-top: 30px;padding:5px 0px 5px 0px;">
     <div class="row">
         <div class="col-md-12">
-            <h4 class="hometitle">會員中心</h4><br>
+          <div>
+      <h2>會員中心</h2> 
+      
+        </div>
+
             <button class="tablink" onclick="openPage('MData', this, 'white')" id="defaultOpen">會員資料</button>
             <button class="tablink" onclick="openPage('MDiscount', this, 'white')" >購物金</button>
             <button class="tablink" onclick="openPage('MOrders', this, 'white')">訂單</button>
@@ -77,14 +90,29 @@
                     </div>
 
                     <div id="MFollow" class="tabcontent">
-                        @foreach (var product in Model.Products)
-                        {
-                               <li>@product.Image1</li>
-                                          <li>@product.ProductName</li>
-                                                         <li>@product.UnitPrice</li>
-                                                                    <li>@product.UnitInStock</li>
-                                                                           <li>@product.Color1</li>
-                        }
+     
+   <table>
+
+        <tr>
+            <th>產品圖片</th>
+            <th>產品名稱</th>
+            <th>價格</th>
+               <th>庫存</th>
+                  <th>顏色</th>                
+        </tr>
+  @foreach (var product in Model.Products)
+                                {
+               <tr>
+                    <th>@product.Image1</th>
+                    <th>@product.ProductName</th>
+                    <th>@product.UnitPrice</th>
+                   <th>@product.UnitInStock</th>
+                    <th>@product.Color1</th>                 
+               </tr>
+
+                                } 
+       </table>
+
                     </div>
                 </div>
             </div>

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- 引入 SweetAlert 的 CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script>
+    // 顯示彈跳視窗，讓管理員選擇進入的頁面
+    swal({
+      title: "歡迎您的光臨",
+      text: "請選擇要進入哪一個頁面:",
+      buttons: {
+        page1: {
+          text: "管理者",
+          value: "/Products/Index",
+        },
+        page2: {
+          text: "會員",
+          value: "/Customers/Details",
+        },
+      },
+    })
+    .then((value) => {
+      // 根據管理員的選擇執行相應的操作
+      switch (value) {
+        case  "/Products/Index":
+          window.location.href = "/Products/Index"; // 導向到第一個頁面的 URL
+          break;
+        case "/Customers/Details":
+          window.location.href = "/Customers/Details"; // 導向到第二個頁面的 URL
+          break;
+        default:
+          // 如果沒有選擇任何選項，或者點擊了彈跳視窗之外的區域，什麼也不做
+      }
+    });
+  </script>
+</body>
+</html>
