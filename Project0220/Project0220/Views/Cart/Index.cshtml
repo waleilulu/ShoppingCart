@@ -1,246 +1,29 @@
-﻿@model Project0220.myModels.Order
+﻿@model List<Project0220.myModels.CartItem>
 
-    <!-- All css files are included here. -->
-    <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
-    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
-    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
-    <link rel="stylesheet" href="~/css/Cart/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-    <!-- Modernizr JS -->
-    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
-
-
-    <div id="main-wrapper">
-
-
-        <!-- Page Banner Section Start -->
-    @*         <div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
-            <div class="container">
- *@                <div class="row">
-                    <div class="col">
-
-                        <div class="page-banner text-left">
-                            <h2 style="margin-top:30px;">購物車</h2>
-                            <ul class="page-breadcrumb">
-                                <li><a href="index.html">首頁</a></li>
-                                <li>購物車</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-    @*             </div>
-        </div>
- *@        <!-- Page Banner Section End -->
-        <!--Cart section start-->
-    @* <div class="cart-section section pt-90 pt-lg-70 pt-md-60 pt-sm-50 pt-xs-45  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"> *@
-            <div class="container-01">
-                <div class="row">
-
-                    <div class="col-12">
-                        <!-- Cart Table -->
-                        <div class="cart-table table-responsive mb-30">
-                            <table class="table" style="margin-top:30px;">
-                                <thead>
-                                    <tr>
-                                        <th class="pro-thumbnail">圖片</th>
-                                        <th class="pro-title">產品</th>
-                                        <th class="pro-color">顏色</th>
-                                        <th class="pro-quantity">數量</th>
-                                        <th class="pro-subtotal">小計</th>
-                                        <th class="pro-remove">刪除</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/A00130.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">AVEN三人座沙發</a></td>
-                                        <td class="pro-color"><span>藍色</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/B00070.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">照明書櫃</a></td>
-                                        <td class="pro-color"><span>木質色</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro-thumbnail"><a href="#"><img src="~/images/All_product/C00060.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">雙人軟墊床框附床頭板</a></td>
-                                        <td class="pro-color"><span>粉色</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty"><input type="number" value="1"></div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$25.00</span></td>
-                                        <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="container-01">
-                    <div class="row">
-                    <div class="col-12">
-
-                        <!-- Checkout Form Start-->
-                        <div class="container-01">
-                <div class="row">
-                    <div class="col-12">
-
-                        <!-- Checkout Form Start-->
-                                        @*   <form action="#" class="checkout-form"> *@
-                            <div class="row row-40">
-
-                                <div class="col-lg-7">
-
-                                    <!-- Billing Address -->
-                                    <div id="billing-form" class="mb-10">
-                                        <h4 class="checkout-title">收件資訊</h4>
-                                        <form asp-action="Create">
-                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <div class="row">
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label asp-for="Consignee" class="control-label">收件人*</label>
-                                                 <input asp-for="Consignee" class="form-control" type="text" placeholder="請輸入收件人姓名或公司名稱"/>
-                                                <span asp-validation-for="Consignee" class="text-danger"></span>
-
-                                            </div>
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                 <label asp-for="ContactPhone" class="control-label">聯絡電話*</label>
-                                                 <input asp-for="ContactPhone" class="form-control" type="text" placeholder="請輸入電話"/>
-                                                 <span asp-validation-for="ContactPhone" class="text-danger"></span>
-
-                                            </div>
-
-                                             <div class="col-md-6 col-12 mb-20">
-                                                  <p>付款資訊*</p>
-                                                  <select asp-for="PaymentMethod" class="control-label nice-select" id="paymentMethod"  
-                                                  style ="width: 290px;" >
-                                                      <option >請選擇使用付款方式</option>
-                                                      <option asp-for="PaymentMethod" class="form-control" value="匯款">匯款</option>
-                                                      <option asp-for="PaymentMethod" class="form-control" value="信用卡">信用卡</option>
-                                                  </select>
-                                              </div>
-
-                                               <div class="col-md-6 col-12 mb-20">
-                                                <p>配送資訊*</p>
-                                                <select asp-for="Carrier"  class="control-label nice-select"  id="paymentMethod"
-                                                style ="width: 290px;">
-                                                    <option >請選擇配送貨運公司</option>
-                                                    <option asp-for="Carrier" class="form-control">自行配送</option>
-                                                    <option asp-for="Carrier" class="form-control">新竹貨運</option>
-                                                    <option asp-for="Carrier" class="form-control">黑貓宅急便</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-12 mb-20">
-                                                <label asp-for="ShippingAddress" class="control-label">收件地址*</label>
-                                                <input asp-for="ShippingAddress" class="form-control" type="text" placeholder="請輸入收件地址"/>
-                                                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
-
-                                            </div>
-
-                                             <div class="col-md-6 col-12 mb-20">
-                                                <label asp-for="ShippingDate" class="control-label">寄送日期</label>
-                                                <input asp-for="ShippingDate" class="form-control date-picker" type="date" placeholder="請選擇日期" min="@DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")" />
-                                                <span asp-validation-for="ShippingDate" class="text-danger"></span>
-
-                                            </div>
-
-
-
-
-                                                            @*                                               <input asp-action="Create" type="submit" value="Create" class="btn btn-primary" />
- *@                                              </form>  
-
-                                            <div class="col-md-6 col-12 mb-20">
-                                                <label  class="control-label">優惠券 </label>
-                                                <input class="form-control" type="text"  style ="width: 150px;" placeholder="請輸入優惠碼">
-                                            </div>
-                                            <div>
-                                                <button class=" cart-button0101" style="">確認</button>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Cart Total -->
-                                <div class="col-lg-5">
-                                <div class="row">
-                            <div class="col-12 mb-60 d-flex">
-                                <div class="cart-summary">
-                                    <div class="cart-summary-wrap">
-                                        <h4>購物車總覽</h4>
-                                        <p>AVEN三人座沙發 - 藍色 X 01<span>$25.00</span></p>
-                                        <p>照明書櫃 - 木質色 X 01<span>$25.00</span></p>
-                                        <p>雙人軟墊床框附床頭板 - 粉色 X 01<span>$25.00</span></p>
-
-                                        <p  class="product-subtotal">小計 <span>$75.00</span></p>
-                                        <p class="product-discound">折扣 <span>$75.00</span></p>
-                                        <h2>總額 <span>$75.00</span></h2>
-                                    </div>
-                                    <div class="cart-summary-button">
-                                                            @* 改類別名稱cart-button01 *@
-                                        <button class="cart-button01">繼續購物</button>
-                                        <button asp-action="Create" id="payment" class="cart-button01">繼續結帳</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                           </div>
-                           </div>
-
-                    </div>
-                </div>
-            </div>
-
-        <!--Cart section end-->
-
-                            @* <script>
-// const { value: formValues } = await Swal.fire({
-//   title: "Multiple inputs",
-//   html: `
-//     <input id="swal-input1" class="swal2-input">
-//     <input id="swal-input2" class="swal2-input">
-//   `,
-//   focusConfirm: false,
-//   preConfirm: () => {
-//     return [
-//       document.getElementById("swal-input1").value,
-//       document.getElementById("swal-input2").value
-//     ];
-//   }
-// });
-// if (formValues) {
-//   Swal.fire(JSON.stringify(formValues));
-// } *@
-
-<script>
-
-</script>
-                            @section Scripts {
-                                @{
-                                    await Html.RenderPartialAsync("_ValidationScriptsPartial");
-                                }
-                            }
-
-
-    <!-- All jquery file included here -->
-    <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
-    <script src="~/js/Cart/js/popper.min.js"></script>
-    <script src="~/js/Cart/js/bootstrap.min.js"></script>
-    <script src="~/js/Cart/js/plugins.js"></script>
-    <script src="~/js/Cart/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+@if (Model != null && Model.Any())
+{
+    <h1>購物車</h1>
+    <table>
+        <tr>
+            <th>產品ID</th>
+            @* <th>產品名稱</th>
+            <th>價格</th> *@
+            <th>選擇的顏色</th>
+            <th>數量</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductID</td>
+                @* <td>@item.Product.ProductName</td>
+                <td>@item.Product.UnitPrice</td> *@
+                <td>@item.SelectedColor</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>您的購物車為空。</p>
+}
