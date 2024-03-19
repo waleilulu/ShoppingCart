@@ -14,6 +14,7 @@ public partial class ScaffoldEcommerceDbContext : DbContext
         : base(options)
     {
     }
+    public virtual DbSet<CartItem> CartItems { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
 

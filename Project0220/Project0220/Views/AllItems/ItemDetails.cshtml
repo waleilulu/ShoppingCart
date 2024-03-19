@@ -147,10 +147,52 @@
                                                             <a href="#" class="wishlist-btn" >加入我的最愛</a> 
                                                             </button> 
                                         </div>
-                                        <div class="add-to-link mb-2">
+
+
+
+                                        @* <div class="add-to-link mb-2">
                                             <button class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
-                                        
-                                        </div>
+                                        </div> *@
+                                        @* 購物車測試 *@
+                                <form method="post" action="/Cart/AddToCart">
+                                    <!-- 隱藏的產品ID input 欄位 -->
+                                    <input type="hidden" name="productId" value="@item.ProductId">
+
+                                    <!-- 產品數量 input 欄位 -->
+                                    <div class="product-quantity">
+                                        <label for="quantity">數量:</label>
+                                        <input id="quantity" name="quantity" value="1" type="number">
+                                    </div>
+
+                                    <!-- 顏色選擇 input 欄位 -->
+                                    <div class="product-color">
+                                        <label for="color">顏色:</label>
+                                        <select id="color" name="selectedColor">
+                                            <option value="option1">@Html.DisplayFor(modelItem => item.Color1)</option>
+                                            <option value="option2">@Html.DisplayFor(modelItem => item.Color2)</option>
+                                            <!-- 添加其他顏色選項 -->
+                                        </select>
+                                    </div>
+
+                                    <!-- 加入購物車按鈕 -->
+                                    <div class="add-to-link mb-2">
+                                        <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
+                                    </div>
+                                </form>
+                                        @* 購物車測試 *@
+
+
+
+
+
+
+
+
+
+
+
+
+
                                         <div class="product-meta">
                                             <span class="posted-in">
                                         @foreach (var item2 in Model.Category)
