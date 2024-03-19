@@ -25,3 +25,14 @@
    position:sticky;
 
 }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* 下拉菜单背景色 */
+    padding: 10px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
