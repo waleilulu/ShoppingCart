@@ -282,7 +282,7 @@ namespace Project0220.Controllers
             }
 
             // 刪除舊圖（如果有）
-            if (!string.IsNullOrEmpty(product.Image3))
+            if (!string.IsNullOrEmpty(product.Image4))
             {
                 string oldImage4FullPath = environment.WebRootPath + "/images/All_product/" + product.Image4;
                 System.IO.File.Delete(oldImage4FullPath);
