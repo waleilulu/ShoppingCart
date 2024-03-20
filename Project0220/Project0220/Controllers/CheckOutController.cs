@@ -34,11 +34,78 @@ namespace Project0220.Controllers
             return View();
         }
 
+        
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,PostalCode,ShippingAddress,Consignee,ContactPhone")] Order order)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(order);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(CheckOut));
+        //    }
+        //    ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
+        //    return View(order);
+        //}
+
+
+
+        //public IActionResult NextConsignee()
+        //{
+
+        //    // 檢查是否存在名為 "membercookie" 的 cookie
+        //    if (HttpContext.Request.Cookies["membercookie"] != null)
+        //    {
+        //        // 如果存在相應的 cookie，繼續執行其他操作
+        //        return RedirectToAction("ChechOut", "Consignee", new { id = HttpContext.Request.Cookies["membercookie"] });
+
+        //    }
+
+        //    // 如果用戶未通過身份驗證，導向登入頁面
+        //    return RedirectToAction("Login", "Customers");
+
+        //}
+
+
         public IActionResult Consignee()
         {
+            //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
             return View();
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,PostalCode,ShippingAddress,Consignee,ContactPhone")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(order);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(CheckOut));
+            }
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
+            return View(order);
+        }
+
+        // GET: Orders/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
+            return View(order);
         }
 
         public async Task<IActionResult> CheckOut()
