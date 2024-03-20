@@ -63,7 +63,6 @@ namespace Project0220.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public IActionResult AddToCart(int productId, int quantity, string selectedcolor)
         {
