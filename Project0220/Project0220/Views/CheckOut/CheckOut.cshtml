@@ -38,7 +38,7 @@
                  <div class="col-6">
             @foreach (var item in Model)
             {
-                            <form method="post" action="@Url.Action("Consignee", "Cart")" class="checkout-form">
+                            <form method="post" action="@Url.Action("Consignee", "CheckOut")" class="checkout-form">
                                         <!-- Billing Address -->
                                         <div id="billing-form" >
                                             <h4 class="checkout-title" style="margin-top:30px; margin-bottom:80px;">收件資訊</h4>
@@ -70,9 +70,8 @@
                                         </div>
                             </form>
 
-
                                                 <button onclick="showPaymentInfo('@item.PaymentMethod')" class="cart-button02">點擊結帳</button>
-                                            <!-- 汇款信息弹窗 -->
+                                            <!-- 匯款訊息彈跳 -->
                                              <div id="bankTransferInfo" style="display: none;">
                                                      <div class="checkout-title">匯款帳號 : </div>
                                                              <div class="checkout-form">
@@ -81,7 +80,7 @@
                                                      <button onclick="closePopup('bankTransferInfo')" class="cart-button02">關閉</button>
                                              </div>
 
-                                             <!-- 信用卡信息填写弹窗 -->
+                                                 <!-- 信用卡訊息彈跳-->
                                              <div id="creditCardForm" style="display: none;">
                                               <br>
                                               <p class="checkout-title">請填寫信用卡資訊 : </p>

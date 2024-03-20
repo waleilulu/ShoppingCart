@@ -36,13 +36,14 @@
                                          <form asp-action="Create">
                                          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                         <div class="row">
-
                                             <div class="col-12">
-
-                                    @* 
-                                                 <label asp-for="CustomerId" class="control-label">顧客ID*</label>
-                                                 <input asp-for="CustomerId" class="form-control" type="text" placeholder="您的會員編號"/>
-                                                <span asp-validation-for="CustomerId" class="text-danger"></span> *@
+                                    @{
+                                        var cookie = Context.Request.Cookies.ContainsKey("membercookie");
+                                    }
+                                    
+                                                 <label  asp-for="CustomerId" class="control-label">顧客ID*</label>
+                                                 <input  asp-for="CustomerId" class="form-control" type="text" value="@cookie"/>
+                                                <span  asp-validation-for="CustomerId" class="text-danger"></span>
 
 
                                                 <label asp-for="Consignee" class="control-label">收件人*</label>
@@ -78,10 +79,15 @@
                                             </div>
 
                                             <div class="col-12 mb-20">
-                                                <label asp-for="ShippingAddress" class="control-label">收件地址*</label>
-                                                <input asp-for="ShippingAddress" class="form-control" type="text" placeholder="請輸入收件地址含郵遞區號" required/>
-                                                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                                                <label asp-for="PostalCode" class="control-label">郵遞區號*</label>
+                                                <input asp-for="PostalCode" class="form-control" type="text" placeholder="請輸入郵遞區號" required/>
+                                                <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                            </div>
 
+                                            <div class="col-12 mb-20">
+                                                <label asp-for="ShippingAddress" class="control-label">收件地址*</label>
+                                                <input asp-for="ShippingAddress" class="form-control" type="text" placeholder="請輸入收件地址" required/>
+                                                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
                                             </div>
 
                                              <div class="col-12 mb-20">
@@ -92,7 +98,7 @@
                                              <div class="cart-summary-button">
                                     @* 改類別名稱cart-button01 *@
 
-                                        <button type="submit" value="Create" class="cart-button01" style="margin-left:150px;" asp-controller="Cart" asp-action="Create"> 繼續結帳</button>
+                                        <button type="submit" value="Create" class="cart-button01" style="margin-left:150px;" asp-controller="CheckOut" asp-action="CheckOut"> 繼續結帳</button>
 
                                     </div> 
                                          </form>  
