@@ -6,8 +6,9 @@
     <table>
         <tr>
             <th>產品ID</th>
-            @* <th>產品名稱</th>
-            <th>價格</th> *@
+            <th>產品圖示</th>
+            <th>產品名稱</th>
+            <th>價格</th>
             <th>選擇的顏色</th>
             <th>數量</th>
         </tr>
@@ -15,8 +16,9 @@
         {
             <tr>
                 <td>@item.ProductID</td>
-                @* <td>@item.Product.ProductName</td>
-                <td>@item.Product.UnitPrice</td> *@
+                <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="60"></td>
+                <td>@item.Product.ProductName</td>
+                <td>@item.Product.UnitPrice</td>
                 <td>@item.SelectedColor</td>
                 <td>@item.Quantity</td>
             </tr>
