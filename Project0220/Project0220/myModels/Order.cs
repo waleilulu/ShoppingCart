@@ -36,8 +36,6 @@ public partial class Order
 
 	public string? ContactPhone { get; set; }
 
-
-
 	public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
     public string? Status { get; set; }
 

@@ -40,7 +40,8 @@
                                     @{
                                         var cookie = Context.Request.Cookies.ContainsKey("membercookie");
                                     }
-                                    
+                                   
+                       
                                                  <label  asp-for="CustomerId" class="control-label">顧客ID*</label>
                                                  <input  asp-for="CustomerId" class="form-control" type="text" value="@cookie"/>
                                                 <span  asp-validation-for="CustomerId" class="text-danger"></span>
@@ -91,14 +92,14 @@
                                             </div>
 
                                              <div class="col-12 mb-20">
-                                                <label asp-for="OrderDate" class="control-label">寄送日期</label>
-                                                <input asp-for="OrderDate" class="form-control" placeholder="請選擇日期" min="@DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")" required/>
-                                                <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                                <label asp-for="ShippingDate" class="control-label">寄送日期</label>
+                                                <input asp-for="ShippingDate" class="form-control" placeholder="請選擇日期" min="@DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")" required/>
+                                                <span asp-validation-for="ShippingDate" class="text-danger"></span>
                                             </div>
                                              <div class="cart-summary-button">
                                     @* 改類別名稱cart-button01 *@
 
-                                        <button type="submit" value="Create" class="cart-button01" style="margin-left:150px;" asp-controller="CheckOut" asp-action="CheckOut"> 繼續結帳</button>
+                                        <button type="submit" value="Create" class="cart-button01" style="margin-left:150px;" asp-controller="CheckOut" asp-action="Create"> 繼續結帳</button>
 
                                     </div> 
                                          </form>  

@@ -108,7 +108,7 @@
 
                    </div>
                    <div class="col-6">
-                        <h4 class="checkout-title" style="margin-top:30px;">訂單確認</h4>
+                        <h4 class="checkout-title" style="margin-top:30px;" >訂單確認</h4>
 
                                             <div class="checkout-cart-total">
 
@@ -129,10 +129,10 @@
 
 
 
-                                       <div>
-                                     <button class="cart-button02" style="margin-left:450px;">確認訂購</button>
+                                       <form asp-action="Create">
+                                     <button  type="submit"  value="Create" class="cart-button02" style="margin-left:450px;" asp-action="CheckOutDone">確認訂購</button>
             @* 更改類別名稱cart-button02 *@
-                                      </div>
+                                      </form>
 
         <!--Checkout section end-->
 
