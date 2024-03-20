@@ -59,7 +59,7 @@ namespace Project0220.Controllers
             };
 
 
-            
+
             return View(viewModel);
         }
 
@@ -143,8 +143,8 @@ namespace Project0220.Controllers
         }
         //管理者選擇頁面
         public IActionResult Admin() {
-            return View();         
-        
+            return View();
+
         }
 
 
@@ -169,19 +169,19 @@ namespace Project0220.Controllers
 
         public IActionResult UserProfile()
         {
-            
-                // 檢查是否存在名為 "membercookie" 的 cookie
-                if (HttpContext.Request.Cookies["membercookie"] != null)
-                {
-                    // 如果存在相應的 cookie，繼續執行其他操作
-                    // 這裡可以放置會員中心頁面的相關代碼
-                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+
+            // 檢查是否存在名為 "membercookie" 的 cookie
+            if (HttpContext.Request.Cookies["membercookie"] != null)
+            {
+                // 如果存在相應的 cookie，繼續執行其他操作
+                // 這裡可以放置會員中心頁面的相關代碼
+                return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
 
 
-                }
+            }
 
-                    // 如果用戶未通過身份驗證，導向登入頁面
-                  return RedirectToAction("Login", "Customers");
+            // 如果用戶未通過身份驗證，導向登入頁面
+            return RedirectToAction("Login", "Customers");
 
         }
 
@@ -191,7 +191,7 @@ namespace Project0220.Controllers
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            
+
             if (id == null)
             {
                 return NotFound();
@@ -236,7 +236,7 @@ namespace Project0220.Controllers
                     }
                 }
                 return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
-           
+
             }
             return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
         }
@@ -278,7 +278,28 @@ namespace Project0220.Controllers
         {
             return _context.Customers.Any(e => e.CustomerId == id);
         }
-        
-        
+
+        //刪除追蹤商品
+        [HttpPost]
+        public IActionResult DeleteProduct(int productId)
+        {
+            
+            var CustomerId =Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+            var trackList = _context.TrackLists
+                           .SingleOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
+
+            if (trackList != null)
+            {
+                _context.TrackLists.Remove(trackList);
+                _context.SaveChanges();
+
+
+                return Json(new { success = true, message = "追蹤商品刪除成功" }); // 返回刪除成功的視圖
+            }
+            return Json(new { success = true, message = "追蹤商品刪除失敗" });
+        }
+
+
+
     }
 }

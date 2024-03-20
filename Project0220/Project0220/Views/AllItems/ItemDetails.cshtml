@@ -8,10 +8,6 @@
 
     
     <!-- All css files are included here. -->
-    
-
-  
- 
 
         <!-- main-search start -->
         <div class="main-search-active">
@@ -144,7 +140,7 @@
                                         
                                         <div class="wishlist-compare-btn mb-2">
                                               <button onclick="addfavoritebtn(@item.ProductId)">
-                                                            <a href="#" class="wishlist-btn" >加入我的最愛</a> 
+                                                            <a href="" class="wishlist-btn" >加入我的最愛</a> 
                                                             </button> 
                                         </div>
 
@@ -168,8 +164,9 @@
                                     <div class="product-color">
                                         <label for="color">顏色:</label>
                                         <select id="color" name="selectedColor">
-                                            <option value="option1">@Html.DisplayFor(modelItem => item.Color1)</option>
-                                            <option value="option2">@Html.DisplayFor(modelItem => item.Color2)</option>
+                                            <option value="@item.Color1">@item.Color1</option>
+                                            <option value="@item.Color2">@item.Color2</option>
+
                                             <!-- 添加其他顏色選項 -->
                                         </select>
                                     </div>

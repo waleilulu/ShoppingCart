@@ -2,28 +2,42 @@
 
 @if (Model != null && Model.Any())
 {
-    <h1>購物車</h1>
-    <table>
-        <tr>
-            <th>產品ID</th>
-            @* <th>產品名稱</th>
-            <th>價格</th> *@
-            <th>選擇的顏色</th>
-            <th>數量</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductID</td>
-                @* <td>@item.Product.ProductName</td>
-                <td>@item.Product.UnitPrice</td> *@
-                <td>@item.SelectedColor</td>
-                <td>@item.Quantity</td>
-            </tr>
-        }
-    </table>
+    <div class="container">
+        <h1 class="mt-4 mb-4">購物車</h1>
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">產品ID</th>
+                            <th scope="col">產品圖示</th>
+                            <th scope="col">產品名稱</th>
+                            <th scope="col">價格</th>
+                            <th scope="col">選擇的顏色</th>
+                            <th scope="col">數量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductID</td>
+                                <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
+                                <td>@item.Product.ProductName</td>
+                                <td>$@item.Product.UnitPrice</td>
+                                <td>@item.SelectedColor</td>
+                                <td>@item.Quantity</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 }
 else
 {
-    <p>您的購物車為空。</p>
+    <div class="container">
+        <p class="mt-4">您的購物車為空。</p>
+    </div>
 }

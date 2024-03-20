@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project0220.Models;
 using Project0220.myModels;
 using System;
+using System.Linq;
 
 
 namespace Project0220.Controllers
@@ -22,49 +24,43 @@ namespace Project0220.Controllers
             return !string.IsNullOrEmpty(memberCookie);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            if (IsAuthenticated())
+            if (!IsAuthenticated())
             {
-                // 身份驗證通過，執行相應的操作
-                // 從資料庫中獲取購物車數據
-
-                // 獲取已登入用戶的CustomerID
-                var memberCookie = HttpContext.Request.Cookies["membercookie"];
-                var customerID = _context.Customers
-        .FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
-
-                if (customerID != null)
-                {
-                    // 從資料庫中獲取該用戶的購物車項目
-                    var cartItems = _context.CartItems
-                        .Where(item => item.CustomerID == customerID)
-                        .ToList();
-
-                    // 將購物車項目轉換為 CartItem 模型類的實例
-                    var model = cartItems.Select(item => new CartItem
-                    {
-                        CustomerID = item.CustomerID,
-                        ProductID = item.ProductID,
-                        Quantity = item.Quantity,
-                        SelectedColor = item.SelectedColor,
-                    }).ToList();
-
-                    // 將購物車項目集合傳遞給視圖進行顯示
-                    return View(model);
-                }
-                else
-                {
-                    // 如果找不到對應的CustomerID，可能需要進一步處理
-                    // 此處示例中將重定向到登入頁面
-                    return RedirectToAction("Login", "Customers");
-                }
-            }
-            else
-            {
-                // 身份驗證未通過，重定向到登入頁面
+                // 如果身份驗證未通過，重定向到登入頁面
                 return RedirectToAction("Login", "Customers");
             }
+
+            // 獲取已登入用戶的 CustomerID
+            var id = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+
+            // 從資料庫中獲取該用戶的購物車項目，同時包含相關的產品資料
+            var cartItemsWithProduct = await _context.CartItems
+                .Include(item => item.Product) // 包含相關的 Product 資訊
+                .Where(item => item.CustomerID == id)
+                .ToListAsync();
+
+            // 將購物車項目轉換為 CartItem 模型類的實例
+            var model = cartItemsWithProduct.Select(item => new CartItem
+            {
+                CartItemID = item.CartItemID,
+                CustomerID = item.CustomerID,
+                ProductID = item.ProductID,
+                Quantity = item.Quantity,
+                SelectedColor = item.SelectedColor,
+                Product = new myModels.Product // 建立 Product 實例
+                {
+                    ProductId = item.Product.ProductId,
+                    Image1=item.Product.Image1,
+                    ProductName = item.Product.ProductName,
+                    UnitPrice = item.Product.UnitPrice,
+                    // 如果有其他屬性需要轉換，請繼續在此處添加
+                }
+            }).ToList();
+
+            // 將購物車項目集合傳遞給視圖進行顯示
+            return View(model);
         }
 
         [HttpPost]

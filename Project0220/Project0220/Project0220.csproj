@@ -29,6 +29,11 @@
     <Content Remove="Views\Member\MemberAccount.cshtml" />
     <Content Remove="wwwroot\images\All_product\A00011-1.jpg" />
     <Content Remove="wwwroot\images\All_product\A00011.jpg" />
+    <Content Remove="wwwroot\images\All_product\A00160.jpeg" />
+    <Content Remove="wwwroot\images\All_product\A00200.jpeg" />
+    <Content Remove="wwwroot\images\All_product\A00210.jpeg" />
+    <Content Remove="wwwroot\images\All_product\A00220.jpeg" />
+    <Content Remove="wwwroot\images\All_product\A00310.jpeg" />
     <Content Remove="wwwroot\images\B00290-1.jpg" />
     <Content Remove="wwwroot\images\B00290-2.jpg" />
     <Content Remove="wwwroot\images\B00290-3.jpg" />
