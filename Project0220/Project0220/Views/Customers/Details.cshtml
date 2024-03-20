@@ -90,29 +90,31 @@
                     </div>
 
                     <div id="MFollow" class="tabcontent">
-     
+    <!--追蹤商品-->
    <table>
+  <tr>
+    <th>產品圖片</th>
+    <th>產品名稱</th>
+    <th>價格</th>
+    <th>庫存</th>
+    <th>顏色</th>
+     <th>刪除</th>
+  </tr>
+ @foreach (var product in Model.Products)
+{
+              <tr id="productRow_@product.ProductId">
+        <th>@product.Image1</th>
+        <th>@product.ProductName</th>
+        <th>@product.UnitPrice</th>
+        <th>@product.UnitInStock</th>
+        <th>@product.Color1</th>
+            <th>  
+      <button type="button" onclick="confirmDelete('@product.ProductId')">刪除</button>
+           </th>
+      </tr>
 
-        <tr>
-            <th>產品圖片</th>
-            <th>產品名稱</th>
-            <th>價格</th>
-               <th>庫存</th>
-                  <th>顏色</th>                
-        </tr>
-  @foreach (var product in Model.Products)
-                                {
-               <tr>
-                    <th>@product.Image1</th>
-                    <th>@product.ProductName</th>
-                    <th>@product.UnitPrice</th>
-                   <th>@product.UnitInStock</th>
-                    <th>@product.Color1</th>                 
-               </tr>
-
-                                } 
-       </table>
-
+                            }
+</table>
                     </div>
                 </div>
             </div>
@@ -121,7 +123,40 @@
 </div>
 
 <!-- MemberHome Section End -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+   
+    function confirmDelete(productId) {
+        Swal.fire({
+            title: '確定要刪除嗎？',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '確定',
+            cancelButtonText: '取消'
+        }).then((result) => {
+            if (result.isConfirmed) {
+               DeleteProduct(productId);
+            }
+        });
+    }
+     function DeleteProduct(productId){
+     $.ajax({
+        url: '/Customers/DeleteProduct',
+        type: 'POST',
+        data: { productId: productId },
+        success: function(response) {
+              $('#productRow_' + productId).remove(); 
+ 
+        }
+     } ) 
+    }
 
+
+ 
+</script>
  <!-- 在页面加载时直接设置默认选项卡的样式 -->
 <script>
 
