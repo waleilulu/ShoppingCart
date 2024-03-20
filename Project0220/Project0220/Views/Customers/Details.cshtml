@@ -109,7 +109,7 @@
         <th>@product.UnitInStock</th>
         <th>@product.Color1</th>
             <th>  
-      <button type="button" onclick="confirmDelete('@product.ProductId')">刪除</button>
+          <button type="button" onclick="confirmDelete('@product.ProductId')"><i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i></button>
            </th>
       </tr>
 
@@ -132,8 +132,8 @@
             text: "",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d2b6b3',
+            cancelButtonColor: '#adb7c2',
             confirmButtonText: '確定',
             cancelButtonText: '取消'
         }).then((result) => {
