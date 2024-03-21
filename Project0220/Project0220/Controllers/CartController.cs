@@ -49,7 +49,7 @@ namespace Project0220.Controllers
                 ProductID = item.ProductID,
                 Quantity = item.Quantity,
                 SelectedColor = item.SelectedColor,
-                Product = new myModels.Product // 建立 Product 實例
+                Product = new myModels.Product // 建立 Product 實例，從另外一張資料表撈資料
                 {
                     ProductId = item.Product.ProductId,
                     Image1=item.Product.Image1,
@@ -107,7 +107,50 @@ namespace Project0220.Controllers
                 return RedirectToAction("Login", "Customers");
             }
         }
+		[HttpPost]
+		public IActionResult RemoveFromCart(int cartItemId)
+		{
+			// 檢查用戶是否已通過身份驗證
+			if (IsAuthenticated())
+			{
+				// 獲取已登入用戶的 CustomerID
+				var memberCookie = HttpContext.Request.Cookies["membercookie"];
+				var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
 
+				if (customerID != null)
+				{
+					// 根據 cartItemId 從購物車中找到對應的購物車項目
+					var cartItemToRemove = _context.CartItems.FirstOrDefault(ci => ci.CartItemID == cartItemId && ci.CustomerID == customerID);
+
+					if (cartItemToRemove != null)
+					{
+						// 從資料庫中移除該購物車項目
+						_context.CartItems.Remove(cartItemToRemove);
+						_context.SaveChanges();
+
+						// 返回成功的消息或重定向到購物車頁面
+						return RedirectToAction("Index");
+					}
+				}
+				else
+				{
+					// 如果找不到對應的 CustomerID，可能需要進一步處理
+					// 此處示例中將重定向到登入頁面
+					return RedirectToAction("Login", "Customers");
+				}
+			}
+			else
+			{
+				// 如果未通過身份驗證，可能需要進一步處理
+				// 此處示例中將重定向到登入頁面
+				return RedirectToAction("Login", "Customers");
+			}
+
+			// 如果找不到對應的購物車項目，可能需要進一步處理
+			// 此處示例中將返回一個錯誤消息或重定向到購物車頁面
+			return RedirectToAction("Index");
+		}
+        
 
     }
 

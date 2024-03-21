@@ -27,6 +27,14 @@
                                 <td>$@item.Product.UnitPrice</td>
                                 <td>@item.SelectedColor</td>
                                 <td>@item.Quantity</td>
+
+                                <td>
+                                    <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
+                                        <input type="hidden" name="cartItemId" value="@item.CartItemID" />
+                                        <button type="submit" class="btn btn-danger">移除</button>
+                                    </form>
+                                </td>
+
                             </tr>
                         }
                     </tbody>
