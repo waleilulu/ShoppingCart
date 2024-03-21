@@ -150,7 +150,52 @@ namespace Project0220.Controllers
 			// 此處示例中將返回一個錯誤消息或重定向到購物車頁面
 			return RedirectToAction("Index");
 		}
-        
+        [HttpPost]
+        public IActionResult UpdateCartItemQuantity(int cartItemId, int newQuantity)
+        {
+            // 檢查使用者是否已通過身份驗證
+            if (IsAuthenticated())
+            {
+                // 獲取已登入使用者的 CustomerID
+                var memberCookie = HttpContext.Request.Cookies["membercookie"];
+                var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
+
+                if (customerID != null)
+                {
+                    // 根據 cartItemId 找到對應的購物車項目
+                    var cartItemToUpdate = _context.CartItems.FirstOrDefault(ci => ci.CartItemID == cartItemId && ci.CustomerID == customerID);
+
+                    if (cartItemToUpdate != null)
+                    {
+                        // 更新購物車項目的數量為新數量
+                        cartItemToUpdate.Quantity = newQuantity;
+
+                        // 將更改保存到資料庫
+                        _context.SaveChanges();
+
+                        // 返回成功的訊息或重定向到購物車頁面
+                        return RedirectToAction("Index");
+                    }
+                }
+                else
+                {
+                    // 如果找不到對應的 CustomerID，可能需要進一步處理
+                    // 此處示例中將重定向到登入頁面
+                    return RedirectToAction("Login", "Customers");
+                }
+            }
+            else
+            {
+                // 如果未通過身份驗證，可能需要進一步處理
+                // 此處示例中將重定向到登入頁面
+                return RedirectToAction("Login", "Customers");
+            }
+
+            // 如果找不到對應的購物車項目，可能需要進一步處理
+            // 此處示例中將返回一個錯誤訊息或重定向到購物車頁面
+            return RedirectToAction("Index");
+        }
+
 
     }
 
