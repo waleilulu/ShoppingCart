@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Project0220.Models;
 using Project0220.myModels;
 using System;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 
 namespace Project0220.Controllers
@@ -63,50 +65,63 @@ namespace Project0220.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult AddToCart(int productId, int quantity, string selectedcolor)
-        {
-            // 檢查用戶是否已通過身份驗證，以確保只有登入用戶才能添加到購物車
-            if (IsAuthenticated())
-            {
-                // 獲取已登入用戶的CustomerID
-                var memberCookie = HttpContext.Request.Cookies["membercookie"];
-                var customerID = _context.Customers
-                    .FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
+		[HttpPost]
+		public IActionResult AddToCart(int productId, int quantity, string selectedcolor)
+		{
+			// 檢查用戶是否已通過身份驗證，以確保只有登入用戶才能添加到購物車
+			if (IsAuthenticated())
+			{
+				// 獲取已登入用戶的CustomerID
+				var memberCookie = HttpContext.Request.Cookies["membercookie"];
+				var customerID = _context.Customers
+					.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
 
-                if (customerID != null)
-                {
-                    // 創建新的 CartItem 實例，並設置相關屬性
-                    var newCartItem = new CartItem
-                    {
-                        //CustomerID = customerID,
-                        CustomerID = customerID.HasValue ? customerID.Value : default(int), // 如果 customerID 有值，則取其值；否則設置為 int 的默認值
-                        ProductID = productId,
-                        Quantity = quantity,
-                        SelectedColor = selectedcolor // 將選擇的顏色設置到新的 CartItem 中
-                    };
+				if (customerID != null)
+				{
+					// 找到現有的 CartItem，包括顏色的比較。如果商品有多個顏色，加入不同顏色商品也會視為不同項目
+					var existingCartItem = _context.CartItems
+						.FirstOrDefault(c => c.CustomerID == customerID && c.ProductID == productId && c.SelectedColor == selectedcolor);
 
-                    // 將新的 CartItem 添加到資料庫
-                    _context.CartItems.Add(newCartItem);
-                    _context.SaveChanges();
+					if (existingCartItem != null)
+					{
+						// 更新現有的 CartItem 的數量
+						existingCartItem.Quantity += quantity;
+						_context.SaveChanges();
+					}
+					else
+					{
+						// 創建新的 CartItem 實例，並設置相關屬性
+						var newCartItem = new CartItem
+						{
+							CustomerID = customerID.HasValue ? customerID.Value : default(int),
+							ProductID = productId,
+							Quantity = quantity,
+							SelectedColor = selectedcolor // 將選擇的顏色設置到新的 CartItem 中
+						};
 
-                    // 返回成功的消息或重定向到購物車頁面
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    // 如果找不到對應的CustomerID，可能需要進一步處理
-                    // 此處示例中將重定向到登入頁面
-                    return RedirectToAction("Login", "Customers");
-                }
-            }
-            else
-            {
-                // 如果未通過身份驗證，可能需要進一步處理
-                // 此處示例中將重定向到登入頁面
-                return RedirectToAction("Login", "Customers");
-            }
-        }
+						// 將新的 CartItem 添加到資料庫
+						_context.CartItems.Add(newCartItem);
+						_context.SaveChanges();
+					}
+
+					// 返回成功的消息或重定向到購物車頁面
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					// 如果找不到對應的CustomerID，可能需要進一步處理
+					// 此處示例中將重定向到登入頁面
+					return RedirectToAction("Login", "Customers");
+				}
+			}
+			else
+			{
+				// 如果未通過身份驗證，可能需要進一步處理
+				// 此處示例中將重定向到登入頁面
+				return RedirectToAction("Login", "Customers");
+			}
+		}
+
 		[HttpPost]
 		public IActionResult RemoveFromCart(int cartItemId)
 		{
@@ -151,51 +166,59 @@ namespace Project0220.Controllers
 			return RedirectToAction("Index");
 		}
         [HttpPost]
-        public IActionResult UpdateCartItemQuantity(int cartItemId, int newQuantity)
+        public IActionResult UpdateCartItemQuantity(string data)
         {
-            // 檢查使用者是否已通過身份驗證
-            if (IsAuthenticated())
+            if (!string.IsNullOrEmpty(data))
             {
-                // 獲取已登入使用者的 CustomerID
-                var memberCookie = HttpContext.Request.Cookies["membercookie"];
-                var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
-
-                if (customerID != null)
+                CartItem cartItem = JsonConvert.DeserializeObject<CartItem>(data);
+                // 檢查使用者是否已通過身份驗證
+                if (IsAuthenticated())
                 {
-                    // 根據 cartItemId 找到對應的購物車項目
-                    var cartItemToUpdate = _context.CartItems.FirstOrDefault(ci => ci.CartItemID == cartItemId && ci.CustomerID == customerID);
+                    // 獲取已登入使用者的 CustomerID
+                    var memberCookie = HttpContext.Request.Cookies["membercookie"];
+                    var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
 
-                    if (cartItemToUpdate != null)
+                    if (customerID != null)
                     {
-                        // 更新購物車項目的數量為新數量
-                        cartItemToUpdate.Quantity = newQuantity;
+                        // 根據 cartItemId 找到對應的購物車項目
+                        var cartItemToUpdate = _context.CartItems.FirstOrDefault(ci => ci.CartItemID == cartItem.CartItemID && ci.CustomerID == customerID);
 
-                        // 將更改保存到資料庫
-                        _context.SaveChanges();
+                        if (cartItemToUpdate != null)
+                        {
+                            // 更新購物車項目的數量為新數量
+                            cartItemToUpdate.Quantity = cartItem.Quantity;
 
-                        // 返回成功的訊息或重定向到購物車頁面
-                        return RedirectToAction("Index");
+                            // 將更改保存到資料庫
+                            _context.SaveChanges();
+
+                            // 返回成功的訊息或重定向到購物車頁面
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    else
+                    {
+                        // 如果找不到對應的 CustomerID，可能需要進一步處理
+                        // 此處示例中將重定向到登入頁面
+                        return RedirectToAction("Login", "Customers");
                     }
                 }
                 else
                 {
-                    // 如果找不到對應的 CustomerID，可能需要進一步處理
+                    // 如果未通過身份驗證，可能需要進一步處理
                     // 此處示例中將重定向到登入頁面
                     return RedirectToAction("Login", "Customers");
                 }
+
+                // 如果找不到對應的購物車項目，可能需要進一步處理
+                // 此處示例中將返回一個錯誤訊息或重定向到購物車頁面
+                return RedirectToAction("Index");
             }
             else
             {
-                // 如果未通過身份驗證，可能需要進一步處理
-                // 此處示例中將重定向到登入頁面
-                return RedirectToAction("Login", "Customers");
+                return Json(new { success = false, message = "資料為空,請檢查資料!" });
+
             }
-
-            // 如果找不到對應的購物車項目，可能需要進一步處理
-            // 此處示例中將返回一個錯誤訊息或重定向到購物車頁面
-            return RedirectToAction("Index");
         }
-
 
     }
 
