@@ -50,11 +50,11 @@
                                         }
                                     } *@
                                    
-                                                 <label  asp-for="CustomerId" class="control-label">顧客ID*</label>
-                                                 <input  asp-for="CustomerId"  class="form-control" type="text" value="@ViewData["CustomerId"]"/>
-                                                <span  asp-validation-for="CustomerId" class="text-danger"></span>
+                                                 <label  asp-for="CustomerId" class="control-label" >您的會員編號</label>
+                                                 <input asp-for="CustomerId"  class="form-control" type="text" value="@ViewData["CustomerId"]" readonly/>
+                                                <span asp-validation-for="CustomerId" class="text-danger"></span>
 
-
+                                                
                                                 <label asp-for="Consignee" class="control-label">收件人*</label>
                                                  <input asp-for="Consignee" class="form-control" type="text" placeholder="請輸入收件人姓名或公司名稱" required/>
                                                 <span asp-validation-for="Consignee" class="text-danger"></span>
@@ -104,6 +104,13 @@
                                                 <input asp-for="ShippingDate" class="form-control" placeholder="請選擇日期" min="@DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")" required/>
                                                 <span asp-validation-for="ShippingDate" class="text-danger"></span>
                                             </div>
+
+                                             <div class="col-12 mb-20">
+                                                <label asp-for="OrderDate" class="control-label">購買日期*</label>
+                                                <input asp-for="OrderDate" class="form-control" type="date" readonly />
+                                                <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                            </div>
+
                                              <div class="cart-summary-button">
                                     @* 改類別名稱cart-button01 *@
 
