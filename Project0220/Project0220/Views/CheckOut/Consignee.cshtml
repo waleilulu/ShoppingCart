@@ -38,12 +38,20 @@
                                         <div class="row">
                                             <div class="col-12">
                                     @{
-                                        var cookie = Context.Request.Cookies.ContainsKey("membercookie");
+                                        var cookie = Convert.ToInt32( Context.Request.Cookies.ContainsKey("membercookie"));
                                     }
+                                    
+                                    @* @{
+                                        // 讀取 cookie 的值
+                                      var customerId = Convert.ToInt32(Context.Request.Cookies["membercookie"]);
+                                        if (Context.Request.Cookies.ContainsKey("membercookie"))
+                                        {
+                                            customerId = Convert.ToInt32(Context.Request.Cookies["membercookie"]);
+                                        }
+                                    } *@
                                    
-                       
                                                  <label  asp-for="CustomerId" class="control-label">顧客ID*</label>
-                                                 <input  asp-for="CustomerId" class="form-control" type="text" value="@cookie"/>
+                                                 <input  asp-for="CustomerId"  class="form-control" type="text" value="@ViewData["CustomerId"]"/>
                                                 <span  asp-validation-for="CustomerId" class="text-danger"></span>
 
 

@@ -34,7 +34,22 @@ namespace Project0220.Controllers
             return View();
         }
 
+        public void OnGet()
+        {
+            if (Request.Cookies.ContainsKey("membercookie"))
+            {
+                // 從 cookie 讀取 customerId
+                var customerId = Request.Cookies["membercookie"];
 
+                // 將 customerId 賦值給模型或 ViewData
+                ViewData["CustomerId"] = customerId;
+            }
+            else
+            {
+                // 設置一個默認值或保持未設置
+                ViewData["CustomerId"] = ""; // 或根據需求進行調整
+            }
+        }
 
         //public IActionResult NextConsignee()
         //{
@@ -52,17 +67,22 @@ namespace Project0220.Controllers
 
         //}
 
-        private bool IsAuthenticated()
-        {
-            // 檢查是否存在名為 "membercookie" 的 cookie
-            var memberCookie = HttpContext.Request.Cookies["membercookie"];
-            return !string.IsNullOrEmpty(memberCookie);
-        }
+        //private bool IsAuthenticated()
+        //{
+        //    // 檢查是否存在名為 "membercookie" 的 cookie
+        //    var memberCookie = HttpContext.Request.Cookies["membercookie"];
+        //    return !string.IsNullOrEmpty(memberCookie);
+        //}
 
         public IActionResult Consignee()
         {
+            // 從 cookie 讀取 customerId
+            var customerId = Request.Cookies["membercookie"];
+
+            // 將 customerId 賦值給模型或 ViewData
+            ViewData["CustomerId"] = customerId;
             //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
+            //ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
             return View();
 
         }
@@ -145,23 +165,7 @@ namespace Project0220.Controllers
             return View(order);
         }
 
-        //// GET: Orders/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var order = await _context.Orders.FindAsync(id);
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", order.CustomerId);
-        //    return View(order);
-        //}
-
+        
 
         public async Task<IActionResult> CheckOut()
         {
@@ -171,7 +175,7 @@ namespace Project0220.Controllers
             if (lastOrder == null)
             {
                 // 處理沒有訂單的情況，例如顯示錯誤信息或重定向
-                return View("ErrorView"); // 假設有一個顯示錯誤的視圖
+                return View("ErrorView"); // 假設有一個顯示錯誤的view
             }
 
             // 如果視圖需要處理多個訂單，保留下列代碼
