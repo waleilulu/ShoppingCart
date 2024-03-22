@@ -26,7 +26,7 @@ namespace Project0220.Controllers
            // var adminUsername1 = HttpContext.Session.GetString("adminUsername");
             var adminUsername=HttpContext.Request.Cookies["membercookie"] ;
             if (!string.IsNullOrEmpty(adminUsername))
-            {
+            { 
                 // 存在管理員用戶名，表示是管理員登入後轉過來的，顯示畫面
                 var products = context.Products.OrderByDescending(p => p.ProductID).ToList();
                 return View(products);

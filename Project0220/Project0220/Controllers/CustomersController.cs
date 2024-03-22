@@ -126,10 +126,17 @@ namespace Project0220.Controllers
                 // 设置 Cookie 保存用户 ID
                 HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
                 HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 根据用户角色重定向到适当的页面
-                if (user.Admin)
+                // 根據角色設定餅乾
+                // HttpContext.Response.Cookies.Append("userRole", user.Admin ? "Administrator":"Customers") ;
+                HttpContext.Response.Cookies.Append("isAdmin", user.Admin.ToString());
+
+				// 用戶選擇去到頁面
+
+				if (user.Admin)
                 {
+                   
                     return RedirectToAction("Admin", "Customers");
+                    
                 }
                 else
                 {
@@ -143,9 +150,11 @@ namespace Project0220.Controllers
         }
         //管理者選擇頁面
         public IActionResult Admin() {
+          
+       
             return View();
 
-        }
+		}
 
 
         //登出
@@ -159,9 +168,10 @@ namespace Project0220.Controllers
             // 清除用戶相關的 Session 和 Cookie
             HttpContext.Session.Clear();
             Response.Cookies.Delete("membercookie");
-
-            // 重定向到登入頁面
-            return RedirectToAction("Login", "Customers");
+			Response.Cookies.Delete("userRole");
+			Response.Cookies.Delete("isAdmin");
+			// 重定向到登入頁面
+			return RedirectToAction("Login", "Customers");
         }
 
         //決定導向哪裡的方法( 會員頁面 還是 登入頁面 )
@@ -169,18 +179,28 @@ namespace Project0220.Controllers
 
         public IActionResult UserProfile()
         {
-
-            // 檢查是否存在名為 "membercookie" 的 cookie
+            // 检查是否存在名为 "membercookie" 的 cookie
             if (HttpContext.Request.Cookies["membercookie"] != null)
             {
-                // 如果存在相應的 cookie，繼續執行其他操作
-                // 這裡可以放置會員中心頁面的相關代碼
-                return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
-
-
+                var isAdmin = HttpContext.Request.Cookies["isAdmin"];
+                var userRole = HttpContext.Request.Cookies["userRole"];
+                if ( isAdmin == "true")
+                {
+                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+                }
+                // 如果用户角色为管理员，则重定向到管理员页面
+               else if (userRole =="Administrator")
+				{
+					return RedirectToAction("Index", "Products");
+				}
+				// 如果用户角色为会员，则重定向到会员详情页面
+				else
+                {
+                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+                }
             }
 
-            // 如果用戶未通過身份驗證，導向登入頁面
+            // 如果用户未通过身份验证，则重定向到登录页面
             return RedirectToAction("Login", "Customers");
 
         }

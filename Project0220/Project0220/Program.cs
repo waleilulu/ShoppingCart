@@ -29,7 +29,26 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromHours(1); // 設定 Cookie 的過期時間
         options.LoginPath = "/Customers/Login"; // 登入頁面的路徑
         options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
-    });
+    })
+	.AddCookie("userRole", options =>
+	{
+		options.Cookie.Name = "userRole";
+		options.Cookie.HttpOnly = true;
+		options.ExpireTimeSpan = TimeSpan.FromHours(1);
+	//	options.LoginPath = "/Customers/Admin"; // 登入頁面的路徑
+		options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
+	})
+.AddCookie("isAdmin", options =>
+ {
+     options.Cookie.Name = "isAdmin";
+     options.Cookie.HttpOnly = true;
+     options.ExpireTimeSpan = TimeSpan.FromHours(1);
+     //	options.LoginPath = "/Customers/Admin"; // 登入頁面的路徑
+     options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
+ });
+;
+
+
 
 builder.Services.AddDbContext<ManualECommerceDBContext>(options => 
 {
@@ -55,12 +74,15 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+        
+app.UseAuthorization();
 
 app.UseAuthentication();
 
-app.UseAuthorization();
-
 app.UseSession();
+
+
+
 
 app.MapControllerRoute(
 	name: "default",
