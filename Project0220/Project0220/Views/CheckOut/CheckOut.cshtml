@@ -1,4 +1,4 @@
-﻿@model List<Project0220.myModels.Order>
+﻿@model List<Project0220.myModels.CartOrderModel>
 @using Project0220.myModels;
 
     <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
@@ -42,35 +42,35 @@
                                         <!-- Billing Address -->
                                         <div id="billing-form" >
                                             <h4 class="checkout-title" style="margin-top:30px; margin-bottom:80px;">收件資訊</h4>
-                                              <input type="hidden" name="orderId" value="@item.OrderId" />
+                                              <input type="hidden" name="orderId" value="@item.Order.OrderId" />
                                                <div >
-                                               <label name="customerId" value="@item.CustomerId" />
+                                               <label name="customerId" value="@item.Order.CustomerId" />
                                                </div>
                                                <div >
-                                              <label   style="font-size:20px;">姓名: @item.Consignee</label>
+                                              <label   style="font-size:20px;">收件人: @item.Order.Consignee</label>
                                             </div>
                                             <div >
-                                                    <label style="font-size:20px; margin-top:20px;" >電話: @item.ContactPhone</label>
+                                                        <label style="font-size:20px; margin-top:20px;" >聯絡電話: @item.Order.ContactPhone</label>
                                             </div>
                                            <div >
-                                                   <label style="font-size:20px; margin-top:20px;">郵遞區號: @item.PaymentMethod</label>
+                                                           <label style="font-size:20px; margin-top:20px;">郵遞區號: @item.Order.PostalCode</label>
                                            </div>
                                             <div >
-                                                    <label style="font-size:20px; margin-top:20px;">收件地址: @item.ShippingAddress</label>
+                                                        <label style="font-size:20px; margin-top:20px;">收件地址: @item.Order.ShippingAddress</label>
                                             </div>
                                             <div >
-                                                    <label style="font-size:20px; margin-top:20px;">配送貨運: @item.Carrier</label>
+                                                        <label style="font-size:20px; margin-top:20px;">配送貨運: @item.Order.Carrier</label>
                                             </div>
                                             <div >
-                                                    <label style="font-size:20px; margin-top:20px;">付款方式: @item.PaymentMethod  </label>
+                                                        <label style="font-size:20px; margin-top:20px;">付款方式: @item.Order.PaymentMethod  </label>
                                             </div>
                                               <div >
-                                                       <label style="font-size:20px; margin-top:20px;">寄送日期: @item.OrderDate</label>
+                                                           <label style="font-size:20px; margin-top:20px;">寄送日期: @item.Order.ShippingDate</label>
                                              </div>
                                         </div>
                             </form>
 
-                                                <button onclick="showPaymentInfo('@item.PaymentMethod')" class="cart-button02">點擊結帳</button>
+                                                    <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" class="cart-button02">點擊結帳</button>
                                             <!-- 匯款訊息彈跳 -->
                                              <div id="bankTransferInfo" style="display: none;">
                                                      <div class="checkout-title">匯款帳號 : </div>
@@ -88,16 +88,16 @@
                                                      <tr>
                                                          <td>
                                                              <label >持卡人姓名</label>
-                                                                  <input class="checkout-form" type="text" placeholder="請輸入姓名"></input>
+                                                                      <input class="checkout-form" type="text" placeholder="請輸入姓名" required></input>
                                                              <br>
                                                               <label >請填寫信用卡卡號</label>
-                                                                 <input class="checkout-form" type="text" placeholder="請填寫16碼信用卡號"></input>
+                                                                     <input class="checkout-form" type="text" placeholder="請填寫16碼信用卡號" required></input>
                                                                  <br>
                                                                 <label >CVV</label>
-                                                                     <input class="checkout-form" type="text" placeholder="請填寫信用卡背面末三碼"></input>
+                                                                         <input class="checkout-form" type="text" placeholder="請填寫信用卡背面末三碼" required></input>
                                                                  <br>
                                                                   <label>請填寫有效日期</label>
-                                                                       <input  class="checkout-form" type="text" placeholder="月/年"></input>
+                                                                           <input  class="checkout-form" type="text" placeholder="月/年" required></input>
                                                          </td>
                                                      </tr>
                                                  </form>
@@ -113,20 +113,38 @@
                                             <div class="checkout-cart-total">
 
                                                 <h4>購買產品</h4>
-
-                                                <ul>
-                                                    <li><img src="~/images/All_product/A00130.jpg" class="img-checkout">&nbspAVEN三人座沙發 X 01
-
-                                                        <span>$25.00</span></li>
-                                                    <li><img src="~/images/All_product/B00070.jpg" class="img-checkout">&nbsp照明書櫃 X 01 <span>$25.00</span></li>
-                                                    <li><img src="~/images/All_product/C00060.jpg" class="img-checkout">&nbsp雙人軟墊床框附床頭板 X 01 <span>$25.00</span></li>
-                                                </ul>
-                                                <p>小計 <span>$75.00</span></p>
+                                                 <thead>
+                                               <tr>
+                                                   <th scope="col">產品ID</th>
+                                                   <th scope="col">產品圖示</th>
+                                                   <th scope="col">產品名稱</th>
+                                                   <th scope="col">價格</th>
+                                                   <th scope="col">選擇的顏色</th>
+                                                   <th scope="col">數量</th>
+                                               </tr>
+                                           </thead>
+                                           <tbody>
+                                                  @foreach (var cartOrder in Model) // 遍历CartOrderModel对象的列表
+                                                  {
+                                                      @foreach (var item in cartOrder.CartItem) // 然后遍历每个对象的CartItems
+                                                      {
+                                              <tr>
+                                                  <td>@item.Product.ProductId</td>
+                                                  <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
+                                                  <td>@item.Product.ProductName</td>
+                                                  <td>$@item.Product.UnitPrice</td>
+                                                  <td>@item.SelectedColor</td>
+                                                  <td>@item.Quantity</td>
+                                              </tr>
+                                                      }
+                                                  }
+                                                                              
+                                             @*    <p>小計 <span>$75.00</span></p>
                                                 <p>折扣<span>$00.00</span></p>
-                                                <h4>總額<span>$75.00</span></h4>
+                                                <h4>總額<span>$75.00</span></h4> *@
                    </div>
                    </div>
-
+                   
 
 
                                        <form asp-action="Create">
