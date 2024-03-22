@@ -4,7 +4,14 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model Project0220.ViewModel.ItemDetailsViewModel
+<style>
 
+    .tracked {
+    color: red; /* 改变颜色为红色，你可以根据需要修改 */
+    /* 还可以添加其他样式，比如改变图标等 */
+}
+
+</style>
 
     
     <!-- All css files are included here. -->
@@ -140,7 +147,7 @@
                                         
                                         <div class="wishlist-compare-btn mb-2">
                                               <button onclick="addfavoritebtn(@item.ProductId)">
-                                                            <a href="" class="wishlist-btn" >加入我的最愛</a> 
+                                                            <a href="" class="wishlist-btn" id="wishlistBtn" >加入我的最愛</a> 
                                                             </button> 
                                         </div>
 
@@ -728,6 +735,10 @@
             method:"post",
             data:{ProductId:productId},
             success:function (result){
+                  // 修改按钮样式为已追踪的样式
+            document.getElementById("wishlistBtn").classList.add("tracked");
+            // 禁用按钮
+            document.getElementById("wishlistBtn").disabled = true;
                 alert("商品追蹤成功");
 
             },

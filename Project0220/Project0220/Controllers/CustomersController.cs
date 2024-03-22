@@ -306,9 +306,9 @@ namespace Project0220.Controllers
             
             var CustomerId =Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             var trackList = _context.TrackLists
-                           .SingleOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
+                           .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
 
-            if (trackList != null)
+            if (trackList == null)
             {
                 _context.TrackLists.Remove(trackList);
                 _context.SaveChanges();
