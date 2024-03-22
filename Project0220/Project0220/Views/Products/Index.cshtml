@@ -38,9 +38,9 @@
 					var isAdmin = Context.Request.Cookies["isAdmin"];
 				}
 
-				@if (userRole !=null ||isAdmin !=null){
-		       <a class="nav-link fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
-=======
+				@if (userRole != null || isAdmin != null) {
+					<a class="nav-link fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
+				}
 				@{
 					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
 				}
@@ -52,7 +52,7 @@
 							<i class="fa-solid fa-arrow-right-from-bracket"></i>
 						</button>
 					</form>
->>>>>>> 51a055afd2bc678227f73ca8b59761a4770722bf
+
 				}
 			</div>
 		</div>
