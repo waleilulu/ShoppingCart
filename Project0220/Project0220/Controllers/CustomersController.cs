@@ -10,16 +10,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Project0220.myModels;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Configuration;
+using Project0220.ViewModel;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace Project0220.Controllers
 {
     public class CustomersController : Controller
     {
         private readonly ScaffoldEcommerceDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public CustomersController(ScaffoldEcommerceDbContext context)
+        public CustomersController(ScaffoldEcommerceDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: Customers
@@ -149,11 +158,10 @@ namespace Project0220.Controllers
             return View("Login");
         }
         //管理者選擇頁面
+
         public IActionResult Admin() {
           
-       
             return View();
-
 		}
 
 
@@ -303,8 +311,8 @@ namespace Project0220.Controllers
         [HttpPost]
         public IActionResult DeleteProduct(int productId)
         {
-            
-            var CustomerId =Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+
+            var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             var trackList = _context.TrackLists
                            .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
 
@@ -319,7 +327,130 @@ namespace Project0220.Controllers
             return Json(new { success = true, message = "追蹤商品刪除失敗" });
         }
 
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        private string GenerateVerificationCode()
+        {
+            // 實現生成驗證碼的邏輯，例如使用 Guid 或隨機數字生成
+            // 這裡僅為示例，您可以根據需要自定義生成驗證碼的方法
+            return Guid.NewGuid().ToString("N").Substring(0, 6);
+        }
+
+        //忘記密碼
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgetPassword(Customer Model)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                // 檢查輸入的用戶名和郵箱是否匹配
+                var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
 
+                if (user != null)
+                {
+
+                    var verificationCode = GenerateVerificationCode();
+                    //user.ResetPasswordToken = verificationCode;
+                    //user.ResetPasswordTokenExpiration = DateTime.Now.AddHours(1); // 驗證碼有效期1小時
+                    await _context.SaveChangesAsync();
+
+                    // 發送驗證碼到用戶提供的 email 中
+                    await SendEmails(user.Email, verificationCode);
+
+                    // 將用戶重定向到輸入驗證碼的頁面
+                    return RedirectToAction("ForgetPassword");
+                }
+            }
+            // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "提供的用戶名和郵箱不匹配。");
+            return View();
+        }
+
+
+        private async Task SendEmails(string email, string verificationCode)
+        {
+            // 使用 Google Mail Server 發信
+            string account = _configuration["EmailSettings:Account"];
+            string password = _configuration["EmailSettings:Password"];
+
+            string SmtpServer = "smtp.gmail.com";
+            int SmtpPort = 587;
+            MailMessage mms = new MailMessage();
+            mms.From = new MailAddress(account);
+            mms.Subject = "信件主題";
+
+            mms.To.Add(new MailAddress(email)); // 添加收件人
+
+            mms.Body = $@"<html>
+                    <head>
+                        <title>驗證密碼</title>
+                    </head>
+                    <body>
+                        <p>親愛的用戶，您的驗證碼為{verificationCode}</p>
+                    </body>
+                </html>";
+            mms.IsBodyHtml = true;
+            mms.SubjectEncoding = Encoding.UTF8;
+
+            using (SmtpClient client = new SmtpClient(SmtpServer, SmtpPort))
+            {
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential(account, password);//寄信帳密 
+                client.Send(mms); //寄出信件
+            }
+        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> EnterVerificationCode( string verificationCode)
+        //{
+
+        //    // 查找用戶
+        //    var user = await _context.Customers.FirstOrDefaultAsync(c => c.ResetPasswordToken == ResetPasswordToken);
+        //    if (user != null && user.ResetPasswordToken == verificationCode)
+        //        {
+        //            //// 驗證碼匹配，將用戶的密碼發送到用戶提供的 email 中
+        //            //await SendPasswordByEmail(user.Email, user.Password);
+
+        //            // 清除重置密碼令牌
+        //            user.ResetPasswordToken = null;
+        //            user.ResetPasswordTokenExpiration = null;
+        //            await _context.SaveChangesAsync();
+
+        //            // 將用戶重定向到成功頁面
+        //            return RedirectToAction("PasswordResetSuccess");
+        //        }
+            
+        //    // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
+        //    ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
+        //    return View();
+        //}
     }
+
 }
+
+
+
+
+// GET: Customers/EnterVerificationCode//錯誤
+//public IActionResult EnterVerificationCode(string verificationCode, string username)
+//{
+//    // 這裡可以渲染輸入驗證碼的頁面
+//    return View(new EnterVerificationCodeViewModel { Username = username });
+//}
+
+
+//// POST: Customers/EnterVerificationCode
+
+//public async Task SendPasswordByEmail(string email, string Newpassword)
+//{
+//    // 檢查是否有忘記密碼的客戶
+//    var customers = await _context.Customers
+//        .Where(c => c.Email == email && c.ResetPasswordToken != null && c.ResetPasswordTokenExpiration > DateTime.Now)
+//        .ToListAsync();
+
+
