@@ -40,9 +40,12 @@
                                 </td>
                             </tr>
                         }
-
                     </tbody>
                 </table>
+                <!-- 清空購物車按鈕 -->
+                <form method="post" asp-controller="Cart" asp-action="EmptyCart" class="mt-3">
+                    <button type="submit" class="btn btn-warning">清空購物車</button>
+                </form>
             </div>
         </div>
     </div>
@@ -76,16 +79,8 @@ else
                  console.error("發生錯誤:",error);
              }
 
-
          });
 
-
-
-
         })
-
-       
-
-        
 
 </script>

@@ -219,6 +219,47 @@ namespace Project0220.Controllers
 
             }
         }
+        [HttpPost]
+        public IActionResult EmptyCart()
+        {
+            if (IsAuthenticated())
+            {
+                // 獲取已登入用戶的CustomerID
+                var memberCookie = HttpContext.Request.Cookies["membercookie"];
+                var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
+
+                if (customerID != null)
+                {
+                    // 找到該用戶的所有購物車項目
+                    var cartItems = _context.CartItems.Where(ci => ci.CustomerID == customerID);
+
+                    if (cartItems.Any())
+                    {
+                        // 移除所有項目
+                        _context.CartItems.RemoveRange(cartItems);
+                        _context.SaveChanges();
+
+                        // 可以選擇返回一個成功的訊息，或是重定向到購物車頁面等
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        // 如果購物車已經是空的，可以選擇返回一個訊息或進行其他處理
+                        return Json(new { success = false, message = "購物車已經是空的。" });
+                    }
+                }
+                else
+                {
+                    // 如果找不到對應的CustomerID，可能需要進一步處理
+                    return RedirectToAction("Login", "Customers");
+                }
+            }
+            else
+            {
+                // 如果未通過身份驗證，重定向到登入頁面
+                return RedirectToAction("Login", "Customers");
+            }
+        }
 
     }
 
