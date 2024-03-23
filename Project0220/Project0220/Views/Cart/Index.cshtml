@@ -1,30 +1,42 @@
 ﻿@model List<Project0220.myModels.CartItem>
 
-@if (Model != null && Model.Any())
-{
-    <div class="container">
-        <h1 class="mt-4 mb-4">購物車</h1>
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
+    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
+    <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <!-- Modernizr JS -->
+    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
+
+  
+    <div class="container-01">
         <div class="row">
+
             <div class="col-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">產品ID</th>
-                            <th scope="col">產品圖示</th>
-                            <th scope="col">產品名稱</th>
-                            <th scope="col">價格</th>
-                            <th scope="col">選擇的顏色</th>
-                            <th scope="col">數量</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
+                <!-- Cart Table -->
+                <div class="cart-table table-responsive mb-30">
+                    <table class="table" style="margin-top:30px;">
+                        <thead>
+                            <tr>
+                                <th class="pro-thumbnail">產品編號</th>
+                                <th class="pro-title">產品圖示</th>
+                                <th class="pro-color">產品名稱</th>
+                                <th class="pro-quantity">顏色</th>
+                                <th class="pro-subtotal">數量</th>
+                                <th class="pro-remove">價格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+ @if (Model != null && Model.Any())                               
+{       
+    @foreach (var item in Model)
                         {
                             <tr>
                                 <td>@item.ProductID</td>
                                 <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
                                 <td>@item.Product.ProductName</td>
-                                <td>$@item.Product.UnitPrice</td>
                                 <td>@item.SelectedColor</td>
                                 <td>
                                     <form method="post" asp-controller="Cart" asp-action="UpdateCartItemQuantity">
@@ -32,17 +44,19 @@
                                         <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
                                     </form>
                                 </td>
+                                <td>$@item.Product.UnitPrice</td>
                                 <td>
                                     <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
                                         <input type="hidden" name="cartItemId" value="@item.CartItemID" />
                                         <button type="submit" class="btn btn-danger">移除</button>
                                     </form>
                                 </td>
-                            </tr>
+                            </tr> 
+                            
                         }
-                    </tbody>
-                </table>
-                <!-- 清空購物車按鈕 -->
+                       
+                
+                         <!-- 清空購物車按鈕 -->
                 <form method="post" asp-controller="Cart" asp-action="EmptyCart" class="mt-3">
                     <button type="submit" class="btn btn-warning">清空購物車</button>
                 </form>
@@ -50,16 +64,27 @@
                     <p>總價格: $<span id="totalPrice"></span></p>
                     <p>總商品數量: <span id="totalQuantity"></span></p>
                 </div>
-            </div>
-        </div>
-    </div>
+         
 }
+                   
 else
 {
     <div class="container">
         <p class="mt-4">您的購物車為空。</p>
     </div>
 }
+</tbody>
+    </table>
+     </div>
+     </div>
+   </div>
+  </div>
+ 
+                                   <div class="cart-summary-button" style="text-align: center;">
+                                       @* 改類別名稱cart-button01 *@
+                                        <a class="cart-button01" asp-controller="AllItems" asp-action="Index">繼續購物</a>
+                                        <a id="payment" class="cart-button01" asp-controller="CheckOut" asp-action="Consignee">繼續結帳</a>
+                                    </div>
 <script>
 
         $(".update").on('change',function(){
@@ -138,3 +163,12 @@ else
         $("#totalQuantity").text(totalQuantity); // 將總商品數量填充到元素中
     }
 </script>
+
+
+            <!-- All jquery file included here -->
+    <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
+    <script src="~/js/Cart/js/popper.min.js"></script>
+    <script src="~/js/Cart/js/bootstrap.min.js"></script>
+    <script src="~/js/Cart/js/plugins.js"></script>
+    <script src="~/js/Cart/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
