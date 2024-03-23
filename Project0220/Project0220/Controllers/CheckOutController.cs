@@ -19,15 +19,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Xml.Linq;
 namespace Project0220.Controllers
 {
-    public class CheckOutController : Controller { 
-
-   private readonly ScaffoldEcommerceDbContext _context;
-
-    public CheckOutController(ScaffoldEcommerceDbContext context)
+    public class CheckOutController : Controller
     {
-        _context = context;
-    }
-    
+
+        private readonly ScaffoldEcommerceDbContext _context;
+
+        public CheckOutController(ScaffoldEcommerceDbContext context)
+        {
+            _context = context;
+        }
+
 
         public IActionResult Index()
         {
@@ -81,10 +82,10 @@ namespace Project0220.Controllers
 
             // 將 customerId 賦值給模型或 ViewData
             ViewData["CustomerId"] = customerId;
-            
+
             return View();
-                //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-                //ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
+            //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+            //ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
         }
 
         //[HttpPost]
@@ -169,7 +170,7 @@ namespace Project0220.Controllers
         public async Task<IActionResult> CheckOut()
         {
             var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
-            ViewData["CustomerId"] = customerId;
+            ViewData["CustomerId"] = customerId;//找customerId 
 
             var cartItems = await _context.CartItems.Where(a => a.CustomerID == customerId).ToListAsync();
             var customer = await _context.Customers.FirstOrDefaultAsync(a => a.CustomerId == customerId);
@@ -179,12 +180,12 @@ namespace Project0220.Controllers
                 return View(new List<CartOrderModel>()); // 确保这里有返回
             }
 
-            var productIds = cartItems.Select(item => item.ProductID).ToList();
+            var productIds = cartItems.Select(item => item.ProductID).ToList();//找加入購物車的東西
             var products = new List<myModels.Product>();
             if (productIds.Any())
             {
                 products = await _context.Products.Where(a => productIds.Contains(a.ProductId)).ToListAsync();
-            }
+            } //如果有產品ID存在（productIds.Any()），則這段程式碼會從資料庫中查詢與這些ID相匹配的產品。
 
             var lastOrder = await _context.Orders.Where(o => o.CustomerId == customerId).OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
 
@@ -199,78 +200,133 @@ namespace Project0220.Controllers
 
             modelList.Add(model);
 
-            return View(modelList); 
+            return View(modelList);
+        }
+
+
+            
+            [HttpPost]
+            public async Task<IActionResult> SaveCheckOut(int orderId)
+            {
+            var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
+            var cartItems = await _context.CartItems.Where(a => a.CustomerID == customerId).ToListAsync();
+
+            if (!cartItems.Any())
+            {
+                return View("Error");
+            }
+
+            // 根據 customerId 查找最新的訂單
+            var order = await _context.Orders
+                .Where(o => o.CustomerId == customerId)
+                .OrderByDescending(o => o.OrderDate) // 假設有 OrderDate 表示訂單日期
+                .FirstOrDefaultAsync();
+
+            if (order == null)
+            {
+                return NotFound($"沒有客戶 ID{customerId} 的訂單。");
+            }
+
+            // 使用找到的訂單 OrderId
+            foreach (var item in cartItems)
+            {
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == item.ProductID);
+                if (product != null)
+                {
+                    
+                    var orderDetails = new OrderDetail
+                    {
+                        OrderId = order.OrderId, // 使用查找到的 OrderId
+                        ProductId = item.ProductID,
+                        Quantity = item.Quantity,
+                        UnitPrice = product.UnitPrice,
+                        SelectedColor = item.SelectedColor,
+                        Discount = 1,
+                        Amount =item.Quantity * product.UnitPrice
+                    };
+                    _context.OrderDetails.Add(orderDetails);
+                }
+            }
+            await _context.SaveChangesAsync();
+
+            // 清空購物車
+            _context.CartItems.RemoveRange(cartItems);
+                await _context.SaveChangesAsync();
+
+            
+            return RedirectToAction("CheckOutDone", new { orderId = orderId }); 
+        }
+
+
+            
+            //public async Task<IActionResult> CheckOut()
+            //{
+            //    var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
+            //    ViewData["CustomerId"] = customerId;
+
+            //    List<CartOrderModel> modelList = new List<CartOrderModel>();
+
+
+            //    // var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
+
+            //    var cartItems = await _context.CartItems.Where(a => a.CustomerID == customerId).ToListAsync();
+            //    var customer = await _context.Customers.FirstOrDefaultAsync(a => a.CustomerId == customerId);
+            //    var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
+            //    var productIds = cartItems.Select(item => item.ProductID).ToList();
+
+            //    // 如果productIds为空，则没有必要查询数据库
+            //    var products = _context.Products.Where(a => productIds.Contains(a.ProductId));
+
+            //    // 填充modelList
+            //    if (cartItems.Any() && customer != null && products.Any())
+            //    {
+            //        var model = new CartOrderModel
+            //        {
+            //            CartItem = cartItems,
+            //            Customer = customer,
+
+            //        };
+
+            //        modelList.Add(model);
+            //    }
+
+            //    return View(modelList);
+
+
+            //var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
+            // ViewData["CustomerId"] = customerId;
+
+            //List<CartOrderModel> modelList = new List<CartOrderModel>();
+
+            //var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
+
+            //var carItem = _context.CartItems.Where(a => a.CustomerID ==customerId ) ;
+
+            //var customer =  _context.Customers.FirstOrDefault(a => a.CustomerId == customerId);
+
+            //List<int> productIds = new List<int>();
+
+            //foreach(CartItem item in carItem)
+            //{
+            //    productIds.Add(item.ProductID);
+            //}
+            //var products = _context.Products.Where(a => productIds.Contains(a.ProductId));
+
+
+            //return View(modelList);
+            // 檢查是否有訂單存在
+            //if (lastOrder == null)
+            //{
+            //    // 處理沒有訂單的情況，例如顯示錯誤信息或重定向
+            //    return View("ErrorView"); // 假設有一個顯示錯誤的view
+            //}
+
+            //// 如果視圖需要處理多個訂單，保留下列代碼
+            //return View(new List<Order> { lastOrder });
+
+            //如果視圖只需要一個訂單，使用這行代碼
+            //return View(lastOrder);
         
-
-
-        //public async Task<IActionResult> CheckOut()
-        //{
-        //    var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
-        //    ViewData["CustomerId"] = customerId;
-
-        //    List<CartOrderModel> modelList = new List<CartOrderModel>();
-
-
-        //    // var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
-
-        //    var cartItems = await _context.CartItems.Where(a => a.CustomerID == customerId).ToListAsync();
-        //    var customer = await _context.Customers.FirstOrDefaultAsync(a => a.CustomerId == customerId);
-        //    var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
-        //    var productIds = cartItems.Select(item => item.ProductID).ToList();
-
-        //    // 如果productIds为空，则没有必要查询数据库
-        //    var products = _context.Products.Where(a => productIds.Contains(a.ProductId));
-
-        //    // 填充modelList
-        //    if (cartItems.Any() && customer != null && products.Any())
-        //    {
-        //        var model = new CartOrderModel
-        //        {
-        //            CartItem = cartItems,
-        //            Customer = customer,
-
-        //        };
-
-        //        modelList.Add(model);
-        //    }
-
-        //    return View(modelList);
-
-
-        //var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
-        // ViewData["CustomerId"] = customerId;
-
-        //List<CartOrderModel> modelList = new List<CartOrderModel>();
-
-        //var lastOrder = await _context.Orders.OrderByDescending(o => o.OrderId).FirstOrDefaultAsync();
-
-        //var carItem = _context.CartItems.Where(a => a.CustomerID ==customerId ) ;
-
-        //var customer =  _context.Customers.FirstOrDefault(a => a.CustomerId == customerId);
-
-        //List<int> productIds = new List<int>();
-
-        //foreach(CartItem item in carItem)
-        //{
-        //    productIds.Add(item.ProductID);
-        //}
-        //var products = _context.Products.Where(a => productIds.Contains(a.ProductId));
-
-
-        //return View(modelList);
-        // 檢查是否有訂單存在
-        //if (lastOrder == null)
-        //{
-        //    // 處理沒有訂單的情況，例如顯示錯誤信息或重定向
-        //    return View("ErrorView"); // 假設有一個顯示錯誤的view
-        //}
-
-        //// 如果視圖需要處理多個訂單，保留下列代碼
-        //return View(new List<Order> { lastOrder });
-
-        //如果視圖只需要一個訂單，使用這行代碼
-        //return View(lastOrder);
-    }
 
         public IActionResult CreateOrder()
         {
@@ -291,5 +347,7 @@ namespace Project0220.Controllers
             return View(new List<Order> { lastOrder });
 
         }
+
+  
     }
 }

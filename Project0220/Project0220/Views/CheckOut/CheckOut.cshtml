@@ -124,6 +124,7 @@
                                                </tr>
                                            </thead>
                                            <tbody>
+
                                                   @foreach (var cartOrder in Model) // 遍历CartOrderModel对象的列表
                                                   {
                                                       @foreach (var item in cartOrder.CartItem) // 然后遍历每个对象的CartItems
@@ -138,54 +139,40 @@
                                               </tr>
                                                       }
                                                   }
-                                                                              
+                                           </div>      
+                                            </div>
+                                        <form method="post" asp-action="SaveCheckOut">
+                                            @for (int x = 0; x < Model.Count; x++)
+                                            {
+                                                 <input type="hidden" name="orderId" value="@Model[x].Order.OrderId" />
+                                                for (int y = 0; y < Model[x].CartItem.Count; y++)
+                                                {
+                                                     <input type="hidden" asp-for="@Model[x].CartItem[y].Product.ProductId" name="CartItems[@y].ProductId" />
+                                                     <input type="hidden" asp-for="@Model[x].CartItem[y].Quantity" name="CartItems[@y].Quantity" />
+                                                     <input type="hidden" asp-for="@Model[x].CartItem[y].Product.UnitPrice" name="CartItems[@y].UnitPrice" />
+                                                     <input type="hidden" asp-for="@Model[x].CartItem[y].SelectedColor" name="CartItems[@y].SelectedColor" />
+
+                                                }
+                                            }
+                                     
+                                    <button type="submit" class="cart-button02">確認訂購</button>
+                                </form>
+
+                                       
+
+                                    @* <form asp-action="Create">
+                                     <button  type="submit"  value="Create" class="cart-button02" style="margin-left:450px;" asp-action="CheckOutDone">確認訂購</button>
+                                      </form> *@
+
+                                                   
                                              @*    <p>小計 <span>$75.00</span></p>
                                                 <p>折扣<span>$00.00</span></p>
                                                 <h4>總額<span>$75.00</span></h4> *@
-                   </div>
-                   </div>
-                   
+                
 
-
-                                       <form asp-action="Create">
-                                     <button  type="submit"  value="Create" class="cart-button02" style="margin-left:450px;" asp-action="CheckOutDone">確認訂購</button>
-            @* 更改類別名稱cart-button02 *@
-                                      </form>
-
+                                    
         <!--Checkout section end-->
 
-
-        @* @foreach (var item in Model.Products)
-{
-                                    <div class="col-lg-5">
-                                    <div class="row">
-                                <div class="col-12 mb-60 d-flex">
-                                    <div class="cart-summary">
-                                        <div class="cart-summary-wrap">
-                                            <h4>購物車總覽</h4>
-                                            <tr>
-                                              <td href="@Url.Action("AddToCart", "Cart")" class="btn btn-primary">填写收件信息</td>
-                                              <td class="pro-title"><a href="#">@item.ProductName</a></td>
-                                            <td class="pro-color"><span>@item.Color1</span></td>
-                                            <td class="pro-quantity">
-                                              <td class="pro-qty"><input type="number" name="count" value="1"></td>
-                                            <td class="pro-subtotal"><span>$@item.UnitPrice</span></td>>
-                                                </tr>
-                                                        <p  class="product-subtotal">小計 <span>@Model.Products.Sum(p => p.UnitPrice)</span></p>
-                                            <p class="product-discound">折扣 <span>$75.00</span></p>
-                                            <h2>總額 <span>$75.00</span></h2>
-                                        </div>
-                                        <div class="cart-summary-button">
-                                            @* 改類別名稱cart-button01 *@
-        @*  <button class="cart-button01">繼續購物</button>
-                                            <button type="submit" value="Create" class="cart-button01">繼續結帳</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                               </div>
-                               </div>
-}  *@
 <script>
 
 function showPaymentInfo(paymentMethod) {

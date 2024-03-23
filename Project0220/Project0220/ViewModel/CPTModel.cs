@@ -9,6 +9,6 @@ namespace Project0220.ViewModel
 
         public List<TrackList>? TrackLists { get; set; }
 
-
+        public List<OrderDetail> OrderDetails { get; set; }
     }
 }

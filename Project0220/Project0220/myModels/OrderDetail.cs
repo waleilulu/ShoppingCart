@@ -20,6 +20,8 @@ public class OrderDetail
 
     public decimal? Amount { get; set; }
 
+    public string? SelectedColor { get; set; }
+
     public virtual Order? Order { get; set; }
 
     public virtual Product? Product { get; set; }
