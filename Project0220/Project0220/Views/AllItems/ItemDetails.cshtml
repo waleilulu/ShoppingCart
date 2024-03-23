@@ -137,7 +137,7 @@
                                     <form method="post" action="/Cart/AddToCart">
                                         <!-- 隱藏的產品ID input 欄位 -->
                                         <input type="hidden" name="productId" value="@item.ProductId">
-                                        <form>
+                                       
                                              <!-- 產品數量 input 欄位 -->
                                               <div class="single-product-quantity mb-2 form-inline">
                                                   <div class="product-quantity">
@@ -145,11 +145,13 @@
                                                  </div>
                                        
                                                  <!-- 顏色選擇 input 欄位 -->
-                                               <select id="product-color-choose">
-                                                      <option value="@item.Color1">@item.Color1</option>
+                                                     <div class="product-color">
+                                                <select id="product-color-choose" name="selectedColor">
+                                                    <option value="@item.Color1">@item.Color1</option>
                                                     <option value="@item.Color2">@item.Color2</option>
                                                 </select>
-                                            </form>
+                                            </div>
+
                                             
                                         <div class="wishlist-compare-btn mb-2">
                                               <button onclick="addfavoritebtn(@item.ProductId)">
@@ -161,6 +163,8 @@
                                         <div class="add-to-link mb-2">
                                             <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
                                         </div>
+
+                                              
                                        
                                     </form>
                                 
