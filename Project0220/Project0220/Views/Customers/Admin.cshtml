@@ -11,6 +11,8 @@
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <script>
+      console.log(document.cookie)
+
     // 顯示彈跳視窗，讓管理員選擇進入的頁面
     swal({
       title: "歡迎您的光臨",
@@ -18,21 +20,24 @@
       buttons: {
         page1: {
           text: "管理者",
-          value: "/Products/Index",
+          value: "admin",
         },
         page2: {
           text: "會員",
-          value: "/Customers/Details",
+         value: "customer",
         },
       },
     })
     .then((value) => {
       // 根據管理員的選擇執行相應的操作
       switch (value) {
-        case  "/Products/Index":
+        case "admin":
+       //  document.cookie = "userRole=Administrator";
           window.location.href = "/Products/Index"; // 導向到第一個頁面的 URL
           break;
-        case "/Customers/Details":
+       case "customer":
+       //  document.cookie = "userRole=Customers";
+          document.cookie = "isAdmin";
           window.location.href = "/Customers/Details"; // 導向到第二個頁面的 URL
           break;
         default:

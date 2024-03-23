@@ -135,7 +135,7 @@
                                                                                     <ul>
                                                                                         <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
                                                                                         <li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+                                                                                            <li><a href="javascript:;"><i  onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></i></a></li>
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
@@ -230,7 +230,9 @@
                                                 <i class="fa fa-star active"></i>
                                                 <i class="fa fa-star active"></i>
                                                 <i class="fa fa-star active"></i>
+                                                 
                                                 <i class="fa fa-star-o"></i>
+                                           
                                                 <a class="review-link" href="#">(1則顧客評價)</a>
                                             </div>
                                             <div class="single-product-price">
@@ -248,7 +250,10 @@
                                                 </form>
                                             </div>
                                             <div class="wishlist-compare-btn">
+                                                        <button onclick="addfavoritebtn(@item.ProductId)">
                                                 <a href="" class="wishlist-btn">加入我的最愛</a>
+                                              </button>
+                                                       
                                                 <button class="btn onlyBtn"><i class="ion-bag"></i>加入購物車</button>
                                             </div>
                                             <div class="single-product-sharing">
@@ -273,3 +278,29 @@
             </div>
         }
         <!-- Shop Section End -->
+                <script>
+        function addfavoritebtn(productId){
+
+        $.ajax({
+            url:"/AllItems/Follow",
+            method:"post",
+            data:{ProductId:productId},
+            success:function (result){
+           
+                alert("商品追蹤成功");
+
+            },
+            error:function (error){
+                console.error("發生錯誤:",error);
+            }
+
+
+        });
+
+        }
+
+
+       
+        
+
+    </script>

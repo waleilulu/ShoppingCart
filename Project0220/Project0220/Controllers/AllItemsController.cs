@@ -148,39 +148,60 @@ namespace Project0220.Controllers
 
                     if (product != null)
                     {
-                        //有此項產品
-                        var trackListModel = new TrackList
+                        var existingTrack = _contextNew.TrackLists
+                    .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId);
+
+                        if (existingTrack == null)
                         {
-                            CustomerID = userId.Value,
-                            ProductID = ProductId,
-                           
-                        };
 
-                        _contextNew.TrackLists.Add(trackListModel);
-                        _contextNew.SaveChanges();
+                            var trackListModel = new TrackList
+                            {
+                                CustomerID = userId.Value,
+                                ProductID = ProductId,
 
-                        return Json(new { success = true, message = "Product tracked successfully" });
+                            };
+
+                            _contextNew.TrackLists.Add(trackListModel);
+                            _contextNew.SaveChanges();
+
+                            return Json(new { success = true, message = "Product tracked successfully" });
+                        }
+                        else
+                        {
+                            return Json(new { success = false, message = "產品已追蹤過了" });
+                        }
                     }
                     else
                     {
-                        return Json(new { success = false, message = "Product not found" });
+                        // 使用者未驗證
+                        return Json(new { success = false, message = "User not authenticated" });
                     }
                 }
                 else
                 {
-                    // 使用者未驗證
-                    return Json(new { success = false, message = "User not authenticated" });
+                    // 使用者未登錄
+                    return Json(new { success = false, message = "尚未登錄 請登入" });
                 }
-            }
-            else
-            {
-                // 使用者未登錄
-                return Json(new { success = false, message = "尚未登錄 請登入" });
-            }
+				
+			}
 
-        }
-
-
+			return Json(new { success = false, message = "" });
+		}
      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

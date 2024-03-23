@@ -107,6 +107,18 @@
                        </form>
                              
                         }
+               
+                        @{
+                          
+                           var isAdmin = Context.Request.Cookies["isAdmin"];
+                        }
+
+                                       
+                        @if (isAdmin =="True")
+                        {
+                   <a class="nav-link fa-solid fa-route" asp-controller="Products" asp-action="Index"></a>
+                        }
+
                             @* 群發功能已經放在管理者頁面了!!! *@
                             @* <li class="nav-item">
                             <a class="nav-link" asp-controller="Email" asp-action="SendAdEmail"><i class="fa-regular fa-paper-plane"></i></i></a>

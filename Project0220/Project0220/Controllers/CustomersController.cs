@@ -10,16 +10,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Project0220.myModels;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using System.Configuration;
+using Project0220.ViewModel;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace Project0220.Controllers
 {
     public class CustomersController : Controller
     {
         private readonly ScaffoldEcommerceDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public CustomersController(ScaffoldEcommerceDbContext context)
+        public CustomersController(ScaffoldEcommerceDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: Customers
@@ -126,10 +135,17 @@ namespace Project0220.Controllers
                 // 设置 Cookie 保存用户 ID
                 HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
                 HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 根据用户角色重定向到适当的页面
-                if (user.Admin)
+                // 根據角色設定餅乾
+                // HttpContext.Response.Cookies.Append("userRole", user.Admin ? "Administrator":"Customers") ;
+                HttpContext.Response.Cookies.Append("isAdmin", user.Admin.ToString());
+
+				// 用戶選擇去到頁面
+
+				if (user.Admin)
                 {
+                   
                     return RedirectToAction("Admin", "Customers");
+                    
                 }
                 else
                 {
@@ -142,10 +158,11 @@ namespace Project0220.Controllers
             return View("Login");
         }
         //管理者選擇頁面
-        public IActionResult Admin() {
-            return View();
 
-        }
+        public IActionResult Admin() {
+          
+            return View();
+		}
 
 
         //登出
@@ -159,9 +176,10 @@ namespace Project0220.Controllers
             // 清除用戶相關的 Session 和 Cookie
             HttpContext.Session.Clear();
             Response.Cookies.Delete("membercookie");
-
-            // 重定向到登入頁面
-            return RedirectToAction("Login", "Customers");
+			Response.Cookies.Delete("userRole");
+			Response.Cookies.Delete("isAdmin");
+			// 重定向到登入頁面
+			return RedirectToAction("Login", "Customers");
         }
 
         //決定導向哪裡的方法( 會員頁面 還是 登入頁面 )
@@ -169,18 +187,28 @@ namespace Project0220.Controllers
 
         public IActionResult UserProfile()
         {
-
-            // 檢查是否存在名為 "membercookie" 的 cookie
+            // 检查是否存在名为 "membercookie" 的 cookie
             if (HttpContext.Request.Cookies["membercookie"] != null)
             {
-                // 如果存在相應的 cookie，繼續執行其他操作
-                // 這裡可以放置會員中心頁面的相關代碼
-                return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
-
-
+                var isAdmin = HttpContext.Request.Cookies["isAdmin"];
+                var userRole = HttpContext.Request.Cookies["userRole"];
+                if ( isAdmin == "true")
+                {
+                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+                }
+                // 如果用户角色为管理员，则重定向到管理员页面
+               else if (userRole =="Administrator")
+				{
+					return RedirectToAction("Index", "Products");
+				}
+				// 如果用户角色为会员，则重定向到会员详情页面
+				else
+                {
+                    return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+                }
             }
 
-            // 如果用戶未通過身份驗證，導向登入頁面
+            // 如果用户未通过身份验证，则重定向到登录页面
             return RedirectToAction("Login", "Customers");
 
         }
@@ -283,12 +311,12 @@ namespace Project0220.Controllers
         [HttpPost]
         public IActionResult DeleteProduct(int productId)
         {
-            
-            var CustomerId =Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            var trackList = _context.TrackLists
-                           .SingleOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
 
-            if (trackList != null)
+            var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+            var trackList = _context.TrackLists
+                           .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
+
+            if (trackList == null)
             {
                 _context.TrackLists.Remove(trackList);
                 _context.SaveChanges();
@@ -299,7 +327,111 @@ namespace Project0220.Controllers
             return Json(new { success = true, message = "追蹤商品刪除失敗" });
         }
 
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        private string GenerateVerificationCode()
+        {
+            // 實現生成驗證碼的邏輯，例如使用 Guid 或隨機數字生成
+            // 這裡僅為示例，您可以根據需要自定義生成驗證碼的方法
+            return Guid.NewGuid().ToString("N").Substring(0, 6);
+        }
 
+        //忘記密碼
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ForgetPassword(Customer Model)
+        {
 
+            //if (ModelState.IsValid)
+            //{
+
+                // 檢查輸入的用戶名和郵箱是否匹配
+                var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
+
+                if (user != null)
+                {
+                    var verificationCode = GenerateVerificationCode();
+                    user.ResetPasswordToken = verificationCode;
+                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(10); // 驗證碼有效期1小時
+                    await _context.SaveChangesAsync();
+
+                    // 發送驗證碼到用戶提供的 email 中
+                    await SendEmails(user.Email, verificationCode);
+
+                    // 將用戶重定向到輸入驗證碼的頁面
+                    return RedirectToAction("ForgetPassword");
+                
+
+            }
+            //}
+            // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "提供的用戶名和郵箱不匹配。");
+            return View();
+        }
+
+        private async Task SendEmails(string email, string verificationCode)
+        {
+            // 使用 Google Mail Server 發信
+            string account = _configuration["EmailSettings:Account"];
+            string password = _configuration["EmailSettings:Password"];
+
+            string SmtpServer = "smtp.gmail.com";
+            int SmtpPort = 587;
+            MailMessage mms = new MailMessage();
+            mms.From = new MailAddress(account);
+            mms.Subject = "信件主題";
+
+            mms.To.Add(new MailAddress(email)); // 添加收件人
+
+            mms.Body = $@"<html>
+                    <head>
+                        <title>驗證密碼</title>
+                    </head>
+                    <body>
+                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為10分鐘，請在期限內完成驗證。</p>
+                    </body>
+                </html>";
+            mms.IsBodyHtml = true;
+            mms.SubjectEncoding = Encoding.UTF8;
+
+            using (SmtpClient client = new SmtpClient(SmtpServer, SmtpPort))
+            {
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential(account, password);//寄信帳密 
+                client.Send(mms); //寄出信件
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EnterVerificationCode(string verificationCode)
+        {
+            if (ModelState.IsValid)
+            {
+                // 查找用戶
+                var user = await _context.Customers.FirstOrDefaultAsync(c => c.ResetPasswordToken == verificationCode);
+                if (user != null && user.ResetPasswordToken.Trim().Equals(verificationCode.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                // 清除重置密碼令牌
+                user.ResetPasswordToken = "";
+                user.ResetPasswordTokenExpiration = null;
+                await _context.SaveChangesAsync();
+
+                    // 將用戶重定向到重設密碼頁面
+                return RedirectToAction("ResetPWD", "ResetPwd");
+            }
+            }
+            // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
+            return RedirectToAction("ForgetPassword");
+
+        }
     }
+
 }
+
+
+
+
+
