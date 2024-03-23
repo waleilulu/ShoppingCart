@@ -341,9 +341,10 @@ namespace Project0220.Controllers
 
                     // 發送驗證碼到用戶提供的 email 中
                     await SendEmails(user.Email, verificationCode);
+                    TempData["Message"] = "驗證碼已發送到您的信箱，請檢查並輸入驗證碼。";
 
-                    // 將用戶重定向到輸入驗證碼的頁面
-                    return RedirectToAction("ForgetPassword");
+                // 將用戶重定向到輸入驗證碼的頁面
+                return RedirectToAction("ForgetPassword");
                 
 
             }
@@ -384,6 +385,7 @@ namespace Project0220.Controllers
                 client.Credentials = new NetworkCredential(account, password);//寄信帳密 
                 client.Send(mms); //寄出信件
             }
+
         }
 
         [HttpPost]
