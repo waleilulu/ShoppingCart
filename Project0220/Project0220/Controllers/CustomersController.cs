@@ -344,19 +344,17 @@ namespace Project0220.Controllers
         public async Task<IActionResult> ForgetPassword(Customer Model)
         {
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
 
                 // 檢查輸入的用戶名和郵箱是否匹配
                 var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
-
                 if (user != null)
                 {
-
                     var verificationCode = GenerateVerificationCode();
-                    //user.ResetPasswordToken = verificationCode;
-                    //user.ResetPasswordTokenExpiration = DateTime.Now.AddHours(1); // 驗證碼有效期1小時
+                    user.ResetPasswordToken = verificationCode;
+                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(10); // 驗證碼有效期1小時
                     await _context.SaveChangesAsync();
 
                     // 發送驗證碼到用戶提供的 email 中
@@ -364,13 +362,14 @@ namespace Project0220.Controllers
 
                     // 將用戶重定向到輸入驗證碼的頁面
                     return RedirectToAction("ForgetPassword");
-                }
+                
+
             }
+            //}
             // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
             ModelState.AddModelError(string.Empty, "提供的用戶名和郵箱不匹配。");
             return View();
         }
-
 
         private async Task SendEmails(string email, string verificationCode)
         {
@@ -391,7 +390,7 @@ namespace Project0220.Controllers
                         <title>驗證密碼</title>
                     </head>
                     <body>
-                        <p>親愛的用戶，您的驗證碼為{verificationCode}</p>
+                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為10分鐘，請在期限內完成驗證。</p>
                     </body>
                 </html>";
             mms.IsBodyHtml = true;
@@ -404,53 +403,35 @@ namespace Project0220.Controllers
                 client.Send(mms); //寄出信件
             }
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EnterVerificationCode( string verificationCode)
-        //{
 
-        //    // 查找用戶
-        //    var user = await _context.Customers.FirstOrDefaultAsync(c => c.ResetPasswordToken == ResetPasswordToken);
-        //    if (user != null && user.ResetPasswordToken == verificationCode)
-        //        {
-        //            //// 驗證碼匹配，將用戶的密碼發送到用戶提供的 email 中
-        //            //await SendPasswordByEmail(user.Email, user.Password);
+        [HttpPost]
+        public async Task<IActionResult> EnterVerificationCode(string verificationCode)
+        {
+            if (ModelState.IsValid)
+            {
+                // 查找用戶
+                var user = await _context.Customers.FirstOrDefaultAsync(c => c.ResetPasswordToken == verificationCode);
+                if (user != null && user.ResetPasswordToken.Trim().Equals(verificationCode.Trim(), StringComparison.OrdinalIgnoreCase))
+            {
+                // 清除重置密碼令牌
+                user.ResetPasswordToken = "";
+                user.ResetPasswordTokenExpiration = null;
+                await _context.SaveChangesAsync();
 
-        //            // 清除重置密碼令牌
-        //            user.ResetPasswordToken = null;
-        //            user.ResetPasswordTokenExpiration = null;
-        //            await _context.SaveChangesAsync();
+                    // 將用戶重定向到重設密碼頁面
+                return RedirectToAction("ResetPWD", "ResetPwd");
+            }
+            }
+            // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
+            return RedirectToAction("ForgetPassword");
 
-        //            // 將用戶重定向到成功頁面
-        //            return RedirectToAction("PasswordResetSuccess");
-        //        }
-            
-        //    // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
-        //    ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
-        //    return View();
-        //}
+        }
     }
 
 }
 
 
 
-
-// GET: Customers/EnterVerificationCode//錯誤
-//public IActionResult EnterVerificationCode(string verificationCode, string username)
-//{
-//    // 這裡可以渲染輸入驗證碼的頁面
-//    return View(new EnterVerificationCodeViewModel { Username = username });
-//}
-
-
-//// POST: Customers/EnterVerificationCode
-
-//public async Task SendPasswordByEmail(string email, string Newpassword)
-//{
-//    // 檢查是否有忘記密碼的客戶
-//    var customers = await _context.Customers
-//        .Where(c => c.Email == email && c.ResetPasswordToken != null && c.ResetPasswordTokenExpiration > DateTime.Now)
-//        .ToListAsync();
 
 
