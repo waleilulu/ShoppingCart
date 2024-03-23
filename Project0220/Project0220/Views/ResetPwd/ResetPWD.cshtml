@@ -6,7 +6,10 @@
         <div class="col-md-12">
             <h2 class="logintitle">重新設定密碼</h2><br />
             <form asp-action="ResetPWD" method="post">
-
+                <div class="form-group">
+                    <label class="control-label" name="newPwd" >請輸入帳號:</label>
+                    <input type="text" class="form-control" name="Username" />
+                </div>
                 <div class="form-group">
                     <label class="control-label" name="newPwd" >請輸入新密碼:</label>
                     <input type="text" class="form-control" name="newPwd" />
