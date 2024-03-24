@@ -47,7 +47,7 @@
                                                <label name="customerId" value="@item.Order.CustomerId" />
                                                </div>
                                                <div >
-                                              <label   style="font-size:20px;">收件人: @item.Order.Consignee</label>
+                                              <label   style="font-size:20px; ">收件人: @item.Order.Consignee</label>
                                             </div>
                                             <div >
                                                         <label style="font-size:20px; margin-top:20px;" >聯絡電話: @item.Order.ContactPhone</label>
@@ -84,26 +84,31 @@
                                              <div id="creditCardForm" style="display: none;">
                                               <br>
                                               <p class="checkout-title">請填寫信用卡資訊 : </p>
-                                                 <form>
-                                                     <tr>
-                                                         <td>
-                                                             <label >持卡人姓名</label>
+                                                         <div style="border: 1px solid black;">
+                                                         <form >
+                                                           <div>
+                                                                 <label style="font-weight: bold;">持卡人姓名</label><br>
                                                                       <input class="checkout-form" type="text" placeholder="請輸入姓名" required></input>
-                                                             <br>
-                                                              <label >請填寫信用卡卡號</label>
-                                                                     <input class="checkout-form" type="text" placeholder="請填寫16碼信用卡號" required></input>
-                                                                 <br>
-                                                                <label >CVV</label>
-                                                                         <input class="checkout-form" type="text" placeholder="請填寫信用卡背面末三碼" required></input>
-                                                                 <br>
-                                                                  <label>請填寫有效日期</label>
-                                                                           <input  class="checkout-form" type="text" placeholder="月/年" required></input>
-                                                         </td>
-                                                     </tr>
+                                                           </div>
+                                                                <div>
+                                                                      <label style="margin-top:10px; font-weight: bold;">請填寫信用卡卡號</label><br>
+                                                                    <input class="checkout-form" type="text" pattern="\d{16}" placeholder="請填寫16碼信用卡號" required></input>
+                                                          </div>
+                                                                <div>
+                                                                            <label style="margin-top:10px; font-weight: bold;">CVV</label><br>
+                                                                      <input class="checkout-form" type="text" pattern="\d{3}" placeholder="請填寫信用卡背面末三碼" required></input>
+                                                                </div>
+                                                                    <div>
+                                                                              <label style="margin-top:10px; font-weight: bold;">請填寫有效日期</label><br>
+                                                                      <input  class="checkout-form" type="text" placeholder="月/年，例如：07/28" required></input>
+                                                                </div>
+                                                             
                                                  </form>
                                                  <br>
-                                                         <button class="cart-button02" type="button" onclick="confirmPayment()">確認付款</button>
-                                             </div>
+                                                        <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #adb7c2; color: white; border-radius: 5px; font-weight: bold;   border: none;  cursor: pointer; padding: 10px; margin-left:40px;">確認付款</button>
+                                                 </div>  
+                                                 </div>
+         
             }
 
                    </div>
@@ -113,7 +118,7 @@
                                             <div class="checkout-cart-total">
 
                                                 <h4>購買產品</h4>
-                                                 <thead>
+                                                 @* <thead>
                                                <tr>
                                                    <th scope="col">產品ID</th>
                                                    <th scope="col">產品圖示</th>
@@ -122,21 +127,23 @@
                                                    <th scope="col">選擇的顏色</th>
                                                    <th scope="col">數量</th>
                                                </tr>
-                                           </thead>
+                                           </thead> *@
                                            <tbody>
 
                                                   @foreach (var cartOrder in Model) // 遍历CartOrderModel对象的列表
                                                   {
                                                       @foreach (var item in cartOrder.CartItem) // 然后遍历每个对象的CartItems
                                                       {
+                                               
                                               <tr>
-                                                  <td>@item.Product.ProductId</td>
+                                                @*   <td>@item.Product.ProductId</td> *@
+                                                  
                                                   <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
                                                   <td>@item.Product.ProductName</td>
-                                                  <td>$@item.Product.UnitPrice</td>
                                                   <td>@item.SelectedColor</td>
-                                                  <td>@item.Quantity</td>
-                                              </tr>
+                                                  <td>X @item.Quantity 個</td>
+                                                  <td>$@item.Product.UnitPrice 元</td>
+                                              </tr><br><br>
                                                       }
                                                   }
                                            </div>      
