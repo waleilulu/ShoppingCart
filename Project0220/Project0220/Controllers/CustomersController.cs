@@ -87,9 +87,6 @@ namespace Project0220.Controllers
         {
             if (ModelState.IsValid)
             {
-<<<<<<< HEAD
-               customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
-=======
                 // 对用户密码进行加密
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
 
@@ -97,7 +94,6 @@ namespace Project0220.Controllers
                 customer.Password = hashedPassword;
 
                 customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
->>>>>>> 0322-email
                 // 添加 Customer 到数据库中
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
@@ -124,37 +120,6 @@ namespace Project0220.Controllers
                 // 验证用户输入的密码与数据库中存储的哈希密码是否匹配
                 if (BCrypt.Net.BCrypt.Verify(Customers.Password, user.Password))
                 {
-<<<<<<< HEAD
-                    claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
-                }
-
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                // 创建身份验证票证
-                var principal = new ClaimsPrincipal(identity);
-
-                // 登录用户
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                // 设置 Cookie 保存用户 ID
-                HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
-                HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 根據角色設定餅乾
-                // HttpContext.Response.Cookies.Append("userRole", user.Admin ? "Administrator":"Customers") ;
-                HttpContext.Response.Cookies.Append("isAdmin", user.Admin.ToString());
-
-				// 用戶選擇去到頁面
-
-				if (user.Admin)
-                {
-                   
-                    return RedirectToAction("Admin", "Customers");
-                    
-                }
-                else
-                {
-                    return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
-=======
                     // 创建用户主张
                     var claims = new List<Claim>
                 {
@@ -187,7 +152,6 @@ namespace Project0220.Controllers
                     {
                         return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
                     }
->>>>>>> 0322-email
                 }
             }
 
