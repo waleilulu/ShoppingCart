@@ -87,12 +87,12 @@ namespace Project0220.Controllers
         {
             if (ModelState.IsValid)
             {
-                customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
+               customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
                 // 添加 Customer 到数据库中
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Login));
+                return RedirectToAction("Login", "Customers");
             }
             return View(customer);
         }

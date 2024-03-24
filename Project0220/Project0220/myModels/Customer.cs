@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project0220.myModels;
 
 public partial class Customer
 {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int CustomerId { get; set; }
 
     public string? CustomerName { get; set; }
@@ -39,7 +42,7 @@ public partial class Customer
     public bool Subscribe { get; internal set; }
     
     public DateTime? ResetPasswordTokenExpiration { get; set; }
-    public string ResetPasswordToken { get; set; }
+    public string? ResetPasswordToken { get; set; }
 
    
 }
