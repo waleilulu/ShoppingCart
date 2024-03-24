@@ -2,7 +2,35 @@
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = null;
 }
+
+<!--引用-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+            <img src="~/images/GGLogo.png" width="268.5" height="81.75"
+                 class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" asp-controller="Customers" asp-action="Index"><strong>管理者頁面</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
+                <a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
+                <a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
+                <a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
+                <a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
+                <a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
+            </div>
+        </div>
+    </div>
+</nav>
+</br>
 
 
 <!--引入-->
@@ -85,15 +113,15 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="儲存" class="btn btn-primary" />
             </div>
         </form>
+            <div>
+                <a asp-action="Index">回到上一頁</a>
+            </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 </div>
 @section Scripts {
     @{
