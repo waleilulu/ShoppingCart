@@ -44,6 +44,6 @@ public partial class Customer
     public bool Subscribe { get; internal set; }
     
     public DateTime? ResetPasswordTokenExpiration { get; set; }
-    public string ResetPasswordToken { get; set; }
+    public string? ResetPasswordToken { get; set; }
 
 }

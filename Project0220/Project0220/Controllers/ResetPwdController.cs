@@ -34,12 +34,15 @@ namespace Project0220.Controllers
             
             if (user != null && newPwd == newPwd2)
             {
-                // 更新密码
-                /*user.Password = HashPassword(newPwd);*/ // 这里假设你有一个加密密码的方法 HashPassword
+                var salt = BCrypt.Net.BCrypt.GenerateSalt(10);
+
+                // 哈希密码
+                var hashPassword = BCrypt.Net.BCrypt.HashPassword(newPwd, salt);
+                Console.WriteLine("Hashed Password: " + hashPassword);
 
                 try
                 {
-                    user.Password = newPwd2; // 设置新密码
+                    user.Password = hashPassword; // 设置新密码为哈希后的密码
                     _context.Update(user); 
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Login", "Customers");
