@@ -36,22 +36,3 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
-html, body {
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 100% !important;
-}
-
-.content {
-    flex: 1 !important;
-}
-
-.footer {
-    flex-shrink: 0 !important;
-}
