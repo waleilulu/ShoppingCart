@@ -29,8 +29,13 @@ public partial class Customer
 
     public string? Address { get; set; }
 
+    [Required(ErrorMessage = "帳號是必填的。")]
+    [StringLength(50, MinimumLength = 5, ErrorMessage = "帳號長度必須大於5個字。")]
     public string? Username { get; set; }
 
+    [Required(ErrorMessage = "密碼是必填的。")]
+    [StringLength(100, MinimumLength = 6, ErrorMessage = "密碼長度必須大於6個字。")]
+    [DataType(DataType.Password)]
     public string? Password { get; set; }
 
     public bool Admin { get; set; }
@@ -41,5 +46,4 @@ public partial class Customer
     public DateTime? ResetPasswordTokenExpiration { get; set; }
     public string ResetPasswordToken { get; set; }
 
-   
 }

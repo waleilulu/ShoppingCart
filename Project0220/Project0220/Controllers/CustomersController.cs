@@ -408,6 +408,7 @@ namespace Project0220.Controllers
             }
             // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
             ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
+            TempData["ErrorMessage"] = "驗證碼不正確，請重新輸入。";
             return RedirectToAction("ForgetPassword");
 
         }
