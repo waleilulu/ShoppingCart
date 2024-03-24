@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project0220.myModels;
+using System.Security.Cryptography;
+using Konscious.Security.Cryptography;
 
 namespace Project0220.Controllers
 {
@@ -14,6 +16,7 @@ namespace Project0220.Controllers
             _context = context;
             
         }
+
         public IActionResult Index()
         {
             return View();
@@ -28,7 +31,7 @@ namespace Project0220.Controllers
         {
             var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Username);
 
-            /*user.Password = HashPassword(newPwd); */// 这里假设你有一个加密密码的方法 HashPassword
+            
             if (user != null && newPwd == newPwd2)
             {
                 // 更新密码
@@ -38,7 +41,7 @@ namespace Project0220.Controllers
                 {
                     user.Password = newPwd2; // 设置新密码
                     _context.Update(user); 
-                                await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("Login", "Customers");
                 }
                 catch (DbUpdateConcurrencyException)
@@ -58,14 +61,5 @@ namespace Project0220.Controllers
                 return NotFound();
             }           
         }
-
-        //private string HashPassword(string password)
-        //{
-        //    // 这里可以使用你选择的密码哈希算法来对密码进行加密
-        //    // 例如： return SomeHashingAlgorithm.ComputeHash(password);
-        //    // 请确保在此过程中使用了适当的加盐和哈希强度。
-        //    return password;
-        //}
-
     }
 }
