@@ -236,7 +236,7 @@ namespace Project0220.Controllers
                     
                     var orderDetails = new OrderDetail
                     {
-                        OrderId = order.OrderId, // 使用查找到的 OrderId
+                        OrderId = orderId,
                         ProductId = item.ProductID,
                         Quantity = item.Quantity,
                         UnitPrice = product.UnitPrice,
@@ -244,7 +244,11 @@ namespace Project0220.Controllers
                         Discount = 1,
                         Amount =item.Quantity * product.UnitPrice
                     };
+                    // 將 OrderDetail 添加到資料庫
                     _context.OrderDetails.Add(orderDetails);
+
+                    // 減少產品庫存
+                    product.UnitInStock -= item.Quantity;
                 }
             }
             await _context.SaveChangesAsync();

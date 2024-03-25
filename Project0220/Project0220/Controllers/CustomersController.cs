@@ -55,19 +55,39 @@ namespace Project0220.Controllers
                 .Where(tl => tl.CustomerID == id)
                 .Select(tl => tl.ProductID)
                 .ToListAsync();
-            // 根據這些產品ID查找相應的產品資訊
-            var trackedProducts = await _context.Products
-                .Where(p => trackedProductIds.Contains(p.ProductId))
+
+            //根據這些產品ID查找相應的產品資訊
+           var trackedProducts = await _context.Products
+            .Where(p => trackedProductIds.Contains(p.ProductId))
+             .ToListAsync();
+
+            var orders = await _context.Orders
+       .Where(o => o.CustomerId == id)
+       .OrderByDescending(o => o.OrderDate) // 按訂單日期降序排序
+       .ToListAsync();
+
+            var orderDetails = await _context.OrderDetails
+                .Where(od => orders.Select(o => o.OrderId).Contains(od.OrderId.Value))
                 .ToListAsync();
+
+            // 填充 OrdersWithDetails
+            var ordersWithDetails = orders.Select(order => new OrderWithDetails
+            {
+                Order = order,
+                OrderDetails = orderDetails.Where(od => od.OrderId == order.OrderId).ToList()
+            }).ToList();
+
+            // Products 包含所有的商品信息
+            var allProducts = await _context.Products.ToListAsync();
 
             var viewModel = new ViewModel.CPTModel
             {
                 Customers = new List<Customer> { user },
-                Products = trackedProducts
+                Products = allProducts, 
+                TrackedProducts = trackedProducts, // 追踪商品單獨儲存
+                OrdersWithDetails = ordersWithDetails,
 
             };
-
-
 
             return View(viewModel);
         }
