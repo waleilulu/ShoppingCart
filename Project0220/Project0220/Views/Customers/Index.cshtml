@@ -65,7 +65,7 @@
 <div class="container-fluid">
     <div class="row mb-5">
         <div class="col-md-6">
-            <a class="btn btn-primary" asp-controller="Customers" asp-action="Create">Create</a>
+            <a class="btn btn-primary" asp-controller="Customers" asp-action="Create_Admin">Create</a>
         </div>
         <div class="col-md-6">
         </div>
@@ -109,7 +109,7 @@
                         <td>@customer.Admin</td>
                         @*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@
                         <td style="white-space: nowrap;">
-                            <a class="btn btn-primary btn-sm" asp-controller="Customers" asp-action="Edit"
+                            <a class="btn btn-primary btn-sm" asp-controller="Customers" asp-action="Edit_Admin"
                                asp-route-id="@customer.CustomerId">Edit</a>
                             <a class="btn btn-danger btn-sm" asp-controller="Customers" asp-action="Delete"
                                asp-route-id="@customer.CustomerId">Delete</a>
