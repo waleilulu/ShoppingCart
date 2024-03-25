@@ -43,7 +43,7 @@ namespace Project0220.Controllers
             {
                 data = data.Where(o => o.ProductName.Contains(bee));
             }
-
+            var ret = data.ToList();
             return View(await data.ToListAsync());
         }
 
