@@ -7,6 +7,10 @@
 
 <!--引用-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- 引入fontawesome icon -->
+<script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
 	<div class="container-fluid">
@@ -20,41 +24,49 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
-				<a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
-				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
-				<a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
-				<a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
-				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
+				<a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+				<a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
+				<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+				<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
+				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+				<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
+				@{
+					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
+				}
+				@if (isAuthenticated)
+				{
+					<!-- 登出按鈕 -->
+					<form asp-controller="Customers" asp-action="Logout" method="post">
+						<button type="submit" class="nav-link" style="border:none;background:none;">
+							<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						</button>
+					</form>
+				}
 			</div>
 		</div>
 	</div>
 </nav>
-</br>
+<br>
 
+<h1>Delete</h1>
 
+<h3>Are you sure you want to delete this?</h3>
+<div>
+	<h4>Category</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.CategoryName)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.CategoryName)
+		</dd>
+	</dl>
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			<h3>是否確定刪除?</h3>
-			<br />
-			<dl class="row">
-				<dt class="col-sm-2">
-					@Html.DisplayNameFor(model => model.CategoryName)
-				</dt>
-				<dd class="col-sm-10">
-					@Html.DisplayFor(model => model.CategoryName)
-				</dd>
-			</dl>
-
-			<form asp-action="Delete">
-				<input type="hidden" asp-for="CategoryId" />
-				<input type="submit" value="刪除" class="btn btn-danger" />
-			</form>
-			<div>
-				<a asp-action="Index">回到上一頁</a>
-			</div>
-		</div>
-	</div>
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="CategoryId" />
+		<input type="submit" value="Delete" class="btn btn-danger" /> |
+		<a asp-action="Index">Back to List</a>
+	</form>
 </div>
