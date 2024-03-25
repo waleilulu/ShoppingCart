@@ -88,7 +88,7 @@ namespace Project0220.Controllers
             if (ModelState.IsValid)
             {
                customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
-                // 添加 Customer 到数据库中
+                
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
 
@@ -309,14 +309,14 @@ namespace Project0220.Controllers
 
         //刪除追蹤商品
         [HttpPost]
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeleteProduct(int productId,string Color)
         {
 
             var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             var trackList = _context.TrackLists
-                           .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
+                             .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId && t.Color == Color);
 
-            if (trackList == null)
+            if (trackList != null)
             {
                 _context.TrackLists.Remove(trackList);
                 _context.SaveChanges();

@@ -79,17 +79,13 @@ th, td {
       </div>
 
           <button class="tablink Mtab" onclick="openPage('MData', this, 'white')" id="defaultOpen">會員資料</button>
-   <!--  <button class="tablink" onclick="openPage('MDiscount', this, 'white')" >購物金</button>  -->
           <button class="tablink Mtab" onclick="openPage('MOrders', this, 'white')">訂單</button>
           <button class="tablink Mtab" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
       
-                  <div id="MData" class="tabcontent">
+          <div id="MData" class="tabcontent">
                       @foreach (var item in Model.Customers)
                       {
-
-
-                         
-                          <span class="m_title">會員資料</span>
+     <span class="m_title">會員資料</span>
 
                               <!-- 會員資料 -->
       <div class="container">
@@ -112,11 +108,7 @@ th, td {
                                </div>
                            </div>
                        </div>
-                   </div>
-                
-
-
-                          
+                   </div>             
                       }
 
 </div>
@@ -128,14 +120,13 @@ th, td {
                       @*  訂單資訊寫這邊 *@
                   </div>
 
-                  <div id="MFollow" class="tabcontent">
+<div id="MFollow" class="tabcontent">
   <!--追蹤商品-->
  <table class="MFollowTable">
 <tr>
   <th>產品圖片</th>
   <th>產品名稱</th>
   <th>價格</th>
-
   <th>顏色</th>
    <th>刪除</th>
 </tr>
@@ -151,8 +142,7 @@ th, td {
         <button type="button" onclick="confirmDelete('@product.ProductId')"><i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i></button>
          </th>
     </tr>
-
-                          }
+     }
 </table>
                   </div>
               </div>
@@ -196,7 +186,7 @@ th, td {
 
  
 </script>
- <!-- 在页面加载时直接设置默认选项卡的样式 -->
+ <!-- 選項卡 -->
 <script>
 
     document.addEventListener("DOMContentLoaded", function () {

@@ -15,5 +15,7 @@ namespace Project0220.myModels
 
     
         public int ProductID { get; set; }
+
+        public string Color { get; set; }
     }
 }

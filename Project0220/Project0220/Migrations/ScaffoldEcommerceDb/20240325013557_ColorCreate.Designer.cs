@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project0220.myModels;
 
@@ -11,9 +12,11 @@ using Project0220.myModels;
 namespace Project0220.Migrations.ScaffoldEcommerceDb
 {
     [DbContext(typeof(ScaffoldEcommerceDbContext))]
-    partial class ScaffoldEcommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240325013557_ColorCreate")]
+    partial class ColorCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

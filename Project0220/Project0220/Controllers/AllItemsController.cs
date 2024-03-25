@@ -135,7 +135,7 @@ namespace Project0220.Controllers
 
         //會員追蹤 
         [HttpPost]
-        public IActionResult Follow(int ProductId)
+        public IActionResult Follow(int ProductId,string Color)
         {   //先判斷這個人是誰
             var userId = HttpContext.Session.GetInt32("userId");
             if (userId.HasValue)
@@ -149,7 +149,7 @@ namespace Project0220.Controllers
                     if (product != null)
                     {
                         var existingTrack = _contextNew.TrackLists
-                    .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId);
+                    .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId &&t.Color==Color);
 
                         if (existingTrack == null)
                         {
@@ -158,6 +158,7 @@ namespace Project0220.Controllers
                             {
                                 CustomerID = userId.Value,
                                 ProductID = ProductId,
+                                Color=Color
 
                             };
 
