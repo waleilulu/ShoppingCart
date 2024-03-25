@@ -108,8 +108,27 @@ namespace Project0220.Controllers
         {
             if (ModelState.IsValid)
             {
-                // 对用户密码进行加密
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
+                //檢查用戶名是否存在
+                var existingUser = await _context.Customers.FirstOrDefaultAsync(c => c.Username == customer.Username);
+				if (existingUser != null)
+				{
+					ModelState.AddModelError("Username", "用戶名已被註冊，請選擇另一個用戶名");
+					return View(customer);
+				}
+
+				// 計算用户年龄
+				int age = DateTime.Today.Year - customer.DateOfBirth?.Year ?? 0;
+				if (customer.DateOfBirth?.Date > DateTime.Today.AddYears(-age)) age--;
+
+				// 检查用戶年齡是否小於18
+				if (age < 18)
+				{
+					ModelState.AddModelError("DateOfBirth", "您必须年满18岁才能注册。");
+					return View(customer);
+				}
+
+				// 对用户密码进行加密
+				string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
 
                 // 将加密后的密码赋值给用户对象
                 customer.Password = hashedPassword;
