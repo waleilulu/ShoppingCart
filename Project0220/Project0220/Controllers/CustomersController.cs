@@ -471,7 +471,68 @@ namespace Project0220.Controllers
             return RedirectToAction("ForgetPassword");
 
         }
-    }
+		public IActionResult Create_Admin()
+		{
+			return View();
+		}
+
+		// GET: Customers/Edit/5
+		public async Task<IActionResult> Edit_Admin(int? id)
+		{
+
+			if (id == null)
+			{
+				return NotFound();
+			}
+
+			var Customer = await _context.Customers.FindAsync(id);
+			if (Customer == null)
+			{
+				return NotFound();
+			}
+			return View(Customer);
+		}
+
+		// POST: Customers/Edit/5
+		// To protect from overposting attacks, enable the specific properties you want to bind to.
+		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit_Admin(int id, [Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password")] Customer Customers)
+		{
+			if (id != Customers.CustomerId)
+			{
+				return NotFound();
+			}
+
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					_context.Update(Customers);
+					await _context.SaveChangesAsync();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!CustomerExists(Customers.CustomerId))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+				return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+
+			}
+			return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
+		}
+
+
+
+
+	}
 
 }
 
