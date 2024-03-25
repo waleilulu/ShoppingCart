@@ -10,6 +10,8 @@
   <script src="~/js/Member_/js/jquery.slim.min.js"> </script>
   <script src="~/js/Member_/js/popper.min.js"> </script>
   <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  
 
 
 
@@ -179,8 +181,9 @@ th, td {
                             <p>您的訂單數量有: @Model.OrdersWithDetails.Count 筆</p>
                     foreach (var orderWithDetails in Model.OrdersWithDetails.OrderByDescending(o => o.Order.OrderDate))
                     {
-                                        <button class="accordion">訂單編號：@orderWithDetails.Order.OrderId</button>
-                                    <div class="panel">
+                                 <button class="accordion">訂單編號：@orderWithDetails.Order.OrderId</button>
+                                 <div class="panel">
+                                     <p style="font-weight: bold; font-size: 18px; margin-top:15px;">購物明細</p>
                                 <table class="OrderFollow">
                                     <tr>
                                         <th>產品圖片</th>
@@ -188,33 +191,70 @@ th, td {
                                         <th>顏色</th>
                                         <th>單價</th>
                                         <th>數量</th>
-                                        <th>總額</th>
+                                        <th>小計</th>
                                     </tr>
                                 @foreach (var detail in orderWithDetails.OrderDetails)
                                 {
                                     var product = Model.Products.FirstOrDefault(p => p.ProductId == detail.ProductId);
                                     if (product != null) // 確保產品訊息不為空
                                     {
-                                                                        <tr>
-                                                                            <td>
-                                                                                <img src="~/images/All_product/@product.Image1" style="width:50px;">
-                                                                            </td>
-                                                                            <td>@product.ProductName</td>
-                                                                            <td>@product.Color1</td> 
-                                                                            <td>$@detail.UnitPrice</td> 
-                                                                            <td>@detail.Quantity</td>
-                                                                            <td>$@(detail.UnitPrice * detail.Quantity)</td> 
-                                                                        </tr>
+                                        <tr style="background-color:white;">
+                                             <td>
+                                                 <img src="~/images/All_product/@product.Image1" style="width:50px;">
+                                             </td>
+                                             <td>@product.ProductName</td>
+                                             <td>@product.Color1</td> 
+                                             <td>$@detail.UnitPrice</td> 
+                                             <td>@detail.Quantity</td>
+                                             <td>$@(detail.UnitPrice * detail.Quantity)</td> 
+                                         </tr>
+                                        
                                     }
                                     else
                                     {
-                                                                        <tr>
-                                                                            <td colspan="6">產品訊息無法使用</td>
-                                                                        </tr>
+                                         <tr>
+                                             <td colspan="6">產品訊息無法使用</td>
+                                         </tr>
                                     }
                                 }
-                                </table>
-                            </div>
+
+                                        <tr>
+                                              <td colspan="6" style="font-weight: bold; font-size: 18px; margin-top:15px; background-color:white;">
+                                                總額: $ @orderWithDetails.Order.TotalAmount</td>
+                                        </tr>
+                                 </table>
+                                         
+                                @* ===============這裡是收件人資訊======================== *@
+                             <table class="table">
+                               <thead >
+                                  
+                                  <p style="font-weight: bold; font-size: 18px; margin-top:15px;">收件人資訊</p>
+                              
+                            </thead>
+                            <tbody>
+                                        <tr>
+                                           <th>收件人</th>
+                                            <th>聯絡電話</th>
+                                            <th>收件地址</th>
+                                             <th>付款方式</th>
+                                             <th>貨運</th>
+                                              <th>送貨日期</th>
+                                        </tr>
+                                <tr style="background-color:white;">
+                                    <td>@orderWithDetails.Order.Consignee</td>
+                                    <td>@orderWithDetails.Order.ContactPhone</td>
+                                     <td>@orderWithDetails.Order.PostalCode @orderWithDetails.Order.ShippingAddress</td>
+                                     <td>@orderWithDetails.Order.PaymentMethod</td>
+                                    <td>@orderWithDetails.Order.Carrier</td>
+                                     <td>@orderWithDetails.Order.ShippingDate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+
+                          @*   ======================================================== *@
+                 </div>
+                            
                     }
                 }
                 else
@@ -257,13 +297,16 @@ th, td {
             }
             else
             {
+                 <div id="MFollow" class="tabcontent">
                 <p>沒有找到追踪的商品。</p>
+               </div>
             }
               </div>
+
           </div>
       </div>
   </div>
-</div>
+
 
 
 <!-- MemberHome Section End -->
@@ -367,3 +410,7 @@ $(document).ready(function(){
    <div>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
