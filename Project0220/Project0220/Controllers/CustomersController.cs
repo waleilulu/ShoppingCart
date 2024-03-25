@@ -55,19 +55,39 @@ namespace Project0220.Controllers
                 .Where(tl => tl.CustomerID == id)
                 .Select(tl => tl.ProductID)
                 .ToListAsync();
-            // 根據這些產品ID查找相應的產品資訊
-            var trackedProducts = await _context.Products
-                .Where(p => trackedProductIds.Contains(p.ProductId))
+
+            //根據這些產品ID查找相應的產品資訊
+           var trackedProducts = await _context.Products
+            .Where(p => trackedProductIds.Contains(p.ProductId))
+             .ToListAsync();
+
+            var orders = await _context.Orders
+       .Where(o => o.CustomerId == id)
+       .OrderByDescending(o => o.OrderDate) // 按訂單日期降序排序
+       .ToListAsync();
+
+            var orderDetails = await _context.OrderDetails
+                .Where(od => orders.Select(o => o.OrderId).Contains(od.OrderId.Value))
                 .ToListAsync();
+
+            // 填充 OrdersWithDetails
+            var ordersWithDetails = orders.Select(order => new OrderWithDetails
+            {
+                Order = order,
+                OrderDetails = orderDetails.Where(od => od.OrderId == order.OrderId).ToList()
+            }).ToList();
+
+            // Products 包含所有的商品信息
+            var allProducts = await _context.Products.ToListAsync();
 
             var viewModel = new ViewModel.CPTModel
             {
                 Customers = new List<Customer> { user },
-                Products = trackedProducts
+                Products = allProducts, 
+                TrackedProducts = trackedProducts, // 追踪商品單獨儲存
+                OrdersWithDetails = ordersWithDetails,
 
             };
-
-
 
             return View(viewModel);
         }
@@ -87,8 +107,14 @@ namespace Project0220.Controllers
         {
             if (ModelState.IsValid)
             {
-               customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
-                
+                // 对用户密码进行加密
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
+
+                // 将加密后的密码赋值给用户对象
+                customer.Password = hashedPassword;
+
+                customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
+                // 添加 Customer 到数据库中
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
 
@@ -96,60 +122,55 @@ namespace Project0220.Controllers
             }
             return View(customer);
         }
-
         //會員登入
         public IActionResult Login()
         {
             return View();
         }
-
-        // 登入動作
         [HttpPost]
+        // 登入動作
         public async Task<IActionResult> Login([Bind("Username,Password")] Customer Customers)
         {
-            // 查询数据库以查找用户并进行身份验证
-            var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username && u.Password == Customers.Password);
+            // 查询数据库以查找用户
+            var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username);
 
             if (user != null)
             {
-                // 创建用户主张
-                var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Username)
-            // 可以添加其他用户相关的主张，例如用户角色等
-        };
-
-                if (user.Admin)
+                // 验证用户输入的密码与数据库中存储的哈希密码是否匹配
+                if (BCrypt.Net.BCrypt.Verify(Customers.Password, user.Password))
                 {
-                    claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
-                }
-
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                // 创建身份验证票证
-                var principal = new ClaimsPrincipal(identity);
-
-                // 登录用户
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                // 设置 Cookie 保存用户 ID
-                HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
-                HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 根據角色設定餅乾
-                // HttpContext.Response.Cookies.Append("userRole", user.Admin ? "Administrator":"Customers") ;
-                HttpContext.Response.Cookies.Append("isAdmin", user.Admin.ToString());
-
-				// 用戶選擇去到頁面
-
-				if (user.Admin)
+                    // 创建用户主张
+                    var claims = new List<Claim>
                 {
-                   
-                    return RedirectToAction("Admin", "Customers");
-                    
-                }
-                else
-                {
-                    return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                new Claim(ClaimTypes.Name, user.Username)
+                // 可以添加其他用户相关的主张，例如用户角色等
+                };
+
+                    if (user.Admin)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+                    }
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    // 创建身份验证票证
+                    var principal = new ClaimsPrincipal(identity);
+
+                    // 登录用户
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    // 设置 Cookie 保存用户 ID
+                    HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
+                    HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
+                    // 根据用户角色重定向到适当的页面
+                    if (user.Admin)
+                    {
+                        return RedirectToAction("Admin", "Customers");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                    }
                 }
             }
 
