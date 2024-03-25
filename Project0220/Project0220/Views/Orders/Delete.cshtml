@@ -1,75 +1,107 @@
 ﻿@model Project0220.myModels.Order
 
 @{
-    ViewData["Title"] = "Delete";
+	ViewData["Title"] = "Delete";
+	Layout = null;
 }
 
-<h1>Delete</h1>
+<!--引用-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OrderDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalAmount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PaymentMethod)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PaymentMethod)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Carrier)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Carrier)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShippingDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShippingDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShippingAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShippingAddress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Customer.CustomerId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Consignee)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Consignee)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContactPhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContactPhone)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="OrderId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+
+	<div class="container-fluid">
+		<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+			<img src="~/images/GGLogo.png" width="268.5" height="81.75"
+				 class="d-inline-block align-top" alt="">
+		</a>
+		<a class="navbar-brand" asp-controller="Orders" asp-action="Index"><strong>管理者頁面</strong></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
+				<a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
+				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
+				<a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
+				<a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
+				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
+			</div>
+		</div>
+	</div>
+</nav>
+</br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3>是否確定刪除?</h3>
+			<br />
+			<dl class="row">
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.OrderDate)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.OrderDate)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.TotalAmount)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.TotalAmount)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.PaymentMethod)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.PaymentMethod)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Carrier)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Carrier)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.ShippingDate)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.ShippingDate)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.ShippingAddress)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.ShippingAddress)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Customer)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Customer.CustomerId)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.Consignee)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.Consignee)
+				</dd>
+				<dt class="col-sm-2">
+					@Html.DisplayNameFor(model => model.ContactPhone)
+				</dt>
+				<dd class="col-sm-10">
+					@Html.DisplayFor(model => model.ContactPhone)
+				</dd>
+			</dl>
+
+			<form asp-action="Delete">
+				<input type="hidden" asp-for="OrderId" />
+				<input type="submit" value="刪除" class="btn btn-danger" />
+			</form>
+			<div>
+				<a asp-action="Index">回到上一頁</a>
+			</div>
+		</div>
+	</div>
 </div>

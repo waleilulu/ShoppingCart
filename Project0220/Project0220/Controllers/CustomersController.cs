@@ -107,7 +107,13 @@ namespace Project0220.Controllers
         {
             if (ModelState.IsValid)
             {
-               customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
+                // 对用户密码进行加密
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
+
+                // 将加密后的密码赋值给用户对象
+                customer.Password = hashedPassword;
+
+                customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
                 // 添加 Customer 到数据库中
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
@@ -122,54 +128,50 @@ namespace Project0220.Controllers
         {
             return View();
         }
-
-        // 登入動作
         [HttpPost]
+        // 登入動作
         public async Task<IActionResult> Login([Bind("Username,Password")] Customer Customers)
         {
-            // 查询数据库以查找用户并进行身份验证
-            var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username && u.Password == Customers.Password);
+            // 查询数据库以查找用户
+            var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username);
 
             if (user != null)
             {
-                // 创建用户主张
-                var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.Username)
-            // 可以添加其他用户相关的主张，例如用户角色等
-        };
-
-                if (user.Admin)
+                // 验证用户输入的密码与数据库中存储的哈希密码是否匹配
+                if (BCrypt.Net.BCrypt.Verify(Customers.Password, user.Password))
                 {
-                    claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
-                }
-
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                // 创建身份验证票证
-                var principal = new ClaimsPrincipal(identity);
-
-                // 登录用户
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                // 设置 Cookie 保存用户 ID
-                HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
-                HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
-                // 根據角色設定餅乾
-                // HttpContext.Response.Cookies.Append("userRole", user.Admin ? "Administrator":"Customers") ;
-                HttpContext.Response.Cookies.Append("isAdmin", user.Admin.ToString());
-
-				// 用戶選擇去到頁面
-
-				if (user.Admin)
+                    // 创建用户主张
+                    var claims = new List<Claim>
                 {
-                   
-                    return RedirectToAction("Admin", "Customers");
-                    
-                }
-                else
-                {
-                    return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                new Claim(ClaimTypes.Name, user.Username)
+                // 可以添加其他用户相关的主张，例如用户角色等
+                };
+
+                    if (user.Admin)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+                    }
+
+                    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    // 创建身份验证票证
+                    var principal = new ClaimsPrincipal(identity);
+
+                    // 登录用户
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                    // 设置 Cookie 保存用户 ID
+                    HttpContext.Response.Cookies.Append("membercookie", user.CustomerId.ToString());
+                    HttpContext.Session.SetInt32("userId", (int)user.CustomerId);
+                    // 根据用户角色重定向到适当的页面
+                    if (user.Admin)
+                    {
+                        return RedirectToAction("Admin", "Customers");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Details", "Customers", new { id = user.CustomerId });
+                    }
                 }
             }
 
@@ -446,6 +448,7 @@ namespace Project0220.Controllers
             }
             // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
             ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
+            TempData["ErrorMessage"] = "驗證碼不正確，請重新輸入。";
             return RedirectToAction("ForgetPassword");
 
         }

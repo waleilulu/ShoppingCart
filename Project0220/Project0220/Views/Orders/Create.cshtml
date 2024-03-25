@@ -1,72 +1,113 @@
 ﻿@model Project0220.myModels.Order
 
 @{
-    ViewData["Title"] = "Create";
+	ViewData["Title"] = "Create";
+	Layout = null;
 }
 
-<h1>Create</h1>
+<!--引用-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
-<h4>Order</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrderDate" class="control-label"></label>
-                <input asp-for="OrderDate" class="form-control" />
-                <span asp-validation-for="OrderDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalAmount" class="control-label"></label>
-                <input asp-for="TotalAmount" class="form-control" />
-                <span asp-validation-for="TotalAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PaymentMethod" class="control-label"></label>
-                <input asp-for="PaymentMethod" class="form-control" />
-                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Carrier" class="control-label"></label>
-                <input asp-for="Carrier" class="form-control" />
-                <span asp-validation-for="Carrier" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShippingDate" class="control-label"></label>
-                <input asp-for="ShippingDate" class="form-control" />
-                <span asp-validation-for="ShippingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShippingAddress" class="control-label"></label>
-                <input asp-for="ShippingAddress" class="form-control" />
-                <span asp-validation-for="ShippingAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Consignee" class="control-label"></label>
-                <input asp-for="Consignee" class="form-control" />
-                <span asp-validation-for="Consignee" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactPhone" class="control-label"></label>
-                <input asp-for="ContactPhone" class="form-control" />
-                <span asp-validation-for="ContactPhone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+	<div class="container-fluid">
+		<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+			<img src="~/images/GGLogo.png" width="268.5" height="81.75"
+				 class="d-inline-block align-top" alt="">
+		</a>
+		<a class="navbar-brand" asp-controller="Orders" asp-action="Index"><strong>管理者頁面</strong></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
+				<a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
+				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
+				<a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
+				<a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
+				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
+			</div>
+		</div>
+	</div>
+</nav>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h3>是否確定新增?</h3>
+			<br />
+			<form asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="CustomerId" class="control-label"></label>
+					<input asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+				</div>
+				<div class="form-group">
+					<label asp-for="OrderDate" class="control-label"></label>
+					<input asp-for="OrderDate" class="form-control" />
+					<span asp-validation-for="OrderDate" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="TotalAmount" class="control-label"></label>
+					<input asp-for="TotalAmount" class="form-control" />
+					<span asp-validation-for="TotalAmount" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="PaymentMethod" class="control-label"></label>
+					<select asp-for="PaymentMethod" class="form-control">
+						<option value="" disabled selected hidden>請選付款方式</option>
+						<option value="PaymentMethod01">轉帳</option>
+						<option value="PaymentMethod02">刷卡</option>
+						<option value="PaymentMethod03">APPLE PAY</option>
+					</select>
+					<span asp-validation-for="PaymentMethod" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Carrier" class="control-label"></label>
+					<select asp-for="Carrier" class="form-control">
+						<option value="" disabled selected hidden>請選運送方式</option>
+						<option value="Carrier01">本公司配送</option>
+						<option value="Carrier02">大榮貨運</option>
+						<option value="Carrier03">新竹貨運</option>
+					</select>
+					<span asp-validation-for="Carrier" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ShippingDate" class="control-label"></label>
+					<input asp-for="ShippingDate" class="form-control" />
+					<span asp-validation-for="ShippingDate" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ShippingAddress" class="control-label"></label>
+					<input asp-for="ShippingAddress" class="form-control" />
+					<span asp-validation-for="ShippingAddress" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Consignee" class="control-label"></label>
+					<input asp-for="Consignee" class="form-control" />
+					<span asp-validation-for="Consignee" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="ContactPhone" class="control-label"></label>
+					<input asp-for="ContactPhone" class="form-control" />
+					<span asp-validation-for="ContactPhone" class="text-danger"></span>
+				</div>
+				<br>
+				<div class="form-group">
+					<input type="submit" value="新增" class="btn btn-primary" />
+				</div>
+			</form>
+			<div>
+				<a asp-action="Index">回到上一頁</a>
+			</div>
+		</div>
+	</div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }
