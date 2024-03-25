@@ -37,6 +37,8 @@ namespace Project0220.Controllers
             return View(await _context.Customers.ToListAsync());
         }
 
+       
+
         // GET: Customers/Details/5
         public async Task<IActionResult> Details()
         {
@@ -57,9 +59,9 @@ namespace Project0220.Controllers
                 .ToListAsync();
 
             //根據這些產品ID查找相應的產品資訊
-           var trackedProducts = await _context.Products
-            .Where(p => trackedProductIds.Contains(p.ProductId))
-             .ToListAsync();
+            var trackedProducts = await _context.Products
+             .Where(p => trackedProductIds.Contains(p.ProductId))
+              .ToListAsync();
 
             var orders = await _context.Orders
        .Where(o => o.CustomerId == id)
@@ -83,7 +85,7 @@ namespace Project0220.Controllers
             var viewModel = new ViewModel.CPTModel
             {
                 Customers = new List<Customer> { user },
-                Products = allProducts, 
+                Products = allProducts,
                 TrackedProducts = trackedProducts, // 追踪商品單獨儲存
                 OrdersWithDetails = ordersWithDetails,
 

@@ -291,3 +291,79 @@ th, td {
         url: '/Customers/DeleteProduct',
         type: 'POST',
         data: { productId: productId },
+        success: function(response) {
+              $('#productRow_' + productId).remove(); 
+
+        }
+     } ) 
+    }
+
+
+
+</script>
+ <!-- 在页面加载时直接设置默认选项卡的样式 -->
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+        showDefaultTab("MData", "white"); // 设置默认选项卡和颜色
+    });
+
+    function showDefaultTab(tabId, color) {
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        var tablinks = document.getElementsByClassName("tablink");
+
+        // 隐藏所有选项卡内容
+        for (var i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // 取消所有选项卡链接的背景颜色
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].style.backgroundColor = "";
+        }
+
+        // 显示默认选项卡内容并设置背景颜色
+        var defaultTab = document.getElementById(tabId);
+        if (defaultTab) {
+            defaultTab.style.display = "block";
+            defaultTab.style.backgroundColor = color;
+        }
+    }
+
+    // Define the openPage function
+ function openPage(pageName, elmnt, color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+  }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+  }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+}
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".accordion").click(function(){
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        } 
+    });
+});
+</script>
+   <div>
+
+    </div>
