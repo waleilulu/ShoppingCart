@@ -12,7 +12,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- 引入fontawesome icon -->
 <script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
-
+<style>
+    /* 省略Password欄位字數 */
+    .MyPassword {
+        max-width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
     <div class="container-fluid">
@@ -26,7 +34,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-<<<<<<< HEAD
                 <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
                 <a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
                 <a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
@@ -46,27 +53,19 @@
                         </button>
                     </form>
                 }
-=======
-                <a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
-                <a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
-                <a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
-                <a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
-                <a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
-                <a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
->>>>>>> 0324
             </div>
         </div>
     </div>
 </nav>
-</br>
+<br>
 
-<h2 class="text-center mb-5">會員資料</h2>
+<h2 class="text-center mb-5">Customers 會員資料</h2>
 
 
 <div class="container-fluid">
     <div class="row mb-5">
         <div class="col-md-6">
-            <a class="btn btn-primary" asp-controller="Customers" asp-action="Create">新增</a>
+            <a class="btn btn-primary" asp-controller="Customers" asp-action="Create">Create</a>
         </div>
         <div class="col-md-6">
         </div>
@@ -106,14 +105,14 @@
                         <td>@customer.AddressDist</td>
                         <td>@customer.Address</td>
                         <td>@customer.Username</td>
-                        <td>@customer.Password</td>
+                        <td class="MyPassword">@customer.Password</td>
                         <td>@customer.Admin</td>
-                        @*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@ 
+                        @*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@
                         <td style="white-space: nowrap;">
                             <a class="btn btn-primary btn-sm" asp-controller="Customers" asp-action="Edit"
-                               asp-route-id="@customer.CustomerId">編輯</a>
+                               asp-route-id="@customer.CustomerId">Edit</a>
                             <a class="btn btn-danger btn-sm" asp-controller="Customers" asp-action="Delete"
-                               asp-route-id="@customer.CustomerId">刪除</a>
+                               asp-route-id="@customer.CustomerId">Delete</a>
                         </td>
                     </tr>
                 }
