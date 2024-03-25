@@ -75,7 +75,7 @@
 <div class="container-fluid">
 	<div class="row mb-5">
 		<div class="col-md-6">
-			<a class="btn btn-primary" asp-controller="Products" asp-action="Create">新增</a>
+			<a class="btn btn-primary" asp-controller="Products" asp-action="Create">Create</a>
 		</div>
 		<div class="col-md-6">
 		</div>
@@ -150,9 +150,9 @@
 						<td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
 						<td style="white-space: nowrap;">
 							<a class="btn btn-primary btn-sm" asp-controller="Products" asp-action="Edit"
-							   asp-route-id="@product.ProductID">編輯</a>
+							   asp-route-id="@product.ProductID">Edit</a>
 							<a class="btn btn-danger btn-sm" asp-controller="Products" asp-action="Delete"
-							   asp-route-id="@product.ProductID">刪除</a>
+							   asp-route-id="@product.ProductID">Delete</a>
 						</td>
 					</tr>
 				}
