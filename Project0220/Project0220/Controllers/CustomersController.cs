@@ -37,7 +37,6 @@ namespace Project0220.Controllers
             return View(await _context.Customers.ToListAsync());
         }
 
-       
 
         // GET: Customers/Details/5
         public async Task<IActionResult> Details()
