@@ -11,6 +11,8 @@
   <script src="~/js/Member_/js/popper.min.js"> </script>
   <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
 
+
+
   <style>
       table {
     width: 100%;
@@ -64,6 +66,59 @@ th, td {
     .MFollowTable th,tr{
     background-color:#ebeae7;
     }
+
+     .OrderFollow th,tr{
+    background-color:#ebeae7;
+    }
+
+   /*  手風琴效果==================================================== */
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  padding-right: 50px; /* 增加右边距，为收合图标留出空间 */
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  position: relative; /* 为伪元素定位做准备 */
+   margin-bottom: 10px;
+}
+
+/* 激活状态和悬浮状态 */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* 面板样式 */
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+
+}
+
+/* 添加收合图标 */
+.accordion::after {
+  content: '\02795'; /* Unicode字符，加号 */
+  font-size: 13px;
+  color: #777;
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  transition: transform 0.4s; /* 平滑转换效果 */
+}
+
+/* 当手风琴激活时，改变图标为减号，并旋转 */
+.accordion.active::after {
+  content: "\2796"; /* Unicode字符，减号 */
+  transform: rotate(180deg);
+}
 </style>
 
 
@@ -113,54 +168,104 @@ th, td {
                            </div>
                        </div>
                    </div>
-                
-
-
-                          
                       }
+      </div>
 
+
+
+ <div id="MOrders" class="tabcontent">
+            @if (Model.OrdersWithDetails != null && Model.OrdersWithDetails.Any())
+            {
+                        <p>您的訂單數量有: @Model.OrdersWithDetails.Count 筆</p>
+                foreach (var orderWithDetails in Model.OrdersWithDetails.OrderByDescending(o => o.Order.OrderDate))
+                {
+                                <button class="accordion">訂單編號：@orderWithDetails.Order.OrderId</button>
+                            <div class="panel">
+                        <table class="OrderFollow">
+                            <tr>
+                                <th>產品圖片</th>
+                                <th>產品名稱</th>
+                                <th>顏色</th>
+                                <th>單價</th>
+                                <th>數量</th>
+                                <th>總額</th>
+                            </tr>
+                            @foreach (var detail in orderWithDetails.OrderDetails)
+                            {
+                                var product = Model.Products.FirstOrDefault(p => p.ProductId == detail.ProductId);
+                                if (product != null) // 確保產品訊息不為空
+                                {
+                                                        <tr>
+                                                            <td>
+                                                                <img src="~/images/All_product/@product.Image1" style="width:50px;">
+                                                            </td>
+                                                            <td>@product.ProductName</td>
+                                                            <td>@product.Color1</td> 
+                                                            <td>$@detail.UnitPrice</td> 
+                                                            <td>@detail.Quantity</td>
+                                                            <td>$@(detail.UnitPrice * detail.Quantity)</td> 
+                                                        </tr>
+                                }
+                                else
+                                {
+                                                        <tr>
+                                                            <td colspan="6">產品訊息無法使用</td>
+                                                        </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                }
+            }
+            else
+            {
+            <p>沒有找到歷史訂單。</p>
+            }
 </div>
- 
-@* @foreach (var x in Model.OrderDetails)
- *@
-                  <div id="MOrders" class="tabcontent">
-                      <p>Get in touch, or swing by for a cup of coffee.</p>
-                      @*  訂單資訊寫這邊 *@
-                  </div>
 
-                  <div id="MFollow" class="tabcontent">
-  <!--追蹤商品-->
- <table class="MFollowTable">
-<tr>
-  <th>產品圖片</th>
-  <th>產品名稱</th>
-  <th>價格</th>
 
-  <th>顏色</th>
-   <th>刪除</th>
-</tr>
-@foreach (var product in Model.Products)
-{
-            <tr id="productRow_@product.ProductId">
-      <th><img src="~/images/All_product/@product.Image1" style="width:100px";/></th>
-      <th>@product.ProductName</th>
-      <th>@product.UnitPrice</th>
 
-      <th>@product.Color1</th>
-          <th>  
-        <button type="button" onclick="confirmDelete('@product.ProductId')"><i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i></button>
-         </th>
-    </tr>
 
-                          }
-</table>
-                  </div>
+            @if (Model.TrackedProducts != null && Model.TrackedProducts.Any())
+            {
+      <div id="MFollow" class="tabcontent">
+        <!--追踪商品-->
+        <table class="MFollowTable">
+            <tr>
+                <th>產品圖片</th>
+                <th>產品名稱</th>
+                <th>價格</th>
+                <th>顏色</th>
+                <th>刪除</th>
+            </tr>
+                        @foreach (var product in Model.TrackedProducts)
+                        {
+                        <tr id="productRow_@product.ProductId">
+                            <td><img src="~/images/All_product/@product.Image1" style="width:100px;"></td>
+                            <td>@product.ProductName</td>
+                            <td>@product.UnitPrice</td>
+                            <td>@product.Color1</td>
+                            <td>
+                                <button type="button" onclick="confirmDelete('@product.ProductId')">
+                                    <i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        }
+        </table>
+    </div>
+            }
+            else
+            {
+            <p>沒有找到追踪的商品。</p>
+            }
               </div>
           </div>
       </div>
   </div>
 </div>
 
+        
 <!-- MemberHome Section End -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
@@ -243,8 +348,24 @@ th, td {
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
 
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".accordion").click(function(){
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        } 
+    });
+});
 </script>
    <div>
   
     </div>
 
+    
