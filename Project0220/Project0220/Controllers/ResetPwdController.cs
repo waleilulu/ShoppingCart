@@ -51,12 +51,14 @@ namespace Project0220.Controllers
                 {
                     // 处理并发更新异常
                     ModelState.AddModelError("", "無法保存變更，密碼已被註冊，請輸入其他密碼。");
+                    TempData["ErrorMessage"] = "無法保存變更，密碼已被註冊，請輸入其他密碼。";
                     return View();
                 }
             }
             else if (user != null && newPwd != newPwd2)
             {
                 ModelState.AddModelError("newPwd2", "兩次輸入的密碼不一致");
+                TempData["ErrorMessage"] = "兩次輸入的密碼不一致。";
                 return View();
             }
             else

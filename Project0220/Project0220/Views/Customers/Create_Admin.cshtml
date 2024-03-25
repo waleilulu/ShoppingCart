@@ -1,19 +1,12 @@
 ﻿@model Project0220.myModels.Customer
 
 @{
-	ViewData["Title"] = "Edit";
-	Layout = null;
+	ViewData["Title"] = "Create";
+
 }
 
-
-<!--引入-->
-<link rel="stylesheet" href="~/css/Member/css/MemberEdit.css">
-<!--引用-->
+@* <!--引用-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- 引入fontawesome icon -->
-<script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
-
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 
 	<div class="container-fluid">
@@ -21,50 +14,42 @@
 			<img src="~/images/GGLogo.png" width="268.5" height="81.75"
 				 class="d-inline-block align-top" alt="">
 		</a>
-		<a class="navbar-brand" asp-controller="Products" asp-action="Index"><strong>管理者頁面</strong></a>
+		<a class="navbar-brand" asp-controller="Customers" asp-action="Index"><strong>管理者頁面</strong></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
-				<a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
-				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
-				<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
-				<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
-				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
-				<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
-				@{
-					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
-				}
-				@if (isAuthenticated)
-				{
-					<!-- 登出按鈕 -->
-					<form asp-controller="Customers" asp-action="Logout" method="post">
-						<button type="submit" class="nav-link" style="border:none;background:none;">
-							<i class="fa-solid fa-arrow-right-from-bracket"></i>
-						</button>
-					</form>
-				}
+				<a class="nav-link" asp-controller="Categories" asp-action="Index">產品類別</a>
+				<a class="nav-link" asp-controller="Customers" asp-action="Index">會員資料</a>
+				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">訂單詳情</a>
+				<a class="nav-link" asp-controller="Orders" asp-action="Index">訂單</a>
+				<a class="nav-link" asp-controller="Products" asp-action="Index">產品</a>
+				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">供應商</a>
 			</div>
 		</div>
 	</div>
 </nav>
-<br>
+</br> *@
+
+<!--引入-->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="~/css/Member/css/MemberRegister.css">
+<!--Member Register Section-->
 
 
 <div class="container">
-
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-10">
+			<form asp-action="Create">
+				<!--這裡是發送到請求方法-->
 
-
-			<form asp-action="Edit">
-				<h4 class="title">修改會員資料</h4>
-				<hr />
+				<h4 class="title">註冊</h4>
+				<hr>
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-				<input type="hidden" asp-for="CustomerId" />
 				<div class="form-group">
+					<!--這裡是@Html.TextBoxFor-->
 					<label asp-for="CustomerName" class="control-label">姓名</label>
 					<input asp-for="CustomerName" class="form-control" />
 					<span asp-validation-for="CustomerName" class="text-danger"></span>
@@ -105,6 +90,7 @@
 					</div>
 				</div>
 
+
 				<!-- 區域下拉選單 -->
 				<div class="form-group">
 					<label asp-for="AddressDist" class="control-label">地區</label>
@@ -114,37 +100,45 @@
 					</div>
 				</div>
 
+
+
 				<div class="form-group">
 					<label asp-for="Address" class="control-label">地址</label>
 					<input asp-for="Address" class="form-control" />
 					<span asp-validation-for="Address" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Username" class="control-label">使用者帳號</label>
+					<label asp-for="Username" class="control-label">帳號</label>
 					<input asp-for="Username" class="form-control" />
 					<span asp-validation-for="Username" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Password" class="control-label">密碼 </label>
+					<label asp-for="Password" class="control-label">密碼</label>
 					<input asp-for="Password" class="form-control" type="password" />
 					<span asp-validation-for="Password" class="text-danger"></span>
 				</div>
-
 				<div class="form-group">
-					<input type="submit" value="儲存更改" class="btn btn-primary" />
+					<input type="checkbox" name="subscribe" id="subscribe" />
+					<label for="subscribe">我願意接收 G++g家飾 的最新消息、優惠及服務推廣相關資訊</label><br />
+					<button type="submit" class="registerbtn">註冊會員</button>
+					<p>已經有帳號了嗎? <a href="~/Customers/Login/">登入點這</a></p>
 				</div>
 			</form>
-			<div>
-				<a asp-action="Index">Back to List</a>
-			</div>
 		</div>
 	</div>
 </div>
+<!--Member Register Section End-->
 @section Scripts {
 	@{
 		await Html.RenderPartialAsync("_ValidationScriptsPartial");
 	}
 }
+
+
+
+
+<!--Member Register Section End-->
+
 
 
 <script>
@@ -200,6 +194,8 @@
 		}
 	});
 
+
 	// 初始化一次，以顯示預設城市的區域選項
 	citySelect.dispatchEvent(new Event('change'));
 </script>
+
