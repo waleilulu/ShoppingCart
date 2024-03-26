@@ -143,7 +143,7 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <button class="btn oneBtn">一鍵加入購物車</button>
+                                                <button class="btn oneBtn" id="addToCartBtn" onclick="addListToCart()">一鍵加入購物車</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -252,3 +252,27 @@
                             </div>
                             
             }
+<script>
+
+    function addListToCart() {
+        var model = @Html.Raw(Json.Serialize(Model));
+        console.log(model);
+        model = JSON.stringify(model);
+        console.log(model);
+        // 发送数据到后端的函数
+        $.ajax({
+            url: '/Cart/AddListToCart', // 替换为你的控制器和操作方法的路由
+            method: 'post',
+            data: { data: model }, // 将数据转换为 JSON 字符串
+            success: function (response) {
+                // 在成功时执行的操作
+                console.log('成功添加到购物车:', response);
+                window.location.href = '/Cart'; // 替換為你的購物車頁面的路由
+            },
+            error: function (xhr, status, error) {
+                // 在失败时执行的操作
+                console.error('添加到购物车失败:', error);
+            }
+        });
+    }
+</script>
