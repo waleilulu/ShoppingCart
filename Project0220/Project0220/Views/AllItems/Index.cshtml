@@ -130,7 +130,15 @@
                                                                                 </a>
                                                                                 <div class="product-action">
                                                                                     <ul>
-                                                                                        <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
+                                                                                        @* <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li> *@
+                                                                                        <li id="cartButton"><a href="#"><i class="fa fa-cart-plus"></i></a></li>
+
+                                                                                        <form id="addToCartForm" method="POST" action="/Cart/AddToCart" style="display: none;">
+                                                                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                                                                        <input type="hidden" name="quantity" value="1" />
+                                                                                        <input type="hidden" name="selectedcolor" value="@item.Color1" />
+                                                                                        </form>
+
                                                                                         <li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                                             <li><a href="javascript:;">
 
@@ -305,7 +313,10 @@
 
         }
 
-       
-        
+
+        document.getElementById("cartButton").addEventListener("click", function (event) {
+            event.preventDefault(); // 防止點擊<a>標籤時跳轉到cart.html
+            document.getElementById("addToCartForm").submit(); // 提交表單
+        });
 
     </script>
