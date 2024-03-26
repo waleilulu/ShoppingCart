@@ -36,3 +36,6 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+.countdown-red {
+    color: red !important;
+}
