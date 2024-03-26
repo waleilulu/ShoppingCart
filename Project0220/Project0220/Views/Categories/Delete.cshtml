@@ -49,7 +49,40 @@
 </nav>
 <br>
 
-<h1>Delete</h1>
+
+
+<div class="row justify-content-center">
+	<div class="col-md-6 mx-auto rounded border p-3">
+		<h2 class="text-center mb-5">Delete Category</h2>
+
+		<h3 class="text-center">Are you sure you want to delete this?</h3>
+		<div>
+			<hr />
+			<dl class="row">
+				<dt class="col-md-4 col-form-label">
+					CategoryName
+				</dt>
+				<dd class="col-md-8 text-center">
+					@Html.DisplayFor(model => model.CategoryName)
+				</dd>
+			</dl>
+
+			<form method="post" asp-action="Delete">
+				<input type="hidden" asp-for="CategoryId" />
+				<div class="row">
+					<div class="offset-md-4 col-md-4 d-grid">
+						<input type="submit" value="Delete" class="btn btn-danger" />
+					</div>
+					<div class="col-md-4 d-grid">
+						<a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -69,4 +102,4 @@
 		<input type="submit" value="Delete" class="btn btn-danger" /> |
 		<a asp-action="Index">Back to List</a>
 	</form>
-</div>
+</div> *@

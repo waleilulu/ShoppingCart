@@ -49,7 +49,37 @@
 </nav>
 <br>
 
-<h1>Create</h1>
+
+
+
+<div class="row justify-content-center">
+	<div class="col-md-6 mx-auto rounded border p-3">
+		<form method="post" enctype="multipart/form-data">
+			<h2 class="text-center mb-5">Create Category</h2>
+
+			<div class="row mb-3">
+				<label class="col-md-4 col-form-label">CategoryName</label>
+				<div class="col-sm-8">
+					<input class="form-control" asp-for="CategoryName">
+					<span asp-validation-for="CategoryName" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="offset-sm-4 col-sm-4 d-grid">
+					<button type="submit" class="btn btn-primary">Create</button>
+				</div>
+				<div class="col-sm-4 d-grid">
+					<a class="btn btn-outline-primary" asp-action="Index" role="button">
+						Back to List
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@* <h1>Create</h1>
 
 <h4>Category</h4>
 <hr />
@@ -71,7 +101,7 @@
 
 <div>
 	<a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
 @section Scripts {
 	@{
