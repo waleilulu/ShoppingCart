@@ -6,7 +6,6 @@
 @model Project0220.ViewModel.ItemDetailsViewModel
 
 
-    
     <!-- All css files are included here. -->
 
         <!-- main-search start -->
@@ -145,13 +144,16 @@
                                                 </select>
                                             </div>
 
-                                            
+                     
                                             <div class="wishlist-compare-btn mb-2  ">
-                                              <button onclick="addfavoritebtn(@item.ProductId)">
-                                                   <a href="" class="wishlist-btn" id="wishlistBtn" >加入我的最愛</a> 
-                                               </button> 
+                                               <a onclick="addfavoritebtn(@item.ProductId)"class="wishlist-btn" id="wishlistBtn">加入我的最愛
+                                            
+                                               </a>
+
                                         </div>
-                                        
+
+                    
+                                  
                                         <!-- 加入購物車按鈕 -->
                                         <div class="add-to-link mb-2">
                                             <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
@@ -160,24 +162,7 @@
                                               
                                        
                                     </form>
-                                
-                              
-                                        
-                                        
-
-
-
-                                        @* <div class="add-to-link mb-2">
-                                            <button class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
-                                        </div> *@
-                                       
-
-                                   
-
-                                   
-
-
-
+                 
                                         <div class="product-meta">
                                             <span class="posted-in">
                                         @foreach (var item2 in Model.Category)
@@ -714,24 +699,32 @@
 <!--會員追蹤-->
 
             <script>
+     
+
+
+
+
+
+
    function addfavoritebtn(productId) {
     var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
-        console.log("所選顏色:", selectedColor);
+       
         $.ajax({
             url:"/AllItems/Follow",
             method:"post",
             data:{ProductId:productId,Color: selectedColor },
             success:function (result){
-               
-                  // 修改按钮样式为已追踪的样式
-            document.getElementById("wishlistBtn").classList.add("tracked");
-            // 禁用按钮
-            document.getElementById("wishlistBtn").disabled = true;
-                alert("商品追蹤成功");
-
+               if (result.success) {
+            alert("商品追蹤成功");
+        } else {
+            // 處理失敗
+            console.error("發生錯誤:", result.message);
+            alert(result.message);
+        }
             },
             error:function (error){
                 console.error("發生錯誤:",error);
+                  alert("尚未登錄，请先登录");
             }
 
 
@@ -752,7 +745,7 @@
 
             },
             error:function (error){
-                console.error("發生錯誤:",error);
+                alert("請先登入");
             }
 
 
