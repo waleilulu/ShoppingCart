@@ -49,7 +49,92 @@
 </nav>
 <br>
 
-<h1>Delete</h1>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6 mx-auto rounded border p-3">
+        <form method="post" enctype="multipart/form-data">
+            <h2 class="text-center mb-5">Delete Order</h2>
+
+            <h3 class="text-center mb-4">Are you sure you want to delete this?</h3>
+
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-md-4 col-form-label">
+                        Order Date
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.OrderDate)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Total Amount
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.TotalAmount)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Payment Method
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.PaymentMethod)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Carrier
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.Carrier)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Shipping Date
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.ShippingDate)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Shipping Address
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.ShippingAddress)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Customer
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.Customer.CustomerId)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Consignee
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.Consignee)
+                    </dd>
+                    <dt class="col-md-4 col-form-label">
+                        Contact Phone
+                    </dt>
+                    <dd class="col-md-8 text-center">
+                        @Html.DisplayFor(model => model.ContactPhone)
+                    </dd>
+                </dl>
+            </div>
+
+            <input type="hidden" asp-for="OrderId" />
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -117,4 +202,4 @@
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>
+</div> *@
