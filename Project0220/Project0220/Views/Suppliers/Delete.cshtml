@@ -49,7 +49,61 @@
 </nav>
 <br>
 
-<h1>Delete</h1>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6 mx-auto rounded border p-3">
+        <h2 class="text-center mb-5">Delete Supplier</h2>
+
+        <h3 class="text-center mb-4">Are you sure you want to delete this?</h3>
+
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-md-4 col-form-label">
+                    Company Name
+                </dt>
+                <dd class="col-md-8 text-center">
+                    @Model.CompanyName
+                </dd>
+                <dt class="col-md-4 col-form-label">
+                    Contact Name
+                </dt>
+                <dd class="col-md-8 text-center">
+                    @Model.ContactName
+                </dd>
+                <dt class="col-md-4 col-form-label">
+                    Phone
+                </dt>
+                <dd class="col-md-8 text-center">
+                    @Model.Phone
+                </dd>
+                <dt class="col-md-4 col-form-label">
+                    Email
+                </dt>
+                <dd class="col-md-8 text-center">
+                    @Model.Email
+                </dd>
+            </dl>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" asp-action="Delete">
+            <input type="hidden" asp-for="SupplierId" />
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a asp-action="Index" class="btn btn-outline-primary">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -88,3 +142,4 @@
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+ *@
