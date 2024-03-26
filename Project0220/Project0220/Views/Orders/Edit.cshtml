@@ -49,7 +49,115 @@
 </nav>
 <br>
 
-<h1>Edit</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 mx-auto rounded border p-3">
+        <form method="post" enctype="multipart/form-data">
+            <h2 class="text-center mb-5">Edit Order</h2>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Order ID</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="OrderId" readonly>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Customer ID</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="CustomerId" asp-items="ViewBag.CustomerId">
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Order Date</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="OrderDate">
+                    <span asp-validation-for="OrderDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Total Amount</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="TotalAmount">
+                    <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Payment Method</label>
+                <div class="col-sm-8">
+                    <select class="form-control" asp-for="PaymentMethod">
+                        <option value="" disabled selected hidden>請選擇類型</option>
+                        <option value="轉帳">轉帳</option>
+                        <option value="刷卡">刷卡</option>
+                        <option value="Apple Pay">Apple Pay</option>
+                    </select>
+                    <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Carrier</label>
+                <div class="col-sm-8">
+                    <select class="form-control" asp-for="Carrier">
+                        <option value="" disabled selected hidden>請選擇類型</option>
+                        <option value="本公司配送">本公司配送</option>
+                        <option value="大榮貨運">大榮貨運</option>
+                        <option value="新竹貨運">新竹貨運</option>
+                    </select>
+                    <span asp-validation-for="Carrier" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Shipping Date</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="ShippingDate">
+                    <span asp-validation-for="ShippingDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Shipping Address</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="ShippingAddress">
+                    <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Consignee</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Consignee">
+                    <span asp-validation-for="Consignee" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Contact Phone</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="ContactPhone">
+                    <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-action="Index" role="button">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@* <h1>Edit</h1>
 
 <h4>Order</h4>
 <hr />
@@ -122,7 +230,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
 @section Scripts {
     @{
