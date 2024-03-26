@@ -123,9 +123,15 @@ namespace Project0220.Controllers
 				// 检查用戶年齡是否小於18
 				if (age < 18)
 				{
-					ModelState.AddModelError("DateOfBirth", "您必须年满18岁才能注册。");
+					ModelState.AddModelError("DateOfBirth", "您必須年滿18歲才能註冊。");
 					return View(customer);
 				}
+				if (string.IsNullOrEmpty(customer.Password) || customer.Password.Length < 6)
+				{
+					ModelState.AddModelError("Password", "密碼是必填的，且長度必須大於6個字。");
+					return View(customer);
+				}
+
 
 				// 对用户密码进行加密
 				string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
@@ -290,10 +296,18 @@ namespace Project0220.Controllers
             {
                 try
                 {
-                    _context.Update(Customers);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
+					// 查找現有客戶記錄
+					var existingCustomer = await _context.Customers.FindAsync(id);
+
+					// 將現有客戶記錄的密碼賦值給編輯後的模型
+					Customers.Password = existingCustomer.Password;
+
+					// 更新客戶記錄，但不包括密碼
+					_context.Entry(existingCustomer).CurrentValues.SetValues(Customers);
+
+					await _context.SaveChangesAsync();
+				}
+				catch (DbUpdateConcurrencyException)
                 {
                     if (!CustomerExists(Customers.CustomerId))
                     {
