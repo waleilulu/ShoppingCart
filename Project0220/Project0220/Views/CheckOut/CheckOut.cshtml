@@ -132,19 +132,27 @@
 
                                                   @foreach (var cartOrder in Model) // 所有CartOrderModel對象的列表
                                                   {
+                                                        decimal totalOrderAmount = 0; // 初始化每個訂單的總額為0
                                                       @foreach (var item in cartOrder.CartItem) // 然後所有每個對象的CartItems
                                                       {
-                                               
+                                                            totalOrderAmount += item.Quantity * item.Product.UnitPrice.GetValueOrDefault();
                                               <tr>
                                                 @*   <td>@item.Product.ProductId</td> *@
                                                   
-                                                  <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
-                                                  <td>@item.Product.ProductName</td>
-                                                  <td>@item.SelectedColor</td>
-                                                  <td>X @item.Quantity 個</td>
-                                                  <td>$@item.Product.UnitPrice 元</td>
-                                              </tr><br><br>
+                                                  <span><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></span>
+                                                        <span>@item.Product.ProductName</span>
+                                                        <span>@item.SelectedColor</span>
+                                                         <span>X @item.Quantity 個</span>
+                                                        <span>$@item.Product.UnitPrice 元</span>
+                                                   </tr>
+                                                        <br><br>
                                                       }
+                                                         <hr style="height: 1px; background-color: black;">
+                                                          <div style="text-align: right; margin-right: 50px;">
+                                                              <td>總商品數量 : @cartOrder.CartItem.Sum(item => item.Quantity)</td>
+                                                                  <br><br>
+                                                              <td>總額 : @totalOrderAmount</td>
+                                                          </div>
                                                   }
                                            </div>      
                                             </div>
@@ -175,6 +183,7 @@
                                              @*    <p>小計 <span>$75.00</span></p>
                                                 <p>折扣<span>$00.00</span></p>
                                                 <h4>總額<span>$75.00</span></h4> *@
+                                              
                 
 
                                     
@@ -205,6 +214,9 @@ Swal.fire({
   timer: 1500
 });
 }
+
+@* 下面是總額========================================= *@
+      
 
 </script>
       <!-- All jquery file included here -->
