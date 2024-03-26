@@ -177,7 +177,7 @@ namespace Project0220.Controllers
             // 如果没有找到客户或购物车为空，则返回一个空的模型列表
             if (customer == null || !cartItems.Any())
             {
-                return View(new List<CartOrderModel>()); // 确保这里有返回
+                return View(new List<CartOrderModel>()); // 確保這裡有返回
             }
 
             var productIds = cartItems.Select(item => item.ProductID).ToList();//找加入購物車的東西
@@ -227,13 +227,15 @@ namespace Project0220.Controllers
                 return NotFound($"沒有客戶 ID{customerId} 的訂單。");
             }
 
+            int totalAmount = 0; // 初始化总金额为 int 类型
+
             // 使用找到的訂單 OrderId
             foreach (var item in cartItems)
             {
                 var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == item.ProductID);
                 if (product != null)
                 {
-                    
+                   
                     var orderDetails = new OrderDetail
                     {
                         OrderId = orderId,
@@ -243,15 +245,25 @@ namespace Project0220.Controllers
                         SelectedColor = item.SelectedColor,
                         Discount = 1,
                         Amount =item.Quantity * product.UnitPrice
+
                     };
+
+                    int amount = item.Quantity * product.UnitPrice.GetValueOrDefault();
+                    totalAmount += amount; // 累加到总金额
+
                     // 將 OrderDetail 添加到資料庫
                     _context.OrderDetails.Add(orderDetails);
+                    
 
                     // 減少產品庫存
                     product.UnitInStock -= item.Quantity;
                 }
             }
             await _context.SaveChangesAsync();
+
+            // 更新 Order 的 TotalAmount 为计算出的总金额
+            order.TotalAmount = totalAmount;
+            await _context.SaveChangesAsync(); // 再次保存，更新 Order 的总金额
 
             // 清空購物車
             _context.CartItems.RemoveRange(cartItems);
