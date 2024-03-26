@@ -135,67 +135,136 @@ namespace Project0220.Controllers
 
         //會員追蹤 
         [HttpPost]
-        public IActionResult Follow(int ProductId,string Color)
-        {   //先判斷這個人是誰
-            var userId = HttpContext.Session.GetInt32("userId");
-            if (userId.HasValue)
+        public IActionResult Follow(int ProductId, string Color)
+        {
+            if (IsAuthenticated())
             {
-                //找到這個人是誰  從客戶資料表裡面找
-                var user = _contextNew.Customers.Find(userId.Value);
-                if (user != null)
-                {   //確定有此使用者
-                    var product = _contextNew.Products.Find(ProductId);
+                //先判斷這個人是誰
+                var userId = HttpContext.Session.GetInt32("userId");
+                if (userId.HasValue)
+                {
+                    //找到這個人是誰  從客戶資料表裡面找
+                    var user = _contextNew.Customers.Find(userId.Value);
+                    if (user != null)
+                    {   //確定有此使用者
+                        var product = _contextNew.Products.Find(ProductId);
 
-                    if (product != null)
-                    {
-                        var existingTrack = _contextNew.TrackLists
-                    .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId &&t.Color==Color);
-
-                        if (existingTrack == null)
+                        if (product != null)
                         {
+                            var existingTrack = _contextNew.TrackLists
+                        .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId && t.Color == Color);
 
-                            var trackListModel = new TrackList
+                            if (existingTrack == null)
                             {
-                                CustomerID = userId.Value,
-                                ProductID = ProductId,
-                                Color=Color
 
-                            };
+                                var trackListModel = new TrackList
+                                {
+                                    CustomerID = userId.Value,
+                                    ProductID = ProductId,
+                                    Color = Color
 
-                            _contextNew.TrackLists.Add(trackListModel);
-                            _contextNew.SaveChanges();
+                                };
 
-                            return Json(new { success = true, message = "Product tracked successfully" });
+                                _contextNew.TrackLists.Add(trackListModel);
+                                _contextNew.SaveChanges();
+
+                                return Json(new { success = true, message = "Product tracked successfully" });
+                            }
+                            else
+                            {
+                                return Json(new { success = false, message = "產品已追蹤過了" });
+                            }
                         }
                         else
                         {
-                            return Json(new { success = false, message = "產品已追蹤過了" });
+                            // 使用者未驗證
+                            return Json(new { success = false, message = "此商品不存在" });
                         }
                     }
                     else
                     {
-                        // 使用者未驗證
-                        return Json(new { success = false, message = "User not authenticated" });
+                        // 使用者未登錄
+                        return Json(new { success = false, message = "尚未登錄 請登入" });
                     }
+
                 }
-                else
+
+                return Json(new { success = false, message = "尚未登錄 請登入" });
+            }
+            return Json(new { success = false, message = "尚未登錄 請先登入" });
+        }
+
+
+        [HttpPost]
+        public IActionResult Follow(int ProductId)
+        {
+            if (IsAuthenticated())
+            {
+                //先判斷這個人是誰
+                var userId = HttpContext.Session.GetInt32("userId");
+                if (userId.HasValue)
                 {
-                    // 使用者未登錄
-                    return Json(new { success = false, message = "尚未登錄 請登入" });
+                    //找到這個人是誰  從客戶資料表裡面找
+                    var user = _contextNew.Customers.Find(userId.Value);
+                    if (user != null)
+                    {   //確定有此使用者
+                        var product = _contextNew.Products.Find(ProductId);
+
+                        if (product != null)
+                        {
+                            var existingTrack = _contextNew.TrackLists
+                        .FirstOrDefault(t => t.CustomerID == userId.Value && t.ProductID == ProductId );
+
+                            if (existingTrack == null)
+                            {
+
+                                var trackListModel = new TrackList
+                                {
+                                    CustomerID = userId.Value,
+                                    ProductID = ProductId,
+                               
+                                };
+
+                                _contextNew.TrackLists.Add(trackListModel);
+                                _contextNew.SaveChanges();
+
+                                return Json(new { success = true, message = "Product tracked successfully" });
+                            }
+                            else
+                            {
+                                return Json(new { success = false, message = "產品已追蹤過了" });
+                            }
+                        }
+                        else
+                        {
+                            // 使用者未驗證
+                            return Json(new { success = false, message = "此商品不存在" });
+                        }
+                    }
+                    else
+                    {
+                        // 使用者未登錄
+                        return Json(new { success = false, message = "尚未登錄 請登入" });
+                    }
+
                 }
-				
-			}
 
-			return Json(new { success = false, message = "" });
-		}
-     
-
+                return Json(new { success = false, message = "尚未登錄 請登入" });
+            }
+            return Json(new { success = false, message = "尚未登錄 請先登入" });
+        }
 
 
 
 
 
 
+        private bool IsAuthenticated()
+        {
+            // 檢查是否存在名為 "membercookie" 的 cookie
+            var memberCookie = HttpContext.Request.Cookies["membercookie"];
+            return !string.IsNullOrEmpty(memberCookie);
+        }
 
 
 

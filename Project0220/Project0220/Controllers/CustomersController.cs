@@ -485,10 +485,7 @@ namespace Project0220.Controllers
             return RedirectToAction("ForgetPassword");
 
         }
-		public IActionResult Create_Admin()
-		{
-			return View();
-		}
+
 
 		// GET: Customers/Edit/5
 		public async Task<IActionResult> Edit_Admin(int? id)

@@ -130,9 +130,19 @@
                                                                                 </a>
                                                                                 <div class="product-action">
                                                                                     <ul>
-                                                                                        <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
+                                                                                        @* <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li> *@
+                                                                                        <li id="cartButton"><a href="#"><i class="fa fa-cart-plus"></i></a></li>
+
+                                                                                        <form id="addToCartForm" method="POST" action="/Cart/AddToCart" style="display: none;">
+                                                                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                                                                        <input type="hidden" name="quantity" value="1" />
+                                                                                        <input type="hidden" name="selectedcolor" value="@item.Color1" />
+                                                                                        </form>
+
                                                                                         <li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                                                            <li><a href="javascript:;"><i  onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></i></a></li>
+                                                                                            <li><a href="javascript:;">
+
+                                                                                                <i  onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></i></a></li>
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
@@ -275,20 +285,27 @@
             </div>
         }
         <!-- Shop Section End -->
-                <script>
-        function addfavoritebtn(productId){
+      <script>
+   
+   function addfavoritebtn(productId) {
+    //var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
 
         $.ajax({
             url:"/AllItems/Follow",
             method:"post",
-            data:{ProductId:productId},
+            data:{ProductId:productId },
             success:function (result){
-           
-                alert("商品追蹤成功");
-
+               if (result.success) {
+            alert("商品追蹤成功");
+        } else {
+            // 處理失敗
+            console.error("發生錯誤:", result.message);
+            alert(result.message);
+        }
             },
             error:function (error){
                 console.error("發生錯誤:",error);
+                  alert("尚未登錄，请先登录");
             }
 
 
@@ -297,7 +314,9 @@
         }
 
 
-       
-        
+        document.getElementById("cartButton").addEventListener("click", function (event) {
+            event.preventDefault(); // 防止點擊<a>標籤時跳轉到cart.html
+            document.getElementById("addToCartForm").submit(); // 提交表單
+        });
 
     </script>
