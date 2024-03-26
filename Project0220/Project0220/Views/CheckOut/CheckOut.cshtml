@@ -70,17 +70,19 @@
                                         </div>
                             </form>
 
-                                                                <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" style=" background-color: #8cd1dd; color: white; font-weight: bold;   border: none;  cursor: pointer; padding: 7px  40px; font-size:18px; margin-top:30px;">點擊結帳
+                                                                    <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" style=" background-color: #bad9ca; color: white; font-weight: bold;   border: none;  cursor: pointer; padding: 7px  40px; font-size:18px; margin-top:30px;">點擊結帳
 
                                                     </button>
                                             <!-- 匯款訊息彈跳 -->
                                              <div id="bankTransferInfo" style="display: none;">
-                                                     <div class="checkout-title">匯款帳號 : </div>
-                                                             <div class="checkout-form">
-                                                                戶名: 居家家居股份有限公</div>
-                                                              <div class="checkout-form">帳號: 中國信託 (822) 500012345</div>
-                                                     <button onclick="closePopup('bankTransferInfo')" class="cart-button02">關閉</button>
-                                             </div>
+                                                     <div class="checkout-title" style="margin-top: 30px;">匯款帳號 : </div>
+                                                             <div style="border: 1px solid black; padding: 40px; width: 80%; box-sizing: border-box; ">
+                                                              <div class="checkout-form"  style="margin-top:10px; font-weight: bold; font-size:20px; margin-left:18px;">
+                                                                戶名: 居家家居股份有限公司</div>
+                                                              <div class="checkout-form"  style="margin-top:10px; font-weight: bold; font-size:20px;  margin-left:18px;">帳號: 中國信託 (822) 500012345</div>
+                                                             <button onclick="closePopup('bankTransferInfo')" class="cart-button02" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:70px; font-size:18px;">關閉</button>
+                                                 </div>
+                                                 </div>
 
                                                  <!-- 信用卡訊息彈跳-->
                                              <div id="creditCardForm" style="display: none;">
@@ -90,24 +92,24 @@
                                                          <form >
                                                            <div>
                                                                  <label style="font-weight: bold;">持卡人姓名</label><br>
-                                                                          <input class="checkout-form" type="text" style="width: 100%; " placeholder="請輸入姓名" required></input>
+                                                                  <input class="checkout-form" type="text"  style="width: 100%; " placeholder="請輸入姓名" required></input>
                                                            </div>
                                                                 <div>
                                                                       <label style="margin-top:10px; font-weight: bold;">請填寫信用卡卡號</label><br>
-                                                                        <input class="checkout-form" type="text" style="width: 100%; " pattern="\d{16}" placeholder="請填寫16碼信用卡號" required></input>
+                                                                       <input class="checkout-form" type="text" name="creditCardNumber" style="width: 100%; " pattern="\d{16}" placeholder="請填寫16碼信用卡號" required></input>
                                                           </div>
                                                                 <div>
-                                                                            <label style="margin-top:10px; font-weight: bold;">CVV</label><br>
-                                                                          <input class="checkout-form" type="text" style="width: 100%; " pattern="\d{3}" placeholder="請填寫信用卡背面末三碼" required></input>
+                                                                         <label style="margin-top:10px; font-weight: bold;">CVV</label><br>
+                                                                          <input class="checkout-form" type="text"  name="CVV" style="width: 100%; " pattern="\d{3}" placeholder="請填寫信用卡背面末三碼" required></input>
                                                                 </div>
                                                                     <div>
                                                                               <label style="margin-top:10px; font-weight: bold;">請填寫有效日期</label><br>
-                                                                          <input  class="checkout-form" type="text" style="width: 100%; " placeholder="月/年，例如：07/28" required></input>
+                                                                              <input  class="checkout-form" type="text"  name="expiryDate" style="width: 100%; " placeholder="月/年，例如：07/28" required></input>
                                                                 </div>
                                                              
                                                  </form>
                                                  <br>
-                                                     <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #8cd1dd; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:50px; font-size:18px;">確認付款</button>
+                                                     <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:50px; font-size:18px;">確認付款</button>
                                                  </div>  
                                                  </div>
          
@@ -207,7 +209,7 @@
 
 <script>
 
-function showPaymentInfo(paymentMethod) {
+@* function showPaymentInfo(paymentMethod) {
     if (paymentMethod == "匯款") {
         document.getElementById('bankTransferInfo').style.display = 'block';
     } else if (paymentMethod == "信用卡") {
@@ -229,9 +231,70 @@ Swal.fire({
   showConfirmButton: false,
   timer: 1500
 });
+} *@
+
+function showPaymentInfo(paymentMethod) {
+    if (paymentMethod == "匯款") {
+        document.getElementById('bankTransferInfo').style.display = 'block';
+    } else if (paymentMethod == "信用卡") {
+        document.getElementById('creditCardForm').style.display = 'block';
+    }
 }
 
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
 
+function confirmPayment() {
+    var form = document.getElementById('creditCardForm');
+    var allFilled = true;  @* 默認所有欄位已填 *@
+    var isValid = true;  @* 新增變量以檢查數據有效性 *@
+
+    if (form.style.display === 'block') {
+        form.querySelectorAll('input[required]').forEach(function(input) {
+            if (!input.value.trim()) {
+                allFilled = false;  @* 若有未填，則設置為未全部填寫 *@
+            }
+
+             @* 特定欄位的額外驗證 *@
+            if (input.name === "creditCardNumber" && !/^\d{16}$/.test(input.value.trim())) {
+                isValid = false; 
+                Swal.fire('信用卡號碼必須是16位數字。');
+            }
+
+            if (input.name === "CVV" && !/^\d{3,4}$/.test(input.value.trim())) {
+                isValid = false; 
+                Swal.fire('CVV必須是3或4位數字。');
+            }
+
+            if (input.name === "expiryDate" && !/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(input.value.trim())) {
+                isValid = false; 
+                Swal.fire('有效日期格式不正確，正確格式為：月/年，例如：07/28。');
+            }
+
+        });
+
+        if (!allFilled) {
+            @* 若有未填寫的欄位，顯示警告 *@
+            Swal.fire({
+                icon: 'error',
+                title: '哎呀...',
+                text: '請填寫所有必填信用卡資訊。',
+            });
+            return; 
+        }
+    }
+
+     @* 所有必填項都已填或當前不是信用卡支付方式，關閉彈窗並顯示成功提示 *@
+    closePopup('creditCardForm');
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '已付款成功',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
       
 
 </script>
