@@ -181,7 +181,7 @@ th, td {
                             <p>您的訂單數量有: @Model.OrdersWithDetails.Count 筆</p>
                     foreach (var orderWithDetails in Model.OrdersWithDetails.OrderByDescending(o => o.Order.OrderDate))
                     {
-                                 <button class="accordion">訂單編號：@orderWithDetails.Order.OrderId</button>
+                               <button class="accordion">訂單編號：<a style="font-weight: bold; font-size: 20px;">@orderWithDetails.Order.OrderId </a><br>訂單狀態 : <a style="font-weight: bold; ">@orderWithDetails.Order.Status</a></button>
                                  <div class="panel">
                                      <p style="font-weight: bold; font-size: 18px; margin-top:15px;">購物明細</p>
                                 <table class="OrderFollow">
@@ -246,7 +246,17 @@ th, td {
                                      <td>@orderWithDetails.Order.PostalCode @orderWithDetails.Order.ShippingAddress</td>
                                      <td>@orderWithDetails.Order.PaymentMethod</td>
                                     <td>@orderWithDetails.Order.Carrier</td>
-                                     <td>@orderWithDetails.Order.ShippingDate</td>
+                                            <td>
+                                            @if (orderWithDetails.Order.Status == "已取消訂單")
+                                            {
+                                                @:取消出貨
+                                            }
+                                            else
+                                            {
+                                                @orderWithDetails.Order.ShippingDate
+                                                
+                                            }
+                </td>
                                 </tr>
                             </tbody>
                         </table>

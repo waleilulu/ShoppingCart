@@ -109,8 +109,10 @@
                                                 <label asp-for="OrderDate" class="control-label">購買日期*</label>
                                                 <input asp-for="OrderDate" class="form-control" readonly />
                                                  <span asp-validation-for="OrderDate" class="text-danger"></span>
-                                               
                                             </div>
+
+                                           @*  預設為已取消訂單，因為總額是0，如果客戶有提交到最後，訂單會變成配送中 *@
+                                          <input asp-for="Status" type="hidden" class="form-control" value="已取消訂單" />
 
                                              <div class="cart-summary-button">
                                     @* 改類別名稱cart-button01 *@

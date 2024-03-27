@@ -186,7 +186,6 @@
                                                      <input type="hidden" asp-for="@Model[x].CartItem[y].Quantity" name="CartItems[@y].Quantity" />
                                                      <input type="hidden" asp-for="@Model[x].CartItem[y].Product.UnitPrice" name="CartItems[@y].UnitPrice" />
                                                      <input type="hidden" asp-for="@Model[x].CartItem[y].SelectedColor" name="CartItems[@y].SelectedColor" />
-
                                                 }
                                             }
                                      
@@ -235,29 +234,35 @@ function confirmPayment() {
                 allFilled = false;  @* 若有未填，則設置為未全部填寫 *@
             }
 
+
              @* 特定欄位的額外驗證 *@
+               if (input.name === "fullName" && !input.value.trim()) {
+                isValid = false;
+                Swal.fire('請填寫姓名。');
+                 return;
+            }
+
             if (input.name === "creditCardNumber" && !/^\d{16}$/.test(input.value.trim())) {
                 isValid = false; 
                 Swal.fire('信用卡號碼必須是16位數字。');
+                 return;
             }
 
             if (input.name === "CVV" && !/^\d{3,4}$/.test(input.value.trim())) {
                 isValid = false; 
                 Swal.fire('CVV必須是3或4位數字。');
+                 return;
             }
 
             if (input.name === "expiryDate" && !/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(input.value.trim())) {
                 isValid = false; 
                 Swal.fire('有效日期格式不正確，正確格式為：月/年，例如：07/28。');
+                 return;
             }
 
-            if (input.name === "fullName" && !input.value.trim()) {
-                isValid = false;
-                Swal.fire('請填寫姓名。');
-                
-            }
            
         });
+        
 
         if (!isValid) {
             return; @* 不執行後續操作 *@
