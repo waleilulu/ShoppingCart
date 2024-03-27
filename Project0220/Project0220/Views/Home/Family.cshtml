@@ -1,6 +1,16 @@
 ﻿@model IEnumerable<Project0220.myModels.Product>
 
 
+     <link rel="stylesheet" href="~/css/Cart/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
+    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
+    <link rel="stylesheet" href="~/css/Cart/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <!-- Modernizr JS -->
+    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
+
+
 <div class="container">
         <div class="row">
             <!-- 第一個區域由左到右1個版面 -->
@@ -152,7 +162,7 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                <button class="btn oneBtn" id="addToCartBtn" onclick="addListToCart()">一鍵加入購物車</button>
+                                                <button class="cart-button01" id="addToCartBtn" onclick="addListToCart()" style="margin-left: 200px; font-weight: bold;">一鍵加入購物車</button>
                                                 </div>
                                             </div>
                                         </div>
