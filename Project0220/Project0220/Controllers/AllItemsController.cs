@@ -163,11 +163,11 @@ namespace Project0220.Controllers
                                 Color = Color
 
                             };
-
+                           
                             _contextNew.TrackLists.Add(trackListModel);
                             _contextNew.SaveChanges();
 
-                            return Json(new { success = true, message = "Product tracked successfully" });
+                            return Json(new { success = true, message = "商品追蹤成功" });
                         }
                         else
                         {

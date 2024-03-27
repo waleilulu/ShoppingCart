@@ -232,7 +232,9 @@
 																	</form>
 																</div>
 																<div class="wishlist-compare-btn">
-																			<button onclick="addfavoritebtn(@item.ProductId)">
+																 <!--挑選顏色增加-->
+																		<input type="hidden" id="product-color-choose" value="@item.Color1" />
+																<button onclick="addfavoritebtn(@item.ProductId)">
 																	<a href="" class="wishlist-btn">加入我的最愛</a>
 																  </button>
 
@@ -262,32 +264,33 @@
 		<!-- Shop Section End -->
 	  <script>
 
-   function addfavoritebtn(productId) {
-		//var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
 
+   function addfavoritebtn(productId) {
+	var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
+	console.log(selectedColor);
 		$.ajax({
-			url:"/AllItems/Follow",
+			url:"/AllItems/FollowColor",
 			method:"post",
-			data:{ProductId:productId },
+			data:{ProductId:productId,Color: selectedColor },
 			success:function (result){
-				if (result.success) 
-			   {
-					alert("商品追蹤成功");
-			   } 
-			   else 
-			   {
-					// 處理失敗
-					console.error("發生錯誤:", result.message);
-					alert(result.message);
-				}
+			   if (result.success) {
+			alert("商品追蹤成功");
+		} else {
+			// 處理失敗
+			console.error(result.message);
+			alert(result.message);
+		}
 			},
-			error:function (error)
-			{
+			error:function (error){
 				console.error("發生錯誤:",error);
-				alert("尚未登錄，请先登录");
+				  alert("錯誤");
 			}
+
+
 		});
-   }
+
+		}
+
 
 		var modelData = @Html.Raw(Json.Serialize(Model));
 				console.log(modelData);
@@ -319,7 +322,7 @@
 			error:function (error)
 			{
 				console.error("發生錯誤:",error);
-				alert("尚未登錄，请先登录");
+				alert("錯誤");
 			}
 		});
 

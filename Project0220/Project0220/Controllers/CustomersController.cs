@@ -247,7 +247,7 @@ namespace Project0220.Controllers
                 {
                     return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
                 }
-                // 如果用户角色为管理员，则重定向到管理员页面
+                // 如果用户角色為管理員，則重定向到管理員页面
                else if (userRole =="Administrator")
 				{
 					return RedirectToAction("Admin", "Customers");
