@@ -52,6 +52,7 @@ th, td {
     border-left: 1px solid rgb(197, 192, 192);
     border-right: 1px solid rgb(197, 192, 192);
     margin-top:20px;
+    overflow: auto; /* 使得内容超出時可以滾動查看 */
 }
 
 
@@ -73,6 +74,8 @@ th, td {
     background-color:#ebeae7;
     }
 
+  
+
    /*  手風琴效果==================================================== */
 
 .accordion {
@@ -80,45 +83,45 @@ th, td {
   color: #444;
   cursor: pointer;
   padding: 18px;
-  padding-right: 50px; /* 增加右边距，为收合图标留出空间 */
+  padding-right: 50px; /* 增加右編劇，為收合圖標留出空間 */
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
   font-size: 15px;
   transition: 0.4s;
-  position: relative; /* 为伪元素定位做准备 */
+  position: relative; /*偽元素定位 */
    margin-bottom: 10px;
 }
 
-/* 激活状态和悬浮状态 */
+
 .active, .accordion:hover {
   background-color: #ccc;
 }
 
-/* 面板样式 */
+/* 面板樣式 */
 .panel {
   padding: 0 18px;
   display: none;
   background-color: white;
-  overflow: hidden;
+  /* overflow: hidden; */
 
 }
 
-/* 添加收合图标 */
+/* 添加收合圖標*/
 .accordion::after {
-  content: '\02795'; /* Unicode字符，加号 */
+  content: '\02795'; /* Unicode字符，加號 */
   font-size: 13px;
   color: #777;
   position: absolute;
   right: 20px;
   top: 18px;
-  transition: transform 0.4s; /* 平滑转换效果 */
+  transition: transform 0.4s; /* 平滑轉換效果 */
 }
 
-/* 当手风琴激活时，改变图标为减号，并旋转 */
+/* 當手风琴啟動，改變圖標為減號，並旋轉 */
 .accordion.active::after {
-  content: "\2796"; /* Unicode字符，减号 */
+  content: "\2796"; /* 減號*/
   transform: rotate(180deg);
 }
 </style>
@@ -354,28 +357,28 @@ th, td {
 
 
 </script>
- <!-- 在页面加载时直接设置默认选项卡的样式 -->
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function () {
-        showDefaultTab("MData", "white"); // 设置默认选项卡和颜色
+        showDefaultTab("MData", "white"); // 設置默認選項卡和颜色
     });
 
     function showDefaultTab(tabId, color) {
         var tabcontent = document.getElementsByClassName("tabcontent");
         var tablinks = document.getElementsByClassName("tablink");
 
-        // 隐藏所有选项卡内容
+        // 隐藏所有選項卡内容
         for (var i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
-        // 取消所有选项卡链接的背景颜色
+        // 取消所有選項卡連接的背景颜色
         for (var i = 0; i < tablinks.length; i++) {
             tablinks[i].style.backgroundColor = "";
         }
 
-        // 显示默认选项卡内容并设置背景颜色
+        // 顯示默認選項卡内容並設置背景颜色
         var defaultTab = document.getElementById(tabId);
         if (defaultTab) {
             defaultTab.style.display = "block";
