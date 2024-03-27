@@ -164,7 +164,7 @@ namespace Project0220.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,PostalCode,ShippingAddress,Consignee,ContactPhone")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,PostalCode,ShippingAddress,Consignee,ContactPhone,Status")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -259,23 +259,21 @@ namespace Project0220.Controllers
                         Amount =item.Quantity * product.UnitPrice
 
                     };
-
-                    int amount = item.Quantity * product.UnitPrice.GetValueOrDefault();
-                    totalAmount += amount; // 累加到總金額
-
-                    // 將 OrderDetail 添加到資料庫
+                        // 將 OrderDetail 添加到資料庫
                     _context.OrderDetails.Add(orderDetails);
                     
+                    int amount = item.Quantity * product.UnitPrice.GetValueOrDefault();
+                    totalAmount += amount; // 累加到總金額
 
                     // 減少產品庫存
                     product.UnitInStock -= item.Quantity;
                 }
             }
-            await _context.SaveChangesAsync();
-
+            
 
             // 更新 Order 的 TotalAmount 計算出的總金額
             order.TotalAmount = totalAmount;
+            order.Status = "配送中";
             await _context.SaveChangesAsync(); // 更新 Order 的總金額
 
             // 清空購物車
