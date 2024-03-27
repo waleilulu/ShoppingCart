@@ -58,7 +58,7 @@ namespace Project0220.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderDetailId,OrderId,ProductId,Quantity,UnitPrice,Discount,Amount")] OrderDetail orderDetail)
+        public async Task<IActionResult> Create([Bind("OrderDetailId,OrderId,ProductId,Quantity,UnitPrice,Discount,Amount,SelectedColor")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace Project0220.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderDetailId,OrderId,ProductId,Quantity,UnitPrice,Discount,Amount")] OrderDetail orderDetail)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderDetailId,OrderId,ProductId,Quantity,UnitPrice,Discount,Amount,SelectedColor")] OrderDetail orderDetail)
         {
             if (id != orderDetail.OrderDetailId)
             {

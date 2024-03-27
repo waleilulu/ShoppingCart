@@ -69,9 +69,11 @@
                     <th>OrderDetailID</th>
                     <th>OrderID</th>
                     <th>ProductID</th>
+                    <th>SelectedColor</th>
                     <th>Quantity</th>
-                    <th>UniPrice</th>
+                    <th>UnitPrice</th>
                     <th>Discount</th>
+                    <th>Amount</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -82,15 +84,17 @@
                         <td>@orderDetail.OrderDetailId</td>
                         <td>@orderDetail.OrderId</td>
                         <td>@orderDetail.ProductId</td>
+                        <td>@orderDetail.SelectedColor</td>
                         <td>@orderDetail.Quantity</td>
                         <td>@orderDetail.UnitPrice</td>
                         <td>@orderDetail.Discount</td>
+                        <td>@orderDetail.Amount</td>
                         @*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@
                         <td style="white-space: nowrap;">
                             <a class="btn btn-primary btn-sm" asp-controller="OrderDetails" asp-action="Edit"
                                asp-route-id="@orderDetail.OrderDetailId">Edit</a>
                             <a class="btn btn-danger btn-sm" asp-controller="OrderDetails" asp-action="Delete"
-                               asp-route-id="@orderDetail.OrderDetailId">Edit</a>
+                               asp-route-id="@orderDetail.OrderDetailId">Delete</a>
                         </td>
                     </tr>
                 }

@@ -72,6 +72,14 @@
             </div>
 
             <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Selected Color</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="SelectedColor">
+                    <span asp-validation-for="SelectedColor" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-md-4 col-form-label">Quantity</label>
                 <div class="col-sm-8">
                     <input class="form-control" asp-for="Quantity">
@@ -92,6 +100,14 @@
                 <div class="col-sm-8">
                     <input class="form-control" asp-for="Discount">
                     <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Amount</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Amount">
+                    <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
             </div>
 
