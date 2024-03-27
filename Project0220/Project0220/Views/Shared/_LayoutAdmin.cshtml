@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<!--此頁代碼為Admin的Nav欄公版-->
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+	<!--引用-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<!-- 引入fontawesome icon -->
+	<script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
+
+	<style>
+		/* .MyDescription => 省略Products的Description欄位字數 */
+		.MyDescription {
+			max-width: 100px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		/* .MyPassword => 省略Customers的Description欄位字數 */
+		.MyPassword {
+			max-width: 100px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+
+		<div class="container-fluid">
+			<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+				<img src="~/images/GGLogo.png" width="268.5" height="81.75"
+					 class="d-inline-block align-top" alt="">
+			</a>
+			<a class="navbar-brand" asp-controller="Products" asp-action="Index"><strong>Admin Page</strong></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+					<a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
+					<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
+					<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+					<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
+					<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+					<!-- 紙飛機 群發 按鈕 -->
+					<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
+
+					<!-- 會員與管理員 切換 按鈕 -->
+					@{
+						var userRole = Context.Request.Cookies["userRole"];
+						var isAdmin = Context.Request.Cookies["isAdmin"];
+					}
+
+					@if (userRole != null || isAdmin != null)
+					{
+						<a class="nav-link fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
+					}
+
+					<!-- 登出 按鈕 -->
+					@{
+						var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
+					}
+
+					@if (isAuthenticated)
+					{
+						<form asp-controller="Customers" asp-action="Logout" method="post">
+							<button type="submit" class="nav-link" style="border:none;background:none;">
+								<i class="fa-solid fa-arrow-right-from-bracket"></i>
+							</button>
+						</form>
+					}
+				</div>
+			</div>
+		</div>
+	</nav>
+	<br>
+
+    <div>
+        @RenderBody()
+		@RenderSection("Scripts", required: false)
+    </div>
+</body>
+</html>
