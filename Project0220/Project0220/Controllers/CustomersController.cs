@@ -17,6 +17,7 @@ using System.Configuration;
 using Project0220.ViewModel;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System.Drawing;
 
 namespace Project0220.Controllers
 {
@@ -364,12 +365,12 @@ namespace Project0220.Controllers
 
         //刪除追蹤商品
         [HttpPost]
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeleteProduct(int productId,string Color)
         {
 
             var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            var trackList = _context.TrackLists
-                             .FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId );
+            var trackList = _context.TrackLists.FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId && (t.Color == Color || (t.Color == null && Color == null)));
+
 
             if (trackList != null)
             {

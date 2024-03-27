@@ -710,7 +710,7 @@
     var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
        
         $.ajax({
-            url:"/AllItems/Follow",
+            url:"/AllItems/FollowColor",
             method:"post",
             data:{ProductId:productId,Color: selectedColor },
             success:function (result){
@@ -724,7 +724,7 @@
             },
             error:function (error){
                 console.error("發生錯誤:",error);
-                  alert("尚未登錄，请先登录");
+                  alert("錯誤");
             }
 
 
