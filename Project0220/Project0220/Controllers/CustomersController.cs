@@ -411,7 +411,7 @@ namespace Project0220.Controllers
                 {
                     var verificationCode = GenerateVerificationCode();
                     user.ResetPasswordToken = verificationCode;
-                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(3); // 驗證碼有效期3分鐘
+                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(1); // 驗證碼有效期1分鐘
                     await _context.SaveChangesAsync();
 
                     // 發送驗證碼到用戶提供的 email 中
@@ -445,7 +445,7 @@ namespace Project0220.Controllers
                         <title>驗證密碼</title>
                     </head>
                     <body>
-                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為3分鐘，請在期限內完成驗證。</p>
+                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為1分鐘，請在期限內完成驗證。</p>
                     </body>
                 </html>";
             mms.IsBodyHtml = true;
