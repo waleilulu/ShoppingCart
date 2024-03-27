@@ -47,8 +47,9 @@
 				}
 
 				@if (userRole != null || isAdmin != null) {
-					<a class="nav-link fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
+						<a class="fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
 				}
+		
 				@{
 					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
 				}

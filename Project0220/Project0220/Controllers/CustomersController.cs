@@ -176,6 +176,9 @@ namespace Project0220.Controllers
                     if (user.Admin)
                     {
                         claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+                        HttpContext.Response.Cookies.Append("userRole", "Administrator");
+
+                
                     }
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -247,7 +250,7 @@ namespace Project0220.Controllers
                 // 如果用户角色为管理员，则重定向到管理员页面
                else if (userRole =="Administrator")
 				{
-					return RedirectToAction("Index", "Products");
+					return RedirectToAction("Admin", "Customers");
 				}
 				// 如果用户角色为会员，则重定向到会员详情页面
 				else

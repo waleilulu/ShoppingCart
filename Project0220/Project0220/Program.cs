@@ -43,8 +43,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
      options.Cookie.Name = "isAdmin";
      options.Cookie.HttpOnly = true;
      options.ExpireTimeSpan = TimeSpan.FromHours(1);
-     //	options.LoginPath = "/Customers/Admin"; // 登入頁面的路徑
-     options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
+	
+	 //options.LoginPath = "/Customers/Admin"; // 登入頁面的路徑
+	 options.LogoutPath = "/Customers/Logout"; // 登出頁面的路徑
  });
 ;
 

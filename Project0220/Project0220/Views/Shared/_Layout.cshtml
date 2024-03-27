@@ -109,13 +109,13 @@
                              
                         }
                
-                        @{
-                          
+                        @{                         
                            var isAdmin = Context.Request.Cookies["isAdmin"];
+                            var userRole = Context.Request.Cookies["userRole"];
                         }
 
                                        
-                        @if (isAdmin =="True")
+                        @if (userRole != null)
                         {
                    <a class="nav-link fa-solid fa-route" asp-controller="Products" asp-action="Index"></a>
                         }
