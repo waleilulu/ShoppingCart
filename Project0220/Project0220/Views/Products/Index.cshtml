@@ -1,16 +1,16 @@
 ﻿@model List<Product>
 @{
-	Layout = null;
+	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<!--引用-->
+@* <!--引用-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <!-- 引入fontawesome icon -->
 <script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
 <style>
 	/* 省略Description欄位字數 */
-	.cat {
+	.MyDescription {
 		max-width: 100px;
 		overflow: hidden;
 		white-space: nowrap;
@@ -36,38 +36,38 @@
 				<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
 				<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
 				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+				<!-- 紙飛機 群發 按鈕 -->
 				<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
-
-						</li>
-						<!--前往會員頁面按鈕-->
+				
+				<!-- 會員與管理員 切換 按鈕 -->
 				@{
-
 					var userRole = Context.Request.Cookies["userRole"];
 					var isAdmin = Context.Request.Cookies["isAdmin"];
 				}
 
-				@if (userRole != null || isAdmin != null) {
-						<a class="fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
+				@if (userRole != null || isAdmin != null)
+				{
+					<a class="nav-link fa-solid fa-route" asp-controller="Customers" asp-action="Details"></a>
 				}
-		
+
+				<!-- 登出 按鈕 -->
 				@{
 					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
 				}
+
 				@if (isAuthenticated)
 				{
-					<!-- 登出按鈕 -->
 					<form asp-controller="Customers" asp-action="Logout" method="post">
 						<button type="submit" class="nav-link" style="border:none;background:none;">
 							<i class="fa-solid fa-arrow-right-from-bracket"></i>
 						</button>
 					</form>
-
 				}
 			</div>
 		</div>
 	</div>
 </nav>
-<br>
+<br> *@
 
 
 <h2 class="text-center mb-5">Products 產品清單</h2>
@@ -146,7 +146,7 @@
 						<td>@product.Length</td>
 						<td>@product.Width</td>
 						<td>@product.Height</td>
-						<td class="cat">@product.Description</td>
+						<td class="MyDescription">@product.Description</td>
 						<td>@product.SpecialZoneType</td>
 						<td>@product.CreatedAt.ToString("yyyy/MM/dd")</td>
 						<td style="white-space: nowrap;">
