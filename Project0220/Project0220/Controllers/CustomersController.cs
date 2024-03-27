@@ -545,7 +545,7 @@ namespace Project0220.Controllers
 						throw;
 					}
 				}
-				return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+				return RedirectToAction("Index", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
 
 			}
 			return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
