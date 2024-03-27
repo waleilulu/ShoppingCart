@@ -107,8 +107,9 @@
 
                                              <div class="col-12 mb-20">
                                                 <label asp-for="OrderDate" class="control-label">購買日期*</label>
-                                                <input asp-for="OrderDate" class="form-control" type="date" />
-                                                <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                                <input asp-for="OrderDate" class="form-control" readonly />
+                                                 <span asp-validation-for="OrderDate" class="text-danger"></span>
+                                               
                                             </div>
 
                                              <div class="cart-summary-button">
@@ -131,6 +132,11 @@
                                     </div>
                                 </div>
   <!-- All jquery file included here -->
+
+
+ 
+
+
     <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
     <script src="~/js/Cart/js/popper.min.js"></script>
     <script src="~/js/Cart/js/bootstrap.min.js"></script>

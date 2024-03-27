@@ -62,7 +62,7 @@
                                                      <label style="font-size:20px; margin-top:20px;">配送貨運: @item.Order.Carrier</label>
                                             </div>
                                             <div >
-                                                    <label style="font-size:20px; margin-top:20px;">付款方式: @item.Order.PaymentMethod  </label>
+                                                    <label style="font-size:20px; margin-top:20px;">付款方式: @item.Order.PaymentMethod </label>
                                             </div>
                                               <div >
                                                       <label style="font-size:20px; margin-top:20px;">寄送日期: @item.Order.ShippingDate</label>
@@ -73,6 +73,8 @@
                                                                     <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" style=" background-color: #bad9ca; color: white; font-weight: bold;   border: none;  cursor: pointer; padding: 7px  40px; font-size:18px; margin-top:30px;">點擊結帳
 
                                                     </button>
+
+                                                           <div style="color:#ef869a; font-size:20px; margin-top:20px; font-weight: bold;" id="paymentStatus"></div>
                                             <!-- 匯款訊息彈跳 -->
                                              <div id="bankTransferInfo" style="display: none;">
                                                      <div class="checkout-title" style="margin-top: 30px;">匯款帳號 : </div>
@@ -209,29 +211,6 @@
 
 <script>
 
-@* function showPaymentInfo(paymentMethod) {
-    if (paymentMethod == "匯款") {
-        document.getElementById('bankTransferInfo').style.display = 'block';
-    } else if (paymentMethod == "信用卡") {
-        document.getElementById('creditCardForm').style.display = 'block';
-    }
-}
-
-function closePopup(popupId) {
-    document.getElementById(popupId).style.display = 'none';
-}
-
-function confirmPayment() {
-    closePopup('creditCardForm');
-
-Swal.fire({
-  position: "center",
-  icon: "success",
-  title: "已付款成功",
-  showConfirmButton: false,
-  timer: 1500
-});
-} *@
 
 function showPaymentInfo(paymentMethod) {
     if (paymentMethod == "匯款") {
@@ -294,10 +273,15 @@ function confirmPayment() {
         showConfirmButton: false,
         timer: 1500
     });
+
+    @* 在頁面上顯示"已付款"字樣 *@
+    document.getElementById('paymentStatus').innerText = '已付款完成，請點擊「確認訂購」';
 }
       
 
 </script>
+
+  
       <!-- All jquery file included here -->
     <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
     <script src="~/js/Cart/js/popper.min.js"></script>

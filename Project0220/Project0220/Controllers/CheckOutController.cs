@@ -82,13 +82,21 @@ namespace Project0220.Controllers
             // 從 cookie 讀取 customerId
             var customerId = Request.Cookies["membercookie"];
 
-            // 將 customerId 賦值給模型或 ViewData
+            // 將 customerId 賦值給 ViewData
             ViewData["CustomerId"] = customerId;
 
-            return View();
+            // 初始化 OrderDate 為當前日期
+            var Order = new Order            {
+                OrderDate = DateTime.Today
+            };
+
+            return View(Order);
             //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             //ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
         }
+
+
+        
 
         //[HttpPost]
         //public IActionResult Create(int customerId, int orderId, string consignee, 
@@ -169,6 +177,8 @@ namespace Project0220.Controllers
         }
 
 
+
+
         public async Task<IActionResult> CheckOut()
         {
             var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
@@ -176,7 +186,7 @@ namespace Project0220.Controllers
 
             var cartItems = await _context.CartItems.Where(a => a.CustomerID == customerId).ToListAsync();
             var customer = await _context.Customers.FirstOrDefaultAsync(a => a.CustomerId == customerId);
-            // 如果没有找到客户或购物车为空，则返回一个空的模型列表
+            // 如果没有找到客户或購物車為，則返回一個空的模型列表
             if (customer == null || !cartItems.Any())
             {
                 return View(new List<CartOrderModel>()); // 確保這裡有返回
@@ -262,6 +272,7 @@ namespace Project0220.Controllers
                 }
             }
             await _context.SaveChangesAsync();
+
 
             // 更新 Order 的 TotalAmount 計算出的總金額
             order.TotalAmount = totalAmount;

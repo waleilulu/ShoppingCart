@@ -48,6 +48,38 @@ namespace Project0220.Controllers
             // 執行查詢，並將結果轉換為列表
             return View(await data.ToListAsync());
         }
+        public async Task<IActionResult> Cabinet(string bee)
+        {
+            // 查詢CategoryId為1的商品
+            var data = from o2 in _contextNew.Products
+                       where o2.CategoryId == 2
+                       select o2;
+
+            // 如果bee不為空，進一步過濾ProductName包含bee的商品
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            // 執行查詢，並將結果轉換為列表
+            return View(await data.ToListAsync());
+        }
+        public async Task<IActionResult> Bedding(string bee)
+        {
+            // 查詢CategoryId為1的商品
+            var data = from o2 in _contextNew.Products
+                       where o2.CategoryId == 3
+                       select o2;
+
+            // 如果bee不為空，進一步過濾ProductName包含bee的商品
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName.Contains(bee));
+            }
+
+            // 執行查詢，並將結果轉換為列表
+            return View(await data.ToListAsync());
+        }
 
         public async Task<IActionResult> NewHome(string bee)
         {
