@@ -92,7 +92,7 @@
                                                          <form >
                                                            <div>
                                                                  <label style="font-weight: bold;">持卡人姓名</label><br>
-                                                                  <input class="checkout-form" type="text"  style="width: 100%; " placeholder="請輸入姓名" required></input>
+                                                                   <input class="checkout-form" type="text" name="fullName" style="width: 100%; " placeholder="請輸入姓名" required></input>
                                                            </div>
                                                                 <div>
                                                                       <label style="margin-top:10px; font-weight: bold;">請填寫信用卡卡號</label><br>
@@ -109,7 +109,7 @@
                                                              
                                                  </form>
                                                  <br>
-                                                     <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:50px; font-size:18px;">確認付款</button>
+                                                             <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:40px; font-size:18px;"><i class="fa-regular fa-credit-card">&nbsp;</i>確認付款</button>
                                                  </div>  
                                                  </div>
          
@@ -272,16 +272,16 @@ function confirmPayment() {
                 Swal.fire('有效日期格式不正確，正確格式為：月/年，例如：07/28。');
             }
 
+            if (input.name === "fullName" && !input.value.trim()) {
+                isValid = false;
+                Swal.fire('請填寫姓名。');
+                
+            }
+           
         });
 
-        if (!allFilled) {
-            @* 若有未填寫的欄位，顯示警告 *@
-            Swal.fire({
-                icon: 'error',
-                title: '哎呀...',
-                text: '請填寫所有必填信用卡資訊。',
-            });
-            return; 
+        if (!isValid) {
+            return; @* 不執行後續操作 *@
         }
     }
 
