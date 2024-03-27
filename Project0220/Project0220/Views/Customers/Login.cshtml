@@ -2,6 +2,7 @@
 @model Project0220.myModels.Customer
 <!--引入-->
 
+
    <link rel="stylesheet"  href="~/css/Member/css/MemberLogin.css"/>
 
 <!--MemberLogin Section-->
@@ -44,3 +45,19 @@
 </div>
 </div>
 </div>
+@if (TempData["RegisterSuccessMessage"] != null)
+{
+         
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+        <script>
+            Swal.fire({
+                icon:"success",
+                title:"註冊成功",    
+           text: "歡迎成為我們的一員",
+              showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+}
+

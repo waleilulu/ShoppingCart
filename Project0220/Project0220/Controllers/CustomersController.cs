@@ -117,11 +117,11 @@ namespace Project0220.Controllers
 					return View(customer);
 				}
 
-				// 計算用户年龄
+				// 計算用户年齡
 				int age = DateTime.Today.Year - customer.DateOfBirth?.Year ?? 0;
 				if (customer.DateOfBirth?.Date > DateTime.Today.AddYears(-age)) age--;
 
-				// 检查用戶年齡是否小於18
+				// 檢查用戶年齡是否小於18
 				if (age < 18)
 				{
 					ModelState.AddModelError("DateOfBirth", "您必須年滿18歲才能註冊。");
@@ -141,10 +141,12 @@ namespace Project0220.Controllers
                 customer.Password = hashedPassword;
 
                 customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
-                // 添加 Customer 到数据库中
+               
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
-
+                // 設置註冊成功的提示消息
+                TempData["RegisterSuccessMessage"] = "您已成功註冊會員！";
+               
                 return RedirectToAction("Login", "Customers");
             }
             return View(customer);
