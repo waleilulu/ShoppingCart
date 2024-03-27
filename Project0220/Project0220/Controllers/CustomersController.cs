@@ -399,10 +399,6 @@ namespace Project0220.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgetPassword(Customer Model)
         {
-
-            //if (ModelState.IsValid)
-            //{
-
                 // 檢查輸入的用戶名和郵箱是否匹配
                 var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
@@ -410,21 +406,18 @@ namespace Project0220.Controllers
                 {
                     var verificationCode = GenerateVerificationCode();
                     user.ResetPasswordToken = verificationCode;
-                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(10); // 驗證碼有效期1小時
+                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(3); // 驗證碼有效期3分鐘
                     await _context.SaveChangesAsync();
 
                     // 發送驗證碼到用戶提供的 email 中
                     await SendEmails(user.Email, verificationCode);
-                    TempData["Message"] = "驗證碼已發送到您的信箱，請檢查並輸入驗證碼。";
-
-                // 將用戶重定向到輸入驗證碼的頁面
+ 
                 return RedirectToAction("ForgetPassword");
-                
-
+               
             }
-            //}
             // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
             ModelState.AddModelError(string.Empty, "提供的用戶名和郵箱不匹配。");
+            TempData["Message"] = "提供的用戶名和郵箱不匹配。";
             return View();
         }
 
@@ -447,7 +440,7 @@ namespace Project0220.Controllers
                         <title>驗證密碼</title>
                     </head>
                     <body>
-                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為10分鐘，請在期限內完成驗證。</p>
+                        <p>親愛的用戶，您的驗證碼為{verificationCode}，驗證碼期限為3分鐘，請在期限內完成驗證。</p>
                     </body>
                 </html>";
             mms.IsBodyHtml = true;
@@ -469,27 +462,36 @@ namespace Project0220.Controllers
             {
                 // 查找用戶
                 var user = await _context.Customers.FirstOrDefaultAsync(c => c.ResetPasswordToken == verificationCode);
-                if (user != null && user.ResetPasswordToken.Trim().Equals(verificationCode.Trim(), StringComparison.OrdinalIgnoreCase))
-            {
-                // 清除重置密碼令牌
-                user.ResetPasswordToken = "";
-                user.ResetPasswordTokenExpiration = null;
-                await _context.SaveChangesAsync();
+                if (user != null && user.ResetPasswordTokenExpiration > DateTime.Now)
+                {
+                    // 清除重置密碼
+                    user.ResetPasswordToken = "";
+                    user.ResetPasswordTokenExpiration = null;
+                    await _context.SaveChangesAsync();
 
                     // 將用戶重定向到重設密碼頁面
-                return RedirectToAction("ResetPWD", "ResetPwd");
+                    return RedirectToAction("ResetPWD", "ResetPwd");
+                }
+                else if (user != null && user.ResetPasswordTokenExpiration <= DateTime.Now)
+                {
+                    // 驗證碼已過期
+                    ModelState.AddModelError(string.Empty, "驗證碼已過期，請重新取得驗證碼。");
+                    TempData["ErrorMessage"] = "驗證碼已過期，請重新取得驗證碼。";
+                    return RedirectToAction("ForgetPassword");
+                }
             }
-            }
-            // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
-            ModelState.AddModelError(string.Empty, "驗證碼不正確，請重新輸入。");
-            TempData["ErrorMessage"] = "驗證碼不正確，請重新輸入。";
-            return RedirectToAction("ForgetPassword");
 
+            // 如果驗證碼不正確，或用戶不存在，返回輸入驗證碼的頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "驗證碼錯誤，請重新輸入。");
+            TempData["ErrorMessage"] = "驗證碼錯誤，請重新輸入。";
+            return RedirectToAction("ForgetPassword");
         }
-		public IActionResult Create_Admin()
+
+        public IActionResult Create_Admin()
 		{
 			return View();
 		}
+
 
 		// GET: Customers/Edit/5
 		public async Task<IActionResult> Edit_Admin(int? id)

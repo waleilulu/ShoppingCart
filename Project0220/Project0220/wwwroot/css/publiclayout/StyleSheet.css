@@ -36,3 +36,9 @@
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+.countdown-red {
+    color: red !important;
+}
+.OnlySales {
+    color: red !important;
+}
