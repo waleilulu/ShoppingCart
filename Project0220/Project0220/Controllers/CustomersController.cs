@@ -419,7 +419,7 @@ namespace Project0220.Controllers
                
             }
 			//ModelState.AddModelError(string key, string errorMessage);
-			// 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
+			//如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
 			ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
             TempData["Message"] = "提供的帳號和信箱不匹配。";
             return View();
