@@ -101,8 +101,7 @@ namespace Project0220.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password,Subscribe")] Customer customer)
@@ -419,16 +418,18 @@ namespace Project0220.Controllers
                 return RedirectToAction("ForgetPassword");
                
             }
-            // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
-            ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
+			//ModelState.AddModelError(string key, string errorMessage);
+			// 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
+			ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
             TempData["Message"] = "提供的帳號和信箱不匹配。";
             return View();
         }
 
         private async Task SendEmails(string email, string verificationCode)
         {
-            // 使用 Google Mail Server 發信
-            string account = _configuration["EmailSettings:Account"];
+			// 使用 Google Mail Server 發信
+			//將 appsettings.json 中的配置文件讀取到 _configuration 中，然後使用它來取得相應的值。
+			string account = _configuration["EmailSettings:Account"];
             string password = _configuration["EmailSettings:Password"];
 
             string SmtpServer = "smtp.gmail.com";
