@@ -394,9 +394,8 @@ namespace Project0220.Controllers
         }
         private string GenerateVerificationCode()
         {
-            // 實現生成驗證碼的邏輯，例如使用 Guid 或隨機數字生成
-            // 這裡僅為示例，您可以根據需要自定義生成驗證碼的方法
-            return Guid.NewGuid().ToString("N").Substring(0, 6);
+            // 實現生成驗證碼的邏輯，使用 Guid 或隨機數字生成
+            return Guid.NewGuid().ToString("N").Substring(0, 9);
         }
 
         //忘記密碼
@@ -404,7 +403,7 @@ namespace Project0220.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgetPassword(Customer Model)
         {
-                // 檢查輸入的用戶名和郵箱是否匹配
+                // 檢查輸入的用戶名和信箱是否匹配
                 var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
                 if (user != null)
@@ -421,8 +420,8 @@ namespace Project0220.Controllers
                
             }
             // 如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
-            ModelState.AddModelError(string.Empty, "提供的用戶名和郵箱不匹配。");
-            TempData["Message"] = "提供的用戶名和郵箱不匹配。";
+            ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
+            TempData["Message"] = "提供的帳號和信箱不匹配。";
             return View();
         }
 
