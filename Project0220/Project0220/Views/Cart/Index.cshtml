@@ -36,7 +36,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.ProductID</td>
+                                    <td name="ProductID">@item.ProductID</td>
                                     <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
                                     <td>@item.Product.ProductName</td>
                                     <td>@item.SelectedColor</td>
@@ -48,7 +48,7 @@
                                     </td>
                                     <td>$@item.Product.UnitPrice</td>
                                     <td>
-                                        <form method="post" asp-controller="Cart" asp-action="RemoveFromCart" id="removeFromCartForm">
+                                        <form method="post" asp-controller="Cart" asp-action="RemoveFromCart" class="removeFromCartForm">
                                             <input type="hidden" name="cartItemId" value="@item.CartItemID" />
                                             <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
                                         </form>
@@ -90,8 +90,11 @@ else
     <a id="payment" class="cart-button01" style="font-weight: bold;" asp-controller="CheckOut" asp-action="Consignee"><i class="fa-solid fa-cash-register">&nbsp;</i>繼續結帳</a>
 </div>
 <script>
+    var forms = document.getElementsByClassName('removeFromCartForm');
 
-    document.getElementById('removeFromCartForm').onsubmit = function (event) {
+   // 對每個表單添加事件處理程序
+for (var i = 0; i < forms.length; i++) {
+    forms[i].addEventListener('submit', function(event) {
         event.preventDefault(); // 阻止表單提交
         Swal.fire({
             title: '您確定?',
@@ -104,36 +107,38 @@ else
             cancelButtonText: '不，我要加入追蹤!'
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('removeFromCartForm').submit();
+                this.submit(); // 提交該表單
             } else if (result.dismiss === Swal.DismissReason.cancel) {
-                var productId = document.querySelector('input[name="cartItemId"]').value;
-                addToTrack(productId);
+                var productId = this.closest('tr').querySelector('td[name="ProductID"]').innerText; // 獲取相關的產品 ID
+                console.log(productId);
+                addToTrack(productId); // 執行其他操作
             }
         });
-    };
+    });
+}
 
     function addToTrack(productId) {
-        fetch('/AllItems/Follow', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
-            },
-            body: JSON.stringify({ ProductId: productId }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire('成功', data.message, 'success');
-                } else {
-                    Swal.fire('錯誤', data.message, 'error');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                Swal.fire('錯誤', '請求失敗。', 'error');
-            });
-    }
+        var data={"ProductId": productId};
+        data= JSON.stringify(data);
+        console.log(data);
+    $.ajax({
+        url: '/AllItems/Follow',
+        method: "post",
+                data: {"data":data},
+        success: function(data) {
+            if (data.success) {
+                Swal.fire('成功', data.message, 'success');
+            } else {
+                Swal.fire('錯誤', data.message, 'error');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            Swal.fire('錯誤', '請求失敗。', 'error');
+        }
+    });
+}
+
 
 
 
@@ -190,51 +195,6 @@ else
 </script>
 
 
-<script>
-    document.getElementById('removeFromCartForm').onsubmit = function (event) {
-        event.preventDefault(); // 阻止表單提交
-        Swal.fire({
-            title: '您確定?',
-            text: "您確定要刪除這個項目嗎？",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '是的, 刪除它!',
-            cancelButtonText: '不，我要加入追蹤!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('removeFromCartForm').submit();
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                var productId = document.querySelector('input[name="cartItemId"]').value; // 假設 cartItemId 就是我們想要的 ProductId
-                addToTrack(productId);
-            }
-        });
-    };
-
-    function addToTrack(productId) {
-        fetch('/AllItems/FollowColor', { // 確保這個URL與您的後端路由匹配
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value // 假設您有防CSRF令牌
-            },
-            body: JSON.stringify({ ProductId: productId }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire('成功', data.message, 'success');
-                } else {
-                    Swal.fire('錯誤', data.message, 'error');
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                Swal.fire('錯誤', '請求失敗。', 'error');
-            });
-    }
-</script>
 
 
 
