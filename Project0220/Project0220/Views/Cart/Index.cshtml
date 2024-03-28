@@ -5,7 +5,9 @@
 <link rel="stylesheet" href="~/css/Cart/css/helper.css">
 <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
 <link rel="stylesheet" href="~/css/Cart/css/style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+@* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10"> *@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+
 <!-- Modernizr JS -->
 <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
@@ -46,7 +48,7 @@
                                     </td>
                                     <td>$@item.Product.UnitPrice</td>
                                     <td>
-                                        <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
+                                        <form method="post" asp-controller="Cart" asp-action="RemoveFromCart" id="removeFromCartForm">
                                             <input type="hidden" name="cartItemId" value="@item.CartItemID" />
                                             <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
                                         </form>
@@ -89,30 +91,49 @@ else
 </div>
 <script>
 
-    $(".update").on('change', function () {
-        var quantity = $(this).val();
-        var id = $(this).closest("form").find("[name=cartItemId]").val();
-        console.log("quantity:", quantity, "id:", id);
-        var data = {};
-        data["CartItemID"] = id;
-        data["Quantity"] = quantity;
-        data = JSON.stringify(data);
-        console.log(data);
-        $.ajax({
-            url: "/Cart/UpdateCartItemQuantity",
-            method: "post",
-            data: { "data": data },
-            success: function (result) {
-                alert("更新成功");
-
-            },
-            error: function (error) {
-                console.error("發生錯誤:", error);
+    document.getElementById('removeFromCartForm').onsubmit = function (event) {
+        event.preventDefault(); // 阻止表單提交
+        Swal.fire({
+            title: '您確定?',
+            text: "您確定要刪除這個項目嗎？",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '是的, 刪除它!',
+            cancelButtonText: '不，我要加入追蹤!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('removeFromCartForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                var productId = document.querySelector('input[name="cartItemId"]').value;
+                addToTrack(productId);
             }
-
         });
+    };
 
-    })
+    function addToTrack(productId) {
+        fetch('/AllItems/Follow', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+            },
+            body: JSON.stringify({ ProductId: productId }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('成功', data.message, 'success');
+                } else {
+                    Swal.fire('錯誤', data.message, 'error');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                Swal.fire('錯誤', '請求失敗。', 'error');
+            });
+    }
 
 
 
@@ -164,7 +185,58 @@ else
             $("#totalPrice").text(totalPrice.toFixed(0));
             $("#totalQuantity").text(totalQuantity);
         }
+
+   
 </script>
+
+
+<script>
+    document.getElementById('removeFromCartForm').onsubmit = function (event) {
+        event.preventDefault(); // 阻止表單提交
+        Swal.fire({
+            title: '您確定?',
+            text: "您確定要刪除這個項目嗎？",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '是的, 刪除它!',
+            cancelButtonText: '不，我要加入追蹤!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('removeFromCartForm').submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                var productId = document.querySelector('input[name="cartItemId"]').value; // 假設 cartItemId 就是我們想要的 ProductId
+                addToTrack(productId);
+            }
+        });
+    };
+
+    function addToTrack(productId) {
+        fetch('/AllItems/FollowColor', { // 確保這個URL與您的後端路由匹配
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value // 假設您有防CSRF令牌
+            },
+            body: JSON.stringify({ ProductId: productId }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('成功', data.message, 'success');
+                } else {
+                    Swal.fire('錯誤', data.message, 'error');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                Swal.fire('錯誤', '請求失敗。', 'error');
+            });
+    }
+</script>
+
+
 
 
 <!-- All jquery file included here -->
@@ -173,4 +245,4 @@ else
 <script src="~/js/Cart/js/bootstrap.min.js"></script>
 <script src="~/js/Cart/js/plugins.js"></script>
 <script src="~/js/Cart/js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
