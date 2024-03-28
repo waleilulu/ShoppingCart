@@ -70,7 +70,7 @@
                                         </div>
                             </form>
 
-                                                                    <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" style=" background-color: #bad9ca; color: white; font-weight: bold;   border: none;  cursor: pointer; padding: 7px  40px; font-size:18px; margin-top:30px;">點擊結帳
+                                                                    <button onclick="showPaymentInfo('@item.Order.PaymentMethod')" style=" background-color: #b0afaf; color: white; font-weight: bold;   border: none;  cursor: pointer; padding: 7px  40px; font-size:18px; margin-top:30px;">點擊結帳
 
                                                     </button>
 
@@ -82,7 +82,7 @@
                                                               <div class="checkout-form"  style="margin-top:10px; font-weight: bold; font-size:20px; margin-left:18px;">
                                                                 戶名: 居家家居股份有限公司</div>
                                                               <div class="checkout-form"  style="margin-top:10px; font-weight: bold; font-size:20px;  margin-left:18px;">帳號: 中國信託 (822) 500012345</div>
-                                                             <button onclick="closePopup('bankTransferInfo')" class="cart-button02" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:70px; font-size:18px;">關閉</button>
+                                                                 <button onclick="closePopup('bankTransferInfo')" class="cart-button02" style=" background-color: #b0afaf; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:70px; font-size:18px;">關閉</button>
                                                  </div>
                                                  </div>
 
@@ -111,7 +111,7 @@
                                                              
                                                  </form>
                                                  <br>
-                                                             <button class="checkout-form"  type="submit" onclick="confirmPayment()" style=" background-color: #bad9ca; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:40px; font-size:18px;"><i class="fa-regular fa-credit-card">&nbsp;</i>確認付款</button>
+                                                           <button  class="checkout-form"  type="submit" onclick="confirmPayment() " style=" background-color: #b0afaf; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 80px; margin-left:40px; font-size:18px;"><i class="fa-regular fa-credit-card">&nbsp;</i>確認付款</button>
                                                  </div>  
                                                  </div>
          
@@ -189,7 +189,7 @@
                                                 }
                                             }
                                      
-                                  <button style="display: block; width: 400px; margin-top:100px; font-weight: bold;" type="submit" class="cart-button02"><i class="fa-solid fa-bag-shopping">&nbsp;</i>確認訂購</button>
+                                  <button  id="confirmOrderButton" style="display: none;  width: 400px; margin-top:100px; font-weight: bold;" type="submit" class="cart-button02"><i class="fa-solid fa-bag-shopping">&nbsp;</i>確認訂購</button>
                                 </form>
 
                                        
@@ -209,9 +209,10 @@
         <!--Checkout section end-->
 
 <script>
-
+var currentPaymentMethod = "";
 
 function showPaymentInfo(paymentMethod) {
+    currentPaymentMethod = paymentMethod;
     if (paymentMethod == "匯款") {
         document.getElementById('bankTransferInfo').style.display = 'block';
     } else if (paymentMethod == "信用卡") {
@@ -221,69 +222,82 @@ function showPaymentInfo(paymentMethod) {
 
 function closePopup(popupId) {
     document.getElementById(popupId).style.display = 'none';
+    if (currentPaymentMethod == "匯款") {
+        //顯示提示並顯示確認訂購
+        Swal.fire({
+            position: 'center',
+            icon: 'info',
+            title: '24小時內確認對帳完成，並於2天後寄出',
+            showConfirmButton: false,
+            timer: 3000
+        }).then(() => {
+          
+            document.getElementById('paymentStatus').innerHTML = '24小時內確認對帳無誤後，於對帳日期2天後寄出<br>要繼續購買，請點擊右側「確認訂購」';
+            document.getElementById('confirmOrderButton').style.display = 'block';
+        });
+    }
 }
 
 function confirmPayment() {
     var form = document.getElementById('creditCardForm');
-    var allFilled = true;  @* 默認所有欄位已填 *@
-    var isValid = true;  @* 新增變量以檢查數據有效性 *@
+    var inputs = form.querySelectorAll('input[required]');
+    var isValid = true;
 
-    if (form.style.display === 'block') {
-        form.querySelectorAll('input[required]').forEach(function(input) {
-            if (!input.value.trim()) {
-                allFilled = false;  @* 若有未填，則設置為未全部填寫 *@
-            }
+    for (let input of inputs) {
+        let value = input.value.trim();
+        let name = input.name;
 
-
-             @* 特定欄位的額外驗證 *@
-               if (input.name === "fullName" && !input.value.trim()) {
-                isValid = false;
-                Swal.fire('請填寫姓名。');
-                 return;
-            }
-
-            if (input.name === "creditCardNumber" && !/^\d{16}$/.test(input.value.trim())) {
-                isValid = false; 
-                Swal.fire('信用卡號碼必須是16位數字。');
-                 return;
-            }
-
-            if (input.name === "CVV" && !/^\d{3,4}$/.test(input.value.trim())) {
-                isValid = false; 
-                Swal.fire('CVV必須是3或4位數字。');
-                 return;
-            }
-
-            if (input.name === "expiryDate" && !/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(input.value.trim())) {
-                isValid = false; 
-                Swal.fire('有效日期格式不正確，正確格式為：月/年，例如：07/28。');
-                 return;
-            }
-
-           
-        });
-        
-
-        if (!isValid) {
-            return; @* 不執行後續操作 *@
+        if (name === "fullName" && !value) {
+            isValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: '驗證失敗',
+                text: '請填寫姓名。',
+            });
+            return;
+        } else if (name === "creditCardNumber" && !/^\d{16}$/.test(value)) {
+            isValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: '驗證失敗',
+                text: '信用卡號碼必須是16位數字。',
+            });
+            return;
+        } else if (name === "CVV" && !/^\d{3,4}$/.test(value)) {
+            isValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: '驗證失敗',
+                text: 'CVV必須是3或4位數字。',
+            });
+            return;
+        } else if (name === "expiryDate" && !/^(0[1-9]|1[0-2])\/(\d{2}|\d{4})$/.test(value)) {
+            isValid = false;
+            Swal.fire({
+                icon: 'error',
+                title: '驗證失敗',
+                text: '有效日期格式不正確，正確格式為：月/年，例如：07/28。',
+            });
+            return;
         }
     }
 
-     @* 所有必填項都已填或當前不是信用卡支付方式，關閉彈窗並顯示成功提示 *@
-    closePopup('creditCardForm');
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: '已付款成功',
-        showConfirmButton: false,
-        timer: 1500
-    });
-
-    @* 在頁面上顯示"已付款"字樣 *@
-    document.getElementById('paymentStatus').innerText = '已付款完成，請點擊「確認訂購」';
+     if (isValid) {
+        // 先關閉信用卡資訊的彈出窗口
+        document.getElementById('creditCardForm').style.display = 'none';
+  
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: '已付款成功',
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            document.getElementById('paymentStatus').innerText = '已付款完成，請點擊右側「確認訂購」';
+            document.getElementById('confirmOrderButton').style.display = 'block';
+        });
+    }
 }
-      
-
 </script>
 
   
