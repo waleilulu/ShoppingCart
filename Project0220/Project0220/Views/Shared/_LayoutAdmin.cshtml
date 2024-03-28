@@ -45,7 +45,8 @@
 					<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
 					<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
 					<!-- 紙飛機 群發 按鈕 -->
-					<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
+					<a id="sendEmailLink" class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
+
 
 					<!-- 會員&管理員 切換 按鈕 -->
 					@{
@@ -83,3 +84,31 @@
     </div>
 </body>
 </html>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	document.getElementById('sendEmailLink').addEventListener('click', function(event) {
+		event.preventDefault(); // 防止點擊連結時觸發默認行為（即跳轉到指定 URL）
+
+		// 在此處觸發郵件發送的 Ajax 請求（省略）
+
+		// 在 Ajax 請求成功處理後，彈出警告訊息
+		// 假設您使用的是 fetch API 來處理 Ajax 請求
+		fetch(this.href)
+			.then(response => {
+				if (response.ok) {
+					// 郵件發送成功，彈出警告訊息
+					alert('郵件已成功發送！');
+				} else {
+					// 郵件發送失敗，彈出錯誤訊息
+					alert('郵件發送失敗！');
+				}
+			})
+			.catch(error => {
+				// 錯誤處理
+				console.error('Error:', error);
+				alert('發生了一些錯誤！');
+			});
+	});
+});
+
+</script>
