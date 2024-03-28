@@ -6,185 +6,185 @@
 @model IEnumerable<Project0220.myModels.Product>
 
 @* <link rel="stylesheet" href="~/css/All_product/css/bootstrap.min.css"> *@
-    <link rel="stylesheet" href="~/css/publiclayout/StyleSheet.css">
-    <link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
-    <link rel="stylesheet" href="~/css/All_product/css/helper.css">
-    <link rel="stylesheet" href="~/css/All_product/css/plugins.css">
-    <link rel="stylesheet" href="~/css/All_product/css/style.css">
-   
-    <script src="~/js/All_product/js/modernizr-2.8.3.min.js"></script>
+<link rel="stylesheet" href="~/css/publiclayout/StyleSheet.css">
+<link rel="stylesheet" href="~/css/All_product/css/iconfont.min.css">
+<link rel="stylesheet" href="~/css/All_product/css/helper.css">
+<link rel="stylesheet" href="~/css/All_product/css/plugins.css">
+<link rel="stylesheet" href="~/css/All_product/css/style.css">
+
+<script src="~/js/All_product/js/modernizr-2.8.3.min.js"></script>
 <!-- Shop Section Start -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="shop-area">
-                            <div class="row">
-                                <div class="col-12">
-                                    <!-- Grid & List View Start -->
-                                    <div class="shop-topbar-wrapper d-flex justify-content-between align-items-center">
-                                        <div class="grid-list-option d-flex">
-                                            <ul class="nav">
-                                                <li>
-                                                    <a data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
-                                                </li>
-                                                <li>
-                                                    <a class="active show" data-toggle="tab" href="#list" class=""><i class="fa fa-th-list"></i></a>
-                                                </li> 
-                                            </ul>
-                                            <p>顯示 1–9 項產品</p>
-                                        </div>
-                            @*            <!--Toolbar Short Area Start-->
-                                        <div class="toolbar-short-area d-md-flex align-items-center">
-                                            <div class="toolbar-shorter ">
-                                                <label>Sort By:</label>
-                                                <select class="wide">
-                                                    <option data-display="Select">Nothing</option>
-                                                    <option value="Relevance">Relevance</option>
-                                                    <option value="Name, A to Z">Name, A to Z</option>
-                                                    <option value="Name, Z to A">Name, Z to A</option>
-                                                    <option value="Price, low to high">Price, low to high</option>
-                                                    <option value="Price, high to low">Price, high to low</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!--Toolbar Short Area End-->
-                                    </div>
-                                    <!-- Grid & List View End --> *@
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3 order-lg-1 order-2">
-                                    <!-- Single Sidebar Start  -->
-                                    <div class="common-sidebar-widget">
-                                        <h3 class="sidebar-title">Product categories</h3>
-                                        <ul class="sidebar-list">
-                                            <li><a asp-controller="Home" asp-action="Sofa"><i class="fa fa-plus"></i>沙發、桌、椅 <span class="count">(44)</span></a></li>
-                                            <li><a asp-controller="Home" asp-action="Cabinet"><i class="fa fa-plus"></i>床櫃、五斗櫃、電視櫃、鞋櫃 <span class="count">(37)</span></a></li>
-                                            <li><a asp-controller="Home" asp-action="Bedding"><i class="fa fa-plus"></i>寢具、床架 <span class="count">(46)</span></a></li>
-                                            <li><a asp-controller="Home" asp-action="Decorations"><i class="fa fa-plus"></i>家飾、燈、地墊、香氛 <span class="count">(89)</span></a></li>
-                                            <li><a asp-controller="Home" asp-action="Bath"><i class="fa fa-plus"></i>衛浴、浴盆 <span class="count">(32)</span></a></li>
-                                            <li><a asp-controller="AllItems" asp-action="New"><i class="fa fa-plus"></i>新品專區 <span class="count">(11)</span></a></li>
-                                            <li><a asp-controller="AllItems" asp-action="Clearance"><i class="fa fa-plus"></i>出清商品 <span class="count">(7)</span></a></li>
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle">
-                                                    <i class="fa fa-plus"></i> 一鍵式專區 <span class="count">(32)</span>
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a asp-controller="Home" asp-action="NewHome">新房布置</a></li>
-                                                    <li><a asp-controller="Home" asp-action="Family">小家庭布置</a></li>
-                                                    <li><a asp-controller="Home" asp-action="Bedroom">寢飾配置</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Single Sidebar End  -->
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="shop-area">
+				<div class="row">
+					<div class="col-12">
+						<!-- Grid & List View Start -->
+						<div class="shop-topbar-wrapper d-flex justify-content-between align-items-center">
+							<div class="grid-list-option d-flex">
+								<ul class="nav">
+									<li>
+										<a class="active show" data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
+									</li>
+									<li>
+										<a data-toggle="tab" href="#list"><i class="fa fa-th-list"></i></a>
+									</li>
+								</ul>
+								<p>顯示 1–9 項產品</p>
+							</div>
+							@*            <!--Toolbar Short Area Start-->
+							<div class="toolbar-short-area d-md-flex align-items-center">
+							<div class="toolbar-shorter ">
+							<label>Sort By:</label>
+							<select class="wide">
+							<option data-display="Select">Nothing</option>
+							<option value="Relevance">Relevance</option>
+							<option value="Name, A to Z">Name, A to Z</option>
+							<option value="Name, Z to A">Name, Z to A</option>
+							<option value="Price, low to high">Price, low to high</option>
+							<option value="Price, high to low">Price, high to low</option>
+							</select>
+							</div>
+							</div>
+							<!--Toolbar Short Area End-->
+							</div>
+							<!-- Grid & List View End --> *@
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-3 order-lg-1 order-2">
+							<!-- Single Sidebar Start  -->
+							<div class="common-sidebar-widget">
+								<h3 class="sidebar-title">Product categories</h3>
+								<ul class="sidebar-list">
+									<li><a asp-controller="Home" asp-action="Sofa"><i class="fa fa-plus"></i>沙發、桌、椅 <span class="count">(44)</span></a></li>
+									<li><a asp-controller="Home" asp-action="Cabinet"><i class="fa fa-plus"></i>床櫃、五斗櫃、電視櫃、鞋櫃 <span class="count">(37)</span></a></li>
+									<li><a asp-controller="Home" asp-action="Bedding"><i class="fa fa-plus"></i>寢具、床架 <span class="count">(46)</span></a></li>
+									<li><a asp-controller="Home" asp-action="Decorations"><i class="fa fa-plus"></i>家飾、燈、地墊、香氛 <span class="count">(89)</span></a></li>
+									<li><a asp-controller="Home" asp-action="Bath"><i class="fa fa-plus"></i>衛浴、浴盆 <span class="count">(32)</span></a></li>
+									<li><a asp-controller="AllItems" asp-action="New"><i class="fa fa-plus"></i>新品專區 <span class="count">(11)</span></a></li>
+									<li><a asp-controller="AllItems" asp-action="Clearance"><i class="fa fa-plus"></i>出清商品 <span class="count">(7)</span></a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle">
+											<i class="fa fa-plus"></i> 一鍵式專區 <span class="count">(32)</span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a asp-controller="Home" asp-action="NewHome">新房布置</a></li>
+											<li><a asp-controller="Home" asp-action="Family">小家庭布置</a></li>
+											<li><a asp-controller="Home" asp-action="Bedroom">寢飾配置</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<!-- Single Sidebar End  -->
 
-                                </div>
-                                <div class="col-lg-9 order-lg-2 order-1">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="shop-product">
-                                                <div id="myTabContent-2" class="tab-content">
-                                                    <div id="grid" class="tab-pane fade">
-                                                        <div class="product-grid-view">
-                                                            <div class="row">
-                                                        @foreach (var item in Model)
-                                                        {
-                                                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                                            <!--  Single Grid product Start -->
-                                                                <div class="single-grid-product mb-40">
-                                                                    <div class="product-image">
-                                                                        <a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
-                                                                         <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
-                                                                         <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
-                                                                         </a>
-                                                                    <div class="product-action">
-                                                                         <ul>
-                                                                            <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-                                                                            <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                                            <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                    <div class="product-content">
-                                                                        <h3 class="title"> <a href="single-product.html">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-                                                                         <p class="product-price"><span class="discounted-price">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
-                                                                    </div>
-                                                               </div>
-                                                                <!--  Single Grid product End -->
-                                                             </div>
-                                                        }
-                                                            </div>
-                                                        </div>
-                                                    </div>
+						</div>
+						<div class="col-lg-9 order-lg-2 order-1">
+							<div class="row">
+								<div class="col-12">
+									<div class="shop-product">
+										<div id="myTabContent-2" class="tab-content">
+											<div id="grid" class="tab-pane fade active show">
+												<div class="product-grid-view">
+													<div class="row">
+														@foreach (var item in Model)
+														{
+															<div class="col-lg-4 col-md-6 col-sm-6">
+																<!--  Single Grid product Start -->
+																<div class="single-grid-product mb-40">
+																	<div class="product-image">
+																		<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
+																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
+																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																		</a>
+																		<div class="product-action">
+																			<ul>
+																				<li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
+																				<li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+																				<li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+																			</ul>
+																		</div>
+																	</div>
+																	<div class="product-content">
+																		<h3 class="title"> <a href="single-product.html">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
+																		<p class="product-price"><span class="discounted-price">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
+																	</div>
+																</div>
+																<!--  Single Grid product End -->
+															</div>
+														}
+													</div>
+												</div>
+											</div>
 
-                                                    <div id="list" class="tab-pane fade active show">
-                                                        <div class="product-list-view">
-                                                            <!-- Single List Product Start -->
-                                                            <div class="product-list-item mb-40">
-                                                                <div class="row">
-                                                            @foreach (var item in Model)
-                                                            {
-                                                                <div class="col-md-4 col-sm-6">
-                                                                    <div class="single-grid-product">
-                                                                        <div class="product-image">
-                                                                            <div class="product-label">
-                                                                                <span class="sale">New</span>
-                                                                            </div>
-                                                                                <a  asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
-                                                                                <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)"  class="img-fluid" alt="">
-                                                                                <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
-                                                                                </a>
-                                                                                <div class="product-action">
-                                                                                    <ul>
-                                                                                        <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-                                                                                        <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                                                        <li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                        <div class="col-md-8 col-sm-6">
-                                                                            <div class="product-content-shop-list">
-                                                                                <div class="product-content">
-                                                                                        <h3 class="title"> <a href="single-product.html">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-                                                                                    <div class="product-category-rating">
-                                                                                        <span class="rating">
-                                                                                            <i class="fa fa-star active"></i>
-                                                                                            <i class="fa fa-star active"></i>
-                                                                                            <i class="fa fa-star active"></i>
-                                                                                            <i class="fa fa-star active"></i>
-                                                                                            <i class="fa fa-star-o"></i>
-                                                                                        </span>
-                                                                                        <span class="review"><a href="#">(1 則評價)</a></span>
-                                                                                    </div>
-                                                                                        <p class="product-price"><span class="discounted-price">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
-                                                                            @*  <p class="product-desc">這款沙發具有輕鬆時尚和簡潔的外觀，配有剪裁精美的軟布套和舒適的筒型彈簧。纖細的椅腳強化了穩固透氣外觀。</p> *@
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                            }
-                                                                </div>
+											<div id="list" class="tab-pane fade">
+												<div class="product-list-view">
+													<!-- Single List Product Start -->
+													<div class="product-list-item mb-40">
+														<div class="row">
+															@foreach (var item in Model)
+															{
+																<div class="col-md-4 col-sm-6">
+																	<div class="single-grid-product">
+																		<div class="product-image">
+																			<div class="product-label">
+																				<span class="sale">New</span>
+																			</div>
+																			<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
+																				<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
+																				<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																			</a>
+																			<div class="product-action">
+																				<ul>
+																					<li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
+																					<li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+																					<li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-8 col-sm-6">
+																	<div class="product-content-shop-list">
+																		<div class="product-content">
+																			<h3 class="title"> <a href="single-product.html">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
+																			<div class="product-category-rating">
+																				<span class="rating">
+																					<i class="fa fa-star active"></i>
+																					<i class="fa fa-star active"></i>
+																					<i class="fa fa-star active"></i>
+																					<i class="fa fa-star active"></i>
+																					<i class="fa fa-star-o"></i>
+																				</span>
+																				<span class="review"><a href="#">(1 則評價)</a></span>
+																			</div>
+																			<p class="product-price"><span class="discounted-price">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
+																			@*  <p class="product-desc">這款沙發具有輕鬆時尚和簡潔的外觀，配有剪裁精美的軟布套和舒適的筒型彈簧。纖細的椅腳強化了穩固透氣外觀。</p> *@
+																		</div>
+																	</div>
+																</div>
+															}
+														</div>
 
-                                                            </div>
+													</div>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        <!-- Shop Section End -->
-    @* <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script> *@
-    <script src="~/js/All_product/js/popper.min.js"></script>
-    <script src="~/js/All_product/js/bootstrap.min.js"></script>
-    <script src="~/js/All_product/js/plugins.js"></script>
-    <script src="~/js/All_product/js/main.js"></script>
+	<!-- Shop Section End -->
+	@* <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script> *@
+	<script src="~/js/All_product/js/popper.min.js"></script>
+	<script src="~/js/All_product/js/bootstrap.min.js"></script>
+	<script src="~/js/All_product/js/plugins.js"></script>
+	<script src="~/js/All_product/js/main.js"></script>
