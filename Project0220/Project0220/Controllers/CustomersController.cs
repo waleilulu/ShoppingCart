@@ -160,7 +160,7 @@ namespace Project0220.Controllers
         // 登入動作
         public async Task<IActionResult> Login([Bind("Username,Password")] Customer Customers)
         {
-            // 查询数据库以查找用户
+            
             var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username);
 
             if (user != null)

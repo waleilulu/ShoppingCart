@@ -118,13 +118,25 @@
 																													<i class="fa fa-cart-plus"></i>
 																												</a>
 																											</li>
+																											<!--追蹤-->
 																											<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-																											<li><a href="javascript:;">
-																											  <i  onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></i></a></li>
+																												<li>
+																												<a href="javascript:;">
+																													<input type="hidden" id="product-color-choose" value="@item.Color1" />
+																													<button onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></button>
+																												</a>
+																								</li>
 																										</ul>
 																									</div>
 																								</div>
 																							</div>
+
+
+																		
+
+
+
+
 																						</div>
 																						<div class="col-md-8 col-sm-6">
 																							<div class="product-content-shop-list">
@@ -266,8 +278,7 @@
 		<!-- Shop Section End -->
 	  <script>
 
-
-   function addfavoritebtn(productId) {
+  function addfavoritebtn(productId) {
 	var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
 	console.log(selectedColor);
 		$.ajax({
@@ -279,7 +290,7 @@
 			alert("商品追蹤成功");
 		} else {
 			// 處理失敗
-			console.error(result.message);
+			console.error("發生錯誤:", result.message);
 			alert(result.message);
 		}
 			},
