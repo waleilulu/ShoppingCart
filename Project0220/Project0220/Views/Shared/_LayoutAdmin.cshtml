@@ -13,16 +13,9 @@
 	<script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
 
 	<style>
-		/* .MyDescription => 省略Products的Description欄位字數 */
-		.MyDescription {
-			max-width: 100px;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-		}
-
-		/* .MyPassword => 省略Customers的Description欄位字數 */
-		.MyPassword {
+		/* .MyDescription => 省略管理者頁Products的Description欄位字數 */
+		/* .MyPassword    => 省略管理者頁Customers的Password欄位字數 */
+		.MyDescription, .MyPassword {
 			max-width: 100px;
 			overflow: hidden;
 			white-space: nowrap;
@@ -54,7 +47,7 @@
 					<!-- 紙飛機 群發 按鈕 -->
 					<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
 
-					<!-- 會員與管理員 切換 按鈕 -->
+					<!-- 會員&管理員 切換 按鈕 -->
 					@{
 						var userRole = Context.Request.Cookies["userRole"];
 						var isAdmin = Context.Request.Cookies["isAdmin"];
