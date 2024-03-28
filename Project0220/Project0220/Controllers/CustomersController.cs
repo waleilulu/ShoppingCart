@@ -395,7 +395,7 @@ namespace Project0220.Controllers
         private string GenerateVerificationCode()
         {
             // 實現生成驗證碼的邏輯，使用 Guid 或隨機數字生成
-            return Guid.NewGuid().ToString("N").Substring(0, 9);
+            return Guid.NewGuid().ToString("N").Substring(0, 6);
         }
 
         //忘記密碼
