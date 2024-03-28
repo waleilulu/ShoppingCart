@@ -394,16 +394,17 @@ namespace Project0220.Controllers
         }
         private string GenerateVerificationCode()
         {
-            // 實現生成驗證碼的邏輯，例如使用 Guid 或隨機數字生成
-            // 這裡僅為示例，您可以根據需要自定義生成驗證碼的方法
-            return Guid.NewGuid().ToString("N").Substring(0, 6);
+			// 實現生成驗證碼的邏輯，例如使用 Guid 或隨機數字生成
+			//ToString("N") 把其換為一個字串表示形式，不帶有分隔符的十六進制數字
+
+			return Guid.NewGuid().ToString("N").Substring(0, 6);
         }
 
         //忘記密碼
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgetPassword(Customer Model)
-        {
+        {   
                 // 檢查輸入的用戶名和郵箱是否匹配
                 var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
