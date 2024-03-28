@@ -78,9 +78,20 @@
 																		</a>
 																		<div class="product-action">
 																			<ul>
-																				<li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
+																				@* <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li> *@
+																				<li id="@item.ProductId" class="cartButton">
+																					<a href="#">
+																						<i class="fa fa-cart-plus"></i>
+																					</a>
+																				</li>
+																				<!--追蹤-->
 																				<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-																				<li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+																				<li>
+																					<a href="javascript:;">
+																						<input type="hidden" id="product-color-choose" value="@item.Color1" />
+																						<button onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></button>
+																					</a>
+																				</li>
 																			</ul>
 																		</div>
 																	</div>
