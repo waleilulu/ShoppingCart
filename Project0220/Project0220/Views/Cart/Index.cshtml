@@ -1,175 +1,175 @@
 ﻿@model List<Project0220.myModels.CartItem>
 
-    <!-- All css files are included here. -->
-    <link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
-    <link rel="stylesheet" href="~/css/Cart/css/helper.css">
-    <link rel="stylesheet" href="~/css/Cart/css/plugins.css">
-    <link rel="stylesheet" href="~/css/Cart/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-    <!-- Modernizr JS -->
-    <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
+	<!-- All css files are included here. -->
+	<link rel="stylesheet" href="~/css/Cart/css/iconfont.min.css">
+	<link rel="stylesheet" href="~/css/Cart/css/helper.css">
+	<link rel="stylesheet" href="~/css/Cart/css/plugins.css">
+	<link rel="stylesheet" href="~/css/Cart/css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+	<!-- Modernizr JS -->
+	<script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
 
- @if (Model != null && Model.Any())                               
+@if (Model != null && Model.Any())
 {         
-    <div class="container-01">
-        <div class="row">
+		<div class="container-01">
+			<div class="row">
 
-            <div class="col-12">
-                <!-- Cart Table -->
-                <div class="cart-table table-responsive mb-30">
-                    <table class="table" style="margin-top:30px;">
-                        <thead>
-                            <tr>
-                                <th class="pro-thumbnail">產品編號</th>
-                                <th class="pro-title">產品圖示</th>
-                                <th class="pro-color">產品名稱</th>
-                                <th class="pro-quantity">顏色</th>
-                                <th class="pro-subtotal">數量</th>
-                                <th class="pro-remove">單價</th>
-                                 <th class="pro-remove">刪除</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-    @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.ProductID</td>
-                                <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
-                                <td>@item.Product.ProductName</td>
-                                <td>@item.SelectedColor</td>
-                                <td>
-                                    <form method="post" asp-controller="Cart" asp-action="UpdateCartItemQuantity">
-                                        <input type="hidden" name="cartItemId" value="@item.CartItemID" />
-                                        <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
-                                    </form>
-                                </td>
-                                <td>$@item.Product.UnitPrice</td>
-                                <td>
-                                    <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
-                                        <input type="hidden" name="cartItemId" value="@item.CartItemID" />
-                                      <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
-                                    </form>
-                                </td>
-                            </tr> 
-                        }
-                      </tbody>
-                         </table>
-                          </div>
-                                 <div class="text-end" style="display: flex; align-items: center; justify-content: space-between;">
-                                         <form method="post" asp-controller="Cart" asp-action="EmptyCart" style="margin-bottom: 0;"> <!-- 清空購物車按鈕 -->
-                                        <button type="submit" style="font-weight: bold; padding: 5px 10px; background-color: #b5b3ad; color:white; border: none;">清空購物車</button>
-                                         </form>
-                                     <div>
-                                          <p style="display: inline-block; font-size:20px; margin-right: 10px;">總商品數量: <span id="totalQuantity"></span></p>
-                                         <p style="display: inline-block; font-size:20px; margin-right: 70px;">總價格: $<span id="totalPrice"></span></p>
-                                     </div>
-                                   
-                                     
-                         </div>
-                    </div>
-                 </div>
-                </div>
-                       
+				<div class="col-12">
+					<!-- Cart Table -->
+					<div class="cart-table table-responsive mb-30">
+						<table class="table" style="margin-top:30px;">
+							<thead>
+								<tr>
+									<th class="pro-thumbnail">產品編號</th>
+									<th class="pro-title">產品圖示</th>
+									<th class="pro-color">產品名稱</th>
+									<th class="pro-quantity">顏色</th>
+									<th class="pro-subtotal">數量</th>
+									<th class="pro-remove">單價</th>
+									 <th class="pro-remove">刪除</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach (var item in Model)
+							{
+									<tr>
+										<td>@item.ProductID</td>
+										<td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
+										<td>@item.Product.ProductName</td>
+										<td>@item.SelectedColor</td>
+										<td>
+											<form method="post" asp-controller="Cart" asp-action="UpdateCartItemQuantity">
+												<input type="hidden" name="cartItemId" value="@item.CartItemID" />
+												<input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
+											</form>
+										</td>
+										<td>$@item.Product.UnitPrice</td>
+										<td>
+											<form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
+												<input type="hidden" name="cartItemId" value="@item.CartItemID" />
+											  <button type="submit" style="border: none; background-color: transparent;"><i class="fa-solid fa-trash-can" style="color: #000000;"></i></button>
+											</form>
+										</td>
+									</tr> 
+							}
+						  </tbody>
+							 </table>
+							  </div>
+									 <div class="text-end" style="display: flex; align-items: center; justify-content: space-between;">
+											 <form method="post" asp-controller="Cart" asp-action="EmptyCart" style="margin-bottom: 0;"> <!-- 清空購物車按鈕 -->
+											<button type="submit" style="font-weight: bold; padding: 5px 10px; background-color: #b5b3ad; color:white; border: none;">清空購物車</button>
+											 </form>
+										 <div>
+											  <p style="display: inline-block; font-size:20px; margin-right: 10px;">總商品數量: <span id="totalQuantity"></span></p>
+											 <p style="display: inline-block; font-size:20px; margin-right: 70px;">總價格: $<span id="totalPrice"></span></p>
+										 </div>
+
+
+							 </div>
+						</div>
+					 </div>
+					</div>
+
 }
-                   
+
 else
 {
-    <div class="container">
-        <p class="mt-4">您的購物車為空。</p>
-    </div>
+		<div class="container">
+			<p class="mt-4">您的購物車為空。</p>
+		</div>
 }
 
- 
-                                   <div class="cart-summary-button" style="text-align: center; margin-top:100px;">
-                                       @* 改類別名稱cart-button01 *@
-                                        <a class="cart-button01" style="font-weight: bold;"  asp-controller="AllItems" asp-action="Index"><i class="fa-solid fa-cart-shopping">&nbsp;</i>繼續購物</a>
-                                        <a id="payment" class="cart-button01" style="font-weight: bold;" asp-controller="CheckOut" asp-action="Consignee"><i class="fa-solid fa-cash-register">&nbsp;</i>繼續結帳</a>
-                                    </div>
+
+								   <div class="cart-summary-button" style="text-align: center; margin-top:100px;">
+	@* 改類別名稱cart-button01 *@
+										<a class="cart-button01" style="font-weight: bold;"  asp-controller="AllItems" asp-action="Index"><i class="fa-solid fa-cart-shopping">&nbsp;</i>繼續購物</a>
+										<a id="payment" class="cart-button01" style="font-weight: bold;" asp-controller="CheckOut" asp-action="Consignee"><i class="fa-solid fa-cash-register">&nbsp;</i>繼續結帳</a>
+									</div>
 <script>
 
-            $(".update").on('change',function(){
-                var quantity= $(this).val();
-                var id = $(this).closest("form").find("[name=cartItemId]").val();
-                console.log("quantity:",quantity,"id:",id);
-                var data = {};
-                data["CartItemID"]=id;
-                data["Quantity"]=quantity;
-                data= JSON.stringify(data);
-                console.log(data);
-                  $.ajax({
-                 url:"/Cart/UpdateCartItemQuantity",
-                 method:"post",
-                data:{"data":data},
-                 success:function (result){
-                     alert("更新成功");
+			$(".update").on('change',function(){
+				var quantity= $(this).val();
+				var id = $(this).closest("form").find("[name=cartItemId]").val();
+				console.log("quantity:",quantity,"id:",id);
+				var data = {};
+				data["CartItemID"]=id;
+				data["Quantity"]=quantity;
+				data= JSON.stringify(data);
+				console.log(data);
+				  $.ajax({
+				 url:"/Cart/UpdateCartItemQuantity",
+				 method:"post",
+				data:{"data":data},
+				 success:function (result){
+					 alert("更新成功");
 
-                 },
-                 error:function (error){
-                     console.error("發生錯誤:",error);
-                 }
+				 },
+				 error:function (error){
+					 console.error("發生錯誤:",error);
+				 }
 
-             });
+			 });
 
-            })
-
-
+			})
 
 
-        @* 在頁面加載時計算總價格和總商品數量 *@
-        $(document).ready(function () {
-            calculateTotal();
-        });
 
-        @* 監聽數量更改事件 *@
-        $(".update").on('change', function () {
-            var quantity = $(this).val();
-            var id = $(this).closest("form").find("[name=cartItemId]").val();
-            updateCartItemQuantity(id, quantity);
-        });
 
-       @*  更新購物車項目數量 *@
-        function updateCartItemQuantity(cartItemId, quantity) {
-            var data = {};
-            data["CartItemID"] = cartItemId;
-            data["Quantity"] = quantity;
-            data = JSON.stringify(data);
-            $.ajax({
-                url: "/Cart/UpdateCartItemQuantity",
-                method: "post",
-                data: {
-                    "data": data
-                },
-                success: function (result) {
-                    alert("更新成功");
-                    calculateTotal();@*  更新總價格和總商品數量 *@
-                },
-                error: function (error) {
-                    console.error("發生錯誤:", error);
-                }
-            });
-        }
+	@* 在頁面加載時計算總價格和總商品數量 *@
+		$(document).ready(function () {
+			calculateTotal();
+		});
 
-      @*   計算總價格和總商品數量 *@
+	@* 監聽數量更改事件 *@
+		$(".update").on('change', function () {
+			var quantity = $(this).val();
+			var id = $(this).closest("form").find("[name=cartItemId]").val();
+			updateCartItemQuantity(id, quantity);
+		});
+
+	@*  更新購物車項目數量 *@
+		function updateCartItemQuantity(cartItemId, quantity) {
+			var data = {};
+			data["CartItemID"] = cartItemId;
+			data["Quantity"] = quantity;
+			data = JSON.stringify(data);
+			$.ajax({
+				url: "/Cart/UpdateCartItemQuantity",
+				method: "post",
+				data: {
+					"data": data
+				},
+				success: function (result) {
+					alert("更新成功");
+					calculateTotal();@*  更新總價格和總商品數量 *@
+				},
+				error: function (error) {
+					console.error("發生錯誤:", error);
+				}
+			});
+		}
+
+	@*   計算總價格和總商品數量 *@
 function calculateTotal() {
-    var totalPrice = 0;
-    var totalQuantity = 0;
-    $(".update").each(function () {
-        var price = parseFloat($(this).closest("tr").find("td:eq(5)").text().replace("$", ""));
-        var quantity = parseInt($(this).val());
-        totalPrice += price * quantity;
-        totalQuantity += quantity;
-    });
-    $("#totalPrice").text(totalPrice.toFixed(0)); 
-    $("#totalQuantity").text(totalQuantity); 
+	var totalPrice = 0;
+	var totalQuantity = 0;
+	$(".update").each(function () {
+		var price = parseFloat($(this).closest("tr").find("td:eq(5)").text().replace("$", ""));
+		var quantity = parseInt($(this).val());
+		totalPrice += price * quantity;
+		totalQuantity += quantity;
+	});
+$("#totalPrice").text(totalPrice.toFixed(0)); 
+	$("#totalQuantity").text(totalQuantity); 
 }
-    </script>
+	</script>
 
 
-            <!-- All jquery file included here -->
-    <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
-    <script src="~/js/Cart/js/popper.min.js"></script>
-    <script src="~/js/Cart/js/bootstrap.min.js"></script>
-    <script src="~/js/Cart/js/plugins.js"></script>
-    <script src="~/js/Cart/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+			<!-- All jquery file included here -->
+	<script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>
+	<script src="~/js/Cart/js/popper.min.js"></script>
+	<script src="~/js/Cart/js/bootstrap.min.js"></script>
+	<script src="~/js/Cart/js/plugins.js"></script>
+	<script src="~/js/Cart/js/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

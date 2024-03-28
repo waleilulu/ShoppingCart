@@ -49,7 +49,7 @@ namespace Project0220.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    // 处理并发更新异常
+                    
                     ModelState.AddModelError("", "無法保存變更，密碼已被註冊，請輸入其他密碼。");
                     TempData["ErrorMessage"] = "無法保存變更，密碼已被註冊，請輸入其他密碼。";
                     return View();
