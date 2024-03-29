@@ -14,8 +14,16 @@
 
 	<style>
 		/* .MyDescription => 省略管理者頁Products的Description欄位字數 */
+
+		.MyDescription {
+			max-width: 120px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
 		/* .MyPassword    => 省略管理者頁Customers的Password欄位字數 */
-		.MyDescription, .MyPassword {
+		.MyPassword, .MyEmail, .Username {
 			max-width: 100px;
 			overflow: hidden;
 			white-space: nowrap;
@@ -80,6 +88,8 @@
 
     <div>
         @RenderBody()
+
+		@* 如果沒有加以下這個，分頁的Script功能會失效 *@
 		@RenderSection("Scripts", required: false)
     </div>
 </body>

@@ -1,8 +1,6 @@
 ﻿@model Project0220.myModels.Customer
 
 
-
-
 <!--引入-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -55,7 +53,7 @@
 				</div>
 				<!-- 城市下拉選單 -->
 				<div class="form-group">
-					<label asp-for="AddressCity" class="control-label">城市*</label>
+					<label asp-for="AddressCity" class="control-label">城市</label>
 					<div class="selectAddress">
 						<select asp-for="AddressCity" class="form-control" id="city" name="AddressCity"></select>
 						<span asp-validation-for="AddressCity" class="text-danger"></span>
@@ -65,7 +63,7 @@
 
 				<!-- 區域下拉選單 -->
 				<div class="form-group">
-					<label asp-for="AddressDist" class="control-label">地區*</label>
+					<label asp-for="AddressDist" class="control-label">地區</label>
 					<div class="selectAddress">
 						<select asp-for="AddressDist" class="form-control" id="district" name="AddressDist"></select>
 						<span asp-validation-for="AddressDist" class="text-danger"></span>
@@ -169,5 +167,5 @@
 
 	// 初始化一次，以顯示預設城市的區域選項
 	citySelect.dispatchEvent(new Event('change'));
-</script>
+</script> 
 

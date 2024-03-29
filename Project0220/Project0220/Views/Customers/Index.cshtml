@@ -80,7 +80,7 @@
 					<th>CustomerName</th>
 					<th>DateOfBirth</th>
 					<th>Gender</th>
-					<th>MobilePhoneNumber</th>
+					<th>PhoneNumber</th>
 					<th>Email</th>
 					<th>Address_City</th>
 					<th>Address_Dist</th>
@@ -101,11 +101,11 @@
 						<td>@Html.DisplayFor(modelItem => customer.DateOfBirth)</td>
 						<td>@customer.Gender</td>
 						<td>@customer.MobilePhoneNumber</td>
-						<td>@customer.Email</td>
+						<td class="MyEmail">@customer.Email</td>
 						<td>@customer.AddressCity</td>
 						<td>@customer.AddressDist</td>
 						<td>@customer.Address</td>
-						<td>@customer.Username</td>
+						<td class="Username">@customer.Username</td>
 						<td class="MyPassword">@customer.Password</td>
 						<td>@customer.Admin</td>
 						@*<td>@category.CreatedAt.ToString("yyyy/MM/dd")</td> *@
