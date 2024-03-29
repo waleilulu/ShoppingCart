@@ -369,11 +369,11 @@ namespace Project0220.Controllers
 
         //刪除追蹤商品
         [HttpPost]
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeleteProduct(int productId, string color)
         {
 
             var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            var trackList = _context.TrackLists.FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId  );
+            var trackList = _context.TrackLists.FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId && t.Color == color);
 
 
             if (trackList != null)

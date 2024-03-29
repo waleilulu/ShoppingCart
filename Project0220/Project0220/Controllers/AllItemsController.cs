@@ -194,7 +194,7 @@ namespace Project0220.Controllers
     }
 
         [HttpPost]
-        public IActionResult Follow(string data)
+        public IActionResult Follow(string data, string Color)
         {
             myModels.Product products = JsonConvert.DeserializeObject<myModels.Product>(data);
             int _productId = products.ProductId;
@@ -211,7 +211,7 @@ namespace Project0220.Controllers
                     if (product != null)
                     {
                         var existingTrack = _contextNew.TrackLists
-                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == _productId );
+                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == _productId && t.Color == Color);
 
                         if (existingTrack == null)
                         {
@@ -220,7 +220,7 @@ namespace Project0220.Controllers
                             {
                                 CustomerID = userId,
                                 ProductID = _productId,
-                          
+                                Color = Color
 
                             };
 
