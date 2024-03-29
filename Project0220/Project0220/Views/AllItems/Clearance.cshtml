@@ -96,9 +96,6 @@
 																		<div class="product-label">
 																			<span class="sale">Sales</span>
 																		</div>
-																		@* <div class="product-label">
-																	<span>-20%</span>
-																	</div> *@
 																		<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
 																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
@@ -124,7 +121,7 @@
 																	</div>
 																	<div class="product-content">
 																		<h3 class="title"> <a href="single-product.html">@Html.DisplayFor(modelItem => item.ProductName)</a></h3>
-																		<p class="product-price"><span class="discounted-price">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
+																		<p class="product-price"><span class="discounted-price OnlySales">$@Html.DisplayFor(modelItem => item.UnitPrice)</span> <span class="main-price discounted"></span></p>
 																	</div>
 																</div>
 																<!--  Single Grid product End -->
@@ -262,8 +259,7 @@
 											<a class="review-link" href="#">(1則顧客評價)</a>
 										</div>
 										<div class="single-product-price">
-											<span class="price new-price">$ @item.UnitPrice</span>
-											@* <span class="regular-price">$77.00</span> *@
+											<span class="price new-price OnlySales">$ @item.UnitPrice</span>
 										</div>
 										<div class="product-description">
 											<p>@item.Description</p>
