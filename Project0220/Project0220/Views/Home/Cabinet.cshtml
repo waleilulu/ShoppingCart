@@ -29,10 +29,10 @@
                 <div class="grid-list-option d-flex">
                     <ul class="nav">
                         <li>
-                            <a data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
+                            <a class="active show" data-toggle="tab" href="#grid"><i class="fa fa-th"></i></a>
                         </li>
                         <li>
-                            <a class="active show" data-toggle="tab" href="#list" class=""><i class="fa fa-th-list"></i></a>
+                            <a data-toggle="tab" href="#list"><i class="fa fa-th-list"></i></a>
                         </li>
                     </ul>
                     <p>顯示 1–9 項產品</p>
@@ -71,7 +71,7 @@
                     <div class="col-12">
                         <div class="shop-product">
                             <div id="myTabContent-2" class="tab-content">
-                                <div id="grid" class="tab-pane fade">
+                                <div id="grid" class="tab-pane fade show active">
                                     <div class="product-grid-view">
                                         <div class="row">
                                             @foreach (var item in Model)
@@ -106,7 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="list" class="tab-pane fade active show">
+                                <div id="list" class="tab-pane fade">
                                     <div class="product-list-view">
                                         <!-- Single List Product Start -->
                                         <div class="product-list-item mb-40">
