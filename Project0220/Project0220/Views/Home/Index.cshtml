@@ -147,7 +147,7 @@
                         <img src="~/images/All_product/@item.Image1" class="card-img-top" alt="">
                         <div class="card-body">
                             <h6 class="card-title"><span class="badge badge-secondary">New</span> @item.ProductName</h6>
-                            <p>$ @item.UnitPrice</p>
+                            <p class = "UnitPr">$ @item.UnitPrice</p>
                             <form method="POST" action="/Cart/AddToCart">
                                 <input type="hidden" name="productId" value="@item.ProductId" />
                                 <input type="hidden" name="quantity" value="1" />

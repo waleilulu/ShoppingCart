@@ -10,23 +10,180 @@
     <!-- Modernizr JS -->
     <script src="~/js/Cart/js/modernizr-2.8.3.min.js"></script>
 
+<style>
 
-@* <div class="page-banner-section section bg-image" data-bg="assets/images/bg/breadcrumb.png">
-            <div class="container">
- *@                <div class="row">
-                    <div class="col">
+    * { 
+    margin: 0; 
+    padding: 0
+} 
 
-                        <div class="page-banner text-left">
-                            <h2  style="margin-top:30px;">結帳</h2>
-                            <ul class="page-breadcrumb">
-                                <li><a href="index.html">首頁</a></li>
-                                <li>購物車</li>
-                                <li>結帳</li>
-                            </ul>
-                        </div>
+html { 
+    height: 100%
+} 
 
-                    </div>
-                </div>
+h2{ 
+    color: black; 
+} 
+#form { 
+    text-align: center; 
+    position: relative; 
+    margin-top: 20px
+} 
+
+#form fieldset { 
+    background: white; 
+    border: 0 none; 
+    border-radius: 0.5rem; 
+    box-sizing: border-box; 
+    width: 100%; 
+    margin: 0; 
+    padding-bottom: 20px; 
+    position: relative
+} 
+
+.finish { 
+    text-align: center
+} 
+
+#form fieldset:not(:first-of-type) { 
+    display: none
+} 
+
+#form .previous-step, .next-step { 
+    width: 100px; 
+    font-weight: bold; 
+    color: white; 
+    border: 0 none; 
+    border-radius: 0px; 
+    cursor: pointer; 
+    padding: 10px 5px; 
+    margin: 10px 5px 10px 0px; 
+    float: right
+} 
+
+.form, .previous-step { 
+    background: #616161; 
+} 
+
+.form, .next-step { 
+    background: #2F8D46; 
+} 
+
+#form .previous-step:hover, 
+#form .previous-step:focus { 
+    background-color: #000000
+} 
+
+#form .next-step:hover, 
+#form .next-step:focus { 
+    background-color: #2F8D46
+} 
+
+.text { 
+    color: #9bacc1;
+    font-weight: normal
+} 
+
+#progressbar { 
+    margin-bottom: 30px; 
+    overflow: hidden; 
+    color: lightgrey 
+} 
+
+#progressbar .active { 
+    color: #9bacc1;
+} 
+
+#progressbar li { 
+    list-style-type: none; 
+    font-size: 15px; 
+    width: 25%; 
+    float: left; 
+    position: relative; 
+    font-weight: 400
+} 
+
+#progressbar #step1:before { 
+    content: "1"
+} 
+
+#progressbar #step2:before { 
+    content: "2"
+} 
+
+#progressbar #step3:before { 
+    content: "3"
+} 
+
+#progressbar #step4:before { 
+    content: "4"
+} 
+
+#progressbar li:before { 
+    width: 50px; 
+    height: 50px; 
+    line-height: 45px; 
+    display: block; 
+    font-size: 20px; 
+    color: #ffffff; 
+    background: lightgray; 
+    border-radius: 50%; 
+    margin: 0 auto 10px auto; 
+    padding: 2px
+} 
+
+#progressbar li:after { 
+    content: ''; 
+    width: 100%; 
+    height: 2px; 
+    background: lightgray; 
+    position: absolute; 
+    left: 0; 
+    top: 25px; 
+    z-index: -1
+} 
+
+#progressbar li.active:before, 
+#progressbar li.active:after { 
+    background: #9bacc1;
+} 
+
+.progress { 
+    height: 20px;
+     width: 100%;
+} 
+
+.progress-bar { 
+    background-color: #9bacc1;
+    width:100%;
+}
+
+</style>
+
+<body> 
+    <div class="container"> 
+        <div class="row justify-content-center"> 
+            <div class="col-12"> 
+                <div class="px-0 pt-4 pb-0 mt-3 mb-3"> 
+                    <form id="form"> 
+                        <ul id="progressbar"> 
+                             <li class="active" id="step1"> 
+                                <strong style="font-size:18px;">購物車</strong> 
+                            </li> 
+                            <li  class="active" id="step2"><strong  style="font-size:18px;">收件資訊</strong></li> 
+                            <li class="active" id="step3"><strong  style="font-size:18px;">確認結帳</strong></li> 
+                            <li id="step4"><strong  style="font-size:18px;">完成訂單</strong></li> 
+                        </ul> 
+
+                    </form> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+</body> 
+<script src="script.js"></script> 
+
+</html> 
 @*             </div>
         </div>
  *@        <!-- Page Banner Section End -->
@@ -223,7 +380,7 @@ function showPaymentInfo(paymentMethod) {
 function closePopup(popupId) {
     document.getElementById(popupId).style.display = 'none';
     if (currentPaymentMethod == "匯款") {
-        //顯示提示並顯示確認訂購
+        @* 顯示提示並顯示確認訂購 *@
         Swal.fire({
             position: 'center',
             icon: 'info',
@@ -283,7 +440,7 @@ function confirmPayment() {
     }
 
      if (isValid) {
-        // 先關閉信用卡資訊的彈出窗口
+        @* 先關閉信用卡資訊的彈出窗口 *@
         document.getElementById('creditCardForm').style.display = 'none';
   
         Swal.fire({

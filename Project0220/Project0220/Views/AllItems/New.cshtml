@@ -94,15 +94,29 @@
 																<!--  Single Grid product Start -->
 																<div class="single-grid-product mb-40">
 																	<div class="product-image">
+																		<div class="product-label">
+																			<span class="sale">New</span>
+																		</div>
 																		<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
 																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
 																		</a>
 																		<div class="product-action">
 																			<ul>
-																				<li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-																				<li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-																				<li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+																				@* <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li> *@
+																				<li id="@item.ProductId" class="cartButton">
+																					<a href="#">
+																						<i class="fa fa-cart-plus"></i>
+																					</a>
+																				</li>
+																				<!--追蹤-->
+																				<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+																				<li>
+																					<a href="javascript:;">
+																						<input type="hidden" id="product-color-choose" value="@item.Color1" />
+																						<button onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></button>
+																					</a>
+																				</li>
 																			</ul>
 																		</div>
 																	</div>
@@ -137,9 +151,20 @@
 																			</a>
 																			<div class="product-action">
 																				<ul>
-																					<li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li>
-																					<li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-																					<li><a href="javascript:;"><i class="fa fa-heart-o"></i></a></li>
+																					@* <li><a href="cart.html"><i class="fa fa-cart-plus"></i></a></li> *@
+																					<li id="@item.ProductId" class="cartButton">
+																						<a href="#">
+																							<i class="fa fa-cart-plus"></i>
+																						</a>
+																					</li>
+																					<!--追蹤-->
+																					<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+																					<li>
+																						<a href="javascript:;">
+																							<input type="hidden" id="product-color-choose" value="@item.Color1" />
+																							<button onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></button>
+																						</a>
+																					</li>
 																				</ul>
 																			</div>
 																		</div>
@@ -181,10 +206,178 @@
 			</div>
 		</div>
 	</div>
+	<!--Quick View視圖: 第二個眼睛按鈕迴圈-->
+	@foreach (var item in Model)
+	{
+		<div class="modal fade quick-view-modal-container" id="quick-view-modal-container-@item.ProductId" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="col-xl-12 col-lg-12">
+							<div class="row">
+								<div class="col-lg-4 col-md-6">
+									<!-- Product Details Left -->
+									<div class="product-details-left">
+										<div class="product-details-images">
+											<div class="lg-image">
+												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
+											</div>
+											<div class="lg-image">
+												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
+											</div>
+											<div class="lg-image">
+												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
+											</div>
+											<div class="lg-image">
+												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
+											</div>
+										</div>
+										<div class="product-details-thumbs">
+											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
+											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
+											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt=""></div>
+										</div>
+									</div>
+									<!--Product Details Left -->
+								</div>
+								<div class="col-lg-8 col-md-6">
+									<!--Product Details Content Start-->
+									<div class="product-details-content">
+										<!--Product Nav Start-->
+										<!--Product Nav End-->
+										<h2>@item.ProductName</h2>
+										<div class="single-product-reviews">
+											<i class="fa fa-star active"></i>
+											<i class="fa fa-star active"></i>
+											<i class="fa fa-star active"></i>
+											<i class="fa fa-star active"></i>
 
+											<i class="fa fa-star-o"></i>
+
+											<a class="review-link" href="#">(1則顧客評價)</a>
+										</div>
+										<div class="single-product-price">
+											<span class="price new-price">$ @item.UnitPrice</span>
+											@* <span class="regular-price">$77.00</span> *@
+										</div>
+										<div class="product-description">
+											<p>@item.Description</p>
+										</div>
+
+										<!--Quick View只做商品圖片、敘述展示-->
+										@* <div class="single-product-quantity">
+									<form class="add-quantity" action="#">
+									<div class="product-quantity">
+									<input value="1" type="number">
+									</div>
+									</form>
+									</div>
+									<div class="wishlist-compare-btn">
+									<!--挑選顏色增加-->
+									<input type="hidden" id="product-color-choose" value="@item.Color1" />
+									<button onclick="addfavoritebtn(@item.ProductId)">
+									<a href="" class="wishlist-btn">加入我的最愛</a>
+									</button>
+
+									<button class="btn onlyBtn"><i class="ion-bag"></i>加入購物車</button>
+									</div> *@
+										<div class="single-product-sharing">
+											<h3>分享</h3>
+											<ul>
+												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+												<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+												<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+												<li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<!--Product Details Content End-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
 	<!-- Shop Section End -->
 	@* <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script> *@
 	<script src="~/js/All_product/js/popper.min.js"></script>
 	<script src="~/js/All_product/js/bootstrap.min.js"></script>
 	<script src="~/js/All_product/js/plugins.js"></script>
 	<script src="~/js/All_product/js/main.js"></script>
+	<script>
+
+		function addfavoritebtn(productId) {
+			var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
+			console.log(selectedColor);
+			$.ajax({
+				url: "/AllItems/FollowColor",
+				method: "post",
+				data: { ProductId: productId, Color: selectedColor },
+				success: function (result) {
+					if (result.success) {
+						alert("商品追蹤成功");
+					} else {
+						// 處理失敗
+						console.error("發生錯誤:", result.message);
+						alert(result.message);
+					}
+				},
+				error: function (error) {
+					console.error("發生錯誤:", error);
+					alert("錯誤");
+				}
+
+
+			});
+
+		}
+
+
+		var modelData = @Html.Raw(Json.Serialize(Model));
+		console.log(modelData);
+		// document.getElementsByClassName("cartButton").addEventListener("click", function (event) {
+		//     event.preventDefault(); // 防止點擊<a>標籤時跳轉到cart.html
+		//     console.log($(this).closest('form'));
+		//     //document.getElementsByClassName("addToCartForm").submit(); // 提交表單
+		// });
+		$('.cartButton').on('click', function () {
+			event.preventDefault();
+			console.log("click");
+			console.log($(this).attr('id'));
+			var productId = $(this).attr('id');
+			var matchingItems = modelData.find(function (item) {
+				console.log(item.productId, productId);
+				return item.productId == productId;
+			});
+			console.log(matchingItems);
+			//matchingItems= JSON.stringify(matchingItems);
+
+			$.ajax({
+				url: "/Cart/AddToCart",
+				method: "post",
+				data: { productId: matchingItems.productId, quantity: 1, selectedcolor: matchingItems.color1 },
+				success: function (result) {
+
+					alert("已加入購物車!");
+				},
+				error: function (error) {
+					console.error("發生錯誤:", error);
+					alert("錯誤");
+				}
+			});
+
+
+		});
+
+
+	</script>
