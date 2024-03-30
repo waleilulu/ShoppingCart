@@ -90,14 +90,21 @@ namespace Project0220.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,ShippingAddress,Consignee,ContactPhone")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderDate,TotalAmount,PaymentMethod,Carrier,ShippingDate,ShippingAddress,Consignee,ContactPhone,PostalCode")] Order order)
         {
             if (id != order.OrderId)
             {
                 return NotFound();
             }
+            string a = order.ContactPhone;
+            string b = order.Consignee;
+            string c = order.ShippingAddress;
+            string d = order.PostalCode;
+            string e = order.Carrier;
+            string f = order.PaymentMethod;
+            
 
-            if (ModelState.IsValid)
+			if (ModelState.IsValid)
             {
                 try
                 {

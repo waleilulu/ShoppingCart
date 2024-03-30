@@ -231,7 +231,7 @@ namespace Project0220.Controllers
             // 根據 customerId 查找最新的訂單
             var order = await _context.Orders
                 .Where(o => o.CustomerId == customerId)
-                .OrderByDescending(o => o.OrderDate) // 假設有 OrderDate 表示訂單日期
+                .OrderByDescending(o => o.OrderDate) // 有 OrderDate 表示訂單日期
                 .FirstOrDefaultAsync();
 
             if (order == null)

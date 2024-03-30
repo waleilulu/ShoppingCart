@@ -3503,7 +3503,7 @@ ul.cart-items > li {
             font-weight: 500;
             line-height: 22px;
             margin-right: 10px;
-            color: #e33;
+            /*color: #e33;*/
         }
 
     .single-grid-product:hover .product-image > a img:nth-child(2) {
