@@ -130,9 +130,11 @@
                                                         <input id="quantity" name="quantity" value="1" type="number">
                                                  </div>
                                        
+
+
                                                  <!-- 顏色選擇 input 欄位 -->
                                                      <div class="product-color">
-                                                <select id="product-color-choose" name="selectedColor">
+                                                <select id="product-color-choose" name="selectedColor" >
                                                     <option value="@item.Color1">@item.Color1</option>
                                                     <option value="@item.Color2">@item.Color2</option>
                                                 </select>
@@ -140,6 +142,7 @@
 
                      
                                             <div class="wishlist-compare-btn mb-2  ">
+                                                <!--顏色-->
                                                <a onclick="addfavoritebtn(@item.ProductId)"class="wishlist-btn" id="wishlistBtn">加入我的最愛
                                             
                                                </a>
@@ -147,8 +150,7 @@
                                         </div>
 
                     
-                                  
-                                        <!-- 加入購物車按鈕 -->
+                                   <!-- 加入購物車按鈕 -->
                                         <div class="add-to-link mb-2">
                                             <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
                                         </div>
@@ -650,59 +652,18 @@
                 </div>
 
             </div>
-        @* </div> *@
-        <!--Product section end-->
-        <!-- Newsletter Section Start -->
-        @* <div class="newsletter-section section bg-gray-two pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-60 pb-xs-50">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="newsletter-content">
-                            <h2>訂閱我們的最新消息</h2>
-                            <p>今天訂閱享有10%折扣碼!</p>
-                        </div>
-                    </div>
-                   
-                    <div class="col-lg-6">
-                        <div class="newsletter-wrap">
-                            <div class="newsletter-form">
-                                    <input id="subscribe" type="email" placeholder="Enter Your Email Address Here..." required="">
-                                    <button type="button" onclick="subscribe()">訂閱!</button>
-                            </div>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                            </div>
-                            <!-- mailchimp-alerts end -->
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>  *@
-        <!-- Newsletter Section End -->
+      
     </div>
 
-    <!-- Placed js at the end of the document so the pages load faster -->
-
-    <!-- All jquery file included here -->
-   
 
 <!--會員追蹤-->
 
             <script>
      
 
-
-
-
-
-
    function addfavoritebtn(productId) {
-    var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
-       
+    var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色 VV
+      console.log(selectedColor);
         $.ajax({
             url:"/AllItems/FollowColor",
             method:"post",

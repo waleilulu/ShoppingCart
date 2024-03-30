@@ -30,7 +30,7 @@
                                 <th class="pro-subtotal">數量</th>
                                 <th class="pro-remove">單價</th>
                                 <th class="pro-remove">刪除</th>
-                            </tr>
+                            </tr>product-color-choose
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
@@ -39,8 +39,10 @@
                                     <td name="ProductID">@item.ProductID</td>
                                     <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
                                     <td>@item.Product.ProductName</td>
-                                    <td>@item.SelectedColor</td>
+                                <td  name="ProductColor">@item.Product.Color1</td>
                                     <td>
+
+
                                         <form method="post" asp-controller="Cart" asp-action="UpdateCartItemQuantity">
                                             <input type="hidden" name="cartItemId" value="@item.CartItemID" />
                                             <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
@@ -90,6 +92,7 @@ else
     <a id="payment" class="cart-button01" style="font-weight: bold;" asp-controller="CheckOut" asp-action="Consignee"><i class="fa-solid fa-cash-register">&nbsp;</i>繼續結帳</a>
 </div>
 <script>
+
     var forms = document.getElementsByClassName('removeFromCartForm');
 
    // 對每個表單添加事件處理程序
@@ -110,22 +113,22 @@ for (var i = 0; i < forms.length; i++) {
                 this.submit(); // 提交該表單
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 var productId = this.closest('tr').querySelector('td[name="ProductID"]').innerText; // 獲取相關的產品 ID
-                console.log(productId);
-                addToTrack(productId); // 執行其他操作
+             // 获取每个产品行中的颜色值
+              var color = this.closest('tr').querySelector('td[name="ProductColor"]').innerText;
+             
+              addToTrack(productId,color); // 執行其他操作
             }
         });
     });
 }
-
-    function addToTrack(productId) {
-        var data={"ProductId": productId};
-        data= JSON.stringify(data);
-        console.log(data);
-    $.ajax({
-        url: '/AllItems/Follow',
-        method: "post",
-                data: {"data":data},
-        success: function(data) {
+  function addToTrack(productId,color) {
+             console.log(color); console.log(this.closest('tr''));
+        console.log(productId ); 
+        $.ajax({
+            url:"/AllItems/FollowColor",
+            method:"post",
+            data:{ProductId:productId,Color:color },
+             success: function(data) {
             if (data.success) {
                 Swal.fire('成功', data.message, 'success');
             } else {
@@ -138,7 +141,6 @@ for (var i = 0; i < forms.length; i++) {
         }
     });
 }
-
 
 
 

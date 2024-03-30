@@ -206,7 +206,7 @@ th, td {
                                                  <img src="~/images/All_product/@product.Image1" style="width:50px;">
                                              </td>
                                              <td>@product.ProductName</td>
-                                             <td>@product.Color1</td> 
+                                              <td >@product.Color1</td> 
                                              <td>$@detail.UnitPrice</td> 
                                              <td>@detail.Quantity</td>
                                              <td>$@(detail.UnitPrice * detail.Quantity)</td> 
@@ -297,9 +297,10 @@ th, td {
                                     <td><img src="~/images/All_product/@product.Image1" style="width:100px;"></td>
                                     <td>@product.ProductName</td>
                                     <td>@product.UnitPrice</td>
-                                    <td>@product.Color1</td>
+                                    <!--color-->
+                                            <td id="product-color-choose" class="selected-color">@product.Color1</td>
                                     <td>
-                                        <button type="button" onclick="confirmDelete('@product.ProductId')">
+                                                        <button type="button" onclick="confirmDelete(@product.ProductId,'@product.Color1')">
                                             <i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i>
                                         </button>
                                     </td>
@@ -326,7 +327,7 @@ th, td {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-    function confirmDelete(productId) {
+    function confirmDelete(productId,color) {
         Swal.fire({
             title: '確定要刪除嗎？',
             text: "",
@@ -338,15 +339,18 @@ th, td {
             cancelButtonText: '取消'
         }).then((result) => {
             if (result.isConfirmed) {
-               DeleteProduct(productId);
+    
+             console.log(color);
+             DeleteProduct(productId,color);
             }
         });
     }
-     function DeleteProduct(productId){
+     function DeleteProduct(productId,color){
+                       
      $.ajax({
         url: '/Customers/DeleteProduct',
         type: 'POST',
-        data: { productId: productId },
+        data: { productId: productId,Color:color },
         success: function(response) {
               $('#productRow_' + productId).remove(); 
 
