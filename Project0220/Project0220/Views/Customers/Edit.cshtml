@@ -90,8 +90,8 @@
 				</div>
 				<div class="form-group">
 					<label asp-for="Password" class="control-label">密碼 </label>
-					<input asp-for="Password" class="form-control"  style="display:none" type="password"  /> 
-	 <a asp-action="ForgetPassword" asp-controller="Customers" asp-route-id="@Model.CustomerId" style="color:gray;font-size:15px;font-weight:400;">重設密碼</a>
+					<input asp-for="Password" class="form-control"  style="display:none" type="password"  />
+					<a asp-action="UpdatePassword" asp-controller="UpdatePwd" asp-route-id="@Model.CustomerId">重置密碼</a>
 @* 					<span asp-action="ForgetPassword" class="text-danger">重設密碼</span> *@
 				</div>
 
