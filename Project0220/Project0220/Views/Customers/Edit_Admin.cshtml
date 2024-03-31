@@ -19,21 +19,21 @@
 				@* <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<input type="hidden" asp-for="CustomerId" /> *@
 				<div class="form-group">
-					<label asp-for="CustomerName" class="control-label">姓名</label>
-					<input asp-for="CustomerName" class="form-control" />
+				<label asp-for="CustomerName" class="control-label">Customer Name</label>
+				<input asp-for="CustomerName" class="form-control" required />
 					<span asp-validation-for="CustomerName" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="DateOfBirth" class="control-label">生日</label>
+				<label asp-for="DateOfBirth" class="control-label">Date Of Birth</label>
 					<div class=selectBirthday>
-						<input asp-for="DateOfBirth" class="form-control" />
+					<input asp-for="DateOfBirth" class="form-control" required />
 						<span asp-validation-for="DateOfBirth" class="text-danger"></span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label asp-for="Gender" class="control-label">性別</label>
+				<label asp-for="Gender" class="control-label">Gender</label>
 				<div class="selectGender">
-						<select asp-for="Gender" class="form-control">
+					<select asp-for="Gender" class="form-control" required>
 							<option value="男">男</option>
 							<option value="女">女</option>
 						</select>
@@ -41,27 +41,27 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label asp-for="MobilePhoneNumber" class="control-label">電話</label>
-					<input asp-for="MobilePhoneNumber" class="form-control" />
+				<label asp-for="MobilePhoneNumber" class="control-label">Mobile Phone Number</label>
+				<input asp-for="MobilePhoneNumber" class="form-control" required />
 					<span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Email" class="control-label">電子郵件</label>
-					<input asp-for="Email" class="form-control" />
+				<label asp-for="Email" class="control-label">Email</label>
+				<input asp-for="Email" class="form-control" required />
 					<span asp-validation-for="Email" class="text-danger"></span>
 				</div>
 				<!-- 城市下拉選單 -->
 				<div class="form-group">
-					<label asp-for="AddressCity" class="control-label">城市</label>
+				<label asp-for="AddressCity" class="control-label">Address City</label>
 					<div class="selectAddress">
-						<select asp-for="AddressCity" class="form-control" id="city" name="AddressCity"></select>
+					<select asp-for="AddressCity" class="form-control" id="city" name="AddressCity" required></select>
 						<span asp-validation-for="AddressCity" class="text-danger"></span>
 					</div>
 				</div>
 
 				<!-- 區域下拉選單 -->
 				<div class="form-group">
-					<label asp-for="AddressDist" class="control-label">地區</label>
+				<label asp-for="AddressDist" class="control-label">Address Dist</label>
 					<div class="selectAddress">
 						<select asp-for="AddressDist" class="form-control" id="district" name="AddressDist"></select>
 						<span asp-validation-for="AddressDist" class="text-danger"></span>
@@ -69,18 +69,18 @@
 				</div>
 
 				<div class="form-group">
-					<label asp-for="Address" class="control-label">地址</label>
-					<input asp-for="Address" class="form-control" />
+				<label asp-for="Address" class="control-label">Address</label>
+				<input asp-for="Address" class="form-control" required />
 					<span asp-validation-for="Address" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Username" class="control-label">使用者帳號</label>
-					<input asp-for="Username" class="form-control" />
+				<label asp-for="Username" class="control-label">Username</label>
+				<input asp-for="Username" class="form-control" required />
 					<span asp-validation-for="Username" class="text-danger"></span>
 				</div>
 				<div class="form-group">
-					<label asp-for="Password" class="control-label">密碼 </label>
-					<input asp-for="Password" class="form-control" type="password" />
+				<label asp-for="Password" class="control-label">Password</label>
+				<input asp-for="Password" class="form-control" type="password" required />
 					<span asp-validation-for="Password" class="text-danger"></span>
 				</div>
 

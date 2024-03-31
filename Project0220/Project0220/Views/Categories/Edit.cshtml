@@ -5,51 +5,6 @@
 	Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@* <!--引用-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- 引入fontawesome icon -->
-<script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-
-	<div class="container-fluid">
-		<a class="navbar-brand" asp-controller="Home" asp-action="Index">
-			<img src="~/images/GGLogo.png" width="268.5" height="81.75"
-				 class="d-inline-block align-top" alt="">
-		</a>
-		<a class="navbar-brand" asp-controller="Products" asp-action="Index"><strong>管理者頁面</strong></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
-				<a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
-				<a class="nav-link" asp-controller="Customers" asp-action="Index">Customers</a>
-				<a class="nav-link" asp-controller="OrderDetails" asp-action="Index">OrderDetails</a>
-				<a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
-				<a class="nav-link" asp-controller="Products" asp-action="Index">Products</a>
-				<a class="nav-link" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
-				<a class="nav-link fa-regular fa-paper-plane" asp-controller="Email" asp-action="SendAdEmail"></a>
-				@{
-					var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
-				}
-				@if (isAuthenticated)
-				{
-					<!-- 登出按鈕 -->
-					<form asp-controller="Customers" asp-action="Logout" method="post">
-						<button type="submit" class="nav-link" style="border:none;background:none;">
-							<i class="fa-solid fa-arrow-right-from-bracket"></i>
-						</button>
-					</form>
-				}
-			</div>
-		</div>
-	</div>
-</nav>
-<br>
- *@
-
 
 
 <div class="row justify-content-center">
@@ -60,7 +15,7 @@
 			<div class="row mb-3">
 				<label class="col-md-4 col-form-label">CategoryName</label>
 				<div class="col-sm-8">
-					<input class="form-control" asp-for="CategoryName">
+					<input class="form-control" required asp-for="CategoryName">
 					<span asp-validation-for="CategoryName" class="text-danger"></span>
 				</div>
 			</div>
