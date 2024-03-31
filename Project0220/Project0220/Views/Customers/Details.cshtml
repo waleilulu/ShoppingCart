@@ -282,6 +282,7 @@ th, td {
             @if (Model.TrackedProducts != null && Model.TrackedProducts.Any())
             {
           <div id="MFollow" class="tabcontent">
+            <p>您的追踪商品數量有: @Model.TrackedProducts.Count() 筆</p>
             <!--追踪商品-->
             <table class="MFollowTable">
                 <tr>
@@ -293,13 +294,13 @@ th, td {
                 </tr>
                         @foreach (var product in Model.TrackedProducts)
                         {
-                                <tr id="productRow_@product.ProductId">
+                                   <tr id="productRow_@product.ProductId" style="background-color:white;">
                                     <td><img src="~/images/All_product/@product.Image1" style="width:100px;"></td>
                                     <td>@product.ProductName</td>
                                     <td>@product.UnitPrice</td>
                                     <td>@product.Color1</td>
                                     <td>
-                                        <button type="button" onclick="confirmDelete('@product.ProductId')">
+                                              <button style="border: none; background-color:white" type="button" onclick="confirmDelete('@product.ProductId')">
                                             <i class="fa-solid fa-trash-can" style="color: #e51f1f;border:none;background:none;"></i>
                                         </button>
                                     </td>
