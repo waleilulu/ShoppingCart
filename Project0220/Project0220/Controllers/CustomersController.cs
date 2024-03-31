@@ -101,7 +101,7 @@ namespace Project0220.Controllers
         }
 
         // POST: Customers/Create
-     
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password,Subscribe")] Customer customer)
@@ -110,42 +110,42 @@ namespace Project0220.Controllers
             {
                 //檢查用戶名是否存在
                 var existingUser = await _context.Customers.FirstOrDefaultAsync(c => c.Username == customer.Username);
-				if (existingUser != null)
-				{
-					ModelState.AddModelError("Username", "用戶名已被註冊，請選擇另一個用戶名");
-					return View(customer);
-				}
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Username", "用戶名已被註冊，請選擇另一個用戶名");
+                    return View(customer);
+                }
 
-				// 計算用户年齡
-				int age = DateTime.Today.Year - customer.DateOfBirth?.Year ?? 0;
-				if (customer.DateOfBirth?.Date > DateTime.Today.AddYears(-age)) age--;
+                // 計算用户年齡
+                int age = DateTime.Today.Year - customer.DateOfBirth?.Year ?? 0;
+                if (customer.DateOfBirth?.Date > DateTime.Today.AddYears(-age)) age--;
 
-				// 檢查用戶年齡是否小於18
-				if (age < 18)
-				{
-					ModelState.AddModelError("DateOfBirth", "您必須年滿18歲才能註冊。");
-					return View(customer);
-				}
-				if (string.IsNullOrEmpty(customer.Password) || customer.Password.Length < 6)
-				{
-					ModelState.AddModelError("Password", "密碼是必填的，且長度必須大於6個字。");
-					return View(customer);
-				}
+                // 檢查用戶年齡是否小於18
+                if (age < 18)
+                {
+                    ModelState.AddModelError("DateOfBirth", "您必須年滿18歲才能註冊。");
+                    return View(customer);
+                }
+                if (string.IsNullOrEmpty(customer.Password) || customer.Password.Length < 6)
+                {
+                    ModelState.AddModelError("Password", "密碼是必填的，且長度必須大於6個字。");
+                    return View(customer);
+                }
 
 
-				// 对用户密码进行加密
-				string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
+                // 对用户密码进行加密
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
 
                 // 将加密后的密码赋值给用户对象
                 customer.Password = hashedPassword;
 
                 customer.Subscribe = HttpContext.Request.Form["subscribe"] == "on" ? true : false;
-               
+
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 // 設置註冊成功的提示消息
                 TempData["RegisterSuccessMessage"] = "您已成功註冊會員！";
-               
+
                 return RedirectToAction("Login", "Customers");
             }
             return View(customer);
@@ -159,7 +159,7 @@ namespace Project0220.Controllers
         // 登入動作
         public async Task<IActionResult> Login([Bind("Username,Password")] Customer Customers)
         {
-            
+
             var user = _context.Customers.SingleOrDefault(u => u.Username == Customers.Username);
 
             if (user != null)
@@ -179,7 +179,7 @@ namespace Project0220.Controllers
                         claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
                         HttpContext.Response.Cookies.Append("userRole", "Administrator");
 
-                
+
                     }
 
                     var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -211,10 +211,11 @@ namespace Project0220.Controllers
         }
         //管理者選擇頁面
 
-        public IActionResult Admin() {
-          
+        public IActionResult Admin()
+        {
+
             return View();
-		}
+        }
 
 
         //登出
@@ -228,10 +229,10 @@ namespace Project0220.Controllers
             // 清除用戶相關的 Session 和 Cookie
             HttpContext.Session.Clear();
             Response.Cookies.Delete("membercookie");
-			Response.Cookies.Delete("userRole");
-			Response.Cookies.Delete("isAdmin");
-			// 重定向到登入頁面
-			return RedirectToAction("Login", "Customers");
+            Response.Cookies.Delete("userRole");
+            Response.Cookies.Delete("isAdmin");
+            // 重定向到登入頁面
+            return RedirectToAction("Login", "Customers");
         }
 
         //決定導向哪裡的方法( 會員頁面 還是 登入頁面 )
@@ -244,17 +245,17 @@ namespace Project0220.Controllers
             {
                 var isAdmin = HttpContext.Request.Cookies["isAdmin"];
                 var userRole = HttpContext.Request.Cookies["userRole"];
-                if ( isAdmin == "true")
+                if (isAdmin == "true")
                 {
                     return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
                 }
                 // 如果用户角色為管理員，則重定向到管理員页面
-               else if (userRole =="Administrator")
-				{
-					return RedirectToAction("Admin", "Customers");
-				}
-				// 如果用户角色为会员，则重定向到会员详情页面
-				else
+                else if (userRole == "Administrator")
+                {
+                    return RedirectToAction("Admin", "Customers");
+                }
+                // 如果用户角色为会员，则重定向到会员详情页面
+                else
                 {
                     return RedirectToAction("Details", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
                 }
@@ -301,18 +302,18 @@ namespace Project0220.Controllers
             {
                 try
                 {
-					// 查找現有客戶記錄
-					var existingCustomer = await _context.Customers.FindAsync(id);
+                    // 查找現有客戶記錄
+                    var existingCustomer = await _context.Customers.FindAsync(id);
 
-					// 將現有客戶記錄的密碼賦值給編輯後的模型
-					Customers.Password = existingCustomer.Password;
+                    // 將現有客戶記錄的密碼賦值給編輯後的模型
+                    Customers.Password = existingCustomer.Password;
 
-					// 更新客戶記錄，但不包括密碼
-					_context.Entry(existingCustomer).CurrentValues.SetValues(Customers);
+                    // 更新客戶記錄，但不包括密碼
+                    _context.Entry(existingCustomer).CurrentValues.SetValues(Customers);
 
-					await _context.SaveChangesAsync();
-				}
-				catch (DbUpdateConcurrencyException)
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
                 {
                     if (!CustomerExists(Customers.CustomerId))
                     {
@@ -369,11 +370,11 @@ namespace Project0220.Controllers
 
         //刪除追蹤商品
         [HttpPost]
-        public IActionResult DeleteProduct(int productId, string color)
+        public IActionResult DeleteProduct(int productId)
         {
 
             var CustomerId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            var trackList = _context.TrackLists.FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId && t.Color == color);
+            var trackList = _context.TrackLists.FirstOrDefault(t => t.CustomerID == CustomerId && t.ProductID == productId);
 
 
             if (trackList != null)
@@ -402,34 +403,34 @@ namespace Project0220.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ForgetPassword(Customer Model)
         {
-                // 檢查輸入的用戶名和信箱是否匹配
-                var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
+            // 檢查輸入的用戶名和信箱是否匹配
+            var user = await _context.Customers.FirstOrDefaultAsync(c => c.Username == Model.Username && c.Email == Model.Email);
 
-                if (user != null)
-                {
-                    var verificationCode = GenerateVerificationCode();
-                    user.ResetPasswordToken = verificationCode;
-                    user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(1); // 驗證碼有效期1分鐘
-                    await _context.SaveChangesAsync();
+            if (user != null)
+            {
+                var verificationCode = GenerateVerificationCode();
+                user.ResetPasswordToken = verificationCode;
+                user.ResetPasswordTokenExpiration = DateTime.Now.AddMinutes(1); // 驗證碼有效期1分鐘
+                await _context.SaveChangesAsync();
 
-                    // 發送驗證碼到用戶提供的 email 中
-                    await SendEmails(user.Email, verificationCode);
- 
+                // 發送驗證碼到用戶提供的 email 中
+                await SendEmails(user.Email, verificationCode);
+
                 return RedirectToAction("ForgetPassword");
-               
+
             }
-			//ModelState.AddModelError(string key, string errorMessage);
-			//如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
-			ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
+            //ModelState.AddModelError(string key, string errorMessage);
+            //如果用戶名和郵箱不匹配，返回忘記密碼頁面並顯示錯誤消息
+            ModelState.AddModelError(string.Empty, "提供的帳號和信箱不匹配。");
             TempData["Message"] = "提供的帳號和信箱不匹配。";
             return View();
         }
 
         private async Task SendEmails(string email, string verificationCode)
         {
-			// 使用 Google Mail Server 發信
-			//將 appsettings.json 中的配置文件讀取到 _configuration 中，然後使用它來取得相應的值。
-			string account = _configuration["EmailSettings:Account"];
+            // 使用 Google Mail Server 發信
+            //將 appsettings.json 中的配置文件讀取到 _configuration 中，然後使用它來取得相應的值。
+            string account = _configuration["EmailSettings:Account"];
             string password = _configuration["EmailSettings:Password"];
 
             string SmtpServer = "smtp.gmail.com";
@@ -493,68 +494,68 @@ namespace Project0220.Controllers
         }
 
         public IActionResult Create_Admin()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
 
 
-		// GET: Customers/Edit/5
-		public async Task<IActionResult> Edit_Admin(int? id)
-		{
+        // GET: Customers/Edit/5
+        public async Task<IActionResult> Edit_Admin(int? id)
+        {
 
-			if (id == null)
-			{
-				return NotFound();
-			}
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-			var Customer = await _context.Customers.FindAsync(id);
-			if (Customer == null)
-			{
-				return NotFound();
-			}
-			return View(Customer);
-		}
+            var Customer = await _context.Customers.FindAsync(id);
+            if (Customer == null)
+            {
+                return NotFound();
+            }
+            return View(Customer);
+        }
 
-		// POST: Customers/Edit/5
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit_Admin(int id, [Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password")] Customer Customers)
-		{
-			if (id != Customers.CustomerId)
-			{
-				return NotFound();
-			}
+        // POST: Customers/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit_Admin(int id, [Bind("CustomerId,CustomerName,DateOfBirth,Gender,MobilePhoneNumber,Email,AddressCity,AddressDist,Address,Username,Password")] Customer Customers)
+        {
+            if (id != Customers.CustomerId)
+            {
+                return NotFound();
+            }
 
-			if (ModelState.IsValid)
-			{
-				try
-				{
-					_context.Update(Customers);
-					await _context.SaveChangesAsync();
-				}
-				catch (DbUpdateConcurrencyException)
-				{
-					if (!CustomerExists(Customers.CustomerId))
-					{
-						return NotFound();
-					}
-					else
-					{
-						throw;
-					}
-				}
-				return RedirectToAction("Index", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(Customers);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CustomerExists(Customers.CustomerId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Index", "Customers", new { id = HttpContext.Request.Cookies["membercookie"] });
 
-			}
-			return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
-		}
-
-
+            }
+            return View(Customers); //模型狀態無效，将用户保留在编辑页面，并显示验证错误
+        }
 
 
-	}
+
+
+    }
 
 }
 
