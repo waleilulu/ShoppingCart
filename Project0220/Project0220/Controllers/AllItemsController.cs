@@ -138,7 +138,7 @@ namespace Project0220.Controllers
         [HttpPost]
         public IActionResult FollowColor(int ProductId, string Color)
         {
-         
+
             //先判斷這個人是誰
             var userId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             if (userId != null)
@@ -164,7 +164,7 @@ namespace Project0220.Controllers
                                 Color = Color
 
                             };
-                           
+
                             _contextNew.TrackLists.Add(trackListModel);
                             _contextNew.SaveChanges();
 
@@ -190,11 +190,11 @@ namespace Project0220.Controllers
             }
 
             return Json(new { success = false, message = "尚未登錄 請登入" });
-        
-    }
+
+        }
 
         [HttpPost]
-        public IActionResult Follow(string data, string Color)
+        public IActionResult Follow(string data)
         {
             myModels.Product products = JsonConvert.DeserializeObject<myModels.Product>(data);
             int _productId = products.ProductId;
@@ -211,7 +211,7 @@ namespace Project0220.Controllers
                     if (product != null)
                     {
                         var existingTrack = _contextNew.TrackLists
-                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == _productId && t.Color == Color);
+                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == _productId);
 
                         if (existingTrack == null)
                         {
@@ -220,7 +220,7 @@ namespace Project0220.Controllers
                             {
                                 CustomerID = userId,
                                 ProductID = _productId,
-                                Color = Color
+
 
                             };
 
@@ -254,7 +254,7 @@ namespace Project0220.Controllers
 
 
 
-     
+
 
 
 
@@ -263,3 +263,5 @@ namespace Project0220.Controllers
 
     }
 }
+
+
