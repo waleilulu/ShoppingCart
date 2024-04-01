@@ -223,7 +223,7 @@ h2{
                                             <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
                                         </form>
                                     </td>
-                                    <td>$@item.Product.UnitPrice</td>
+                                    <td>$@item.Product.UnitPrice 元</td>
                                     <td>
                                         <form method="post" asp-controller="Cart" asp-action="RemoveFromCart" class="removeFromCartForm">
                                             <input type="hidden" name="cartItemId" value="@item.CartItemID" />
@@ -242,7 +242,7 @@ h2{
                     </form>
                     <div>
                         <p style="display: inline-block; font-size:20px; margin-right: 10px;">總商品數量: <span id="totalQuantity"></span></p>
-                        <p style="display: inline-block; font-size:20px; margin-right: 70px;">總價格: $<span id="totalPrice"></span></p>
+                        <p style="display: inline-block; font-size:20px; margin-right: 70px;">總額: $<span id="totalPrice"></span>元</p>
                     </div>
 
 
