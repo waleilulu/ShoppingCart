@@ -51,3 +51,7 @@
 .NAV{
     font-size:x-large !important;
 }
+.NavIcon {
+    font-size: 24px;
+    padding-top: 6px;
+}

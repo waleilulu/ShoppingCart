@@ -212,6 +212,7 @@ h2{
                             <tbody>
                             @foreach (var item in Model)
                             {
+
                                         <tr>
                                             <td name="ProductID">@item.ProductID</td>
                                             <td><img src="~/images/All_product/@item.Product.Image1" alt="" width="70"></td>
@@ -234,6 +235,7 @@ h2{
                             }
                             </tbody>
                         </table>
+
                     </div>
                     <div class="text-end" style="display: flex; align-items: center; justify-content: space-between;">
                         <form method="post" asp-controller="Cart" asp-action="EmptyCart" style="margin-bottom: 0;">

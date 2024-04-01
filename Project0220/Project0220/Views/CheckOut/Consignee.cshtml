@@ -237,7 +237,7 @@ h2{
                                                   <p>付款資訊*</p>
                                                   <select asp-for="PaymentMethod" class="control-label nice-select" id="paymentMethod"  required>
                                                       <option >請選擇使用付款方式</option>
-                                                      <option asp-for="PaymentMethod" class="form-control" value="匯款">匯款</option>
+                                                      <option asp-for="PaymentMethod" class="form-control" value="轉帳">轉帳</option>
                                                       <option asp-for="PaymentMethod" class="form-control" value="信用卡">信用卡</option>
                                                   </select>
                                               </div>
@@ -246,7 +246,7 @@ h2{
                                                 <p>配送資訊*</p>
                                                 <select asp-for="Carrier"  class="control-label nice-select"  id="paymentMethod" required>
                                                     <option >請選擇配送貨運公司</option>
-                                                    <option asp-for="Carrier" class="form-control">自行配送</option>
+                                                    <option asp-for="Carrier" class="form-control">本公司配送</option>
                                                     <option asp-for="Carrier" class="form-control">新竹貨運</option>
                                                     <option asp-for="Carrier" class="form-control">大榮貨運</option>
                                                 </select>
