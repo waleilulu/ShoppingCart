@@ -207,8 +207,7 @@ namespace Project0220.Controllers
         {
             int productId = data.ProductId;
             string color = data.Color;
-            // myModels.Product products = JsonConvert.DeserializeObject<myModels.Product>(data);
-            //int _productId = products.ProductId;
+     
             //先判斷這個人是誰
             var userId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             if (userId != null)
