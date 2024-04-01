@@ -103,7 +103,7 @@
                                                               <!-- 登出按鈕 -->  
                       <form asp-controller="Customers" asp-action="Logout" method="post" >
                                       <button type="submit" class="nav-link" style="border:none;background:none;">
-                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 24px;padding-top: 6px;"></i>
                                  </button>
                        </form>
                              
@@ -117,7 +117,7 @@
                                        
                         @if (userRole != null)
                         {
-                   <a class="nav-link fa-solid fa-route" asp-controller="Products" asp-action="Index"></a>
+                            <a class="nav-link fa-solid fa-route" style="font-size: 24px;padding-top: 13px;" asp-controller="Products" asp-action="Index"></a>
                         }
 
                             @* 群發功能已經放在管理者頁面了!!! *@
