@@ -15,16 +15,16 @@
     <!-- 引入 Bootstrap CSS，4.6.2版 -->
     <link rel="stylesheet" href="~/css/publiclayout/bootstrap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
     <!-- 引入 jQuery，Bootstrap官網寫與JS4.6.2綑綁的jQuery版本為3.5.1，https://getbootstrap.com/docs/4.6/getting-started/introduction/ -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
     <!-- 引入 Bootstrap JavaScript，跟Bootstrap CSS同版本 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-        crossorigin="anonymous"></script>
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
     <!-- 引入fontawesome icon -->
     <script src="https://kit.fontawesome.com/fcc6a42a47.js" crossorigin="anonymous"></script>
 
@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="~/css/All_product/css/helper.css">
     <link rel="stylesheet" href="~/css/All_product/css/plugins.css">
     <link rel="stylesheet" href="~/css/All_product/css/style.css">
-    <link rel="stylesheet"  href="~/css/publiclayout/StyleSheet.css">
+    <link rel="stylesheet" href="~/css/publiclayout/StyleSheet.css">
     <script src="~/js/All_product/js/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -43,118 +43,125 @@
     <header>
         @* 公版導航欄在這 *@
         @* 若要調整網頁最上行的nav部分<nav class=可以加入container，跟下面所有頁面對齊> *@
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navnav">
-                <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navnav">
+            <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <img src="~/images/GGLogo.png" width="268.5" height="81.75"
-                            class="d-inline-block align-top" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                         class="d-inline-block align-top" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link NAV" asp-controller="Home" asp-action="Index">首頁<span class="sr-only">(current)</span></a>
-                            </li>
-@*                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                                    aria-expanded="false">產品</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-controller="AllItems" asp-action="Index" >沙發、桌、椅</a>
-                                    <a class="dropdown-item" href="#">床櫃、五斗櫃、電視櫃、鞋櫃</a>
-                                    <a class="dropdown-item" href="#">寢具、床架</a>
-                                    <a class="dropdown-item" href="#">家飾、燈、地墊、香氛</a>
-                                    <a class="dropdown-item" href="#">衛浴、浴盆</a>
-                                <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">新品專區</a>
-                                    <a class="dropdown-item" href="#">出清品專區</a>
-                                </div>
-                            </li> *@
-                            <li class="nav-item">
-                                <a class="nav-link NAV" asp-controller="AllItems" asp-action="Index">產品</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link NAV" asp-controller="AllItems" asp-action="New">新品專區</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link NAV" asp-controller="AllItems" asp-action="Clearance" >出清品專區</a>
-                            </li> 
-                            <form class="form-inline my-2 my-lg-0 mr-2" method="post" action="~/AllItems/Search">
-                                <input class="form-control mr-sm-2" type="search" placeholder="搜尋您想找的物品"
-                                    aria-label="Search" name="bee">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
-                            </form>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Customers" asp-action="UserProfile"><i class="fa-regular fa-user" style="font-size: 24px;padding-top: 6px;"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/Cart/Index"><i class="fa-solid fa-cart-shopping "style="font-size: 24px;padding-top: 6px;"></i></a>
-                            </li>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link NAV" asp-controller="Home" asp-action="Index">首頁<span class="sr-only">(current)</span></a>
+                        </li>
+                        @*                             <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-expanded="false">產品</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="AllItems" asp-action="Index" >沙發、桌、椅</a>
+                        <a class="dropdown-item" href="#">床櫃、五斗櫃、電視櫃、鞋櫃</a>
+                        <a class="dropdown-item" href="#">寢具、床架</a>
+                        <a class="dropdown-item" href="#">家飾、燈、地墊、香氛</a>
+                        <a class="dropdown-item" href="#">衛浴、浴盆</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">新品專區</a>
+                        <a class="dropdown-item" href="#">出清品專區</a>
+                        </div>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link NAV" asp-controller="AllItems" asp-action="Index">產品</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link NAV" asp-controller="AllItems" asp-action="New">新品專區</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link NAV" asp-controller="AllItems" asp-action="Clearance">出清品專區</a>
+                        </li>
+                        <form class="form-inline my-2 my-lg-0 mr-2" method="post" action="~/AllItems/Search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="搜尋您想找的物品"
+                                   aria-label="Search" name="bee">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+                        </form>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Customers" asp-action="UserProfile"><i class="fa-regular fa-user" style="font-size: 24px;padding-top: 6px;"></i></a>
+                        </li>
+
+
+                        <!--購物車icon-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Cart/Index">
+                                <i class="fa-solid fa-cart-shopping" style="font-size: 24px;padding-top: 6px;"></i>
+                                <span class="cart-badge">3</span> <!-- 數量示例 -->
+                            </a>
+                        </li>
 
                         @{
                             var isAuthenticated = Context.Request.Cookies.ContainsKey("membercookie");
                         }
-                       
-                        @if (isAuthenticated )
-                           {
-                                                              <!-- 登出按鈕 -->  
-                      <form asp-controller="Customers" asp-action="Logout" method="post" >
-                                      <button type="submit" class="nav-link" style="border:none;background:none;">
+
+                        @if (isAuthenticated)
+                        {
+                            <!-- 登出按鈕 -->
+                            <form asp-controller="Customers" asp-action="Logout" method="post">
+                                <button type="submit" class="nav-link" style="border:none;background:none;">
                                     <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 24px;padding-top: 6px;"></i>
-                                 </button>
-                       </form>
-                             
+                                </button>
+                            </form>
+
                         }
-               
-                        @{                         
-                           var isAdmin = Context.Request.Cookies["isAdmin"];
+
+                        @{
+                            var isAdmin = Context.Request.Cookies["isAdmin"];
                             var userRole = Context.Request.Cookies["userRole"];
                         }
 
-                                       
+
                         @if (userRole != null)
                         {
                             <a class="nav-link fa-solid fa-route" style="font-size: 24px;padding-top: 13px;" asp-controller="Products" asp-action="Index"></a>
                         }
 
-                            @* 群發功能已經放在管理者頁面了!!! *@
-                            @* <li class="nav-item">
-                            <a class="nav-link" asp-controller="Email" asp-action="SendAdEmail"><i class="fa-regular fa-paper-plane"></i></i></a>
-                            </li> *@
+                        @* 群發功能已經放在管理者頁面了!!! *@
+                        @* <li class="nav-item">
+                        <a class="nav-link" asp-controller="Email" asp-action="SendAdEmail"><i class="fa-regular fa-paper-plane"></i></i></a>
+                        </li> *@
 
-                            
-                        </ul>
-                    </div>
+
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
         @* <nav
-                class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project0220</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+        class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project0220</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
 
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                    asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                    asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav> *@
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+        asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+        asp-action="Privacy">Privacy</a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav> *@
 
         @* 公版導航欄在這 *@
 
@@ -163,13 +170,13 @@
     <div class="container" style="min-height:504px">
         <main role="main" class="pb-3">
             @RenderBody()
-            
+
         </main>
     </div>
 
     @* 公版footer在這 *@
     <footer class="footer mt-auto py-3" style="background-color: #E4DBD2; color: #4A475C;">
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-md-4 ">
                     <h5><b>門市資訊</b></h5>
@@ -210,7 +217,7 @@
                     </ul>
 
                     </ul>
-                    
+
                 </div>
 
             </div>
@@ -225,7 +232,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-     <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script>
+    <script src="~/js/All_product/js/jquery-1.12.4.min.js"></script>
     <script src="~/js/All_product/js/popper.min.js"></script>
     <script src="~/js/All_product/js/bootstrap.min.js"></script>
     <script src="~/js/All_product/js/plugins.js"></script>

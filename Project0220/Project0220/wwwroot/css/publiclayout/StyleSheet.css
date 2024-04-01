@@ -55,3 +55,20 @@
     font-size: 24px;
     padding-top: 6px;
 }
+
+/*購物車icon CSS*/
+.nav-link {
+    position: relative;
+    display: inline-block; /* 確保連結可以包含絕對定位的子元素 */
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px; /* 根據需要調整位置 */
+    right: -5px; /* 根據需要調整位置 */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+}
