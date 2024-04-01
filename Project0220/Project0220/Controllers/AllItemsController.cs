@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Project0220.Models;
 using Project0220.myModels;
 using Project0220.ViewModel;
-
+using Newtonsoft.Json.Linq;
 namespace Project0220.Controllers
 {
     public class AllItemsController : Controller
@@ -193,11 +193,22 @@ namespace Project0220.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult Follow(string data)
+
+
+        public class FollowData
         {
-            myModels.Product products = JsonConvert.DeserializeObject<myModels.Product>(data);
-            int _productId = products.ProductId;
+            public int ProductId { get; set; }
+            public string Color { get; set; }
+        }
+
+    
+        [HttpPost]
+        public IActionResult Follow([FromBody] FollowData data)
+        {
+            int productId = data.ProductId;
+            string color = data.Color;
+            // myModels.Product products = JsonConvert.DeserializeObject<myModels.Product>(data);
+            //int _productId = products.ProductId;
             //先判斷這個人是誰
             var userId = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             if (userId != null)
@@ -206,12 +217,12 @@ namespace Project0220.Controllers
                 var user = _contextNew.Customers.Find(userId);
                 if (user != null)
                 {   //確定有此使用者
-                    var product = _contextNew.Products.Find(_productId);
+                    var product = _contextNew.Products.Find(productId);
 
                     if (product != null)
                     {
                         var existingTrack = _contextNew.TrackLists
-                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == _productId);
+                    .FirstOrDefault(t => t.CustomerID == userId && t.ProductID == productId && color==t.Color);
 
                         if (existingTrack == null)
                         {
@@ -219,8 +230,8 @@ namespace Project0220.Controllers
                             var trackListModel = new TrackList
                             {
                                 CustomerID = userId,
-                                ProductID = _productId,
-
+                                ProductID = productId,
+                                Color= color,
 
                             };
 
