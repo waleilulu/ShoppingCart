@@ -244,13 +244,11 @@
 
     <script>
         window.onload = function () {
+            localStorage.setItem('cartQuantity', @cartQuantity);
             var cartQuantityFromLocalStorage = localStorage.getItem('cartQuantity');
             if (cartQuantityFromLocalStorage !== null) {
                 $(".cart-badge").text(cartQuantityFromLocalStorage);
-            } else {
-                localStorage.setItem('cartQuantity',@cartQuantity);
-                $(".cart-badge").text(@cartQuantity);
-            }
+            } 
         };
     </script>
     @await RenderSectionAsync("Scripts", required: false)
