@@ -272,34 +272,6 @@ else
 <script>
     var forms = document.getElementsByClassName('removeFromCartForm');
 
-    // 對每個表單添加事件處理程序
-    for (var i = 0; i < forms.length; i++) {
-        forms[i].addEventListener('submit', function (event) {
-            event.preventDefault(); // 阻止表單提交
-            Swal.fire({
-                title: '您確定?',
-                text: "您確定要刪除這個項目嗎？",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d2b6b3',
-                cancelButtonColor: '#adb7c2',
-                confirmButtonText: '是的, 刪除它!',
-                cancelButtonText: '不，我要加入追蹤!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit(); // 提交該表單
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    var productId = this.closest('tr').querySelector('td[name="ProductID"]').innerText; // 獲取相關的產品 ID
-                    var productColor = this.closest('tr').querySelector('td[name="ProductColor"]').innerText;
-                    var productName = this.closest('tr').querySelector('td[name="ProductName"]').innerText;
-
-                    console.log("你好!!");
-                    addToTrack(productId, productColor); // 執行其他操作
-                }
-            });
-        });
-    }
-
     function addToTrack(productId, productColor) {
         var data = { "ProductId": productId, "Color": productColor, };
 
@@ -320,6 +292,30 @@ else
             error: function (xhr, status, error) {
                 console.error('Error:', error);
                 Swal.fire('錯誤', '請求失敗。', 'error');
+
+   // 對每個表單添加事件處理程序
+for (var i = 0; i < forms.length; i++) {
+    forms[i].addEventListener('submit', function(event) {
+        event.preventDefault(); // 阻止表單提交
+        Swal.fire({
+            title: '您確定?',
+            text: "您確定要刪除這個項目嗎？",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d2b6b3',
+            cancelButtonColor: '#adb7c2',
+            confirmButtonText: '是的, 刪除它!',
+            cancelButtonText: '不，我要加入追蹤!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit(); // 提交該表單
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                var productId = this.closest('tr').querySelector('td[name="ProductID"]').innerText; // 獲取相關的產品 ID
+                   var productColor = this.closest('tr').querySelector('td[name="ProductColor"]').innerText;
+                     var productName = this.closest('tr').querySelector('td[name="ProductName"]').innerText;
+          
+                addToTrack(productId,productColor); // 執行其他操作
+                  this.submit();
             }
         });
     }
