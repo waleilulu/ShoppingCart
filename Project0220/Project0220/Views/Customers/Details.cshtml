@@ -143,39 +143,30 @@ th, td {
           <button class="tablink Mtab" onclick="openPage('MOrders', this, 'white')">訂單</button>
           <button class="tablink Mtab" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
 
-                  <div id="MData" class="tabcontent">
+                 <div id="MData" class="tabcontent">
                 @foreach (var item in Model.Customers)
                 {
 
 
-
-                              <span class="m_title">會員資料</span>
-
-                                  <!-- 會員資料 -->
-          <div class="container">
-               <div class="row">
-                   <div class="col-md-12">
-
-
-                                   <div class="form2">
-                                       <p><span class="f_title"><b> 姓名 </b> </span><span>   @Html.DisplayFor(modelItem => item.CustomerName)</span></p>
-                                       <p><span class="f_title"><b> 生日 </b> </span><span>  @Html.DisplayFor(modelItem => item.DateOfBirth)</span></p>
-                                       <p><span class="f_title"><b> 性別 </b> </span><span>   @Html.DisplayFor(modelItem => item.Gender)</span></p>
-                                       <p><span class="f_title"><b> 手機 </b> </span><span>   @Html.DisplayFor(modelItem => item.MobilePhoneNumber)</span></p>
-                                   </div>
-                               </div>
-                               <div class=" col-md-6 ">
-                                   <div class="form2">
-                                       <p><span class="f_title"><b> 地址 </b> </span><span>@Html.DisplayFor(modelItem => item.AddressCity) @Html.DisplayFor(modelItem => item.AddressDist) @Html.DisplayFor(modelItem => item.Address)</span></p>
-                                       <p><span class="f_title"><b> 電子郵件 </b> </span><span> @Html.DisplayFor(modelItem => item.Email)</span></p><br />
-                                                     <a asp-action="Edit" asp-route-id=" @item.CustomerId" class="MEdit"><i class="fa-regular fa-pen-to-square"></i>修改會員資料</a>                                            
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                                <!-- 會員資料 -->
+        <div class="container">
+                 <div class="row">
+                     <div class="col-md-4 offset-md-5">
+                         <div class="form2" style="font-size:20px; ">
+                                     <a style="font-size:25px; background-color: antiquewhite;  font-weight: 700; padding: 5px; ">會員資料</a>
+                                     <p style="margin-top:30px;"><span class="f_title"><b> 姓名 : </b> </span><span>   @Html.DisplayFor(modelItem => item.CustomerName)</span></p>
+                                     <p><span class="f_title"><b> 生日 :</b> </span><span>  @Html.DisplayFor(modelItem => item.DateOfBirth)</span></p>
+                                     <p><span class="f_title"><b> 性別 :</b> </span><span>   @Html.DisplayFor(modelItem => item.Gender)</span></p>
+                                     <p><span class="f_title"><b> 手機 :</b> </span><span>   @Html.DisplayFor(modelItem => item.MobilePhoneNumber)</span></p> 
+                                     <p><span class="f_title"><b> 地址 :</b> </span><span>@Html.DisplayFor(modelItem => item.AddressCity) @Html.DisplayFor(modelItem => item.AddressDist) @Html.DisplayFor(modelItem => item.Address)</span></p>
+                                     <p><span class="f_title"><b> 電子郵件 :</b> </span><span> @Html.DisplayFor(modelItem => item.Email)</span></p><br />
+                                     <a asp-action="Edit" asp-route-id=" @item.CustomerId" class="MEdit"><i class="fa-regular fa-pen-to-square"></i>修改會員資料</a>                                            
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
                 }
-      </div>
-
+</div>
 
 
  <div id="MOrders" class="tabcontent">
