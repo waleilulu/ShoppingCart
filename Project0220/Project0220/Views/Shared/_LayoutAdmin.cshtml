@@ -4,8 +4,8 @@
 <head>
 	<!--此頁代碼為Admin的Nav欄公版-->
 
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
 	<!--引用-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -29,6 +29,22 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 		}
+
+		/* 調整NavBar每個項目的距離 */
+		.navbar-nav .nav-link {
+			margin-right: 20px;
+		}
+
+		/* 調整NavBar每個項目的字體大小 */
+		.navbar-nav .nav-link {
+			font-size: 20px;
+		}
+
+		/* 調整NavBar【管理者頁面】字體大小 */
+		.navbar-brand {
+			font-size: 30px;
+		}
+
 	</style>
 </head>
 
@@ -86,39 +102,39 @@
 	</nav>
 	<br>
 
-    <div>
-        @RenderBody()
+	<div>
+		@RenderBody()
 
 		@* 如果沒有加以下這個，分頁的Script功能會失效 *@
 		@RenderSection("Scripts", required: false)
-    </div>
+	</div>
 </body>
 </html>
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-	document.getElementById('sendEmailLink').addEventListener('click', function(event) {
-		event.preventDefault(); // 防止點擊連結時觸發默認行為（即跳轉到指定 URL）
+	document.addEventListener('DOMContentLoaded', function () {
+		document.getElementById('sendEmailLink').addEventListener('click', function (event) {
+			event.preventDefault(); // 防止點擊連結時觸發默認行為（即跳轉到指定 URL）
 
-		// 在此處觸發郵件發送的 Ajax 請求（省略）
+			// 在此處觸發郵件發送的 Ajax 請求（省略）
 
-		// 在 Ajax 請求成功處理後，彈出警告訊息
-		// 假設您使用的是 fetch API 來處理 Ajax 請求
-		fetch(this.href)
-			.then(response => {
-				if (response.ok) {
-					// 郵件發送成功，彈出警告訊息
-					alert('郵件已成功發送！');
-				} else {
-					// 郵件發送失敗，彈出錯誤訊息
-					alert('郵件發送失敗！');
-				}
-			})
-			.catch(error => {
-				// 錯誤處理
-				console.error('Error:', error);
-				alert('發生了一些錯誤！');
-			});
+			// 在 Ajax 請求成功處理後，彈出警告訊息
+			// 假設您使用的是 fetch API 來處理 Ajax 請求
+			fetch(this.href)
+				.then(response => {
+					if (response.ok) {
+						// 郵件發送成功，彈出警告訊息
+						alert('郵件已成功發送！');
+					} else {
+						// 郵件發送失敗，彈出錯誤訊息
+						alert('郵件發送失敗！');
+					}
+				})
+				.catch(error => {
+					// 錯誤處理
+					console.error('Error:', error);
+					alert('發生了一些錯誤！');
+				});
+		});
 	});
-});
 
 </script>
