@@ -23,6 +23,10 @@ namespace Project0220.Controllers
             var data = await _contextNew.Products
                              .Where(o2 => o2.ProductId >= 5 && o2.ProductId <= 8)
                              .ToListAsync();
+            var id = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
+            var cartQuantity = _contextNew.CartItems.Where(c => c.CustomerID == id).Sum(c => c.Quantity);
+            HttpContext.Session.SetInt32("cartQuantity", cartQuantity);
+            ViewData["CartQuantity"] = cartQuantity;
 
             return View(data);
         }
