@@ -378,6 +378,33 @@ else
             $(".cart-badge").text(totalQuantity);
         }
 
+    $(document).ready(function () {
+        // 在頁面加載時，從會話中獲取購物車數量並更新購物車圖示上的數量
+        var cartQuantity = sessionStorage.getItem('cartQuantity');
+        if (cartQuantity) {
+            $(".cart-badge").text(cartQuantity);
+        }
+
+        // 計算總價格和總數量
+        calculateTotal();
+
+        // 點擊加入購物車按鈕時的操作
+        $(".addToCartButton").click(function () {
+            // 獲取這次添加到購物車的商品數量
+            var quantityToAdd = parseInt($(this).data('quantity'));
+
+            // 假設這裡有一些與加入購物車相關的操作
+            // 在成功加入購物車後，將購物車數量存儲在會話中
+            var totalQuantity = parseInt(sessionStorage.getItem('cartQuantity')) || 0;
+            totalQuantity += quantityToAdd; // 增加購物車數量
+            sessionStorage.setItem('cartQuantity', totalQuantity);
+            $(".cart-badge").text(totalQuantity); // 更新購物車圖示上的數量
+
+            // 重新計算總價格和總數量
+            calculateTotal();
+        });
+    });
+
     @* 計算購物車icon數量 *@
         @* function calculateTotal() {
             var totalQuantity = 0;
