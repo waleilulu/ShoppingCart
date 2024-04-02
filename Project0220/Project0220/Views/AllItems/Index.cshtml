@@ -84,12 +84,12 @@
 																						<i class="fa fa-cart-plus"></i>
 																					</a>
 																				</li>
-																				<!--追蹤-->
+																				<!--追蹤1-->
 																				<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
 																				<li>
 																					<a href="javascript:;">
-																						<input type="hidden" id="product-color-choose" value="@item.Color1" />
-																						<button onclick="addfavoritebtn(@item.ProductId)" class="fa fa-heart-o"></button>
+																					
+																							<button onclick="addToTrack('@item.ProductId','@item.Color1')" class="fa fa-heart-o"></button>
 																					</a>
 																				</li>
 																			</ul>
@@ -133,8 +133,8 @@
 																					<li><a href="#quick-view-modal-container-@item.ProductId" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
 																					<li>
 																						<a href="javascript:;">
-																							<!--<input type="hidden" id="product-color-choose" value=" />-->
-																							<button onclick="addfavoritebtn(@item.ProductId,@item.Color1)" class="fa fa-heart-o"></button>
+																							<!----><input type="hidden" id="product-color-choose" value="@item.Color1" />
+																									<button onclick="addToTrack('@item.ProductId','@item.Color1')" class="fa fa-heart-o"></button>
 																						</a>
 																					</li>
 																				</ul>
@@ -285,35 +285,44 @@
 				</div>
 			</div>
 		</div>
-	}
+	} var data = {
+		"ProductId": productId,
+		"Color": productColor
+	};
 	<!-- Shop Section End -->
 	<script>
 
-		function addfavoritebtn(productId,color) {
-			//var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色
-			console.log(color);
-			$.ajax({
-				url: "/AllItems/FollowColor",
-				method: "post",
-				data: { ProductId: productId, Color: color },
-				success: function (result) {
-					if (result.success) {
-						alert("商品追蹤成功");
-					} else {
-						// 處理失敗
-						console.error("發生錯誤:", result.message);
-						alert(result.message);
-					}
-				},
-				error: function (error) {
-					console.error("發生錯誤:", error);
-					alert("錯誤");
-				}
 
 
-			});
+	function addToTrack(productId,productColor) {
+		var data={"ProductId": productId,"Color":productColor};
+		console.log(data);
+	$.ajax({
+		   url:"/AllItems/Follow",
+			method:"post",
+		 contentType: "application/json",
+		   data: JSON.stringify(data),
+		 success:function (result){
+			   if (result.success) {
+			alert("商品追蹤成功");
+		} else {
+			// 處理失敗
+			console.error("發生錯誤:", result.message);
+			alert(result.message);
+		}
+			},
+			error:function (error){
+				console.error("發生錯誤:",error);
+				  alert("錯誤");
+			}
+
+
+		});
 
 		}
+
+
+
 
 
 		var modelData = @Html.Raw(Json.Serialize(Model));
@@ -327,6 +336,8 @@
 			event.preventDefault();
 			console.log("click");
 			console.log($(this).attr('id'));
+
+
 			var productId = $(this).attr('id');
 			var matchingItems = modelData.find(function (item) {
 				console.log(item.productId, productId);
