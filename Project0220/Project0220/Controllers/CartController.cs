@@ -123,6 +123,63 @@ namespace Project0220.Controllers
                 return Json(new { success = false, message = "尚未登錄 請登入" });
             }
 		}
+        [HttpPost]
+        public IActionResult AddToCart_HP(int productId, int quantity, string selectedcolor)
+        {
+            // 檢查用戶是否已通過身份驗證，以確保只有登入用戶才能添加到購物車
+            if (IsAuthenticated())
+            {
+                // 獲取已登入用戶的CustomerID
+                var memberCookie = HttpContext.Request.Cookies["membercookie"];
+                var customerID = _context.Customers
+                    .FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
+
+                if (customerID != null)
+                {
+                    // 找到現有的 CartItem，包括顏色的比較。如果商品有多個顏色，加入不同顏色商品也會視為不同項目
+                    var existingCartItem = _context.CartItems
+                        .FirstOrDefault(c => c.CustomerID == customerID && c.ProductID == productId && c.SelectedColor == selectedcolor);
+
+                    if (existingCartItem != null)
+                    {
+                        // 更新現有的 CartItem 的數量
+                        existingCartItem.Quantity += quantity;
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        // 創建新的 CartItem 實例，並設置相關屬性
+                        var newCartItem = new CartItem
+                        {
+                            CustomerID = customerID.HasValue ? customerID.Value : default(int),
+                            ProductID = productId,
+                            Quantity = quantity,
+                            SelectedColor = selectedcolor // 將選擇的顏色設置到新的 CartItem 中
+                        };
+
+                        // 將新的 CartItem 添加到資料庫
+                        _context.CartItems.Add(newCartItem);
+                        _context.SaveChanges();
+                    }
+
+                    // 返回成功的消息或重定向到購物車頁面
+                    return RedirectToAction("Index", "Cart");
+                }
+                else
+                {
+                    // 如果找不到對應的CustomerID，可能需要進一步處理
+                    // 此處示例中將重定向到登入頁面
+                    return Json(new { success = false, message = "尚未登錄 請登入" });
+                }
+            }
+            else
+            {
+                // 如果未通過身份驗證，可能需要進一步處理
+                // 此處示例中將重定向到登入頁面
+                //return RedirectToAction("Login", "Customers");
+                return Json(new { success = false, message = "尚未登錄 請登入" });
+            }
+        }
 
         [HttpPost]
         public IActionResult AddListToCart(string data)

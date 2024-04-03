@@ -148,7 +148,7 @@
                         <div class="card-body">
                             <h6 class="card-title"><span class="badge badge-secondary">New</span> @item.ProductName</h6>
                             <p class = "UnitPr">$ @item.UnitPrice</p>
-                            <form method="POST" action="/Cart/AddToCart">
+                            <form method="POST" action="/Cart/AddToCart_HP">
                                 <input type="hidden" name="productId" value="@item.ProductId" />
                                 <input type="hidden" name="quantity" value="1" />
                                 <input type="hidden" name="selectedcolor" value="@item.Color1" />
