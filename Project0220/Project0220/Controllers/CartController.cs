@@ -106,21 +106,22 @@ namespace Project0220.Controllers
 					}
 
 					// 返回成功的消息或重定向到購物車頁面
-					return RedirectToAction("Index");
+					return Json(new { success = true, message = "商品成功加入購物車" });
 				}
 				else
 				{
 					// 如果找不到對應的CustomerID，可能需要進一步處理
 					// 此處示例中將重定向到登入頁面
-					return RedirectToAction("Login", "Customers");
+					return Json(new { success = false, message = "尚未登錄 請登入" });
 				}
 			}
 			else
 			{
-				// 如果未通過身份驗證，可能需要進一步處理
-				// 此處示例中將重定向到登入頁面
-				return RedirectToAction("Login", "Customers");
-			}
+                // 如果未通過身份驗證，可能需要進一步處理
+                // 此處示例中將重定向到登入頁面
+                //return RedirectToAction("Login", "Customers");
+                return Json(new { success = false, message = "尚未登錄 請登入" });
+            }
 		}
 
         [HttpPost]

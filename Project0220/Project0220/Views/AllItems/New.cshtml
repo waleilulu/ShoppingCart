@@ -367,8 +367,13 @@
 				method: "post",
 				data: { productId: matchingItems.productId, quantity: 1, selectedcolor: matchingItems.color1 },
 				success: function (result) {
-
-					alert("已加入購物車!");
+					if (result.success) {
+						alert("商品成功加入購物車");
+					} else {
+						// 處理失敗
+						console.error("發生錯誤:", result.message);
+						alert(result.message);
+					}
 				},
 				error: function (error) {
 					console.error("發生錯誤:", error);
