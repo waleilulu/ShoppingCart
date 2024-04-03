@@ -12,12 +12,6 @@
   <script src="~/js/Member_/js/bootstrap.bundle.min.js"> </script>
  
   
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/ca6c6d4655.js" crossorigin="anonymous"></script> @* ICON *@
-
-
 
   <style>
       table {
@@ -165,46 +159,33 @@ th, td {
           <button class="tablink Mtab" onclick="openPage('MOrders', this, 'white')">訂單</button>
           <button class="tablink Mtab" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
 
-                 <div id="MData" class="tabcontent">
-                        <span>    <a style="font-size:25px; background-color: antiquewhite;  font-weight: 700; padding: 5px;">會員資料</a> <span>
+         <div id="MData" class="tabcontent">
+    <span>
+        <a style="font-size:25px; background-color: antiquewhite; font-weight: 700; padding: 5px;">會員資料</a>
+    </span>
                 @foreach (var item in Model.Customers)
                 {
-
-
-                                <!-- 會員資料 -->
-            <div class="container" style=" display: flex; 
-    justify-content: center; margin-top:30px;>
-             
-          
-                             <div class="form2" style="  display: flex;width: 100%;" >
-
-                  
-                                                       <div class="left-column" style="flex: 1;padding: 20px;background-color: #eee;">
-                                             <p style="margin-top:30px;"><span class="f_title"><b> 會員編號 : </b> </span><span> @Html.DisplayFor(modelItem => item.CustomerId)</span></p>
-                                     <p ><span class="f_title"><b> 姓名 : </b> </span><span> @Html.DisplayFor(modelItem => item.CustomerName)</span></p>
-                                     <p><span class="f_title"><b> 生日 :</b> </span><span>  @Html.DisplayFor(modelItem => item.DateOfBirth)</span></p>
-                                     <p><span class="f_title"><b> 性別 :</b> </span><span>   @Html.DisplayFor(modelItem => item.Gender)</span></p>
-                                          </div>
-                                                       <div class="right-column" style="flex: 1;padding: 20px; background-color: #eee;"><br /><br />
-                                     <p><span class="f_title"><b> 手機 :</b> </span><span>   @Html.DisplayFor(modelItem => item.MobilePhoneNumber)</span></p> 
-                                     <p><span class="f_title"><b> 地址 :</b> </span><span>@Html.DisplayFor(modelItem => item.AddressCity) @Html.DisplayFor(modelItem => item.AddressDist) @Html.DisplayFor(modelItem => item.Address)</span></p>
-                                     <p><span class="f_title"><b> 電子郵件 :</b> </span><span> @Html.DisplayFor(modelItem => item.Email)</span></p><br />
-                                     <a asp-action="Edit" asp-route-id=" @item.CustomerId" class="MEdit"><i class="fa-regular fa-pen-to-square"></i>修改會員資料</a>                                            
-                                  </div>
-                       </div>
-                           
-                                   <img src="~/images/All_product/SOMETHING.png" alt="錯誤">
-                                   <img src="~/images/All_product/image21.jpg" alt="錯誤">
-                                 
-
-
-            
-               
-                   
-                 
+            <!-- 會員資料 -->
+            <div class="container" style="display: flex; justify-content: center; margin-top: 30px;">
+                <div class="form2" style="display: flex; width: 100%;">
+                    <div class="left-column" style="flex: 1; padding: 20px; background-color: #eee;">
+                        <p style="margin-top: 30px;"><span class="f_title"><b> 會員編號 : </b> </span><span> @Html.DisplayFor(modelItem => item.CustomerId)</span></p>
+                        <p><span class="f_title"><b> 姓名 : </b> </span><span> @Html.DisplayFor(modelItem => item.CustomerName)</span></p>
+                        <p><span class="f_title"><b> 生日 :</b> </span><span> @Html.DisplayFor(modelItem => item.DateOfBirth)</span></p>
+                        <p><span class="f_title"><b> 性別 :</b> </span><span> @Html.DisplayFor(modelItem => item.Gender)</span></p>
+                    </div>
+                    <div class="right-column" style="flex: 1; padding: 20px; background-color: #eee;">
+                        <p><span class="f_title"><b> 手機 :</b> </span><span> @Html.DisplayFor(modelItem => item.MobilePhoneNumber)</span></p>
+                        <p><span class="f_title"><b> 地址 :</b> </span><span> @Html.DisplayFor(modelItem => item.AddressCity) @Html.DisplayFor(modelItem => item.AddressDist) @Html.DisplayFor(modelItem => item.Address)</span></p>
+                        <p><span class="f_title"><b> 電子郵件 :</b> </span><span> @Html.DisplayFor(modelItem => item.Email)</span></p>
+                        <br />
+                        <a asp-action="Edit" asp-route-id="@item.CustomerId" class="MEdit" style="color: white;"><i class="fa-regular fa-pen-to-square"></i>修改會員資料</a>
+                    </div>
+                </div>
+            </div>
                 }
+</div>
 
-               
 
 
  <div id="MOrders" class="tabcontent">
@@ -458,4 +439,10 @@ $(document).ready(function(){
     });
 });
 </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/ca6c6d4655.js" crossorigin="anonymous"></script> @* ICON *@
+
 
