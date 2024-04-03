@@ -221,7 +221,7 @@
                                     <td>
                                         <form method="post" asp-controller="Cart" asp-action="UpdateCartItemQuantity">
                                             <input type="hidden" name="cartItemId" value="@item.CartItemID" />
-                                            <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" />
+                                            <input type="number" class="update" name="newQuantity" value="@item.Quantity" min="1" max="5"/>
                                         </form>
                                     </td>
                                     <td>$@item.Product.UnitPrice</td>
@@ -352,7 +352,7 @@ else
                     "data": data
                 },
                 success: function (result) {
-                    alert("更新成功");
+                    @* alert("更新成功"); *@
                     calculateTotal(); @*  更新總價格和總商品數量 *@
                                 },
                 error: function (error) {
@@ -392,7 +392,36 @@ else
         $(".cart-badge").text(totalQuantity);
         } *@
 
+        document.addEventListener("DOMContentLoaded", function () {
+            // 获取所有具有 "update" 类的输入框
+            var updateInputs = document.querySelectorAll('.update');
 
+            // 遍历所有输入框
+            updateInputs.forEach(function (input) {
+                input.addEventListener("input", function () {
+                    // 获取输入框的值、最小值和最大值
+                    var value = parseInt(this.value);
+                    var min = parseInt(this.min);
+                    var max = parseInt(this.max);
+
+                    // 如果值小于最小值，则将值设置为最小值，并显示警告消息
+                    if (value < min) {
+                        this.value = min;
+                        alert("输入的值不能小于最小值 " + min);
+                    }
+                    // 如果值大于最大值，则将值设置为最大值，并显示警告消息
+                    else if (value > max) {
+                        this.value = max;
+                        alert("输入的值不能大于最大值 " + max);
+                    }
+                });
+
+                // 防止用户通过键盘输入数字
+                input.addEventListener("keydown", function (event) {
+                    event.preventDefault();
+                });
+            });
+        });
 </script>
 
 
