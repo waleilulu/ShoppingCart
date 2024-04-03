@@ -323,6 +323,36 @@ namespace Project0220.Controllers
                 return RedirectToAction("Login", "Customers");
             }
         }
+        [HttpPost]
+        public IActionResult GetCartTotalCount()
+        {
+            // 檢查用戶是否已通過身份驗證
+            if (IsAuthenticated())
+            {
+                // 獲取已登入用戶的CustomerID
+                var memberCookie = HttpContext.Request.Cookies["membercookie"];
+                var customerID = _context.Customers.FirstOrDefault(c => c.CustomerId.ToString() == memberCookie)?.CustomerId;
+
+                if (customerID != null)
+                {
+                    // 查詢該用戶的購物車項目總數量
+                    var totalCount = _context.CartItems.Where(ci => ci.CustomerID == customerID).Sum(ci => ci.Quantity);
+
+                    // 返回購物車項目總數量
+                    return Json(new { totalCount = totalCount });
+                }
+                else
+                {
+                    // 如果找不到對應的CustomerID，可能需要進一步處理
+                    return RedirectToAction("Login", "Customers");
+                }
+            }
+            else
+            {
+                // 如果未通過身份驗證，重定向到登入頁面
+                return RedirectToAction("Login", "Customers");
+            }
+        }
 
     }
 

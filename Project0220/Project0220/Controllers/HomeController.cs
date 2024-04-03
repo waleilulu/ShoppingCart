@@ -6,36 +6,32 @@ using System.Diagnostics;
 
 namespace Project0220.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
         private readonly ScaffoldEcommerceDbContext _contextNew;
 
 
-        public HomeController(ILogger<HomeController> logger,ScaffoldEcommerceDbContext contextNew)
-		{
+        public HomeController(ILogger<HomeController> logger, ScaffoldEcommerceDbContext contextNew)
+        {
             _contextNew = contextNew;
             _logger = logger;
-		}
+        }
 
-		public async Task<IActionResult> Index()
-		{
+        public async Task<IActionResult> Index()
+        {
             var data = await _contextNew.Products
                              .Where(o2 => o2.ProductId >= 5 && o2.ProductId <= 8)
                              .ToListAsync();
-            var id = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
-            var cartQuantity = _contextNew.CartItems.Where(c => c.CustomerID == id).Sum(c => c.Quantity);
-            HttpContext.Session.SetInt32("cartQuantity", cartQuantity);
-            ViewData["CartQuantity"] = cartQuantity;
 
             return View(data);
         }
-        
+
 
         public IActionResult Privacy()
-		{
-			return View();
-		}
+        {
+            return View();
+        }
         public async Task<IActionResult> Sofa(string bee)
         {
             // 查詢CategoryId為1的商品
@@ -186,9 +182,9 @@ namespace Project0220.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
 }

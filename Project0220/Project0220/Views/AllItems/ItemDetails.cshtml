@@ -6,296 +6,293 @@
 @model Project0220.ViewModel.ItemDetailsViewModel
 
 
-    <!-- All css files are included here. -->
-
-        <!-- main-search start -->
-        <div class="main-search-active">
-            <div class="sidebar-search-icon">
-                <button class="search-close"><i class="fa fa-times"></i></button>
+<!-- All css files are included here. -->
+<!-- main-search start -->
+<div class="main-search-active">
+    <div class="sidebar-search-icon">
+        <button class="search-close"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="sidebar-search-input">
+        <form action="#">
+            <div class="form-search">
+                <input id="search" class="input-text" value="" placeholder="" type="search">
+                <button>
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
-            <div class="sidebar-search-input">
-                <form action="#">
-                    <div class="form-search">
-                        <input id="search" class="input-text" value="" placeholder="" type="search">
-                        <button>
-                            <i class="fa fa-search"></i>
-                        </button>
+        </form>
+        <p class="form-description">Hit enter to search or ESC to close</p>
+    </div>
+</div>
+<!-- main-search start -->
+<!-- Page Banner Section Start -->
+<div class="page-banner-section section bg-image pb-2 pt-2" data-bg="assets/images/bg/breadcrumb.png">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @foreach (var item in Model.Products)
+                {
+                    <div class="page-banner text-left">
+                        <h2>Single Product</h2>
+                        <ul class="page-breadcrumb">
+                            <li><a href="index.html">首頁</a></li>
+                            <li>商品</li>
+                            <li>@Html.DisplayFor(modelItem => item.ProductName)</li>
+                        </ul>
                     </div>
-                </form>
-                <p class="form-description">Hit enter to search or ESC to close</p>
+                }
             </div>
         </div>
-        <!-- main-search start -->
+    </div>
+</div>
+<!-- Page Banner Section End -->
+<!-- Single Product Section Start -->
 
-
-        <!-- Page Banner Section Start -->
-        <div class="page-banner-section section bg-image pb-2 pt-2" data-bg="assets/images/bg/breadcrumb.png">
-            <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="shop-area">
                 <div class="row">
-                    <div class="col">
-                        @foreach (var item in Model.Products)
-                            {
-                        <div class="page-banner text-left">
-                            <h2>Single Product</h2>
-                            <ul class="page-breadcrumb">
-                                <li><a href="index.html">首頁</a></li>
-                                <li>商品</li>
-                                    <li>@Html.DisplayFor(modelItem => item.ProductName)</li>
-                            </ul>
+
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col-md-6 pr-35 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
+                            <!-- Product Details Left -->
+                            <div class="product-details-left">
+                                <div class="product-details-images-2 tf-element-carousel">
+                                    <div class="lg-image">
+                                        <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
+                                        <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                    </div>
+
+                                    <div class="lg-image">
+                                        <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
+                                        <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                    </div>
+                                    <div class="lg-image">
+                                        <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
+                                        <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                    </div>
+                                    @* <div class="lg-image">
+                                <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
+                                <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                </div>
+                                <div class="lg-image">
+                                <img src="~/images/All_product/A00011-2.jpg" alt="">
+                                <a href="~/images/All_product/A00011-2.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
+                                </div> *@
+                                </div>
+                                <div class="product-details-thumbs-2 mt-0">
+                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
+                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+                                    <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
+                                    @* <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
+                                <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
+                                </div>
+                            </div>
+                            <!--Product Details Left -->
                         </div>
-                            }
-                    </div>
+                        <div class="col-md-6">
+                            <!--Product Details Content Start-->
+                            <div class="product-details-content">
+                                <h2>@Html.DisplayFor(modelItem => item.ProductName)</h2>
+                                <div class="single-product-reviews">
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star active"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <a class="review-link" href="#">(1則顧客評價)</a>
+                                </div>
+                                <div class="single-product-price">
+                                    <span class="price new-price">$ @Html.DisplayFor(modelItem => item.UnitPrice)</span>
+                                    @* <span class="regular-price">$40,000</span> *@
+                                </div>
+                                <div class="product-description">
+                                    @* <p> 商品小描述區塊
+                                @Html.DisplayFor(modelItem => item.Description)
+                                </p> *@
+                                    <p>
+                                        尺寸:
+                                        @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
+                                    </p>
+                                </div>
+                                @* 購物車測試 *@
+                                <form method="POST" action="/Cart/AddToCart">
+                                    <!-- 隱藏的產品ID input 欄位 -->
+                                    <input type="hidden" name="productId" value="@item.ProductId">
+
+                                    <!-- 產品數量 input 欄位 -->
+                                    <div class="single-product-quantity mb-2 form-inline">
+                                        <div class="product-quantity">
+                                            <input id="quantity" name="quantity" value="1" type="number">
+                                        </div>
+
+
+
+                                        <!-- 顏色選擇 input 欄位 -->
+                                        <div class="product-color">
+                                            <select id="product-color-choose" name="selectedColor">
+                                                <option value="@item.Color1">@item.Color1</option>
+                                                <option value="@item.Color2">@item.Color2</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="wishlist-compare-btn mb-2  ">
+                                            <!--顏色-->
+                                            <a onclick="addfavoritebtn(@item.ProductId)" class="wishlist-btn" id="wishlistBtn">
+                                                加入我的最愛
+
+                                            </a>
+
+                                        </div>
+
+
+                                        <!-- 加入購物車按鈕 -->
+                                        <div class="add-to-link mb-2">
+                                            <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag"></i>加入購物車</button>
+                                        </div>
+
+
+
+                                </form>
+
+                                <div class="product-meta">
+                                    <span class="posted-in">
+                                        @foreach (var item2 in Model.Category)
+                                        {
+                                            <span>種類:</span>
+                                            <a href="#">@Html.DisplayFor(modelItem => item2.CategoryName)</a>
+                                        }
+                                    </span>
+                                </div>
+
+
+                                <div class="single-product-sharing">
+                                    <h3>分享</h3>
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Product Details Content End-->
+                        </div>
+                    }
                 </div>
             </div>
         </div>
-        <!-- Page Banner Section End -->
-        <!-- Single Product Section Start -->
-       
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="shop-area">
-                            <div class="row">
-                                
-                                @foreach (var item in Model.Products)
-                                {
-                                <div class="col-md-6 pr-35 pr-lg-15 pr-md-15 pr-sm-15 pr-xs-15">
-                                    <!-- Product Details Left -->
-                                    <div class="product-details-left">
-                                        <div class="product-details-images-2 tf-element-carousel">
-                                            <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
+    </div>
+</div>
 
-                                            <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                            <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                            @* <div class="lg-image">
-                                                    <img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
-                                                    <a href="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="~/images/All_product/A00011-2.jpg" alt="">
-                                                <a href="~/images/All_product/A00011-2.jpg" class="popup-img venobox" data-gall="myGallery"><i class="fa fa-expand"></i></a>
-                                            </div> *@
-                                        </div>
-                                        <div class="product-details-thumbs-2 mt-0">
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
-                                                <div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
-                                            @* <div class="sm-image"><img src="~/images/All_product/A00012-1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="~/images/All_product/A00011-2.jpg" alt="product image thumb"></div> *@
-                                        </div>
-                                    </div>
-                                    <!--Product Details Left -->
-                                </div>
-                                <div class="col-md-6">
-                                    <!--Product Details Content Start-->
-                                    <div class="product-details-content">
-                                            <h2>@Html.DisplayFor(modelItem => item.ProductName)</h2>
-                                        <div class="single-product-reviews">
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star active"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <a class="review-link" href="#">(1則顧客評價)</a>
-                                        </div>
-                                        <div class="single-product-price">
-                                                <span class="price new-price">$ @Html.DisplayFor(modelItem => item.UnitPrice)</span>
-                                            @* <span class="regular-price">$40,000</span> *@
-                                        </div>
-                                        <div class="product-description">
-                                            @* <p> 商品小描述區塊
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                            </p> *@
-                                            <p>尺寸:
-                                        @Html.DisplayFor(modelItem => item.Length)*@Html.DisplayFor(modelItem => item.Width)*@Html.DisplayFor(modelItem => item.Height)
-                                            </p>
-                                        </div>
-                                @* 購物車測試 *@
-                                    <form method="POST" action="/Cart/AddToCart">
-                                        <!-- 隱藏的產品ID input 欄位 -->
-                                        <input type="hidden" name="productId" value="@item.ProductId">
-                                       
-                                             <!-- 產品數量 input 欄位 -->
-                                              <div class="single-product-quantity mb-2 form-inline">
-                                                  <div class="product-quantity">
-                                                        <input id="quantity" name="quantity" value="1" type="number">
-                                                 </div>
-                                       
-
-
-                                                 <!-- 顏色選擇 input 欄位 -->
-                                                     <div class="product-color">
-                                                <select id="product-color-choose" name="selectedColor" >
-                                                    <option value="@item.Color1">@item.Color1</option>
-                                                    <option value="@item.Color2">@item.Color2</option>
-                                                </select>
-                                            </div>
-
-                     
-                                            <div class="wishlist-compare-btn mb-2  ">
-                                                <!--顏色-->
-                                               <a onclick="addfavoritebtn(@item.ProductId)"class="wishlist-btn" id="wishlistBtn">加入我的最愛
-                                            
-                                               </a>
-
-                                        </div>
-
-                    
-                                   <!-- 加入購物車按鈕 -->
-                                        <div class="add-to-link mb-2">
-                                            <button type="submit" class="bs-4-6-1-btn"><i class="fa fa-shopping-bag addToCartButton" data-quantity="1"></i>加入購物車</button>
-                                        </div>
-
-                                              
-                                       
-                                    </form>
-                 
-                                        <div class="product-meta">
-                                            <span class="posted-in">
-                                        @foreach (var item2 in Model.Category)
-                                        { 
-                                                         <span>種類:</span>
-                                                            <a href="#">@Html.DisplayFor(modelItem => item2.CategoryName)</a>
-                                        }
-                                            </span>
-                                        </div>
-                               
-
-                                        <div class="single-product-sharing">
-                                            <h3>分享</h3>
-                                            <ul>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--Product Details Content End-->
-                                </div>
-                    }
+<!-- Single Product Section End -->
+<!--Product Description Review Section Start-->
+@*  <div class="product-description-review-section section"> *@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="product-review-tab section">
+                <!--Review And Description Tab Menu Start-->
+                <ul class="nav dec-and-review-menu">
+                    <li>
+                        <a class="active" data-toggle="tab" href="#description">商品描述</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#reviews">顧客評價 (1)</a>
+                    </li>
+                </ul>
+                <!--Review And Description Tab Menu End-->
+                <!--Review And Description Tab Content Start-->
+                <div class="tab-content product-review-content-tab" id="myTabContent-4">
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="tab-pane fade active show" id="description">
+                            <div class="single-product-description">
+                                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                                @* <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p> *@
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-       
-        <!-- Single Product Section End -->
-
-        <!--Product Description Review Section Start-->
-       @*  <div class="product-description-review-section section"> *@
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="product-review-tab section">
-                            <!--Review And Description Tab Menu Start-->
-                            <ul class="nav dec-and-review-menu">
+                    }
+                    <div class="tab-pane fade" id="reviews">
+                        <div class="review-page-comment">
+                            <h2>1 review for Sit voluptatem</h2>
+                            <ul>
                                 <li>
-                                    <a class="active" data-toggle="tab" href="#description">商品描述</a>
-                                </li>
-                                <li>
-                                    <a data-toggle="tab" href="#reviews">顧客評價 (1)</a>
-                                </li>
-                            </ul>
-                            <!--Review And Description Tab Menu End-->
-                            <!--Review And Description Tab Content Start-->
-                            <div class="tab-content product-review-content-tab" id="myTabContent-4">
-                                 @foreach (var item in Model.Products)
-                                {
-                                <div class="tab-pane fade active show" id="description">
-                                    <div class="single-product-description">
-                                        <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                                        @* <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p> *@
-                                    </div>
-                                </div>
-                                }
-                                <div class="tab-pane fade" id="reviews">
-                                    <div class="review-page-comment">
-                                        <h2>1 review for Sit voluptatem</h2>
-                                        <ul>
-                                            <li>
-                                                <div class="product-comment">
-                                                    <img src="static/picture/author.png" alt="">
-                                                    <div class="product-comment-content">
-                                                        <div class="product-reviews">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                        <p class="meta">
-                                                            <strong>Tracy</strong> - <span>April 1, 2024</span>
-                                                            <div class="description">
-                                                                <p>這組沙發非常好坐，很適合一般家庭。</p>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        @* <div class="review-form-wrapper">
-                                            <div class="review-form">
-                                                <span class="comment-reply-title">Add a review </span>
-                                                <form action="#">
-                                                    <p class="comment-notes">
-                                                        <span id="email-notes">Your email address will not be published.</span>
-                                                        Required fields are marked
-                                                        <span class="required">*</span>
-                                                    </p>
-                                                    <div class="comment-form-rating">
-                                                        <label>Your rating</label>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-element">
-                                                        <div class="comment-form-comment">
-                                                            <label>Comment</label>
-                                                            <textarea name="message" cols="40" rows="8"></textarea>
-                                                        </div>
-                                                        <div class="review-comment-form-author">
-                                                            <label>Name </label>
-                                                            <input required="required" type="text">
-                                                        </div>
-                                                        <div class="review-comment-form-email">
-                                                            <label>Email </label>
-                                                            <input required="required" type="text">
-                                                        </div>
-                                                        <div class="comment-submit">
-                                                            <button type="submit" class="form-button">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                    <div class="product-comment">
+                                        <img src="static/picture/author.png" alt="">
+                                        <div class="product-comment-content">
+                                            <div class="product-reviews">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
                                             </div>
+                                            <p class="meta">
+                                                <strong>Tracy</strong> - <span>April 1, 2024</span>
+                                                <div class="description">
+                                                    <p>這組沙發非常好坐，很適合一般家庭。</p>
+                                                </div>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
+                            </ul>
+                            @* <div class="review-form-wrapper">
+                            <div class="review-form">
+                            <span class="comment-reply-title">Add a review </span>
+                            <form action="#">
+                            <p class="comment-notes">
+                            <span id="email-notes">Your email address will not be published.</span>
+                            Required fields are marked
+                            <span class="required">*</span>
+                            </p>
+                            <div class="comment-form-rating">
+                            <label>Your rating</label>
+                            <div class="rating">
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            </div>
+                            </div>
+                            <div class="input-element">
+                            <div class="comment-form-comment">
+                            <label>Comment</label>
+                            <textarea name="message" cols="40" rows="8"></textarea>
+                            </div>
+                            <div class="review-comment-form-author">
+                            <label>Name </label>
+                            <input required="required" type="text">
+                            </div>
+                            <div class="review-comment-form-email">
+                            <label>Email </label>
+                            <input required="required" type="text">
+                            </div>
+                            <div class="comment-submit">
+                            <button type="submit" class="form-button">Submit</button>
+                            </div>
+                            </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
                             </div>
                             <!--Review And Description Tab Content End--> *@
                         </div>
                     </div>
                 </div>
             </div>
-         @* </div> *@
-        <!--Product Description Review Section Start-->
-
-        <!--Product section start-->
-        @* <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5"> *@
+            @* </div> *@
+            <!--Product Description Review Section Start-->
+            <!--Product section start-->
+            @* <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5"> *@
             <div class="container">
 
                 <div class="row">
@@ -339,7 +336,7 @@
                         <div class="single-grid-product mb-40">
                             <div class="product-image">
                                 @* <div class="product-label">
-                                    <span>-20%</span>
+                                <span>-20%</span>
                                 </div> *@
                                 <a href="single-product.html">
                                     <img src="~/images/All_product/A00021.jpg" class="img-fluid" alt="">
@@ -446,7 +443,7 @@
                         <!--  Single Grid product Start -->
                         <div class="single-grid-product mb-40">
                             <div class="product-image">
-                                
+
                                 <a href="single-product.html">
                                     <img src="~/images/All_product/A00261.jpg" class="img-fluid" alt="">
                                     <img src="~/images/All_product/A00262.jpg" class="img-fluid" alt="">
@@ -652,60 +649,60 @@
                 </div>
 
             </div>
-      
-    </div>
+
+        </div>
 
 
-<!--會員追蹤-->
+        <!--會員追蹤-->
 
-  <script>
-     
+        <script>
 
-   function addfavoritebtn(productId) {
-    var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色 VV
-      console.log(selectedColor);
-        $.ajax({
-            url:"/AllItems/FollowColor",
-            method:"post",
-            data:{ProductId:productId,Color: selectedColor },
-            success:function (result){
-               if (result.success) {
-            alert("商品追蹤成功");
-        } else {
-            // 處理失敗
-            console.error("發生錯誤:", result.message);
-            alert(result.message);
-        }
-            },
-            error:function (error){
-                console.error("發生錯誤:",error);
-                  alert("錯誤");
+
+            function addfavoritebtn(productId) {
+                var selectedColor = $('#product-color-choose').val(); // 獲取所選的顏色 VV
+                console.log(selectedColor);
+                $.ajax({
+                    url: "/AllItems/FollowColor",
+                    method: "post",
+                    data: { ProductId: productId, Color: selectedColor },
+                    success: function (result) {
+                        if (result.success) {
+                            alert("商品追蹤成功");
+                        } else {
+                            // 處理失敗
+                            console.error("發生錯誤:", result.message);
+                            alert(result.message);
+                        }
+                    },
+                    error: function (error) {
+                        console.error("發生錯誤:", error);
+                        alert("錯誤");
+                    }
+
+
+                });
+
             }
 
 
-        });
+            function subscribe() {
+                var email = $("#subscribe").val();
+                $.ajax({
+                    url: "/AllItems/Subscribe",
+                    method: "post",
+                    data: { email: email },
+                    success: function (result) {
+                        console.log(result);
+                        alert(result.message);
 
-        }
+                    },
+                    error: function (error) {
+                        alert("請先登入");
+                    }
 
 
-        function subscribe(){
-            var email = $("#subscribe").val();
-        $.ajax({
-            url:"/AllItems/Subscribe",
-            method:"post",
-            data:{email:email},
-            success:function (result){
-                console.log(result);
-                alert(result.message);
+                });
 
-            },
-            error:function (error){
-                alert("請先登入");
             }
 
-
-        });
-
-        }
-
-    </script>
+        </script>
