@@ -370,7 +370,7 @@ var currentPaymentMethod = "";
 
 function showPaymentInfo(paymentMethod) {
     currentPaymentMethod = paymentMethod;
-    if (paymentMethod == "匯款") {
+    if (paymentMethod == "轉帳") {
         document.getElementById('bankTransferInfo').style.display = 'block';
     } else if (paymentMethod == "信用卡") {
         document.getElementById('creditCardForm').style.display = 'block';
@@ -379,7 +379,7 @@ function showPaymentInfo(paymentMethod) {
 
 function closePopup(popupId) {
     document.getElementById(popupId).style.display = 'none';
-    if (currentPaymentMethod == "匯款") {
+    if (currentPaymentMethod == "轉帳") {
         @* 顯示提示並顯示確認訂購 *@
         Swal.fire({
             position: 'center',

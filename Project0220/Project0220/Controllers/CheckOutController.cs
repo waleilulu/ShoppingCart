@@ -216,8 +216,8 @@ namespace Project0220.Controllers
         }
 
 
-            
-            [HttpPost]
+
+        [HttpPost]
             public async Task<IActionResult> SaveCheckOut(int orderId)
             {
             var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
@@ -284,9 +284,73 @@ namespace Project0220.Controllers
             return RedirectToAction("CheckOutDone", new { orderId = orderId }); 
         }
 
+        //===========================================
+        
+        //public IActionResult CancelOrder(int orderId)
+        //{
+        //    var order = _context.Orders.Find(orderId);
+        //    if (order == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // 确保order.OrderDate不为null
+        //    if (!order.OrderDate.HasValue)
+        //    {
+        //        // 如果order.OrderDate为null，可能需要处理这种情况，比如返回特定的错误消息
+        //        return View("OrderDateMissingError");
+        //    }
+
+        //    // 现在我们可以安全地使用.Value获取DateTime，并计算TotalHours
+        //    var hoursSinceOrderPlaced = (DateTime.Now - order.OrderDate.Value).TotalHours;
+
+        //    if (hoursSinceOrderPlaced <= 12 && order.Status != "已取消訂單")
+        //    {
+        //        // 更新订单状态为已取消
+        //        order.Status = "已取消訂單";
+        //        _context.SaveChanges();
+
+        //        // 可以在这里添加更多逻辑，比如发送取消确认邮件等
+        //        return RedirectToAction("OrderCancelled");
+        //    }
+        //    else
+        //    {
+        //        // 超过12小时，不允许取消
+        //        return View("CancelOrderFailed");
+        //    }
+        //}
 
 
-       
+
+        //public void UpdateOrderStatus()
+        //{
+        //    var orders = _context.Orders.Where(o => o.Status == "配送中").ToList();
+        //    foreach (var order in orders)
+        //    {
+        //        if (order.OrderDate.HasValue) // 检查OrderDate是否非空
+        //        {
+        //            // 因为OrderDate是可空的，使用.Value来获取非可空的DateTime值
+        //            TimeSpan timeSinceOrderShipped = DateTime.Now - order.OrderDate.Value;
+
+        //            // 现在timeSinceOrderShipped是非可空的TimeSpan，可以安全地访问TotalHours
+        //            double hoursSinceOrderShipped = timeSinceOrderShipped.TotalHours;
+
+        //            if (hoursSinceOrderShipped >= 48)
+        //            {
+        //                order.Status = "已完成訂單";
+        //            }
+        //        }
+        //        else
+        //        {
+        //            // OrderDate为空的处理逻辑（如果有的话）
+        //            // 例如：忽略这个订单，记录错误，或者设置一个默认状态
+        //        }
+        //    }
+        //    _context.SaveChanges();
+        //}
+
+        //===============================================
+
         //public async Task<IActionResult> CheckOut()
         //{
         //    var customerId = Convert.ToInt32(Request.Cookies["membercookie"]);
