@@ -393,30 +393,30 @@ else
         } *@
 
         document.addEventListener("DOMContentLoaded", function () {
-            // 获取所有具有 "update" 类的输入框
+            // 獲取具有update類型的輸入框
             var updateInputs = document.querySelectorAll('.update');
 
-            // 遍历所有输入框
+            // 遍歷所有输入框書
             updateInputs.forEach(function (input) {
                 input.addEventListener("input", function () {
-                    // 获取输入框的值、最小值和最大值
+                    // 獲取输入框的值、最小值和最大值
                     var value = parseInt(this.value);
                     var min = parseInt(this.min);
                     var max = parseInt(this.max);
 
-                    // 如果值小于最小值，则将值设置为最小值，并显示警告消息
+                    // 如果值小於最小值，則將值設置為最小值，並顯示警告消息
                     if (value < min) {
                         this.value = min;
-                        alert("输入的值不能小于最小值 " + min);
+                        alert("數量不能小於最小值 " + min);
                     }
-                    // 如果值大于最大值，则将值设置为最大值，并显示警告消息
+                    // 如果值大於最大值，則將值設置为最大值，並顯示警告消息
                     else if (value > max) {
                         this.value = max;
-                        alert("输入的值不能大于最大值 " + max);
+                        alert("數量不能大於最大值" + max);
                     }
                 });
 
-                // 防止用户通过键盘输入数字
+                // 禁止使用鍵盤輸入數字
                 input.addEventListener("keydown", function (event) {
                     event.preventDefault();
                 });
