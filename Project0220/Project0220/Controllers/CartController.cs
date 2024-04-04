@@ -176,8 +176,8 @@ namespace Project0220.Controllers
             {
                 // 如果未通過身份驗證，可能需要進一步處理
                 // 此處示例中將重定向到登入頁面
-                //return RedirectToAction("Login", "Customers");
-                return Json(new { success = false, message = "尚未登錄 請登入" });
+                return RedirectToAction("Login", "Customers");
+                //return Json(new { success = false, message = "尚未登錄 請登入" });
             }
         }
 
