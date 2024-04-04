@@ -34,9 +34,9 @@ namespace Project0220.Controllers
         [HttpPost]
         public IActionResult Search(string bee)
         {
-            if (bee == null)
+            if (string.IsNullOrEmpty(bee))
             {
-                return BadRequest("Search string cannot be null.");
+                return View("Index","Home");
             }
 
             // Redirect to Index page with search query
@@ -261,16 +261,6 @@ namespace Project0220.Controllers
             return Json(new { success = false, message = "尚未登錄 請登入" });
 
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
 

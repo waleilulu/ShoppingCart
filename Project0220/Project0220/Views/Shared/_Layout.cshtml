@@ -83,10 +83,10 @@
                         <li class="nav-item">
                             <a class="nav-link NAV" asp-controller="AllItems" asp-action="Clearance">出清品專區</a>
                         </li>
-                        <form class="form-inline my-2 my-lg-0 mr-2" method="post" action="~/AllItems/Search">
+                        <form class="form-inline my-2 my-lg-0 mr-2" method="post" action="~/AllItems/Search" onsubmit="return validateForm()">
                             <input class="form-control mr-sm-2" type="search" placeholder="搜尋您想找的物品"
-                                   aria-label="Search" name="bee">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋</button>
+                                   aria-label="Search" name="bee" id="searchInput">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">搜尋</button>
                         </form>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Customers" asp-action="UserProfile"><i class="fa-regular fa-user" style="font-size: 24px;padding-top: 6px;"></i></a>
@@ -264,6 +264,24 @@
             // 定期更新購物車總數量（例如每次頁面訪問後）
             // 請根據您的需求調整時間間隔
             setInterval(updateCartCount, 1000); // 1000毫秒，即1秒
+        });
+        function validateForm() {
+            var searchInput = document.getElementById('searchInput').value.trim();
+
+            if (searchInput === "" || searchInput === null) {
+                alert("請輸入有效的關鍵字");
+                return false; // 阻止表單提交
+            }
+            return true; 
+        }
+
+        document.getElementById('searchInput').addEventListener('input', function () {
+            var searchButton = document.getElementById('searchButton');
+            if (this.value.trim() === "") {
+                searchButton.style.display = 'none'; // 隱藏搜尋按鈕
+            } else {
+                searchButton.style.display = 'inline-block'; // 顯示搜尋按鈕
+            }
         });
     </script>
 

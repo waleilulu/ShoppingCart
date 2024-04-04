@@ -74,7 +74,10 @@
 																		</div>
 																		<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
-																			<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																			@if (!string.IsNullOrEmpty(item.Image2))
+																			{
+																				<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																			}
 																		</a>
 																		<div class="product-action">
 																			<ul>
@@ -119,7 +122,10 @@
 																		<div class="product-image">
 																			<a asp-controller="AllItems" asp-action="ItemDetails" asp-route-bee="@item.ProductId">
 																				<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" class="img-fluid" alt="">
-																				<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																				@if (!string.IsNullOrEmpty(item.Image2))
+																				{
+																					<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" class="img-fluid" alt="">
+																				}
 																			</a>
 																			<div class="product-action">
 																				<ul>
@@ -141,13 +147,6 @@
 																			</div>
 																		</div>
 																	</div>
-
-
-
-
-
-
-
 																</div>
 																<div class="col-md-8 col-sm-6">
 																	<div class="product-content-shop-list">
@@ -205,21 +204,39 @@
 											<div class="lg-image">
 												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt="">
 											</div>
-											<div class="lg-image">
-												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
-											</div>
-											<div class="lg-image">
-												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
-											</div>
-											<div class="lg-image">
-												<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
-											</div>
+											@if (!string.IsNullOrEmpty(item.Image2))
+											{
+												<div class="lg-image">
+													<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt="">
+												</div>
+											}
+											@if (!string.IsNullOrEmpty(item.Image3))
+											{
+												<div class="lg-image">
+													<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt="">
+												</div>
+											}
+											@if (!string.IsNullOrEmpty(item.Image4))
+											{
+												<div class="lg-image">
+													<img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt="">
+												</div>
+											}
 										</div>
 										<div class="product-details-thumbs">
 											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image1)" alt=""></div>
-											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+											@if (!string.IsNullOrEmpty(item.Image2))
+											{
+												<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image2)" alt=""></div>
+											}
+											@if (!string.IsNullOrEmpty(item.Image3))
+												{
 											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image3)" alt=""></div>
-											<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt=""></div>
+												}
+											@if (!string.IsNullOrEmpty(item.Image4))
+											{
+												<div class="sm-image"><img src="~/images/All_product/@Html.DisplayFor(modelItem => item.Image4)" alt=""></div>
+											}
 										</div>
 									</div>
 									<!--Product Details Left -->
