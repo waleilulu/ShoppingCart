@@ -59,10 +59,10 @@ namespace Project0220.Controllers
                         <title>會員優惠</title>
                     </head>
                     <body>
-                        <h1>最新優惠來了！</h1>
-                        <p>親愛的用戶，我們為您帶來了最新的優惠活動：凡是消費滿$5000，即可獲得$500元現金折價券。</p>
+                        <h1>最新消息來了！</h1>
+                        <p>親愛的用戶，G++g開新的分店啦~ 邀請您與我們一起盛大迎接5月20日的公益旗艦店開幕:在開幕慶當日，不限消費金額即送精美小禮物。</p>
                         <p>立即訪問我們的網站以了解更多詳情： <a href=""https://example.com"">https://example.com</a></p>
-                        <p>祝您購物愉快！</p>
+                        <p>誠摯邀請您一同參與我們的開幕</p>
                     </body>
                 </html>"; ;
             mms.IsBodyHtml = true;
