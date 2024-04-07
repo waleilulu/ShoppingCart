@@ -85,48 +85,61 @@
 	<h2>客戶意見回饋</h2>
 	<hr></hr>
 	<div class="container">
-		<div class="row">
-			<div class="col-25">
-				<label for="fname">姓名</label>
+		<form id="feedbackForm">
+			<div class="row">
+				<div class="col-25">
+					<label for="fname">姓名</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="fname" name="firstname">
+				</div>
 			</div>
-			<div class="col-75">
-				<input type="text" id="fname" name="firstname">
+			<div class="row">
+				<div class="col-25">
+					<label for="lname">連絡電話</label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="lname" name="lastname">
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="lname">連絡電話</label>
+			<div class="row">
+				<div class="col-25">
+					<label for="feedback">問題類型</label>
+				</div>
+				<div class="col-75">
+					<select id="feedback" name="feedback">
+						<option value="" disabled selected hidden>請選擇類型</option>
+						<option value="feedbackShop">關於實體店鋪</option>
+						<option value="feedbackOnlineShop">關於官網商店</option>
+						<option value="feedbackOthers">其他意見反饋</option>
+					</select>
+				</div>
 			</div>
-			<div class="col-75">
-				<input type="text" id="lname" name="lastname">
+			<div class="row">
+				<div class="col-25">
+					<label for="subject">意見內容</label>
+				</div>
+				<div class="col-75">
+					<textarea id="subject" name="subject" style="height:200px"></textarea>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="feedback">問題類型</label>
+			<br>
+			<div class="row">
+				<input type="submit" value="提交">
 			</div>
-			<div class="col-75">
-				<select id="feedback" name="feedback">
-					<option value="" disabled selected hidden>請選擇類型</option>
-					<option value="feedbackShop">關於實體店鋪</option>
-					<option value="feedbackOnlineShop">關於官網商店</option>
-					<option value="feedbackOthers">其他意見反饋</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-25">
-				<label for="subject">意見內容</label>
-			</div>
-			<div class="col-75">
-				<textarea id="subject" name="subject" style="height:200px"></textarea>
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<input type="submit" value="提交">
-		</div>
+		</form>
 	</div>
+
+	<script>
+		document.getElementById("feedbackForm").addEventListener("submit", function (event) {
+			event.preventDefault(); // 防止表单的默认提交行为
+
+			// 在这里添加您的表单处理逻辑
+
+			// 弹出提示框
+			alert("我們已經收到您的反饋，感謝您的寶貴建議!!");
+		});
+	</script>
 
 </body>
 </html>
