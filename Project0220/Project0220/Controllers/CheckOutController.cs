@@ -82,6 +82,7 @@ namespace Project0220.Controllers
             // 從 cookie 讀取 customerId
             var customerId = Request.Cookies["membercookie"];
 
+
             // 將 customerId 賦值給 ViewData
             ViewData["CustomerId"] = customerId;
 

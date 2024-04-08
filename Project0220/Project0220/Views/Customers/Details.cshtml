@@ -156,7 +156,7 @@ th, td {
 
           <button class="tablink Mtab" onclick="openPage('MData', this, 'white')" id="defaultOpen">會員資料</button>
    <!--  <button class="tablink" onclick="openPage('MDiscount', this, 'white')" >購物金</button>  -->
-          <button class="tablink Mtab" onclick="openPage('MOrders', this, 'white')">訂單</button>
+          <button id="order" class="tablink Mtab" onclick="openPage('MOrders', this, 'white')">訂單</button>
           <button class="tablink Mtab" onclick="openPage('MFollow', this, 'white')">追蹤商品</button>
 
          <div id="MData" class="tabcontent">
@@ -228,9 +228,9 @@ th, td {
                                          <tr>
                                              <td colspan="6">產品訊息無法使用</td>
                                          </tr>
-                                    }
+                                    }                                    
                                 }
-
+                               
                                         <tr>
                                                    <td colspan="6" style="font-weight: bold; font-size: 18px; margin-top:15px; background-color:white; ">
                                                 總額: $ @orderWithDetails.Order.TotalAmount</td>
@@ -269,16 +269,25 @@ th, td {
                                                 @orderWithDetails.Order.ShippingDate.Value.ToString("yyyy/MM/dd")
                                                 
                                             }
+
+                                           
                 </td>
                                 </tr>
                             </tbody>
                         </table>
-                    
+                            @if (orderWithDetails.Order.Status != "已取消訂單")
+                            {
+                                <form asp-action="CancelOrder" method="post">
+                                    <input type="hidden" name="orderId" value="@orderWithDetails.Order.OrderId" />
+                                                <button type="submit" id="CancelBtn" style=" background-color: #b0afaf; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 18px; margin-left:900px; font-size:18px; margin-bottom:10px;">取消訂單</button>
+                                </form>
+                            }
 
                           @*   ======================================================== *@
                  </div>
                             
                     }
+
                 }
                 else
                 {
@@ -439,6 +448,7 @@ $(document).ready(function(){
     });
 });
 </script>
+
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

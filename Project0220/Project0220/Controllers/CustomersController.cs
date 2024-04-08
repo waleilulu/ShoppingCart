@@ -64,9 +64,9 @@ namespace Project0220.Controllers
               .ToListAsync();
 
             var orders = await _context.Orders
-       .Where(o => o.CustomerId == id)
-       .OrderByDescending(o => o.OrderDate) // 按訂單日期降序排序
-       .ToListAsync();
+             .Where(o => o.CustomerId == id)
+             .OrderByDescending(o => o.OrderId) // 使用 OrderId 進行降序排序
+             .ToListAsync();
 
             var orderDetails = await _context.OrderDetails
                 .Where(od => orders.Select(o => o.OrderId).Contains(od.OrderId.Value))
@@ -91,8 +91,28 @@ namespace Project0220.Controllers
 
             };
 
+
             return View(viewModel);
         }
+
+        //取消訂單
+        [HttpPost]
+        public async Task<IActionResult> CancelOrder(int orderId)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null || order.Status == "已取消訂單")
+            {
+                // 訂單不存在或已經被取消
+                return NotFound();
+            }
+
+            // 更新訂單狀態為已取消
+            order.Status = "已取消訂單";
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details");
+        }
+
 
         // GET: Customers/Create
         public IActionResult Create()
