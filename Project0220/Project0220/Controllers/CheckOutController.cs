@@ -228,11 +228,8 @@ namespace Project0220.Controllers
                 return View("Error");
             }
 
-            // 根據 customerId 查找最新的訂單
             var order = await _context.Orders
-                .Where(o => o.CustomerId == customerId)
-                .OrderByDescending(o => o.OrderDate) // 有 OrderDate 表示訂單日期
-                .FirstOrDefaultAsync();
+             .FirstOrDefaultAsync(o => o.OrderId == orderId && o.CustomerId == customerId);
 
             if (order == null)
             {
@@ -247,7 +244,7 @@ namespace Project0220.Controllers
                 var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == item.ProductID);
                 if (product != null)
                 {
-                   
+
                     var orderDetails = new OrderDetail
                     {
                         OrderId = orderId,
@@ -256,12 +253,12 @@ namespace Project0220.Controllers
                         UnitPrice = product.UnitPrice,
                         SelectedColor = item.SelectedColor,
                         Discount = 1,
-                        Amount =item.Quantity * product.UnitPrice
+                        Amount = item.Quantity * product.UnitPrice
 
                     };
-                        // 將 OrderDetail 添加到資料庫
+                    // 將 OrderDetail 添加到資料庫
                     _context.OrderDetails.Add(orderDetails);
-                    
+
                     int amount = item.Quantity * product.UnitPrice.GetValueOrDefault();
                     totalAmount += amount; // 累加到總金額
 
@@ -269,8 +266,8 @@ namespace Project0220.Controllers
                     product.UnitInStock -= item.Quantity;
                 }
             }
-            
 
+            
             // 更新 Order 的 TotalAmount 計算出的總金額
             order.TotalAmount = totalAmount;
             order.Status = "配送中";
@@ -278,14 +275,15 @@ namespace Project0220.Controllers
 
             // 清空購物車
             _context.CartItems.RemoveRange(cartItems);
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-            
-            return RedirectToAction("CheckOutDone", new { orderId = orderId }); 
+
+            return RedirectToAction("CheckOutDone", new { orderId = orderId });
         }
 
+
         //===========================================
-        
+
         //public IActionResult CancelOrder(int orderId)
         //{
         //    var order = _context.Orders.Find(orderId);
@@ -302,9 +300,9 @@ namespace Project0220.Controllers
         //    }
 
         //    // 现在我们可以安全地使用.Value获取DateTime，并计算TotalHours
-        //    var hoursSinceOrderPlaced = (DateTime.Now - order.OrderDate.Value).TotalHours;
+        //    var minutesSinceOrderPlaced = (DateTime.Now - order.OrderDate.Value).TotalMinutes;
 
-        //    if (hoursSinceOrderPlaced <= 12 && order.Status != "已取消訂單")
+        //    if (minutesSinceOrderPlaced <= 3 )
         //    {
         //        // 更新订单状态为已取消
         //        order.Status = "已取消訂單";
@@ -324,29 +322,30 @@ namespace Project0220.Controllers
 
         //public void UpdateOrderStatus()
         //{
-        //    var orders = _context.Orders.Where(o => o.Status == "配送中").ToList();
+        //    var orders = _context.Orders.ToList(); // 獲取所有訂單
         //    foreach (var order in orders)
         //    {
-        //        if (order.OrderDate.HasValue) // 检查OrderDate是否非空
+        //        if (!order.OrderDate.HasValue)
         //        {
-        //            // 因为OrderDate是可空的，使用.Value来获取非可空的DateTime值
-        //            TimeSpan timeSinceOrderShipped = DateTime.Now - order.OrderDate.Value;
-
-        //            // 现在timeSinceOrderShipped是非可空的TimeSpan，可以安全地访问TotalHours
-        //            double hoursSinceOrderShipped = timeSinceOrderShipped.TotalHours;
-
-        //            if (hoursSinceOrderShipped >= 48)
-        //            {
-        //                order.Status = "已完成訂單";
-        //            }
+        //            continue; // 如果訂單日期為空，跳過這個訂單
         //        }
-        //        else
+
+        //        var minutesSinceOrderPlaced = (DateTime.Now - order.OrderDate.Value).TotalMinutes;
+
+        //        // 在12到48小时内，且订单状态不是“已取消訂單”也不是“已完成訂單”，则更新状态为“配送中”
+        //        if (minutesSinceOrderPlaced > 5 )
         //        {
-        //            // OrderDate为空的处理逻辑（如果有的话）
-        //            // 例如：忽略这个订单，记录错误，或者设置一个默认状态
+        //            order.Status = "配送中";
         //        }
+        //        // 超过48小时，且订单状态不是“已完成訂單”，则更新状态为“已完成訂單”
+        //        else if (minutesSinceOrderPlaced > 10)
+        //        {
+        //            order.Status = "已完成訂單";
+        //        }
+
+        //        // 其他情况不做处理
         //    }
-        //    _context.SaveChanges();
+        //    _context.SaveChanges(); // 保存所有更改
         //}
 
         //===============================================

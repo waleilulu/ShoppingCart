@@ -15,7 +15,7 @@ public partial class Order
     [DataType(DataType.Date)]
     public DateTime? OrderDate { get; set; }
 
-	public int? TotalAmount { get; set; }
+	public int? TotalAmount { get; set; } 
 
 	public string? PaymentMethod { get; set; }
 
