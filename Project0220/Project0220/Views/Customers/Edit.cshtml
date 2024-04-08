@@ -194,19 +194,19 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="CustomerId" />
                 <div class="form-group">
-                    <label asp-for="CustomerName" class="control-label">姓名</label>
+                    <label asp-for="CustomerName" class="control-label"><h3>姓名</h3></label>
                     <input asp-for="CustomerName" class="form-control" />
                     <span asp-validation-for="CustomerName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="DateOfBirth" class="control-label">生日</label>
+                    <label asp-for="DateOfBirth" class="control-label"><h3>生日</h3></label>
                     <div class=selectBirthday>
                         <input asp-for="DateOfBirth" class="form-control" />
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Gender" class="control-label">性別</label>
+                    <label asp-for="Gender" class="control-label"><h3>性別</h3></label>
                     <div class="selectAddress">
                         <select asp-for="Gender" class="form-control">
                             <option value="男">男</option>
@@ -216,18 +216,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="MobilePhoneNumber" class="control-label">電話</label>
+                    <label asp-for="MobilePhoneNumber" class="control-label"><h3>電話</h3></label>
                     <input asp-for="MobilePhoneNumber" class="form-control" />
                     <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Email" class="control-label">電子郵件</label>
+                    <label asp-for="Email" class="control-label"><h3>電子郵件</h3></label>
                     <input asp-for="Email" class="form-control" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <!-- 城市下拉選單 -->
                 <div class="form-group">
-                    <label asp-for="AddressCity" class="control-label">城市</label>
+                    <label asp-for="AddressCity" class="control-label"><h3>城市</h3></label>
                     <div class="selectAddress">
                         <select asp-for="AddressCity" class="form-control" id="city" name="AddressCity"></select>
                         <span asp-validation-for="AddressCity" class="text-danger"></span>
@@ -236,7 +236,7 @@
 
                 <!-- 區域下拉選單 -->
                 <div class="form-group">
-                    <label asp-for="AddressDist" class="control-label">地區</label>
+                    <label asp-for="AddressDist" class="control-label"><h3>地區</h3></label>
                     <div class="selectAddress">
                         <select asp-for="AddressDist" class="form-control" id="district" name="AddressDist"></select>
                         <span asp-validation-for="AddressDist" class="text-danger"></span>
@@ -244,19 +244,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="Address" class="control-label">地址</label>
+                    <label asp-for="Address" class="control-label"><h3>地址</h3></label>
                     <input asp-for="Address" class="form-control" />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Username" class="control-label">使用者帳號</label>
+                    <label asp-for="Username" class="control-label"><h3>使用者帳號</h3></label>
                     <input asp-for="Username" class="form-control" />
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @* <label asp-for="Password" class="control-label">密碼 </label> *@
                     <input asp-for="Password" class="form-control"  style="display:none" type="password"  />
-                    <a asp-action="UpdatePassword" asp-controller="UpdatePwd" asp-route-id="@Model.CustomerId" style="color:cornflowerblue">重置密碼</a>
+                    <a asp-action="UpdatePassword" asp-controller="UpdatePwd" asp-route-id="@Model.CustomerId" style="color:cornflowerblue"><h4>重置密碼</h4></a>
         @* 					<span asp-action="ForgetPassword" class="text-danger">重設密碼</span> *@
                 </div>
 

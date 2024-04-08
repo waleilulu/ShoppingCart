@@ -11,18 +11,18 @@
     <div class="row">
         <div class="col-md-12">
 
-            <h4 class="logintitle">登入</h4><br />
+            <h2 class="logintitle">登入</h2><br />
 
               <form asp-action="Login"/>
 
             <div class="form-group">
-                <label asp-for="Username" class="control-label">使用者帳號</label>
+                <label asp-for="Username" class="control-label"><h3>使用者帳號</h3></label>
                 <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Password" class="control-label">密碼</label>
+                <label asp-for="Password" class="control-label"><h3>密碼</h3></label>
                 <input asp-for="Password" class="form-control" type="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -36,7 +36,7 @@
             }
 
 
-              <br /> <br /><h4>還不是會員?</h4><br />
+              <br /> <br /><h3>還不是會員?</h3><br />
               
 
              <a href="~/Customers/Create" style="color:black" class="login_btn applybtn"><b>點我註冊</b></a>
