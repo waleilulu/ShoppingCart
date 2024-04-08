@@ -250,8 +250,8 @@ th, td {
                                             <th>聯絡電話</th>
                                             <th>收件地址</th>
                                              <th>付款方式</th>
-                                             <th>貨運</th>
-                                              <th>送貨日期</th>
+                                             <th>貨運公司</th>
+                                              <th>寄送日期</th>
                                         </tr>
                                 <tr style="background-color:white;">
                                     <td>@orderWithDetails.Order.Consignee</td>
@@ -266,7 +266,7 @@ th, td {
                                             }
                                             else
                                             {
-                                                @orderWithDetails.Order.ShippingDate
+                                                @orderWithDetails.Order.ShippingDate.Value.ToString("yyyy/MM/dd")
                                                 
                                             }
                 </td>
