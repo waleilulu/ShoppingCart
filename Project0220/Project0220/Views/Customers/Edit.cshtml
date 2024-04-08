@@ -254,9 +254,9 @@
                     <span asp-validation-for="Username" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Password" class="control-label">密碼 </label>
+                    @* <label asp-for="Password" class="control-label">密碼 </label> *@
                     <input asp-for="Password" class="form-control"  style="display:none" type="password"  />
-                    <a asp-action="UpdatePassword" asp-controller="UpdatePwd" asp-route-id="@Model.CustomerId" style="color:">重置密碼</a>
+                    <a asp-action="UpdatePassword" asp-controller="UpdatePwd" asp-route-id="@Model.CustomerId" style="color:cornflowerblue">重置密碼</a>
         @* 					<span asp-action="ForgetPassword" class="text-danger">重設密碼</span> *@
                 </div>
 
