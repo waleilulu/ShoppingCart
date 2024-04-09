@@ -341,11 +341,9 @@
 		}
 
 
-
-
-
 		var modelData = @Html.Raw(Json.Serialize(Model));
 		console.log(modelData);
+		var product = modelData["products"];
 		// document.getElementsByClassName("cartButton").addEventListener("click", function (event) {
 		//     event.preventDefault(); // 防止點擊<a>標籤時跳轉到cart.html
 		//     console.log($(this).closest('form'));
@@ -358,7 +356,7 @@
 
 
 			var productId = $(this).attr('id');
-			var matchingItems = modelData.find(function (item) {
+			var matchingItems = product.find(function (item) {
 				console.log(item.productId, productId);
 				return item.productId == productId;
 			});
