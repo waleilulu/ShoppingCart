@@ -256,7 +256,7 @@ namespace Project0220.Controllers
                             _contextNew.TrackLists.Add(trackListModel);
                             _contextNew.SaveChanges();
 
-                            return Json(new { success = true, message = "Product tracked successfully" });
+                            return Json(new { success = true, message = "產品已成功加入追蹤" });
                         }
                         else
                         {
