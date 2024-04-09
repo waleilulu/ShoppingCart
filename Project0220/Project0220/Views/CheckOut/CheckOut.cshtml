@@ -390,12 +390,12 @@ function closePopup(popupId) {
         Swal.fire({
             position: 'center',
             icon: 'info',
-            title: '24小時內確認對帳完成，預設為2天後寄出',
+            title: '24小時內確認對帳完成，依您選擇的日期出貨',
             showConfirmButton: false,
             timer: 3000
         }).then(() => {
           
-            document.getElementById('paymentStatus').innerHTML = '24小時內確認對帳無誤後，預設於對帳日期2天後寄出<br>要繼續購買，請點擊右側「確認訂購」';
+            document.getElementById('paymentStatus').innerHTML = '24小時內確認對帳無誤後，預設為您選擇的日期出貨<br>要繼續購買，請點擊右側「確認訂購」';
             document.getElementById('confirmOrderButton').style.display = 'block';
         });
     }
