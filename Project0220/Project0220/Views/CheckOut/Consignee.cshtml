@@ -214,6 +214,12 @@ h2{
                                             customerId = Convert.ToInt32(Context.Request.Cookies["membercookie"]);
                                         }
                                     } *@
+                                                    <div class="form-check mb-3">
+                                                      <input class="form-check-input" type="checkbox" id="autoFillMemberInfo">
+                                                      <label class="form-check-label" for="autoFillMemberInfo" style="color:#ef869a;">
+                                                        同會員資料(姓名、電話、地址)
+                                                      </label>
+                                                    </div>
                                    
                                                  <label  asp-for="CustomerId" class="control-label" >您的會員編號</label>
                                                  <input asp-for="CustomerId"  class="form-control" type="text" value="@ViewData["CustomerId"]" readonly/>
@@ -221,14 +227,14 @@ h2{
 
                                                 
                                                 <label asp-for="Consignee" class="control-label">收件人*</label>
-                                                 <input asp-for="Consignee" class="form-control" type="text" placeholder="請輸入收件人姓名或公司名稱" required/>
+                                                 <input asp-for="Consignee" id="Consignee" class="form-control" type="text" placeholder="請輸入收件人姓名或公司名稱" required/>
                                                 <span asp-validation-for="Consignee" class="text-danger"></span>
 
                                             </div>
 
                                             <div class="col-12 mb-20" style="margin-top:19px; margin-button:19px;">
                                                  <label asp-for="ContactPhone" class="control-label">聯絡電話*</label>
-                                                 <input asp-for="ContactPhone" class="form-control" type="text" placeholder="請輸入電話" required/>
+                                                 <input asp-for="ContactPhone" id="ContactPhone" class="form-control" type="text" placeholder="請輸入電話" required/>
                                                  <span asp-validation-for="ContactPhone" class="text-danger"></span>
 
                                             </div>
@@ -260,7 +266,7 @@ h2{
 
                                             <div class="col-12 mb-20">
                                                 <label asp-for="ShippingAddress" class="control-label">收件地址*</label>
-                                                <input asp-for="ShippingAddress" class="form-control" type="text" placeholder="請輸入收件地址" required/>
+                                                <input asp-for="ShippingAddress" id="ShippingAddress" class="form-control" type="text" placeholder="請輸入收件地址" required/>
                                                 <span asp-validation-for="ShippingAddress" class="text-danger"></span>
                                             </div>
 
@@ -301,10 +307,32 @@ h2{
   <!-- All jquery file included here -->
 
   <script>
+  var memberInfo = {
+    name: '@Html.Raw(Model.Customer.CustomerName)',
+    // 使用Html.Raw避免Razor二次編碼
+    phone: '@Model.Customer.MobilePhoneNumber',
+    // 合併地址部分
+    address: '@Html.Raw(Model.Customer.AddressCity  + Model.Customer.AddressDist  + Model.Customer.Address)'
+  };
 
+  document.addEventListener("DOMContentLoaded", function() {
+    var checkbox = document.getElementById('autoFillMemberInfo');
+    checkbox.addEventListener('change', function() {
+      if (this.checked) {
+        // 已經有變量 memberInfo 包含了會員的姓名、電話和地址
+        document.getElementById('Consignee').value = memberInfo.name; // 會員姓名
+        document.getElementById('ContactPhone').value = memberInfo.phone; // 會員电话
+        document.getElementById('ShippingAddress').value = memberInfo.address; // 合併顯示的地址
+      } else {
+        // 清空表單域
+        document.getElementById('Consignee').value = '';
+        document.getElementById('ContactPhone').value = '';
+        document.getElementById('ShippingAddress').value = ''; // 清空地址
+      }
+    });
+  });
+</script>
 
-  </script>
- 
 
 
     <script src="~/js/Cart/js/jquery-1.12.4.min.js"></script>

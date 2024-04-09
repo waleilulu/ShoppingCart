@@ -77,6 +77,19 @@ namespace Project0220.Controllers
         //    return !string.IsNullOrEmpty(memberCookie);
         //}
 
+
+        private Customer GetCustomerInfo(string customerId)
+        {
+            if (int.TryParse(customerId, out int id))
+            {
+                var customer = _context.Customers.FirstOrDefault(c => c.CustomerId == id);
+                return customer;
+            }
+
+
+            return null; // 或者根据您的逻辑返回一个默认的Customer对象
+        }
+
         public IActionResult Consignee()
         {
             // 從 cookie 讀取 customerId
@@ -86,11 +99,16 @@ namespace Project0220.Controllers
             // 將 customerId 賦值給 ViewData
             ViewData["CustomerId"] = customerId;
 
+            var customer = GetCustomerInfo(customerId);
+
             // 初始化 OrderDate 為當前日期
             var Order = new Order            {
-                OrderDate = DateTime.Today
+                OrderDate = DateTime.Today,
+                Customer = customer
             };
 
+            
+            
             return View(Order);
             //var memberCookie = Convert.ToInt32(HttpContext.Request.Cookies["membercookie"]);
             //ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
