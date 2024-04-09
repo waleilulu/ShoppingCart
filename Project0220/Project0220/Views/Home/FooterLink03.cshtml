@@ -134,7 +134,11 @@
 		document.getElementById("feedbackForm").addEventListener("submit", function (event) {
 			event.preventDefault(); // 防止表单的默认提交行为
 
-			// 在这里添加您的表单处理逻辑
+			// 清空表单字段
+			document.getElementById("fname").value = "";
+			document.getElementById("lname").value = "";
+			document.getElementById("feedback").selectedIndex = 0;
+			document.getElementById("subject").value = "";
 
 			// 弹出提示框
 			alert("我們已經收到您的反饋，感謝您的寶貴建議!!");
