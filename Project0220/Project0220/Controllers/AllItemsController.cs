@@ -187,11 +187,11 @@ namespace Project0220.Controllers
                             _contextNew.TrackLists.Add(trackListModel);
                             _contextNew.SaveChanges();
 
-                            return Json(new { success = true, message = "商品追蹤成功" });
+                            return Json(new { success = true, message = "商品已成功加入追蹤" });
                         }
                         else
                         {
-                            return Json(new { success = false, message = "產品已追蹤過了" });
+                            return Json(new { success = false, message = "商品已追蹤過了" });
                         }
                     }
                     else
@@ -256,11 +256,11 @@ namespace Project0220.Controllers
                             _contextNew.TrackLists.Add(trackListModel);
                             _contextNew.SaveChanges();
 
-                            return Json(new { success = true, message = "產品已成功加入追蹤" });
+                            return Json(new { success = true, message = "商品已成功加入追蹤" });
                         }
                         else
                         {
-                            return Json(new { success = false, message = "產品已追蹤過了" });
+                            return Json(new { success = false, message = "商品已追蹤過了" });
                         }
                     }
                     else
