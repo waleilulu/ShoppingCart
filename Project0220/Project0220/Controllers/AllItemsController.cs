@@ -6,8 +6,6 @@ using Project0220.Models;
 using Project0220.myModels;
 using Project0220.ViewModel;
 using Newtonsoft.Json.Linq;
-using Microsoft.IdentityModel.Tokens;
-using System.Linq;
 namespace Project0220.Controllers
 {
     public class AllItemsController : Controller
@@ -20,49 +18,32 @@ namespace Project0220.Controllers
             _contextNew = contextNew;
         }
 
-		public async Task<IActionResult> Index(string bee)
-		{
-			var data = from o2 in _contextNew.Products
-					   select o2;
-			var resuleData = data;
-            bool notFound=false;
-			if (!string.IsNullOrEmpty(bee))
-			{
-				resuleData = data.Where(o => o.ProductName!.Contains(bee));
-			}
+        public async Task<IActionResult> Index(string bee)
+        {
 
-			if (!resuleData.Any())
-			{
-				resuleData = data.Where(o => o.SpecialZoneType == "熱銷");
-                notFound = true;
-			}
+            var data = from o2 in _contextNew.Products
+                       select o2;
 
-			var productList = await resuleData.ToListAsync();
+            if (!string.IsNullOrEmpty(bee))
+            {
+                data = data.Where(o => o.ProductName!.Contains(bee));
+            }
 
-			var viewModel = new ItemViewModel
-			{
-				Products = productList,
-				NotFound = notFound
-			};
-
-			return View(viewModel);
-		}
-
-		[HttpPost]
+            return View(await data.ToListAsync());
+        }
+        [HttpPost]
         public IActionResult Search(string bee)
         {
-            //if (string.IsNullOrEmpty(bee))
-            //{
-            //    return View("Search","AllItems");
-            //}
+            if (string.IsNullOrEmpty(bee))
+            {
+                return View("Index","Home");
+            }
 
             // Redirect to Index page with search query
             return RedirectToAction("Index", new { bee });
         }
 
-
-	
-		[HttpPost]
+        [HttpPost]
         public IActionResult Subscribe(string email)
         {
             var userId = HttpContext.Session.GetInt32("userId");

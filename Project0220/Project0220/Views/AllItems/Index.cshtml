@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model Project0220.ViewModel.ItemViewModel
+@model IEnumerable<Project0220.myModels.Product>
 
 
 <!-- Shop Section Start -->
@@ -56,17 +56,13 @@
 						</div>
 						<div class="col-lg-9 order-lg-2 order-1">
 							<div class="row">
-							@if (Model.NotFound)
-							{
-								<div class="col-12 text-center"><h3>無符合條件商品,以下是熱銷商品提供參考!</h3></div>
-							}
-							<div class="col-12">
+								<div class="col-12">
 									<div class="shop-product">
 										<div id="myTabContent-2" class="tab-content">
 											<div id="grid" class="tab-pane fade active show">
 												<div class="product-grid-view">
 													<div class="row">
-														@foreach (var item in Model.Products)
+														@foreach (var item in Model)
 														{
 															<div class="col-lg-4 col-md-6 col-sm-6">
 																<!--  Single Grid product Start -->
@@ -118,7 +114,7 @@
 													<!-- Single List Product Start -->
 													<div class="product-list-item mb-40">
 														<div class="row">
-															@foreach (var item in Model.Products)
+															@foreach (var item in Model)
 															{
 																<div class="col-md-4 col-sm-6">
 																	<div class="single-grid-product">
@@ -186,10 +182,9 @@
 		</div>
 		@* 測試 *@
 	</div>
-</div>
 	<!--Quick View視圖: 第二個眼睛按鈕迴圈-->
-		@foreach (var item in Model.Products)
-		{
+	@foreach (var item in Model)
+	{
 		<div class="modal fade quick-view-modal-container" id="quick-view-modal-container-@item.ProductId" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -306,9 +301,8 @@
 				</div>
 			</div>
 		</div>
-		} 
+	} 
 	<!-- Shop Section End -->
-
 	<script>
 
 
