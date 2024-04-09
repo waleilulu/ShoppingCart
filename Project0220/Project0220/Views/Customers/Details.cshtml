@@ -277,10 +277,10 @@ th, td {
                         </table>
                             @if (orderWithDetails.Order.Status != "已取消訂單")
                             {
-                               <form asp-action="CancelOrder" method="post" class="cancelOrderForm">
-                                   <input type="hidden" name="orderId" value="@orderWithDetails.Order.OrderId" />
-                                   <button type="button" class="cancel-order-btn" data-order-id="@orderWithDetails.Order.OrderId" style="background-color: #b0afaf; color: white; font-weight: bold; border: none; cursor: pointer; padding: 7px 18px; margin-left:900px; font-size:18px; margin-bottom:10px;">取消訂單</button>
-                               </form>
+                                <form asp-action="CancelOrder" method="post">
+                                    <input type="hidden" name="orderId" value="@orderWithDetails.Order.OrderId" />
+                                                <button type="submit" id="CancelBtn" style=" background-color: #b0afaf; color: white;  font-weight: bold;   border: none;  cursor: pointer; padding: 7px 18px; margin-left:900px; font-size:18px; margin-bottom:10px;">取消訂單</button>
+                                </form>
                             }
 
                           @*   ======================================================== *@
@@ -449,35 +449,10 @@ $(document).ready(function(){
 });
 </script>
 
-@* 取消訂單 *@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-document.querySelectorAll('.cancel-order-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        const orderId = this.getAttribute('data-order-id'); // 獲取訂單ID
-        Swal.fire({
-            title: '確定要取消訂單嗎？',
-            text: "取消後無法恢復！",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: '是的，取消訂單！',
-            cancelButtonText: '不，再想想！',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // 找到當前所在的表單提交
-                this.closest('.cancelOrderForm').submit();
-            }
-        });
-    });
-});
-</script>
-
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/ca6c6d4655.js" crossorigin="anonymous"></script> @* ICON *@
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
