@@ -72,3 +72,8 @@
     padding: 5px 10px;
     font-size: 12px;
 }
+
+/* 自定義搜尋框大小 */
+.custom-search-input {
+    width:110px !important;
+}
