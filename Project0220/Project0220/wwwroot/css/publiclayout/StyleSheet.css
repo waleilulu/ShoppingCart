@@ -77,3 +77,7 @@
 .custom-search-input {
     width:110px !important;
 }
+.cartBtn {
+    font-size: large !important;
+    font-weight: bold;
+}
