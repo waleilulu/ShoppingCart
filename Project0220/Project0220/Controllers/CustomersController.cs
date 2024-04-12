@@ -67,7 +67,7 @@ namespace Project0220.Controllers
              .Where(o => o.CustomerId == id)
              .OrderByDescending(o => o.OrderId) // 使用 OrderId 進行降序排序
              .ToListAsync();
-
+            //相對應的訂單詳細資訊
             var orderDetails = await _context.OrderDetails
                 .Where(od => orders.Select(o => o.OrderId).Contains(od.OrderId.Value))
                 .ToListAsync();
@@ -153,9 +153,9 @@ namespace Project0220.Controllers
                 }
 
 
-                // 对用户密码进行加密
+                // 進行加密
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(customer.Password);
-
+               
                 // 将加密后的密码赋值给用户对象
                 customer.Password = hashedPassword;
 
@@ -225,7 +225,7 @@ namespace Project0220.Controllers
                 }
             }
 
-            // 登录失败，返回登录视图并显示错误消息
+           
             ModelState.AddModelError("", "登入失敗，請檢查用户名和密碼。");
             return View("Login");
         }
@@ -285,7 +285,7 @@ namespace Project0220.Controllers
             return RedirectToAction("Login", "Customers");
 
         }
-
+     
 
 
 
