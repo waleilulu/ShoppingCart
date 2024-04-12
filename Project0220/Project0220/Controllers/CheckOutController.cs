@@ -289,7 +289,7 @@ namespace Project0220.Controllers
             
             // 更新 Order 的 TotalAmount 計算出的總金額
             order.TotalAmount = totalAmount;
-            order.Status = "配送中";
+            order.Status = "已付款";
             await _context.SaveChangesAsync(); // 更新 Order 的總金額
 
             // 清空購物車
