@@ -86,7 +86,7 @@ namespace Project0220.Controllers
             {
                 Customers = new List<Customer> { user },
                 Products = allProducts,
-                TrackedProducts = trackedProducts, // 追踪商品單獨儲存
+                TrackedProducts = trackedProducts, 
                 OrdersWithDetails = ordersWithDetails,
 
             };
