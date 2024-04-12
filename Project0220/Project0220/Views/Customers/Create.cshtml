@@ -324,7 +324,7 @@
         </div>
     </footer>
 @* 公版footer在這 *@
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
 
@@ -383,6 +383,24 @@
 
 	// 初始化一次，以顯示預設城市的區域選項
 	citySelect.dispatchEvent(new Event('change'));
-
-
+      
+   
 	</script>
+@{
+    bool registrationSuccess = ViewData["RegistrationSuccess"] as bool? ?? false;
+}
+
+@if (registrationSuccess)
+{
+            <script>
+            // 如果註冊成功，顯示 SweetAlert 彈窗並重定向到登入頁面
+            Swal.fire({
+                title: '註冊成功！',
+                text: '請登錄您的帳戶',
+                icon: 'success',
+                confirmButtonText: '確定'
+            }).then(() => {
+                window.location.href = '/Customers/Login';
+            });
+            </script>
+}

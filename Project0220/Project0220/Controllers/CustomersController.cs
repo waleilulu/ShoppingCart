@@ -163,10 +163,11 @@ namespace Project0220.Controllers
 
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
-                // 設置註冊成功的提示消息
-                TempData["RegisterSuccessMessage"] = "您已成功註冊會員！";
+                // 返回成功註冊的標誌
+                ViewData["RegistrationSuccess"] = true;
 
-                return RedirectToAction("Login", "Customers");
+                return View(customer);
+
             }
             return View(customer);
         }
