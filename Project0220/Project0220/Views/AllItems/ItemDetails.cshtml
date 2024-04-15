@@ -120,7 +120,7 @@
                                     <!-- 產品數量 input 欄位 -->
                                     <div class="single-product-quantity mb-2 form-inline">
                                         <div class="product-quantity">
-                                            <input id="quantity" name="quantity" value="1" type="number">
+                                            <input id="quantity" name="quantity" value="1" type="number" min="1" max="5">
                                         </div>
 
 
@@ -697,5 +697,37 @@
                 });
 
             }
+
+            //商品內頁數量限制
+            document.addEventListener("DOMContentLoaded", function () {
+                // 獲取具有update類型的輸入框
+                var updateInputs = document.querySelectorAll('.update');
+
+                // 遍歷所有输入框書
+                updateInputs.forEach(function (input) {
+                    input.addEventListener("input", function () {
+                        // 獲取输入框的值、最小值和最大值
+                        var value = parseInt(this.value);
+                        var min = parseInt(this.min);
+                        var max = parseInt(this.max);
+
+                        // 如果值小於最小值，則將值設置為最小值，並顯示警告消息
+                        if (value < min) {
+                            this.value = min;
+                            alert("數量不能小於最小值 " + min);
+                        }
+                        // 如果值大於最大值，則將值設置为最大值，並顯示警告消息
+                        else if (value > max) {
+                            this.value = max;
+                            alert("數量不能大於最大值" + max);
+                        }
+                    });
+
+                    // 禁止使用鍵盤輸入數字
+                    input.addEventListener("keydown", function (event) {
+                        event.preventDefault();
+                    });
+                });
+            });
 
         </script>
